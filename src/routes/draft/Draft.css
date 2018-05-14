@@ -1,0 +1,169 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../../components/variables.css';
+
+.root {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 0 40px;
+  max-width: var(--max-content-width);
+}
+
+.avatar {
+  height: 43px;
+  width: 60px;
+  margin: 0 6px 0 8px;
+}
+
+.avatar_large {
+  height: 70px;
+  width: 97.67px;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper_container {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px
+}
+
+.item_list {
+  flex-grow: 1; /* default 0 */
+}
+
+.item_vids {
+  flex-grow: 2
+}
+
+.item_playlist {
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.item_title {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.yt_img {
+  width: 95%
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
+}
+
+.logo img {
+  height: 30px;
+  width: 30px
+}
+
+.playerItem {
+  cursor: pointer;
+}
+
+.tab {
+  min-width: 95px;
+}
+
+.video {
+  /* margin-left: 65px; */
+}
+
+.select_player {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 100px;
+  margin-right: 350px
+}
+
+.flex_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.draft_position_overall {
+  font-size: 9px;
+  font-weight: normal;
+}
+
+.sub_info {
+  font-size: 12px;
+  font-weight: lighter;
+  margin-left: 0.4em;
+  color: gray
+}
+
+.sub_info_larger {
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 0.4em;
+  color: gray
+}
+
+.sub_info_center {
+    margin-left: 1.9em;
+}
+
+.draft_rd {
+  font-size: 1.25em;
+}
+
+.draft_round_pos {
+  font-size: 0.9em;
+  font-weight: 400
+}
+
+.spacer {
+  margin-right: 10px
+}
+
+.spacer_small {
+  margin-right: 8px
+}
+
+.name {
+  font-weight: 600;
+  font-size: 0.9em
+}
+
+.center {
+  text-align: center
+}
+
+.video_player_title {
+  margin: 20px 20px 20px 55px;
+}
+
+.instruction {
+  vertical-align: super;
+}
+
+.video_player_container {
+  margin-bottom: 20px
+}
+
+.video_title_container  {
+  margin-left: 35%
+}
