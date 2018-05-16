@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ReactPlayer from 'react-player';
-import s from './Draft.css'
+import s from './Aov.css'
 import { Icon } from 'react-icons-kit'
 import {arrowCircleLeft} from 'react-icons-kit/fa/arrowCircleLeft'
 import {arrowCircleUp} from 'react-icons-kit/fa/arrowCircleUp'

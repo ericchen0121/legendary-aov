@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Draft.css';
+import s from './Aov.css';
 import Divider from 'material-ui/Divider';
 
 class DraftPlaylist extends Component {

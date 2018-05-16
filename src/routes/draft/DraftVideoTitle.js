@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames'
 // import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
-import s from './Draft.css';
+import s from './Aov.css';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { NFL_IMG, NFL_PARAMS, NFL_LOGO } from './DraftConstants'
 

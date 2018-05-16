@@ -1,84 +1,75 @@
-export const FILTERS = {
-  ROUND: [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    'udfa'
+export const HERO_FILTERS = {
+  CLASSES: [
+    'all',
+    'assassin',
+    'mage',
+    'marksman',
+    'support',
+    'tank',
+    'warrior',
   ],
-  TEAM: [
-    'ARI',
-    'ATL',
-    'BAL',
-    'BUF',
-    'CAR',
-    'CHI',
-    'CIN',
-    'CLE',
-    'DAL',
-    'DEN',
-    'DET',
-    'GB',
-    'HOU',
-    'IND',
-    'JAX',
-    'KC',
-    'LAC',
-    'LA',
-    'MIA',
-    'MIN',
-    'NE',
-    'NO',
-    'NYG',
-    'NYJ',
-    'OAK',
-    'PHI',
-    'PIT',
-    'SEA',
-    'SF',
-    'TB',
-    'TEN',
-    'WAS'
+  LANES: [
+    'solo',
+    'mid',
+    'jungle',
+    'roam',
+    'support',
   ],
-  POSITION: [
-    'QB',
-    'RB',
-    'WR',
-    'TE',
-    'FB',
-    'OT',
-    'OG',
-    'C',
-    'DE',
-    'DT',
-    'ILB',
-    'OLB',
-    'CB',
-    'S',
-    'LS',
-    'K',
-    'P'
+  ROLES: [
+    'all',
+    'buffs',
+    'control',
+    'finisher',
+    'initiator',
+    'harass',
+    'life steal',
+    'mobility',
+  ],
+  TIER: [
+    'all',
+    's',
+    'a',
+    'b',
+    'c',
+    'd'
+  ],
+}
+
+export const TEAM_FILTERS = {
+  REGIONS: [ 'EU', 'NA', 'SEA'],
+}
+
+export const ARMORY_FILTERS = {
+  ITEMS: [
+    'attack',
+    'magic',
+    'defense',
+    'movement',
+    'jungle'
+  ],
+  TALENTS: [
+    'assassin',
+    'mage',
+    'marksman',
+    'support',
+    'tank',
+    'warrior'
+  ],
+  ARCANA: [
+    'assassin',
+    'mage',
+    'marksman',
+    'support',
+    'tank',
+    'warrior'
   ]
 }
 
-
 export const VIDEO_SEARCH_TERMS = [
-  'rookie minicamp',
-  'nfl draft highlights',
-  'nfl draft scouting report',
-  'nfl combine',
-  'draft pro day',
-  'mock draft',
-  'fantasy football',
-  'interview',
-  'pff',
-  'espn',
-  'madden'
+  'valor series',
+  'aov guide',
 ]
-export const DEFAULT_TOP_LEVEL_FILTER = 'ROUND'
+export const DEFAULT_TOP_LEVEL_FILTER = 'CLASSES'
 export const NFL_IMG_COMPOSER = 'https://imagecomposer.nfl.com/?l='
 export const NFL_IMG = "https://static.nfl.com/static/content/static/img/combine/2018/headshots/1400x1000"
 export const NFL_PARAMS = "&f=png&w=120&c=71"

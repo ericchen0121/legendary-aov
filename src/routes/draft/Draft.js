@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
-import s from './Draft.css';
+import s from './Aov.css';
 
 import DraftListItem from './DraftListItem';
 import DraftVideo from './DraftVideo';
@@ -19,8 +19,8 @@ import DraftVideoTitle from './DraftVideoTitle';
 import DraftVideoSearch from './DraftVideoSearch';
 import DraftPlaylist from './DraftPlaylist';
 import DraftFilters from './DraftFilters';
-import PLAYERS from './DraftPlayers';
-import { FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS } from './DraftConstants'
+import HEROES from './AovHeroes';
+import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS } from './DraftConstants'
 import List from 'material-ui/List';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
@@ -37,20 +37,19 @@ const styles = theme => ({
 
 class Draft extends React.Component {
   state = {
-    selected_player: {
+    selected_hero: {
       name: null,
-      position: null
     },
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
-    lower_level_filter_selected: FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
+    lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0]
   }
 
-  //FILTERS FUNCTIONS
+  //HERO_FILTERS FUNCTIONS
   onTopLevelFilterChange = (filter) => () => {
     this.setState({
       top_level_filter_selected: filter,
-      lower_level_filter_selected: FILTERS[filter][0] // select the first lower level filter
+      lower_level_filter_selected: HERO_FILTERS[filter][0] // select the first lower level filter
     })
   }
 
@@ -60,49 +59,54 @@ class Draft extends React.Component {
     })
   }
 
-  // players is ARRAY of player objects
-  // returns filtered array of player objects based on top and lower level filters
-  filterResults = (players) => {
+  // hero is ARRAY of hero objects
+  // returns filtered array of hero objects based on top and lower level filters
+  filterResults = (heroes) => {
     let {top_level_filter_selected, lower_level_filter_selected} = this.state
+    console.log('state', this.state)
     let key = null
-    if(top_level_filter_selected === 'ROUND') {
-      key = 'DRAFT_RD'
-    } else if (top_level_filter_selected === 'TEAM') {
-      key = 'TEAM'
-    } else if (top_level_filter_selected === 'POSITION') {
-      key = 'POS'
+    if(top_level_filter_selected === 'CLASSES') {
+      key = 'classes'
+    } else if (top_level_filter_selected === 'ROLES') {
+      key = 'roles'
+    } else if (top_level_filter_selected === 'TIER') {
+      key = 'tier'
+    } else if (top_level_filter_selected === 'LANES') {
+      key = 'lanes'
     }
 
-    let filtered_players = players.filter(player => {
-      return player[key] === lower_level_filter_selected
-    })
+    let filtered_heroes = null
+    if (lower_level_filter_selected === 'all') {
+      filtered_heroes  = heroes
+    } else {
+      filtered_heroes = heroes.filter(hero => {
+        return hero[key].includes(lower_level_filter_selected)
+      })
+    }
 
-    return filtered_players
+    return filtered_heroes
   }
 
-  sortResults = (players) => {
-    return players.sort((a,b) => a.DRAFT_RK - b.DRAFT_RK)
-  }
-
-  removeUndrafted = (players) => {
-    return players.filter(player => {
-      return player['DRAFT_RD'] !== 0
-    })
+  sortResults = (hero) => {
+    console.log('unsorted', hero)
+    hero = hero.sort((a,b) => a.name.localeCompare(b.name))
+    console.log('sorted', hero)
+    return hero
   }
 
   //VIDEO SEARCH FUNCTIONS
   onVideoSearchTermChange = (video_search_term) => {
     this.setState({video_search_term}, () => {
       console.log('youtube searching: ', this.state.video_search_term)
-      this.handleFetchYoutubeVideos(this.state.selected_player.name, this.state.selected_player.position)
+      this.handleFetchYoutubeVideos(this.state.selected_hero.name, this.state.selected_hero.position)
     })
   }
 
-  // handling the click on the player list item
+  // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
-  handleFetchYoutubeVideos = (name, position) => {
-    this.setState({ selected_player: { name, position} })
-    this.props.actions.fetchYoutubeList(this.createQuery(name, position))
+  handleFetchYoutubeVideos = (name) => {
+    this.setState({ selected_hero: { name} })
+    this.props.actions.fetchYoutubeList(this.createQuery(name))
   }
 
   createQuery = (name, position) => {
@@ -111,24 +115,17 @@ class Draft extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { top_level_filter_selected, lower_level_filter_selected, video_search_term, selected_player  } = this.state
-    let order_players = this.sortResults(this.filterResults(this.removeUndrafted(PLAYERS.players)))
-
-    const list = order_players.map(p => (
+    const { top_level_filter_selected, lower_level_filter_selected, video_search_term, selected_hero  } = this.state
+    let order_hero = this.sortResults(this.filterResults(HEROES))
+    const list = order_hero.map(h => (
       <DraftListItem
-        player={p}
-        name={p.PLAYER}
-        position={p.POS}
-        nfl_img_id={p.NFL_IMG_ID}
-        team={p.TEAM}
-        draft_rk={p.DRAFT_RK}
+        hero={h}
         {...this.props}
         handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
       />
     ))
-
     let video_search = null
-    if (selected_player.name) {
+    if (selected_hero.name) {
       video_search = (
         <DraftVideoSearch
           onVideoSearchTermChange={this.onVideoSearchTermChange}
@@ -141,7 +138,7 @@ class Draft extends React.Component {
         <Grid container>
           <Grid item xs={12} md={12}>
             <DraftFilters
-              filters = {FILTERS}
+              filters = {HERO_FILTERS}
               onTopLevelFilterChange={this.onTopLevelFilterChange}
               onLowerLevelFilterChange={this.onLowerLevelFilterChange}
               top_level_filter_selected={top_level_filter_selected}
