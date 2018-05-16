@@ -14,6 +14,8 @@ export const HERO_FILTERS = {
     'jungle',
     'roam',
     'support',
+    'ds',
+    'damage'
   ],
   ROLES: [
     'all',
@@ -27,6 +29,7 @@ export const HERO_FILTERS = {
   ],
   TIER: [
     'all',
+    'ss',
     's',
     'a',
     'b',
@@ -66,11 +69,28 @@ export const ARMORY_FILTERS = {
 }
 
 export const VIDEO_SEARCH_TERMS = [
+  'hero spotlight',
+  'road to mastery',
+  'guide',
+  'garena aov',
+  'gameplay',
+  'solo q',
+  'combo',
+  'master',
+  'ranked',
+  'counter',
+  'build',
+  'meta',
+  'arcana',
+  'abrownbag',
+  'vex',
+  'darkbreaker',
+  'shurko',
+  'dave',
+  'smg',
+  'sunbros',
   'valor series',
-  'aov guide',
+  'aic'
 ]
 export const DEFAULT_TOP_LEVEL_FILTER = 'CLASSES'
-export const NFL_IMG_COMPOSER = 'https://imagecomposer.nfl.com/?l='
-export const NFL_IMG = "https://static.nfl.com/static/content/static/img/combine/2018/headshots/1400x1000"
-export const NFL_PARAMS = "&f=png&w=120&c=71"
-export const NFL_LOGO = 'https://static.nfl.com/static/site/img/logos/svg/teams' // https://static.nfl.com/static/site/img/logos/svg/teams/CLE.svg
+export const DEFAULT_IMAGE_URL = 'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png'

@@ -21,9 +21,21 @@
 }
 
 .avatar_container {
-  margin-right: -22%;
+  margin-right: -33%;
   position: relative;
 }
+
+.avatar_small {
+  position: relative;
+  border-radius: .5em;
+  border: gold;
+  border-width: 1.25px;
+  border-style: solid;
+  margin: -1px -1px -1px 8px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
+  overflow: hidden;
+  width: 40px;
+}
+
 .avatar {
   position: relative;
   border-radius: .5em;
@@ -32,7 +44,7 @@
   border-style: solid;
   margin: -1px -1px -1px 8px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
   overflow: hidden;
-  width: 50%;
+  width: 35%;
 }
 
 .avatar_large {
@@ -65,9 +77,14 @@
 
 .item_playlist {
   flex-grow: 1;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
+  margin-top: 10px;
 }
 
+.item_channel {
+  font-size: .6em;
+  color: 'light-gray'
+}
 .item_title {
   font-size: 12px;
   font-weight: bold;
@@ -112,6 +129,11 @@
   flex-direction: column;
 }
 
+.flex_container_row {
+  display: flex;
+  flex-direction: row;
+}
+
 .draft_position_overall {
   font-size: 9px;
   font-weight: normal;
@@ -154,25 +176,45 @@
 
 .name {
   font-weight: 600;
-  font-size: 0.9em
+  font-size: 0.8em
 }
 
+.nickname {
+  font-size: 0.7em;
+  font-weight: 500;
+}
+
+.info_title {
+  font-size: .65em;
+}
+
+.info {
+  font-size: 0.7em;
+  font-weight: 600
+}
 .center {
   text-align: center
 }
 
-.video_player_title {
-  margin: 20px 20px 20px 55px;
+.video_player_title_container {
+  margin: 20px 20px 20px 0px;
 }
 
 .instruction {
   vertical-align: super;
 }
 
+.draft_video_container {
+  margin-top: 30px;
+}
 .video_player_container {
   margin-bottom: 20px
 }
 
 .video_title_container  {
   margin-left: 35%
+}
+
+.margin_top_title {
+  margin-top: 19px;
 }

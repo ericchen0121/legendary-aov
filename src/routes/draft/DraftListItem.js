@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
-import { NFL_IMG_COMPOSER, NFL_IMG, NFL_PARAMS, NFL_LOGO } from './DraftConstants'
+import { DEFAULT_IMAGE_URL } from './DraftConstants'
 import {
   ListItem,
   ListItemSecondaryAction,
@@ -17,13 +17,13 @@ class DraftListItem extends React.Component {
   };
 
   handleItemClick = () => {
-    const { player } = this.props
-    this.props.actions.selectDraftPlayer(player)
-    this.props.handleFetchYoutubeVideos(player.PLAYER, player.POS)
+    const { hero } = this.props
+    this.props.actions.selectHero(hero)
+    this.props.handleFetchYoutubeVideos(hero.name)
   }
 
   createQuery = (name) => {
-    return `${name}}+aov+arena+of+valor`
+    return `${name}+aov+arena+of+valor`
   }
 
   render() {
@@ -45,46 +45,17 @@ class DraftListItem extends React.Component {
     if (folder) {
       avatar = <div className={s.avatar_container}><img className={s.avatar} src={`/aov/heroes/${folder}/hero.png`} /></div>
     } else {
-      avatar = <div className={s.avatar_container}><img className={s.avatar} src='https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png' /></div>
+      avatar = <div className={s.avatar_container}><img className={s.avatar} src={DEFAULT_IMAGE_URL} /></div>
     }
 
-    // let logo = <div className={s.logo} />
-    // if (team) {
-    //   logo = (
-    //     <span className={s.logo}>
-    //       <img src={logo_src} />
-    //     </span>
-    //   )
-    // }
-
-    // let draft_round_display = (
-    //   <span className={s.flex_container, s.spacer}>
-    //     <div className={s.draft_rd}>{ draft_rd }</div>
-    //   </span>
-    // )
-    //
-    // let draft_position_overall = <div />
-    // if (draft_rd !== 1) {
-    //   draft_position_overall = <span>[{draft_rk}]</span>
-    // }
-    //
-    // let draft_position_display = (
-    //   <span className={s.flex_container, s.spacer_small}>
-    //     <div className={s.draft_round_pos}>{ draft_rd_pos }</div>
-    //     <div className={s.draft_position_overall}>{ draft_position_overall }</div>
-    //   </span>
-    // )
-
-    // let team_position_display = (
-    //   <span className={s.flex_container}>
-    //     <div>{ logo }</div>
-    //     <div className={s.sub_info_larger}>{ position }</div>
-    //   </span>
-    // )
+    let nickname_container = null
+    if (nickname) { nickname_container = (<span className={s.nickname}>{`/ The ${ nickname }`}</span>)}
 
     let name_container = (
       <span className={s.flex_container}>
-        <div className={s.name}>{ name }</div>
+        <div ><span className={s.name}>{ name }</span>  { nickname_container }</div>
+
+        <div><span className={s.info_title}>Tier:</span> <span className={s.info}>{tier.toUpperCase()}</span></div>
       </span>
     )
 

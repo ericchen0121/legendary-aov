@@ -42,7 +42,8 @@ class Draft extends React.Component {
     },
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
-    video_search_term: VIDEO_SEARCH_TERMS[0]
+    video_search_term: VIDEO_SEARCH_TERMS[0],
+    video_search_term_default: 'arena of valor'
   }
 
   //HERO_FILTERS FUNCTIONS
@@ -88,9 +89,7 @@ class Draft extends React.Component {
   }
 
   sortResults = (hero) => {
-    console.log('unsorted', hero)
     hero = hero.sort((a,b) => a.name.localeCompare(b.name))
-    console.log('sorted', hero)
     return hero
   }
 
@@ -105,12 +104,12 @@ class Draft extends React.Component {
   // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
   handleFetchYoutubeVideos = (name) => {
-    this.setState({ selected_hero: { name} })
+    this.setState({ selected_hero: { name } })
     this.props.actions.fetchYoutubeList(this.createQuery(name))
   }
 
-  createQuery = (name, position) => {
-    return `${name}+${position}+${this.state.video_search_term}`
+  createQuery = (name) => {
+    return `${name}+${this.state.video_search_term_default}+${this.state.video_search_term}`
   }
 
   render() {
@@ -149,11 +148,13 @@ class Draft extends React.Component {
             <List>{list}</List>
           </Grid>
           <Grid item xs={12} sm={7} md={7} lg={7}>
-            <DraftVideoTitle {...this.props} />
-            <DraftVideo
-              video_search_term={video_search_term}
-              {...this.props}
-            />
+            <div className={s.draft_video_container}>
+              <DraftVideo
+                video_search_term={video_search_term}
+                {...this.props}
+              />
+              <DraftVideoTitle {...this.props} />
+            </div>
           </Grid>
           <Grid item xs={12} sm={12} md={2} lg={2}>
             { video_search }
