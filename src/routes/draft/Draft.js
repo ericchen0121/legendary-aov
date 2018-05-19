@@ -9,7 +9,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import s from './Aov.css';
 
@@ -31,7 +31,11 @@ import { bindActionCreators } from 'redux';
 
 const styles = theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    main_one: {
+      order: 2,
+      marginRight: 30
+    }
   }
 })
 
@@ -39,6 +43,7 @@ class Draft extends React.Component {
   state = {
     selected_hero: {
       name: null,
+      active: false
     },
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
@@ -64,7 +69,6 @@ class Draft extends React.Component {
   // returns filtered array of hero objects based on top and lower level filters
   filterResults = (heroes) => {
     let {top_level_filter_selected, lower_level_filter_selected} = this.state
-    console.log('state', this.state)
     let key = null
     if(top_level_filter_selected === 'CLASSES') {
       key = 'classes'
@@ -88,15 +92,24 @@ class Draft extends React.Component {
     return filtered_heroes
   }
 
-  sortResults = (hero) => {
-    hero = hero.sort((a,b) => a.name.localeCompare(b.name))
-    return hero
+  sortResultsAlpha = (heroes) => {
+    heroes = heroes.sort((a,b) => a.name.localeCompare(b.name))
+    return heroes
+  }
+
+  sortResultsTier = (heroes) => {
+    heroes = heroes.sort((a,b) => a.tier_index - b.tier_index)
+    return heroes
+  }
+
+  sortResultsTierAlpha = (heroes) => {
+    heroes = heroes.sort((a,b) => { return a.tier_index - b.tier_index || a.name.localeCompare(b.name)})
+    return heroes
   }
 
   //VIDEO SEARCH FUNCTIONS
   onVideoSearchTermChange = (video_search_term) => {
     this.setState({video_search_term}, () => {
-      console.log('youtube searching: ', this.state.video_search_term)
       this.handleFetchYoutubeVideos(this.state.selected_hero.name, this.state.selected_hero.position)
     })
   }
@@ -104,7 +117,12 @@ class Draft extends React.Component {
   // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
   handleFetchYoutubeVideos = (name) => {
-    this.setState({ selected_hero: { name } })
+    this.setState({
+      selected_hero: {
+        name,
+        active: true
+      }
+    })
     this.props.actions.fetchYoutubeList(this.createQuery(name))
   }
 
@@ -115,7 +133,8 @@ class Draft extends React.Component {
   render() {
     const { classes } = this.props;
     const { top_level_filter_selected, lower_level_filter_selected, video_search_term, selected_hero  } = this.state
-    let order_hero = this.sortResults(this.filterResults(HEROES))
+
+    let order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
     const list = order_hero.map(h => (
       <DraftListItem
         hero={h}
@@ -133,9 +152,9 @@ class Draft extends React.Component {
       )
     }
     return (
-      <div className={classes.root}>
+      <div classNames={classes.root, s.root_container}>
         <Grid container>
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12} classNames={s.main_one}>
             <DraftFilters
               filters = {HERO_FILTERS}
               onTopLevelFilterChange={this.onTopLevelFilterChange}
@@ -144,10 +163,10 @@ class Draft extends React.Component {
               lower_level_filter_selected= {lower_level_filter_selected}
             />
           </Grid>
-          <Grid item xs={12} sm={5} md={3} lg={3}>
+          <Grid item xs={12} sm={5} md={3} lg={3} zeroMinWidth classNames={s.main_two}>
             <List>{list}</List>
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7}>
+          <Grid item xs={12} sm={7} md={7} lg={7} zeroMinWidth classNames={s.main_three}>
             <div className={s.draft_video_container}>
               <DraftVideo
                 video_search_term={video_search_term}
@@ -156,7 +175,7 @@ class Draft extends React.Component {
               <DraftVideoTitle {...this.props} />
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={2} lg={2}>
+          <Grid item xs={12} sm={12} md={2} lg={2} zeroMinWidth classNames={s.main_four}>
             { video_search }
             <DraftPlaylist {...this.props} />
           </Grid>
@@ -176,6 +195,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles(styles)(
+export default withStyles2(s)(withStyles(styles)(
   connect(mapStateToProps, mapDispatchToProps)(Draft),
-);
+));

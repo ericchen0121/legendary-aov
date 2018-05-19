@@ -9,6 +9,7 @@
 
 /* eslint-disable global-require */
 
+import {ROUTE_CONSTANTS} from './routes_constants'
 // The top-level (parent) route
 const routes = {
   path: '',
@@ -17,7 +18,7 @@ const routes = {
   children: [
     {
       path: '',
-      load: () => import(/* webpackChunkName: 'home' */ './home'),
+      load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
       path: '/draft',
@@ -43,7 +44,10 @@ const routes = {
       path: '/admin',
       load: () => import(/* webpackChunkName: 'admin' */ './admin'),
     },
-
+    {
+      path: '/contact',
+      load: () => import(/* webpackChunkName: 'contact' */ './contact'),
+    },
     // Wildcard routes, e.g. { path: '(.*)', ... } (must go last)
     {
       path: '(.*)',
@@ -56,7 +60,7 @@ const routes = {
     const route = await next();
 
     // Provide default values for title, description etc.
-    route.title = `${route.title || 'Untitled Page'} - www.reactstarterkit.com`;
+    route.title = `${route.title}` || `${ROUTE_CONSTANTS}`;
     route.description = route.description || '';
 
     return route;

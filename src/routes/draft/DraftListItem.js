@@ -29,7 +29,7 @@ class DraftListItem extends React.Component {
   render() {
     const { hero } = this.props;
     const { name, nickname, classes, lanes, roles, tier, folder } = hero
-
+    
     const query = this.createQuery(name)
     const handleItemClick = this.handleItemClick.bind(this)
 
@@ -40,6 +40,15 @@ class DraftListItem extends React.Component {
       </a>
     );
 
+    let info_mapping = (info_list) => {
+        return info_list.map((info_item, i) => {
+          let separator = null
+          if (i !== (info_list.length - 1))  {
+            separator = '|'
+          }
+          return <span className={s.info_small}> {info_item} {separator} </span>
+        })
+      }
 
     let avatar = null
     if (folder) {
@@ -54,8 +63,16 @@ class DraftListItem extends React.Component {
     let name_container = (
       <span className={s.flex_container}>
         <div ><span className={s.name}>{ name }</span>  { nickname_container }</div>
-
         <div><span className={s.info_title}>Tier:</span> <span className={s.info}>{tier.toUpperCase()}</span></div>
+        <div><span className={s.info_title}>Classes:</span>
+          { info_mapping(classes) }
+        </div>
+        <div><span className={s.info_title}>Lanes:</span>
+          { info_mapping(lanes) }
+        </div>
+        <div><span className={s.info_title}>Roles:</span>
+          { info_mapping(roles) }
+        </div>
       </span>
     )
 
@@ -63,6 +80,7 @@ class DraftListItem extends React.Component {
       <ListItem
         key={name}
         onClick={ handleItemClick }
+        className={s.hero_item_container}
       >
         {avatar} { name_container }
       </ListItem>

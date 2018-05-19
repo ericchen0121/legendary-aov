@@ -10,8 +10,8 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Draft from './Draft';
-
-const title = 'Legendary NFL';
+import { ROUTE_CONSTANTS } from '../../constants'
+const title = ROUTE_CONSTANTS.hero_video_title
 
 function action() {
   return {

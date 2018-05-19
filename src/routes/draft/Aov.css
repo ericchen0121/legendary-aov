@@ -25,6 +25,10 @@
   position: relative;
 }
 
+.hero_item_container {
+  cursor: pointer;
+}
+
 .avatar_small {
   position: relative;
   border-radius: .5em;
@@ -79,12 +83,14 @@
   flex-grow: 1;
   margin-bottom: 4px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .item_channel {
   font-size: .6em;
   color: 'light-gray'
 }
+
 .item_title {
   font-size: 12px;
   font-weight: bold;
@@ -121,7 +127,7 @@
   font-weight: 500;
   text-align: center;
   margin-top: 100px;
-  margin-right: 350px
+  margin-right: 100px
 }
 
 .flex_container {
@@ -192,6 +198,13 @@
   font-size: 0.7em;
   font-weight: 600
 }
+
+.info_small {
+  font-size: 0.7em;
+  font-weight: 500;
+  color: gray;
+}
+
 .center {
   text-align: center
 }
@@ -217,4 +230,62 @@
 
 .margin_top_title {
   margin-top: 19px;
+}
+
+.filter_container {
+  width: 100%;
+}
+
+@media screen and (min-width: 376px) and (max-width: 450px) {
+  .avatar_container {
+    margin-right: -25%;
+    position: relative;
+  }
+}
+
+@media (max-width: 375px) {
+  /* spacing for player name */
+  .avatar_container {
+    margin-right: -40%;
+    position: relative;
+  }
+
+  /* hide "filter player and select" */
+  .select_player {
+    display: none
+  }
+
+  .avatar {
+    width: 20%
+  }
+
+  .main_one {
+    order: 1
+  }
+  .main_two {
+    order: 4
+  }
+  .main_three {
+    order: 2
+  }
+  .main_four {
+    order: 3
+  }
+
+  .root_container :nth-child(1){
+    order: 1
+  }
+  .root_container :nth-child(2){
+    order: 4
+  }
+  .root_container :nth-child(3){
+    order: 2
+  }
+  .root_container :nth-child(4){
+    order: 3
+  }
+
+  .filter_container {
+    order: 2
+  }
 }

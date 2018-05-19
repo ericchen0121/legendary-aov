@@ -42,10 +42,12 @@ class DraftVideo extends React.Component {
       );
     }
     else {
-      vid = (<div className={s.select_player}>
-        <div><UpArrow /> <span className={s.instruction}>filter players and</span></div>
-        <div><LeftArrow /> <span className={s.instruction}>select a player</span></div>
-      </div>)
+      vid = (
+        <div className={s.select_player}>
+          <div><UpArrow /> <span className={s.instruction}>filter heros and</span></div>
+          <div><LeftArrow /> <span className={s.instruction}>select a hero to watch videos</span></div>
+        </div>
+      )
     }
 
     return <div className="video_player_container">{vid}</div>

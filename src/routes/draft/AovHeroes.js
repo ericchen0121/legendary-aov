@@ -9,6 +9,7 @@ const HEROES = [
     'lanes': ['mid', 'jungle', 'roam'],
     'roles': ['finisher', 'harass'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'tulen'
   },
   {
@@ -18,6 +19,7 @@ const HEROES = [
     'lanes': ['solo', 'ds', 'jungle'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'airi'
   },
   {
@@ -27,6 +29,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'aleister'
   },
   {
@@ -36,6 +39,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control', 'buffs'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'alice'
   },
   {
@@ -45,6 +49,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'roam'],
     'roles': ['mobility', 'control'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'arduin'
   },
   {
@@ -54,6 +59,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'roam'],
     'roles': ['initiator', 'mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'arthur'
   },
   {
@@ -63,6 +69,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'roam'],
     'roles': ['initiator'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'astrid'
   },
   {
@@ -72,6 +79,7 @@ const HEROES = [
     'lanes': ['damage', 'roam'],
     'roles': ['control'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'azzenka'
   },
   {
@@ -81,6 +89,7 @@ const HEROES = [
     'lanes': ['jungle', 'roam'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'batman',
     "regions": ['eu']
   },
@@ -91,6 +100,7 @@ const HEROES = [
     'lanes': ['jungle'],
     'roles': ['mobility', 'finisher'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'butterfly'
   },
   {
@@ -100,6 +110,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['buffs'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'chaugnar'
   },
   {
@@ -109,6 +120,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'support'],
     'roles': ['control'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'cresht'
   },
   {
@@ -118,6 +130,7 @@ const HEROES = [
     'lanes': ['damage', 'roam', 'support'],
     'roles': ['control'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'diaochan'
   },
   {
@@ -127,6 +140,7 @@ const HEROES = [
     'lanes': ['damage', 'jungle'],
     'roles': ['mobility'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'fennik'
   },
   {
@@ -136,6 +150,7 @@ const HEROES = [
     'lanes': ['damage', 'roam'],
     'roles': ['mobility'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'gildur'
   },
   {
@@ -145,6 +160,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'grakk'
   },
   {
@@ -154,6 +170,7 @@ const HEROES = [
     'lanes': ['roam', 'mid'],
     'roles': ['harass'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'ignis'
   },
   {
@@ -163,6 +180,7 @@ const HEROES = [
     'lanes': ['damage', 'roam'],
     'roles': ['control', 'harass'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'ilumia'
   },
   {
@@ -172,6 +190,7 @@ const HEROES = [
     'lanes': ['roam', 'mid'],
     'roles': ['harass'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'jinnar'
   },
   {
@@ -181,6 +200,7 @@ const HEROES = [
     'lanes': ['mid', 'roam'],
     'roles': ['harass'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'kahlii'
   },
   {
@@ -190,6 +210,7 @@ const HEROES = [
     'lanes': ['ds', 'jungle'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'kilgroth'
   },
   {
@@ -199,6 +220,7 @@ const HEROES = [
     'lanes': ['jungle', 'roam'],
     'roles': ['mobility'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'kriknak'
   },
   {
@@ -208,6 +230,7 @@ const HEROES = [
     'lanes': ['damage', 'roam'],
     'roles': ['mobility', 'harass'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'krixi'
   },
   {
@@ -217,6 +240,7 @@ const HEROES = [
     'lanes': ['mid', 'roam'],
     'roles': ['mobility'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'lauriel'
   },
   {
@@ -226,6 +250,7 @@ const HEROES = [
     'lanes': ['mid', 'roam'],
     'roles': ['mobility', 'finisher'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'liliana'
   },
   {
@@ -235,6 +260,7 @@ const HEROES = [
     'lanes': ['damage', 'jungle'],
     'roles': ['initiator', 'finisher'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'lindis'
   },
   {
@@ -244,6 +270,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'jungle'],
     'roles': ['life steal'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'lubu'
   },
   {
@@ -253,6 +280,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control', 'buffs'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'lumburr'
   },
   {
@@ -262,6 +290,7 @@ const HEROES = [
     'lanes': ['solo', 'roam', 'ds'],
     'roles': ['finisher', 'life steal'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'maloch'
   },
   {
@@ -271,6 +300,7 @@ const HEROES = [
     'lanes': ['solo', 'ds', 'roam'],
     'roles': ['mobility', 'initiator', 'finisher'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'max'
   },
   {
@@ -280,6 +310,7 @@ const HEROES = [
     'lanes': ['mid', 'roam'],
     'roles': ['harass', 'healer', 'life steal'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'mganga'
   },
   {
@@ -289,6 +320,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'mina'
   },
   {
@@ -298,6 +330,7 @@ const HEROES = [
     'lanes': ['damage', 'jungle'],
     'roles': ['mobility', 'jungle'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'moren'
   },
   {
@@ -307,6 +340,7 @@ const HEROES = [
     'lanes': ['jungle'],
     'roles': ['mobility'],
     'tier': 'ss',
+    'tier_index': 1,
     "folder": 'murad'
   },
   {
@@ -316,6 +350,7 @@ const HEROES = [
     'lanes': ['jungle'],
     'roles': ['mobility'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'nakroth'
   },
   {
@@ -325,6 +360,7 @@ const HEROES = [
     'lanes': ['mid', 'damage', 'roam'],
     'roles': ['harass'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'natalya'
   },
   {
@@ -334,6 +370,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'roam'],
     'roles': ['control'],
     'tier': 'd',
+    'tier_index': 6,
     "folder": 'omega'
   },
   {
@@ -343,6 +380,7 @@ const HEROES = [
     'lanes': ['ds', 'solo', 'jungle'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'omen'
   },
   {
@@ -352,6 +390,7 @@ const HEROES = [
     'lanes': ['roam', 'support'],
     'roles': ['control', 'mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'ormarr'
   },
   {
@@ -361,6 +400,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['buffs'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'peura'
   },
   {
@@ -370,6 +410,7 @@ const HEROES = [
     'lanes': ['mid', 'roam'],
     'roles': ['harass'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'preyta'
   },
   {
@@ -379,6 +420,7 @@ const HEROES = [
     'lanes': ['mid', 'solo', 'roam'],
     'roles': ['harass'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'raz'
   },
   {
@@ -388,6 +430,7 @@ const HEROES = [
     'lanes': ['ds', 'jungle'],
     'roles': ['harass', 'finisher'],
     'tier': 'ss',
+    'tier_index': 1,
     "folder": 'ryoma'
   },
   {
@@ -397,6 +440,7 @@ const HEROES = [
     'lanes': ['support', 'ds', 'solo'],
     'roles': ['mobility', 'control'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'skud'
   },
   {
@@ -406,6 +450,7 @@ const HEROES = [
     'lanes': ['solo', 'jungle', 'damage'],
     'roles': ['mobility', 'initiator'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'slimz'
   },
   {
@@ -415,6 +460,7 @@ const HEROES = [
     'lanes': ['roam', 'ds'],
     'roles': ['mobility', 'initiator'],
     'tier': 'ss',
+    'tier_index': 1,
     "folder": 'superman'
   },
   {
@@ -424,6 +470,7 @@ const HEROES = [
     'lanes': [],
     'roles': ['mobility', 'healer', 'life steal'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'taara'
   },
   {
@@ -433,6 +480,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['initiator', 'mobility'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'teemee'
   },
   {
@@ -442,6 +490,7 @@ const HEROES = [
     'lanes': ['roam', 'damage'],
     'roles': ['finisher'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'telannas'
   },
   {
@@ -451,6 +500,7 @@ const HEROES = [
     'lanes': ['support', 'roam'],
     'roles': ['control', 'initiator'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'thane'
   },
   {
@@ -460,6 +510,7 @@ const HEROES = [
     'lanes': ['roam', 'mid', 'solo'],
     'roles': ['mobility', 'initiator'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'flash'
   },
   {
@@ -469,6 +520,7 @@ const HEROES = [
     'lanes': ['mid', 'jungle'],
     'roles': ['harass'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'joker'
   },
   {
@@ -478,6 +530,7 @@ const HEROES = [
     'lanes': ['ds', 'solo'],
     'roles': ['control', 'initiator'],
     'tier': 'd',
+    'tier_index': 6,
     "folder": 'toro'
   },
   {
@@ -487,6 +540,7 @@ const HEROES = [
     'lanes': ['damage'],
     'roles': ['harass'],
     'tier': 'd',
+    'tier_index': 6,
     "folder": 'valhein'
   },
   {
@@ -496,6 +550,7 @@ const HEROES = [
     'lanes': ['damage', 'roam'],
     'roles': ['initiator'],
     'tier': 'd',
+    'tier_index': 6,
     "folder": 'veera'
   },
   {
@@ -505,6 +560,7 @@ const HEROES = [
     'lanes': ['solo', 'jungle'],
     'roles': ['mobility', 'finisher'],
     'tier': 'ss',
+    'tier_index': 1,
     "folder": 'violet'
   },
   {
@@ -514,6 +570,7 @@ const HEROES = [
     'lanes': ['damage', 'jungle'],
     'roles': [],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'wisp'
   },
   {
@@ -523,6 +580,7 @@ const HEROES = [
     'lanes': ['solo', 'ds', 'roam'],
     'roles': ['control'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'wonderwoman'
   },
   {
@@ -532,6 +590,7 @@ const HEROES = [
     'lanes': ['jungle'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'wukong'
   },
   {
@@ -541,6 +600,7 @@ const HEROES = [
     'lanes': ['ds', 'solo'],
     'roles': ['control', 'healer'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'xeniel'
   },
   {
@@ -550,6 +610,7 @@ const HEROES = [
     'lanes': ['damage', 'mid'],
     'roles': ['harass'],
     'tier': 'b',
+    'tier_index': 4,
     "folder": 'yorn'
   },
   {
@@ -559,6 +620,7 @@ const HEROES = [
     'lanes': ['jungle', 'roam'],
     'roles': ['finisher'],
     'tier': 'c',
+    'tier_index': 5,
     "folder": 'zanis'
   },
   {
@@ -568,6 +630,7 @@ const HEROES = [
     'lanes': ['jungle', 'roam'],
     'roles': ['mobility'],
     'tier': 's',
+    'tier_index': 2,
     "folder": 'zephys'
   },
   {
@@ -577,6 +640,7 @@ const HEROES = [
     'lanes': [],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'zill'
   },
   {
@@ -586,6 +650,7 @@ const HEROES = [
     'lanes': ['jungle', 'solo', 'ds'],
     'roles': ['mobility'],
     'tier': 'a',
+    'tier_index': 3,
     "folder": 'zuka'
   }
 ]

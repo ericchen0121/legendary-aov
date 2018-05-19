@@ -10,3 +10,22 @@ export const SELECT_YOUTUBE_VIDEO = 'SELECT_YOUTUBE_VIDEO'
 export const FILTER_TOP_LEVEL_PLAYER = 'FILTER_TOP_LEVEL_PLAYER'
 export const FILTER_LOWER_LEVEL_PLAYER = 'FILTER_LOWER_LEVEL_PLAYER'
 export const SELECT_HERO = 'SELECT_HERO'
+
+// Route Page Titles
+export const MAIN_TITLE = 'Legendary AOV'
+
+export const ROUTE_CONSTANTS = {
+  main_title: `${MAIN_TITLE}`,
+  hero_video_title: `${MAIN_TITLE} - Videos`
+}
+
+
+// Admin and Other
+export const IOS_APP_STORE = 'https://itunes.apple.com/us/app/arena-of-valor/id1150318642'
+export const ANDROID_APP_STORE = 'https://play.google.com/store/apps/details?id=com.ngame.allstar.eu'
+export const ANDROID_COLOR = '#a4c639'
+export const APPLE_WHITE = 'white'
+
+export const TWITTER_BLUE = '#1da1f2'
+export const TWITTER_HANDLE = 'legendaryinc100'
+export const TWITTER = `https://www.twitter.com/${TWITTER_HANDLE}`
