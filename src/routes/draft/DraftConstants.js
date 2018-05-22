@@ -2,7 +2,7 @@ export const HERO_FILTERS = {
   ALL: [
     'all'
   ],
-  CLASSES: [
+  CLASS: [
     'all',
     'tank',
     'warrior',
@@ -11,7 +11,7 @@ export const HERO_FILTERS = {
     'marksman',
     'support',
   ],
-  LANES: [
+  LANE: [
     'solo',
     'mid',
     'jungle',
@@ -20,7 +20,7 @@ export const HERO_FILTERS = {
     'ds',
     'damage'
   ],
-  ROLES: [
+  ROLE: [
     'all',
     'buffs',
     'control',
@@ -115,5 +115,5 @@ export const VIDEO_SEARCH_TERMS = [
   'skins',
   'garena aov',
 ]
-export const DEFAULT_TOP_LEVEL_FILTER = 'CLASSES'
+export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS'
 export const DEFAULT_IMAGE_URL = 'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png'

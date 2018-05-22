@@ -110,13 +110,13 @@ class Draft extends React.Component {
   filterResults = (heroes) => {
     let {top_level_filter_selected, lower_level_filter_selected} = this.state
     let key = null
-    if(top_level_filter_selected === 'CLASSES') {
+    if(top_level_filter_selected === 'CLASS') {
       key = 'classes'
-    } else if (top_level_filter_selected === 'ROLES') {
+    } else if (top_level_filter_selected === 'ROLE') {
       key = 'roles'
     } else if (top_level_filter_selected === 'TIER') {
       key = 'tier'
-    } else if (top_level_filter_selected === 'LANES') {
+    } else if (top_level_filter_selected === 'LANE') {
       key = 'lanes'
     }
 

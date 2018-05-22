@@ -13,7 +13,11 @@ import Draft from './Draft';
 import { ROUTE_CONSTANTS } from '../../constants'
 const title = ROUTE_CONSTANTS.hero_video_title
 
-function action() {
+function action(context, params) {
+  if (params) {
+    console.log('IN DRAFT ACTION', params.hero)
+  }
+
   return {
     title,
     component: (

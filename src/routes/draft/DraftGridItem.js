@@ -44,7 +44,7 @@ class DraftGridItem extends React.Component {
     if (folder) {
       avatar = <div className={s.avatar_grid_container}>
         <img className={classNames(s.avatar_small, s.avatar_grid)} src={`/aov/heroes/${folder}/hero.png`} />
-        <div className={s.avatar_text}>{name}</div>
+        <div className={s.avatar_text}>{name.toUpperCase()}</div>
       </div>
     } else {
       avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={DEFAULT_IMAGE_URL} /></div>
@@ -73,7 +73,6 @@ class DraftGridItem extends React.Component {
       <GridListTile
         key={name}
         onClick={ handleItemClick }
-
       >
         <div className={s.cursor_pointer}>
           {avatar}

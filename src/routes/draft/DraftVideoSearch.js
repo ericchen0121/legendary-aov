@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import classNames from 'classnames'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import { VIDEO_SEARCH_TERMS } from './DraftConstants'
+
 
 const styles = theme => ({
   root: {
@@ -48,7 +50,7 @@ class DraftVideoSearch extends Component {
     }
 
     return (
-      <div className={classes.root}>
+      <div className={classNames(classes.root, s.video_search_container)}>
         <TextField
             select
             label={selected_player}
@@ -70,4 +72,4 @@ class DraftVideoSearch extends Component {
   }
 }
 
-export default withStyles(styles)(DraftVideoSearch);
+export default withStyles2(s)(withStyles(styles)(DraftVideoSearch));

@@ -19,6 +19,7 @@
    * ======================================================================== */
 
   --max-content-width: 1000px;
+  --max-content-header-width: 95%;
 
   /*
    * Media queries breakpoints

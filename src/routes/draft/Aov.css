@@ -26,7 +26,7 @@
 
 .list_filter {
   margin: 10px 0 0 35px;
-  padding: 4px 2px 0px 2px;
+  padding: 4px 3px 0px 3px;
   border: 1px solid lightgray;
 }
 
@@ -61,7 +61,8 @@
   top: 85%;
   left: 50%;
   transform: translate(-46%, -50%);
-  font-size: 13px;
+  font-size: 11px;
+  font-style: italic;
   font-weight: 300;
   color: rgba(255,255,255,.85);
   width: 88%;
@@ -127,14 +128,33 @@
 
 .item_playlist {
   flex-grow: 1;
-  margin-bottom: 4px;
+  margin: 10px 5px 4px 0;
   margin-top: 10px;
   cursor: pointer;
+  text-align: left;
+}
+
+.item_playlist_container {
+  overflow-y: scroll;
+  overflow-x:hidden;
+  height: 1200px;
+}
+
+.item_playlist_container_more {
+  margin: 5px 25px 0 10px;
+  text-align: center;
+  font-size: 14px;
+  color: gray;
+  border: 2px solid lightgray;
+  border-radius: 3px;
+  background-color: lightgray;
 }
 
 .item_channel {
-  font-size: .6em;
-  color: 'light-gray'
+  font-size: 11px;
+  color: gray;
+  margin-top: 5px;
+  font-weight: 400
 }
 
 .item_title {
@@ -264,8 +284,9 @@
 }
 
 .draft_video_container {
-  margin-top: 30px;
+  margin-top: 10px;
 }
+
 .video_player_container {
   margin-bottom: 20px
 }
@@ -282,11 +303,49 @@
   width: 100%;
 }
 
+.hero_grid_container {
+  cursor: pointer;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+
+.channel_link {
+  text-decoration: none;
+  color: gray
+}
+.item_yt_icon {
+  margin-left: 8px
+}
+
+.line_height_sm {
+  line-height: 1
+}
+
 @media screen and (min-width: 376px) and (max-width: 450px) {
   .avatar_container {
     margin-right: -25%;
     position: relative;
   }
+
+  .item_playlist_container {
+    margin-left: 10%
+  }
+
+  .video_search_container {
+    margin-left: 15%
+  }
+
+  .draft_video_container {
+    margin-left: 15px
+  }
+  /* override mobile video title size */
+  .avatar_small_title {
+    width: 45px;
+    margin-top: 0;
+  }
+
 }
 
 @media (max-width: 375px) {
@@ -294,6 +353,12 @@
   .avatar_container {
     margin-right: -40%;
     position: relative;
+  }
+
+  /* override mobile video title size */
+  .avatar_small_title {
+    width: 35px;
+    margin-top: 0;
   }
 
   /* hide "filter player and select" */
@@ -335,11 +400,16 @@
     order: 2
   }
 
-  .hero_grid_container {
-    cursor: pointer;
+  .item_playlist_container {
+    margin-left: 10%
   }
 
-  .cursor_pointer {
-    cursor: pointer;
+  .video_search_container {
+    margin-left: 15%
   }
+
+  .draft_video_container {
+    margin-left: 15px
+  }
+
 }

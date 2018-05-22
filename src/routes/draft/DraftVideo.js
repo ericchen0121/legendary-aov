@@ -19,7 +19,15 @@ export const UpArrow = () => <IconContainer icon={arrowCircleUp}/>
 export const LeftArrow = () => <IconContainer icon={arrowCircleLeft}/>
 
 class DraftVideo extends React.Component {
+  //  examples here: https://github.com/CookPete/react-player/blob/master/src/demo/App.js
+  onEnded = () => {
+    console.log('replaying video')
+    this.player.seekTo(0)
+  }
 
+  ref = player => {
+    this.player = player
+  }
   render() {
     const { youtube_list } = this.props;
 
@@ -32,11 +40,13 @@ class DraftVideo extends React.Component {
       vid = (
         <div className={s.video}>
           <ReactPlayer
+            ref={this.ref}
             url={`https://www.youtube.com/watch?v=${id}`}
             width={WIDTH}
             height={HEIGHT}
             playing
             controls={true}
+            onEnded={this.onEnded}
             />
         </div>
       );

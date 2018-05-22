@@ -20,9 +20,9 @@ class Header extends React.Component {
         <div className={s.container}>
           <Navigation />
           <Link className={s.brand} to="/">
-            <span className={s.brandTxt}>Legendary</span>
+            <span className={s.brandTxt}>legend<span className={s.brandTxtAccent}>A</span>ry</span>
           </Link>
-          <span className={s.bannerDesc}> Arena of Valor</span>
+          <img className={s.logo} src='/aov/logo/aov-logo-white-small.png' />
         </div>
       </div>
     );

@@ -2,7 +2,7 @@
 import axios from 'axios';
 const YT_API_KEY = 'AIzaSyC9VH79Z6SuUTtJKznyEjs3KuxjNxS1kZ8'
 const YT_API_URL = 'https://www.googleapis.com/youtube/v3'
-const YT_MAX_RESULTS = 10
+const YT_MAX_RESULTS = 50
 
 import {
   SELECT_HERO,

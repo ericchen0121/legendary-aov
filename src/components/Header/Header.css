@@ -20,8 +20,8 @@
 
 .container {
   margin: 0 auto;
-  padding: 20px 0;
-  max-width: var(--max-content-width);
+  padding: 6px 0 1px 0;
+  max-width: var(--max-content-header-width);
 }
 
 .brand {
@@ -31,11 +31,19 @@
 }
 
 .brandTxt {
-  margin-left: 10px;
+  font-family: 'Reckoner Bold';
+  font-size: 34px;
+  letter-spacing: 1.3px;
+  color: #660000;
+  /* text-shadow: .5px .5px white */
+}
+.brandTxtAccent {
+  /* color: lightgray;
+  text-shadow: .5px .5px #660000 */
 }
 
 .banner {
-  text-align: center;
+  text-align: left;
 }
 
 .bannerTitle {
@@ -51,4 +59,9 @@
   color: rgba(255, 255, 255, 0.5);
   font-size: 1.25em;
   margin: 0;
+}
+
+.logo {
+  vertical-align: text-bottom;
+  width: 60px
 }

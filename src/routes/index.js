@@ -10,6 +10,7 @@
 /* eslint-disable global-require */
 
 import {ROUTE_CONSTANTS} from './routes_constants'
+
 // The top-level (parent) route
 const routes = {
   path: '',
@@ -22,6 +23,10 @@ const routes = {
     },
     {
       path: '/draft',
+      load: () => import(/* webpackChunkName: 'draft' */ './draft'),
+    },
+    {
+      path: '/draft/:hero',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
@@ -48,6 +53,7 @@ const routes = {
       path: '/contact',
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
+
     // Wildcard routes, e.g. { path: '(.*)', ... } (must go last)
     {
       path: '(.*)',

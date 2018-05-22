@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
+import classNames from 'classnames'
 import { DEFAULT_IMAGE_URL } from './DraftConstants'
 import { ListItem } from 'material-ui/List';
 import Icon from 'react-icons-kit';
@@ -57,7 +58,7 @@ class DraftListItem extends React.Component {
     if (nickname) { nickname_container = (<span className={s.nickname}>{`/ The ${ nickname }`}</span>)}
 
     let name_container = (
-      <span className={s.flex_container}>
+      <span className={classNames(s.flex_container, s.line_height_sm)}>
         <div ><span className={s.name}>{ name }</span>  { nickname_container }</div>
         <div><span className={s.info_title}>Tier:</span> <span className={s.info}>{tier.toUpperCase()}</span></div>
         <div><span className={s.info_title}>Classes:</span>

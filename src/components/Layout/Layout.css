@@ -185,3 +185,21 @@ textarea {
     page-break-after: avoid;
   }
 }
+
+@font-face {
+  font-family: 'Reckoner';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Reckoner'),
+    url('/fonts/Reckoner.ttf') format('truetype'),
+}
+
+@font-face {
+  font-family: 'Reckoner Bold';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    local('Reckoner Bold'),
+    url('/fonts/Reckoner_Bold.ttf') format('truetype'),
+}
