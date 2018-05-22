@@ -4,12 +4,12 @@ export const HERO_FILTERS = {
   ],
   CLASSES: [
     'all',
+    'tank',
+    'warrior',
     'assassin',
     'mage',
     'marksman',
     'support',
-    'tank',
-    'warrior',
   ],
   LANES: [
     'solo',

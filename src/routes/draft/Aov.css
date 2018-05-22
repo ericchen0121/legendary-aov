@@ -83,6 +83,7 @@
   overflow: hidden;
   width: 90px;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .avatar {

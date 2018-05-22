@@ -102,7 +102,7 @@ class Draft extends React.Component {
   onFilterExpand = (e) => {
     this.setState({
       is_hero_filter_grid_view_expanded: !this.state.is_hero_filter_grid_view_expanded
-    }, () => {console.log(this.state)})
+    })
   }
 
   // hero is ARRAY of hero objects
