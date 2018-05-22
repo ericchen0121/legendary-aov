@@ -51,12 +51,23 @@
 }
 
 .avatar_grid_container {
-
+  position: relative;
+  text-align: center;
+  color: white;
 }
 
-.avatar_grid {
-
+.avatar_text {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-46%, -50%);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,.85);
+  width: 88%;
+  background-color: rgba(75,65,49,.6)
 }
+
 
 .hero_item_container {
   cursor: pointer;

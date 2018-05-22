@@ -191,7 +191,6 @@ class Draft extends React.Component {
       is_hero_filter_grid_view_expanded
     } = this.state
 
-    console.log(this.state)
     let order_hero = null
     let alpha_filter_info = null
     // let list_filter_active = hero_filter_alphabetical
@@ -203,13 +202,13 @@ class Draft extends React.Component {
       hero_filter_alphabetical_color = AOV_GOLD
     } else {
       order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
-      alpha_filter_info = 'ordered by hero tier'
+      alpha_filter_info = 'ordered by tier'
     }
 
     let view_info = null
-    let filter_list_grid_icon = <Icon icon={grid} size={20} style={{color: hero_filter_alphabetical_color}}/>
+    let filter_list_grid_icon = <Icon icon={grid} size={20} style={{color: 'gray', cursor: 'pointer'}}/>
     if (hero_filter_list_view) {
-      filter_list_grid_icon = <Icon icon={ic_view_list} size={20} style={{color: hero_filter_alphabetical_color}}/>
+      filter_list_grid_icon = <Icon icon={ic_view_list} size={20} style={{color: 'gray', cursor: 'pointer'}}/>
       view_info = 'list view'
     } else {
       view_info = 'grid view'
@@ -256,13 +255,13 @@ class Draft extends React.Component {
       if (is_hero_filter_grid_view_expanded) {
         expand_grid_arrow = (
           <span onClick={this.onFilterExpand}>
-            <Icon icon={ic_chevron_left} size={12} />
+            <Icon icon={ic_chevron_left} size={18} style={{cursor: 'pointer'}}/>
           </span>
         )
       } else {
         expand_grid_arrow =  (
           <span onClick={this.onFilterExpand}>
-            <Icon icon={ic_chevron_right} size={12} />
+            <Icon icon={ic_chevron_right} size={18} style={{cursor: 'pointer'}}/>
           </span>
         )
       }
@@ -286,7 +285,7 @@ class Draft extends React.Component {
     if (is_hero_filter_grid_view_expanded) {
       hero_view_grid_cols = 12
       hero_view_video_cols = 7
-      hero_view_video_list_cols = 5
+      hero_view_video_list_cols = 3
     }
 
     let video_search = null
@@ -315,7 +314,7 @@ class Draft extends React.Component {
                 className={ classNames(s.list_filter, {[s.list_filter_active]: hero_filter_alphabetical}, s.cursor_pointer ) }
                 onClick={ this.onFilterAlphabeticalChange }
               >
-                <Icon icon={sortAlphabetically} size={20} style={{color: hero_filter_alphabetical_color}}/>
+                <Icon icon={sortAlphabetically} size={20} style={{color: hero_filter_alphabetical_color, cursor: 'pointer'}}/>
               </span>
               <span className={s.list_filter_info}>
                 { alpha_filter_info }

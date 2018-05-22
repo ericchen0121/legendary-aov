@@ -42,9 +42,12 @@ class DraftGridItem extends React.Component {
 
     let avatar = null
     if (folder) {
-      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={`/aov/heroes/${folder}/hero.png`} /></div>
+      avatar = <div className={s.avatar_grid_container}>
+        <img className={classNames(s.avatar_small, s.avatar_grid, s.cursor_pointer)} src={`/aov/heroes/${folder}/hero.png`} />
+        <div className={s.avatar_text}>{name}</div>
+      </div>
     } else {
-      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={DEFAULT_IMAGE_URL} /></div>
+      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid, s.cursor_pointer)} src={DEFAULT_IMAGE_URL} /></div>
     }
 
     let nickname_container = null
@@ -70,9 +73,11 @@ class DraftGridItem extends React.Component {
       <GridListTile
         key={name}
         onClick={ handleItemClick }
-        className={s.hero_grid_container}
+
       >
-        {avatar}
+        <div className={s.cursor_pointer}>
+          {avatar}
+        </div>
       </GridListTile>
     );
   }
