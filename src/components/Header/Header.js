@@ -14,15 +14,20 @@ import Link from '../Link';
 import Navigation from '../Navigation';
 
 class Header extends React.Component {
+  // <div className={s.brand_slash}/> would go after the img. Change it to true px left and right in css, not %-based
+
   render() {
     return (
       <div className={s.root}>
         <div className={s.container}>
           <Navigation />
-          <Link className={s.brand} to="/">
-            <span className={s.brandTxt}>legend<span className={s.brandTxtAccent}>A</span>ry</span>
-          </Link>
-          <img className={s.logo} src='/aov/logo/aov-logo-white-small.png' />
+          <div className={s.brand_container}>
+            <Link className={s.brand} to="/">
+              <span className={s.brandTxt}>legend<span className={s.brandTxtAccent}>A</span>ry</span>
+            </Link>
+            <img className={s.logo} src='/aov/logo/aov-logo-white-small.png' />
+
+          </div>
         </div>
       </div>
     );

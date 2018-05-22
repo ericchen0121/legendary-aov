@@ -7,6 +7,7 @@ import { Icon } from 'react-icons-kit'
 import {arrowCircleLeft} from 'react-icons-kit/fa/arrowCircleLeft'
 import {arrowCircleUp} from 'react-icons-kit/fa/arrowCircleUp'
 import { withBaseIcon } from 'react-icons-kit'
+import {iosGameControllerBOutline} from 'react-icons-kit/ionicons/iosGameControllerBOutline'
 
 const VID_HEIGHT = 430
 const VID_WIDTH = 640
@@ -54,7 +55,8 @@ class DraftVideo extends React.Component {
     else {
       vid = (
         <div className={s.select_player}>
-          <div><UpArrow /> <span className={s.instruction}>filter heros and</span></div>
+          <Icon icon={iosGameControllerBOutline} size={140} style={{'color': 'green'}} />
+          <div><UpArrow /> <span className={s.instruction}>filter heroes and</span></div>
           <div><LeftArrow /> <span className={s.instruction}>select a hero to watch videos</span></div>
         </div>
       )

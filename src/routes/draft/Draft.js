@@ -328,7 +328,7 @@ class Draft extends React.Component {
               <span className={s.list_filter_info}>
                 { view_info }
               </span>
-              <span className={s.list_filter_info}>
+              <span className={s.list_filter_arrow}>
                 { expand_grid_arrow }
               </span>
             </div>

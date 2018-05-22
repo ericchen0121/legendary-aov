@@ -37,8 +37,14 @@
 .list_filter_info {
   font-size: 12px;
   margin-left: 10px;
-  padding-bottom: 12px;
+  position: relative;
+  bottom: 5px;
   color: gray;
+}
+
+.list_filter_arrow {
+  position: relative;
+  bottom: 0px;
 }
 
 .list_filter_view {

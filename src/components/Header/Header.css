@@ -24,10 +24,26 @@
   max-width: var(--max-content-header-width);
 }
 
+.brand_slash::before {
+  background: rgba(255,255,255,.4);
+  right: 87.5%;
+  left: 12%;
+}
+
+.brand_slash::before, .brand_slash::after {
+  transform: skew(-25deg, 0);
+  content: '';
+  display: block;
+  height: 54px;
+  position: absolute;
+  top: 0;
+}
+
 .brand {
   color: color(var(--brand-color) lightness(+10%));
   text-decoration: none;
   font-size: 1.75em; /* ~28px */
+  z-index: 6
 }
 
 .brandTxt {
@@ -63,5 +79,26 @@
 
 .logo {
   vertical-align: text-bottom;
-  width: 60px
+  width: 60px;
+  margin-left: 25px
+}
+
+@media (max-width: 375px) {
+  .brand_slash::before {
+    right: 61%;
+    left: 37%;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 768px) {
+  .brand_slash::before {
+    right: 78.5%;
+    left: 20%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .brand_slash::before {
+    right: 83.5%;
+    left: 16%;
+  }
 }
