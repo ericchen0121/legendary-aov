@@ -11,9 +11,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
+import classNames from 'classnames';
 import s from './Aov.css';
 
 import DraftListItem from './DraftListItem';
+import DraftGridItem from './DraftGridItem';
 import DraftVideo from './DraftVideo';
 import DraftVideoTitle from './DraftVideoTitle';
 import DraftVideoSearch from './DraftVideoSearch';
@@ -21,9 +23,19 @@ import DraftPlaylist from './DraftPlaylist';
 import DraftFilters from './DraftFilters';
 import HEROES from './AovHeroes';
 import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS } from './DraftConstants'
+import { AOV_GOLD } from '../../constants'
+
 import List from 'material-ui/List';
 import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
+import GridList, {GridListTile } from 'material-ui/GridList';
+
+import { Icon } from 'react-icons-kit'
+import {ic_sort_by_alpha} from 'react-icons-kit/md/ic_sort_by_alpha'
+import {sortAlphabetically} from 'react-icons-kit/typicons/sortAlphabetically'
+import {grid} from 'react-icons-kit/feather/grid'
+import {ic_view_list} from 'react-icons-kit/md/ic_view_list'
+import {ic_chevron_right} from 'react-icons-kit/md/ic_chevron_right'
+import {ic_chevron_left} from 'react-icons-kit/md/ic_chevron_left'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -36,6 +48,13 @@ const styles = theme => ({
       order: 2,
       marginRight: 30
     }
+  },
+  grid_container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
   }
 })
 
@@ -45,6 +64,9 @@ class Draft extends React.Component {
       name: null,
       active: false
     },
+    hero_filter_alphabetical: false,
+    hero_filter_list_view: false,
+    is_hero_filter_grid_view_expanded: false,
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0],
@@ -63,6 +85,24 @@ class Draft extends React.Component {
     this.setState({
       lower_level_filter_selected: filter // select the first lower level filter
     })
+  }
+
+  onFilterAlphabeticalChange = (e) => {
+    this.setState({
+      hero_filter_alphabetical: !this.state.hero_filter_alphabetical
+    })
+  }
+
+  onFilterGridListViewChange = (e) => {
+    this.setState({
+      hero_filter_list_view: !this.state.hero_filter_list_view
+    })
+  }
+
+  onFilterExpand = (e) => {
+    this.setState({
+      is_hero_filter_grid_view_expanded: !this.state.is_hero_filter_grid_view_expanded
+    }, () => {console.log(this.state)})
   }
 
   // hero is ARRAY of hero objects
@@ -117,6 +157,7 @@ class Draft extends React.Component {
   // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
   handleFetchYoutubeVideos = (name) => {
+    this.collapse_expanded_view(this.state.selected_hero.name, name)
     this.setState({
       selected_hero: {
         name,
@@ -126,22 +167,128 @@ class Draft extends React.Component {
     this.props.actions.fetchYoutubeList(this.createQuery(name))
   }
 
+  collapse_expanded_view = (prev_selection, new_selection) => {
+    if (this.state.is_hero_filter_grid_view_expanded && prev_selection && (prev_selection !== new_selection)) {
+      this.setState({
+        is_hero_filter_grid_view_expanded: false
+      })
+    }
+  }
+
   createQuery = (name) => {
     return `${name}+${this.state.video_search_term_default}+${this.state.video_search_term}`
   }
 
   render() {
     const { classes } = this.props;
-    const { top_level_filter_selected, lower_level_filter_selected, video_search_term, selected_hero  } = this.state
+    const {
+      top_level_filter_selected,
+      lower_level_filter_selected,
+      video_search_term,
+      selected_hero,
+      hero_filter_alphabetical,
+      hero_filter_list_view,
+      is_hero_filter_grid_view_expanded
+    } = this.state
 
-    let order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
-    const list = order_hero.map(h => (
-      <DraftListItem
-        hero={h}
-        {...this.props}
-        handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
-      />
-    ))
+    console.log(this.state)
+    let order_hero = null
+    let alpha_filter_info = null
+    // let list_filter_active = hero_filter_alphabetical
+    let hero_filter_alphabetical_color = 'gray'
+
+    if (hero_filter_alphabetical) {
+      order_hero = this.sortResultsAlpha(this.filterResults(HEROES))
+      alpha_filter_info = 'ordered alphabetically'
+      hero_filter_alphabetical_color = AOV_GOLD
+    } else {
+      order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
+      alpha_filter_info = 'ordered by hero tier'
+    }
+
+    let view_info = null
+    let filter_list_grid_icon = <Icon icon={grid} size={20} style={{color: hero_filter_alphabetical_color}}/>
+    if (hero_filter_list_view) {
+      filter_list_grid_icon = <Icon icon={ic_view_list} size={20} style={{color: hero_filter_alphabetical_color}}/>
+      view_info = 'list view'
+    } else {
+      view_info = 'grid view'
+    }
+
+    let list = null
+    let list_grid = null
+    let hero_view_grid_cols = null
+    let hero_view_video_cols = null
+    let hero_view_video_list_cols = null
+    if (hero_filter_list_view) {
+      list = order_hero.map(h => (
+        <DraftListItem
+          hero={h}
+          {...this.props}
+          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
+        />
+      ))
+      list_grid = <List>{ list }</List>
+      hero_view_grid_cols = 3
+      hero_view_video_cols = 7
+
+    } else {
+      list = order_hero.map(h => (
+        <DraftGridItem
+          hero={h}
+          {...this.props}
+          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
+        />
+      ))
+      list_grid = (
+        <div className={classes.grid_container}>
+          <GridList cellHeight={150} className={classes.gridList} cols={1}>
+            {list}
+          </GridList>
+        </div>
+      )
+      hero_view_grid_cols = 12
+      hero_view_video_cols = 0
+    }
+
+    let expand_grid_arrow = null
+    if (selected_hero.active && !hero_filter_list_view) {
+      if (is_hero_filter_grid_view_expanded) {
+        expand_grid_arrow = (
+          <span onClick={this.onFilterExpand}>
+            <Icon icon={ic_chevron_left} size={12} />
+          </span>
+        )
+      } else {
+        expand_grid_arrow =  (
+          <span onClick={this.onFilterExpand}>
+            <Icon icon={ic_chevron_right} size={12} />
+          </span>
+        )
+      }
+    }
+
+
+    if (selected_hero.active) {
+      hero_view_grid_cols = 3
+      hero_view_video_cols = 7
+      hero_view_video_list_cols = 2
+    } else if (hero_filter_list_view) {
+      hero_view_grid_cols = 3
+      hero_view_video_cols = 7
+      hero_view_video_list_cols = 2
+    } else {
+      hero_view_grid_cols = 12
+      hero_view_video_cols = 0
+      hero_view_video_list_cols = 0
+    }
+
+    if (is_hero_filter_grid_view_expanded) {
+      hero_view_grid_cols = 12
+      hero_view_video_cols = 7
+      hero_view_video_list_cols = 5
+    }
+
     let video_search = null
     if (selected_hero.name) {
       video_search = (
@@ -151,6 +298,7 @@ class Draft extends React.Component {
         />
       )
     }
+
     return (
       <div classNames={classes.root, s.root_container}>
         <Grid container>
@@ -162,11 +310,34 @@ class Draft extends React.Component {
               top_level_filter_selected={top_level_filter_selected}
               lower_level_filter_selected= {lower_level_filter_selected}
             />
+            <div className={s.list_filter_container}>
+              <span
+                className={ classNames(s.list_filter, {[s.list_filter_active]: hero_filter_alphabetical}, s.cursor_pointer ) }
+                onClick={ this.onFilterAlphabeticalChange }
+              >
+                <Icon icon={sortAlphabetically} size={20} style={{color: hero_filter_alphabetical_color}}/>
+              </span>
+              <span className={s.list_filter_info}>
+                { alpha_filter_info }
+              </span>
+              <span
+                className={ classNames(s.list_filter_view, s.cursor_pointer) }
+                onClick={ this.onFilterGridListViewChange }
+              >
+                { filter_list_grid_icon }
+              </span>
+              <span className={s.list_filter_info}>
+                { view_info }
+              </span>
+              <span className={s.list_filter_info}>
+                { expand_grid_arrow }
+              </span>
+            </div>
           </Grid>
-          <Grid item xs={12} sm={5} md={3} lg={3} zeroMinWidth classNames={s.main_two}>
-            <List>{list}</List>
+          <Grid item xs={12} sm={5} md={hero_view_grid_cols} lg={hero_view_grid_cols} zeroMinWidth classNames={s.main_two}>
+            { list_grid }
           </Grid>
-          <Grid item xs={12} sm={7} md={7} lg={7} zeroMinWidth classNames={s.main_three}>
+          <Grid item xs={12} sm={7} md={hero_view_video_cols} lg={hero_view_video_cols} zeroMinWidth classNames={s.main_three}>
             <div className={s.draft_video_container}>
               <DraftVideo
                 video_search_term={video_search_term}
@@ -175,7 +346,7 @@ class Draft extends React.Component {
               <DraftVideoTitle {...this.props} />
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={2} lg={2} zeroMinWidth classNames={s.main_four}>
+          <Grid item xs={12} sm={12} md={hero_view_video_list_cols} lg={hero_view_video_list_cols} zeroMinWidth classNames={s.main_four}>
             { video_search }
             <DraftPlaylist {...this.props} />
           </Grid>

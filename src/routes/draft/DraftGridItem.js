@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
+import classNames from 'classnames'
 import { DEFAULT_IMAGE_URL } from './DraftConstants'
-import { ListItem } from 'material-ui/List';
+import GridList, {GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
 import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutline';
 
-class DraftListItem extends React.Component {
+class DraftGridItem extends React.Component {
   static propTypes = {
     hero: PropTypes.object.isRequired,
   };
@@ -29,13 +30,6 @@ class DraftListItem extends React.Component {
     const query = this.createQuery(name)
     const handleItemClick = this.handleItemClick.bind(this)
 
-    const yt = `https://www.youtube.com/results?search_query=${query}`;
-    const link = (
-      <a href={yt} target="_blank">
-        <Icon icon={socialYoutubeOutline} />
-      </a>
-    );
-
     let info_mapping = (info_list) => {
         return info_list.map((info_item, i) => {
           let separator = null
@@ -48,9 +42,9 @@ class DraftListItem extends React.Component {
 
     let avatar = null
     if (folder) {
-      avatar = <div className={s.avatar_container}><img className={s.avatar} src={`/aov/heroes/${folder}/hero.png`} /></div>
+      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={`/aov/heroes/${folder}/hero.png`} /></div>
     } else {
-      avatar = <div className={s.avatar_container}><img className={s.avatar} src={DEFAULT_IMAGE_URL} /></div>
+      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={DEFAULT_IMAGE_URL} /></div>
     }
 
     let nickname_container = null
@@ -73,15 +67,15 @@ class DraftListItem extends React.Component {
     )
 
     return (
-      <ListItem
+      <GridListTile
         key={name}
         onClick={ handleItemClick }
-        className={s.hero_item_container}
+        className={s.hero_grid_container}
       >
-        {avatar} { name_container }
-      </ListItem>
+        {avatar}
+      </GridListTile>
     );
   }
 }
 
-export default withStyles(s)(DraftListItem);
+export default withStyles(s)(DraftGridItem);

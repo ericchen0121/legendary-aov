@@ -10,7 +10,7 @@ import { withBaseIcon } from 'react-icons-kit'
 
 const VID_HEIGHT = 430
 const VID_WIDTH = 640
-const VID_RATIO = .85
+const VID_RATIO = 1
 
 const IconContainer =
     withBaseIcon({ size: 24, style: {color: 'lightgray', marginTop: 10}})

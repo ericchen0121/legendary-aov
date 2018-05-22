@@ -29,3 +29,4 @@ export const APPLE_WHITE = 'white'
 export const TWITTER_BLUE = '#1da1f2'
 export const TWITTER_HANDLE = 'legendaryinc100'
 export const TWITTER = `https://www.twitter.com/${TWITTER_HANDLE}`
+export const AOV_GOLD = '#bea67c'

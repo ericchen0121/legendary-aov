@@ -20,9 +20,42 @@
   max-width: var(--max-content-width);
 }
 
+.list_filter_container {
+  margin-top: 14px
+}
+
+.list_filter {
+  margin: 10px 0 0 35px;
+  padding: 4px 2px 0px 2px;
+  border: 1px solid lightgray;
+}
+
+.list_filter_active {
+  border: 1px solid #bea67c;
+}
+
+.list_filter_info {
+  font-size: 12px;
+  margin-left: 10px;
+  padding-bottom: 12px;
+  color: gray;
+}
+
+.list_filter_view {
+  margin-top: 6px;
+  margin-left: 20px
+}
 .avatar_container {
   margin-right: -33%;
   position: relative;
+}
+
+.avatar_grid_container {
+
+}
+
+.avatar_grid {
+
 }
 
 .hero_item_container {
@@ -37,7 +70,8 @@
   border-style: solid;
   margin: -1px -1px -1px 8px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
   overflow: hidden;
-  width: 40px;
+  width: 90px;
+  margin-top: 10px;
 }
 
 .avatar {
@@ -287,5 +321,13 @@
 
   .filter_container {
     order: 2
+  }
+
+  .hero_grid_container {
+    cursor: pointer;
+  }
+
+  .cursor_pointer {
+    cursor: pointer;
   }
 }

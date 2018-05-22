@@ -1,4 +1,7 @@
 export const HERO_FILTERS = {
+  ALL: [
+    'all'
+  ],
   CLASSES: [
     'all',
     'assassin',
@@ -91,6 +94,7 @@ export const VIDEO_SEARCH_TERMS = [
   'valor series',
   'aic',
   'rumblytv',
+  'mr. peeperz',
   'death match',
   'meta',
   'solo q',
