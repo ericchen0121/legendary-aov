@@ -15,7 +15,7 @@ import classNames from 'classnames';
 import s from './Aov.css';
 
 import DraftListItem from './DraftListItem';
-import DraftGridItem from './DraftGridItem';
+import DraftGrid from './DraftGrid';
 import DraftVideo from './DraftVideo';
 import DraftVideoTitle from './DraftVideoTitle';
 import DraftVideoSearch from './DraftVideoSearch';
@@ -253,19 +253,12 @@ class Draft extends React.Component {
       hero_view_video_cols = 7
 
     } else {
-      list = order_hero.map(h => (
-        <DraftGridItem
-          hero={h}
-          {...this.props}
-          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
-        />
-      ))
       list_grid = (
-        <div className={classes.grid_container}>
-          <GridList cellHeight={150} className={classes.gridList} cols={1}>
-            {list}
-          </GridList>
-        </div>
+        <DraftGrid
+          order_hero = {order_hero}
+          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
+          {...this.props}
+        />
       )
       hero_view_grid_cols = 12
       hero_view_video_cols = 0
