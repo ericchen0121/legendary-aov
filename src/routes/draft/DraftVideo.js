@@ -29,15 +29,22 @@ class DraftVideo extends React.Component {
   ref = player => {
     this.player = player
   }
+
   render() {
-    const { youtube_list } = this.props;
+    const { youtube_list, is_mobile } = this.props;
 
     let vid = null;
+
+    let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`
+    let WIDTH = '95%'
+
+    if (is_mobile) {
+      HEIGHT = 220
+    }
+
     if (youtube_list.data.length !== 0) {
       const id = youtube_list.selected_video.id.videoId;
-      const HEIGHT = `${VID_HEIGHT * VID_RATIO}px`
-      // const WIDTH = `${VID_WIDTH * VID_RATIO}px`
-      const WIDTH = '95%'
+
       vid = (
         <div className={s.video}>
           <ReactPlayer
@@ -50,7 +57,7 @@ class DraftVideo extends React.Component {
             onEnded={this.onEnded}
             />
         </div>
-      );
+      )
     }
     else {
       vid = (

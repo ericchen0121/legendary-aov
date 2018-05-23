@@ -55,7 +55,7 @@ class DraftGridItem extends React.Component {
 
     let name_container = (
       <span className={s.flex_container}>
-        <div ><span className={s.name}>{ name }</span>  { nickname_container }</div>
+        <div><span className={s.name}>{ name }</span>  { nickname_container }</div>
         <div><span className={s.info_title}>Tier:</span> <span className={s.info}>{tier.toUpperCase()}</span></div>
         <div><span className={s.info_title}>Classes:</span>
           { info_mapping(classes) }

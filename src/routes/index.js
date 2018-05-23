@@ -30,6 +30,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
+      path: '/draft/video/:search_term',
+      load: () => import(/* webpackChunkName: 'draft' */ './draft'),
+    },
+    {
       path: '/login',
       load: () => import(/* webpackChunkName: 'login' */ './login'),
     },

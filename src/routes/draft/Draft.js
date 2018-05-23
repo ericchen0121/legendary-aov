@@ -23,7 +23,7 @@ import DraftPlaylist from './DraftPlaylist';
 import DraftFilters from './DraftFilters';
 import HEROES from './AovHeroes';
 import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS } from './DraftConstants'
-import { AOV_GOLD } from '../../constants'
+import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants'
 
 import List from 'material-ui/List';
 import Grid from 'material-ui/Grid';
@@ -70,11 +70,16 @@ class Draft extends React.Component {
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0],
-    video_search_term_default: 'arena of valor'
+    video_search_term_default: 'arena of valor',
+    window_width: null
+  }
+
+  componentWillMount() {
   }
 
   //HERO_FILTERS FUNCTIONS
-  onTopLevelFilterChange = (filter) => () => {
+  onTopLevelFilterChange = (e, filter) => {
+    console.log('top level filer', e, filter)
     this.setState({
       top_level_filter_selected: filter,
       lower_level_filter_selected: HERO_FILTERS[filter][0] // select the first lower level filter
@@ -188,6 +193,10 @@ class Draft extends React.Component {
   }
 
   componentDidMount() {
+    // In case you need a resize event handler...
+    // https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
+    this.setState({ window_width: window.innerWidth })
+
     let hero = this.props.params.hero
     if (hero) {
       this.handleFetchYoutubeVideos(hero)
@@ -202,6 +211,7 @@ class Draft extends React.Component {
     const { classes } = this.props;
 
     const {
+      window_width,
       top_level_filter_selected,
       lower_level_filter_selected,
       video_search_term,
@@ -211,6 +221,7 @@ class Draft extends React.Component {
       is_hero_filter_grid_view_expanded
     } = this.state
 
+    const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
 
     let order_hero = null
     let alpha_filter_info = null
@@ -255,13 +266,14 @@ class Draft extends React.Component {
     } else {
       list_grid = (
         <DraftGrid
-          order_hero = {order_hero}
+          is_mobile={isMobile}
+          order_hero={order_hero}
           handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
           {...this.props}
         />
       )
       hero_view_grid_cols = 12
-      hero_view_video_cols = 0
+      hero_view_video_cols = false
     }
 
     let expand_grid_arrow = null
@@ -292,8 +304,8 @@ class Draft extends React.Component {
       hero_view_video_list_cols = 2
     } else {
       hero_view_grid_cols = 12
-      hero_view_video_cols = 0
-      hero_view_video_list_cols = 0
+      hero_view_video_cols = false
+      hero_view_video_list_cols = false
     }
 
     if (is_hero_filter_grid_view_expanded) {
@@ -317,6 +329,7 @@ class Draft extends React.Component {
         <Grid container>
           <Grid item xs={12} md={12} classNames={s.main_one}>
             <DraftFilters
+              is_mobile={isMobile}
               filters = {HERO_FILTERS}
               onTopLevelFilterChange={this.onTopLevelFilterChange}
               onLowerLevelFilterChange={this.onLowerLevelFilterChange}
@@ -354,6 +367,7 @@ class Draft extends React.Component {
             <div className={s.draft_video_container}>
               <DraftVideo
                 video_search_term={video_search_term}
+                is_mobile={isMobile}
                 {...this.props}
               />
               <DraftVideoTitle {...this.props} />

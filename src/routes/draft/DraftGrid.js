@@ -35,24 +35,8 @@ class DraftGrid extends React.Component {
     order_hero: PropTypes.array.isRequired,
   };
 
-
-  componentWillMount() {
-    //set initial state
-    this.state = {
-      width: 10000
-    }
-  }
-
-  componentDidMount() {
-    // In case you need a resize event handler...
-    // https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
-    this.setState({ width: window.innerWidth })
-  }
-
   render() {
-    const { order_hero, classes } = this.props;
-    const { width } = this.state;
-    const isMobile = width <= 500;
+    const { order_hero, classes, is_mobile } = this.props;
 
     let list = null
     let list_grid = null
@@ -65,7 +49,7 @@ class DraftGrid extends React.Component {
       />
     ))
 
-    if (isMobile) {
+    if (is_mobile) {
       list_grid = (
         <div className={classes.grid_container}>
           <GridList className={classes.gridList} cellHeight={150} cols={1}>

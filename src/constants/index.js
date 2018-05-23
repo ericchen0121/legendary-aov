@@ -21,6 +21,7 @@ export const ROUTE_CONSTANTS = {
 
 
 // Admin and Other
+export const MOBILE_MAX_WINDOW_WIDTH = 500
 export const IOS_APP_STORE = 'https://itunes.apple.com/us/app/arena-of-valor/id1150318642'
 export const ANDROID_APP_STORE = 'https://play.google.com/store/apps/details?id=com.ngame.allstar.eu'
 export const ANDROID_COLOR = '#a4c639'

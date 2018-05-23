@@ -190,8 +190,7 @@
   min-width: 95px;
 }
 
-.video {
-  /* margin-left: 65px; */
+.video_container {
 }
 
 .select_player {
@@ -351,7 +350,9 @@
     width: 45px;
     margin-top: 0;
   }
-
+  .avatar_text {
+    font-size: 10px
+  }
 }
 
 @media (max-width: 375px) {
@@ -418,4 +419,7 @@
     margin-left: 15px
   }
 
+  .avatar_text {
+    font-size: 10px
+  }
 }
