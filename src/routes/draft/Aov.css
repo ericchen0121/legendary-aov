@@ -8,6 +8,7 @@
  */
 
 @import '../../components/variables.css';
+@import '../../components/Layout/Layout.css'
 
 .root {
   padding-left: 20px;

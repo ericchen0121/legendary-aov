@@ -8,6 +8,7 @@
  */
 
 @import '../variables.css';
+@import '../Layout/Layout.css'
 
 :root {
   --brand-color: #61dafb;
