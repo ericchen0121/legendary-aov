@@ -4,6 +4,7 @@
 const HEROES = [
   {
     "name": 'Tulen',
+    'alt_names': ['Tulen'],
     "nickname": 'Pure',
     "classes": ['mage'],
     'lanes': ['mid', 'jungle', 'roam'],
@@ -14,6 +15,7 @@ const HEROES = [
   },
   {
     "name": 'Airi',
+    'alt_names': ['Airi'],
     "nickname": 'Kunoichi',
     "classes": ['warrior', 'assassin'],
     'lanes': ['solo', 'ds', 'jungle'],
@@ -24,6 +26,7 @@ const HEROES = [
   },
   {
     "name": 'Aleister',
+    'alt_names': ['Aleister'],
     "nickname": 'Lord of Mischief',
     "classes": ['mage'],
     'lanes': ['support', 'roam'],
@@ -34,6 +37,7 @@ const HEROES = [
   },
   {
     "name": 'Alice',
+    'alt_names': ['Alice'],
     "nickname": 'Adorable Mystic',
     "classes": ['support'],
     'lanes': ['support', 'roam'],
@@ -44,6 +48,7 @@ const HEROES = [
   },
   {
     "name": 'Arduin',
+    'alt_names': ['Arduin'],
     "nickname": 'Spirit',
     "classes": ['warrior', 'tank'],
     'lanes': ['ds', 'solo', 'roam'],
@@ -54,6 +59,7 @@ const HEROES = [
   },
   {
     "name": 'Arthur',
+    'alt_names': ['Arthur'],
     "nickname": 'Chosen',
     "classes": ['warrior', 'tank'],
     'lanes': ['ds', 'solo', 'roam'],
@@ -64,6 +70,7 @@ const HEROES = [
   },
   {
     "name": 'Astrid',
+    'alt_names': ['Astrid'],
     "nickname": 'Indomitable',
     "classes": ['warrior', 'tank'],
     'lanes': ['ds', 'solo', 'roam'],
@@ -74,6 +81,7 @@ const HEROES = [
   },
   {
     "name": "Azzen'Ka",
+    'alt_names': ["Azzen'Ka", 'azzenka', 'azzen'],
     "nickname": 'Forgotten',
     "classes": ['mage'],
     'lanes': ['damage', 'roam'],
@@ -84,6 +92,7 @@ const HEROES = [
   },
   {
     "name": 'Batman',
+    'alt_names': ['Batman'],
     "nickname": 'Dark Knight',
     "classes": ['assassin'],
     'lanes': ['jungle', 'roam'],
@@ -95,6 +104,7 @@ const HEROES = [
   },
   {
     "name": 'Butterfly',
+    'alt_names': ['Butterfly', 'bf', 'butter'],
     "nickname": "Death's Whisper",
     "classes": ['assassin', 'warrior'],
     'lanes': ['jungle'],
@@ -105,6 +115,7 @@ const HEROES = [
   },
   {
     "name": 'Chaugnar',
+    'alt_names': ['Chaugnar', 'chaug'],
     "nickname": 'Herald of the Void',
     "classes": ['support', 'tank'],
     'lanes': ['support', 'roam'],
@@ -115,6 +126,7 @@ const HEROES = [
   },
   {
     "name": 'Cresht',
+    'alt_names': ['Cresht'],
     "nickname": 'Mermidon',
     "classes": ['tank', 'support'],
     'lanes': ['ds', 'solo', 'support'],
@@ -125,6 +137,7 @@ const HEROES = [
   },
   {
     "name": 'Diaochan',
+    'alt_names': ['Diaochan', 'diao'],
     "nickname": 'Crystal Lotus',
     "classes": ['Mage'],
     'lanes': ['damage', 'roam', 'support'],
@@ -135,6 +148,7 @@ const HEROES = [
   },
   {
     "name": 'Fennik',
+    'alt_names': ['Fennik'],
     "nickname": 'Vulpis Ignis',
     "classes": ['marksman'],
     'lanes': ['damage', 'jungle'],
@@ -145,6 +159,7 @@ const HEROES = [
   },
   {
     "name": 'Gildur',
+    'alt_names': ['Gildur'],
     "nickname": 'Gilded',
     "classes": ['tank'],
     'lanes': ['damage', 'roam'],
@@ -155,6 +170,7 @@ const HEROES = [
   },
   {
     "name": 'Grakk',
+    'alt_names': ['Grakk', 'grak'],
     "nickname": 'Glutton',
     "classes": ['tank', 'mage'],
     'lanes': ['support', 'roam'],
@@ -165,6 +181,7 @@ const HEROES = [
   },
   {
     "name": 'Ignis',
+    'alt_names': ['Ignis'],
     "nickname": 'Anointed One',
     "classes": ['mage'],
     'lanes': ['roam', 'mid'],
@@ -175,6 +192,7 @@ const HEROES = [
   },
   {
     "name": 'Ilumia',
+    'alt_names': ['Ilumia', 'illumia'],
     "nickname": 'Seer',
     "classes": ['mage'],
     'lanes': ['damage', 'roam'],
@@ -185,6 +203,7 @@ const HEROES = [
   },
   {
     "name": 'Jinnar',
+    'alt_names': ['Jinnar'],
     "nickname": 'Incorruptible',
     "classes": ['mage'],
     'lanes': ['roam', 'mid'],
@@ -195,6 +214,7 @@ const HEROES = [
   },
   {
     "name": 'Kahlii',
+    'alt_names': ['Kahlii'],
     "nickname": 'Ghost Guardian',
     "classes": ['mage'],
     'lanes': ['mid', 'roam'],
@@ -205,6 +225,7 @@ const HEROES = [
   },
   {
     "name": "Kil'Groth",
+    'alt_names': ["Kil'Groth", 'kill', 'kilgroth', 'kil'],
     "nickname": 'Terror',
     "classes": ['warrior'],
     'lanes': ['ds', 'jungle'],
@@ -215,6 +236,7 @@ const HEROES = [
   },
   {
     "name": 'Kriknak',
+    'alt_names': ['Kriknak', 'krik'],
     "nickname": 'Scarabin',
     "classes": ['warrior'],
     'lanes': ['jungle', 'roam'],
@@ -225,6 +247,7 @@ const HEROES = [
   },
   {
     "name": 'Krixi',
+    'alt_names': ['Krixi'],
     "nickname": 'Pixie',
     "classes": ['mage'],
     'lanes': ['damage', 'roam'],
@@ -235,6 +258,7 @@ const HEROES = [
   },
   {
     "name": 'Lauriel',
+    'alt_names': ['Lauriel', 'laurel'],
     "nickname": 'Archangel',
     "classes": ['mage', 'assassin'],
     'lanes': ['mid', 'roam'],
@@ -245,6 +269,7 @@ const HEROES = [
   },
   {
     "name": 'Liliana',
+    'alt_names': ['Liliana', 'lil', 'lilliana'],
     "nickname": 'Elegant',
     "classes": ['mage', 'assassin'],
     'lanes': ['mid', 'roam'],
@@ -255,6 +280,7 @@ const HEROES = [
   },
   {
     "name": 'Lindis',
+    'alt_names': ['Lindis'],
     "nickname": 'Sentinel',
     "classes": ['marksman'],
     'lanes': ['damage', 'jungle'],
@@ -265,6 +291,7 @@ const HEROES = [
   },
   {
     "name": 'Lu Bu',
+    'alt_names': ['Lu Bu', 'lubu'],
     "nickname": 'Great Warlord',
     "classes": ['warrior'],
     'lanes': ['ds', 'solo', 'jungle'],
@@ -275,6 +302,7 @@ const HEROES = [
   },
   {
     "name": 'Lumburr',
+    'alt_names': ['Lumburr', 'lumbur'],
     "nickname": 'Elemental',
     "classes": ['support', 'tank'],
     'lanes': ['support', 'roam'],
@@ -285,6 +313,7 @@ const HEROES = [
   },
   {
     "name": 'Maloch',
+    'alt_names': ['Maloch', 'maloc', 'malock'],
     "nickname": 'Merciless',
     "classes": ['warrior', 'tank'],
     'lanes': ['solo', 'roam', 'ds'],
@@ -295,6 +324,7 @@ const HEROES = [
   },
   {
     "name": 'Max',
+    'alt_names': ['Max'],
     "nickname": 'Wunderkind',
     "classes": ['tank', 'warrior'],
     'lanes': ['solo', 'ds', 'roam'],
@@ -305,6 +335,7 @@ const HEROES = [
   },
   {
     "name": 'Mganga',
+    'alt_names': ['Mganga', 'mgangster', 'ganga'],
     "nickname": 'Unspeakable',
     "classes": ['mage', 'support'],
     'lanes': ['mid', 'roam'],
@@ -315,6 +346,7 @@ const HEROES = [
   },
   {
     "name": 'Mina',
+    'alt_names': ['Mina'],
     "nickname": 'Reaper Queen',
     "classes": ['tank'],
     'lanes': ['support', 'roam'],
@@ -325,6 +357,7 @@ const HEROES = [
   },
   {
     "name": 'Moren',
+    'alt_names': ['Moren'],
     "nickname": 'Technowiz',
     "classes": ['marksman'],
     'lanes': ['damage', 'jungle'],
@@ -335,6 +368,7 @@ const HEROES = [
   },
   {
     "name": 'Murad',
+    'alt_names': ['Murad'],
     "nickname": 'Wanderer',
     "classes": ['assassin'],
     'lanes': ['jungle'],
@@ -345,6 +379,7 @@ const HEROES = [
   },
   {
     "name": 'Nakroth',
+    'alt_names': ['Nakroth', 'nak'],
     "nickname": "Executioner's Blade",
     "classes": ['assassin'],
     'lanes': ['jungle'],
@@ -355,6 +390,7 @@ const HEROES = [
   },
   {
     "name": 'Natalya',
+    'alt_names': ['Natalya', 'nat'],
     "nickname": 'Nether Queen',
     "classes": ['mage'],
     'lanes': ['mid', 'damage', 'roam'],
@@ -365,6 +401,7 @@ const HEROES = [
   },
   {
     "name": 'Omega',
+    'alt_names': ['Omega'],
     "nickname": 'Awoken Mech',
     "classes": ['tank'],
     'lanes': ['ds', 'solo', 'roam'],
@@ -375,6 +412,7 @@ const HEROES = [
   },
   {
     "name": 'Omen',
+    'alt_names': ['Omen'],
     "nickname": 'Insatiable',
     "classes": ['warrior'],
     'lanes': ['ds', 'solo', 'jungle'],
@@ -385,6 +423,7 @@ const HEROES = [
   },
   {
     "name": 'Ormarr',
+    'alt_names': ['Ormarr', 'ormar', 'omar'],
     "nickname": 'Frenzy',
     "classes": ['tank', 'warrior'],
     'lanes': ['roam', 'support'],
@@ -395,6 +434,7 @@ const HEROES = [
   },
   {
     "name": 'Peura',
+    'alt_names': ['Peura', 'pura'],
     "nickname": 'Guardian of the Glade',
     "classes": ['support'],
     'lanes': ['support', 'roam'],
@@ -405,6 +445,7 @@ const HEROES = [
   },
   {
     "name": 'Preyta',
+    'alt_names': ['Preyta'],
     "nickname": 'Illest',
     "classes": ['mage'],
     'lanes': ['mid', 'roam'],
@@ -415,6 +456,7 @@ const HEROES = [
   },
   {
     "name": 'Raz',
+    'alt_names': ['Raz'],
     "nickname": 'Fist',
     "classes": ['mage', 'assassin'],
     'lanes': ['mid', 'solo', 'roam'],
@@ -425,6 +467,7 @@ const HEROES = [
   },
   {
     "name": 'Ryoma',
+    'alt_names': ['Ryoma', 'rioma'],
     "nickname": 'Ronin',
     "classes": ['warrior'],
     'lanes': ['ds', 'jungle'],
@@ -435,6 +478,7 @@ const HEROES = [
   },
   {
     "name": 'Skud',
+    'alt_names': ['Skud'],
     "nickname": 'Smasher',
     "classes": ['warrior', 'tank'],
     'lanes': ['support', 'ds', 'solo'],
@@ -445,6 +489,7 @@ const HEROES = [
   },
   {
     "name": 'Slimz',
+    'alt_names': ['Slimz', 'slims'],
     "nickname": 'Trustworthy',
     "classes": ['marksman'],
     'lanes': ['solo', 'jungle', 'damage'],
@@ -455,6 +500,7 @@ const HEROES = [
   },
   {
     "name": 'Superman',
+    'alt_names': ['Superman', 'super', 'sm'],
     "nickname": 'Man of Steel',
     "classes": ['warrior', 'tank'],
     'lanes': ['roam', 'ds'],
@@ -465,6 +511,7 @@ const HEROES = [
   },
   {
     "name": 'Taara',
+    'alt_names': ['Taara', 'tara'],
     "nickname": 'War Hammer',
     "classes": ['tank', 'warrior'],
     'lanes': [],
@@ -475,6 +522,7 @@ const HEROES = [
   },
   {
     "name": 'TeeMee',
+    'alt_names': ['TeeMee', 'tee'],
     "nickname": 'Stalwart Twins',
     "classes": ['support', 'tank'],
     'lanes': ['support', 'roam'],
@@ -485,6 +533,7 @@ const HEROES = [
   },
   {
     "name": "Tel'Annas",
+    'alt_names': ["Tel'Annas", 'tel', 'telannas', 'telanas'],
     "nickname": 'Ageless',
     "classes": ['marksman'],
     'lanes': ['roam', 'damage'],
@@ -495,6 +544,7 @@ const HEROES = [
   },
   {
     "name": 'Thane',
+    'alt_names': ['Thane'],
     "nickname": 'Protector',
     "classes": ['tank', 'warrior'],
     'lanes': ['support', 'roam'],
@@ -505,6 +555,7 @@ const HEROES = [
   },
   {
     "name": 'Flash',
+    'alt_names': ['Flash'],
     "nickname": 'Fastest Man Alive',
     "classes": ['mage', 'assassin'],
     'lanes': ['roam', 'mid', 'solo'],
@@ -515,6 +566,7 @@ const HEROES = [
   },
   {
     "name": 'Joker',
+    'alt_names': ['Joker'],
     "nickname": 'Clown Prince of Crime',
     "classes": ['marksman'],
     'lanes': ['mid', 'jungle'],
@@ -525,6 +577,7 @@ const HEROES = [
   },
   {
     "name": 'Toro',
+    'alt_names': ['Toro'],
     "nickname": '',
     "classes": ['tank'],
     'lanes': ['ds', 'solo'],
@@ -535,6 +588,7 @@ const HEROES = [
   },
   {
     "name": 'Valhein',
+    'alt_names': ['Valhein', 'val'],
     "nickname": 'Demon Hunter',
     "classes": ['marksman'],
     'lanes': ['damage'],
@@ -545,6 +599,7 @@ const HEROES = [
   },
   {
     "name": 'Veera',
+    'alt_names': ['Veera', 'vera'],
     "nickname": 'Soul Harvester',
     "classes": ['mage'],
     'lanes': ['damage', 'roam'],
@@ -555,6 +610,7 @@ const HEROES = [
   },
   {
     "name": 'Violet',
+    'alt_names': ['Violet', 'vio'],
     "nickname": 'Pistol Assassin',
     "classes": ['marksman'],
     'lanes': ['solo', 'jungle'],
@@ -565,6 +621,7 @@ const HEROES = [
   },
   {
     "name": 'Wisp',
+    'alt_names': ['Wisp'],
     "nickname": 'Mischievous',
     "classes": ['marksman'],
     'lanes': ['damage', 'jungle'],
@@ -575,6 +632,7 @@ const HEROES = [
   },
   {
     "name": 'Wonder Woman',
+    'alt_names': ['Wonder Woman', 'wonderwoman', 'ww', 'wonder'],
     "nickname": 'Amazon of Themyscira',
     "classes": ['warrior'],
     'lanes': ['solo', 'ds', 'roam'],
@@ -585,6 +643,7 @@ const HEROES = [
   },
   {
     "name": 'Wukong',
+    'alt_names': ['Wukong', 'monkey'],
     "nickname": 'Monkey King',
     "classes": ['assassin', 'warrior'],
     'lanes': ['jungle'],
@@ -595,6 +654,7 @@ const HEROES = [
   },
   {
     "name": 'Xeniel',
+    'alt_names': ['Xeniel', 'xenel', 'x'],
     "nickname": 'Immaculate',
     "classes": ['tank', 'support'],
     'lanes': ['ds', 'solo'],
@@ -605,6 +665,7 @@ const HEROES = [
   },
   {
     "name": 'Yorn',
+    'alt_names': ['Yorn'],
     "nickname": 'Hotshot',
     "classes": ['marskman'],
     'lanes': ['damage', 'mid'],
@@ -615,6 +676,7 @@ const HEROES = [
   },
   {
     "name": 'Zanis',
+    'alt_names': ['Zanis'],
     "nickname": 'Dragoon',
     "classes": ['warrior'],
     'lanes': ['jungle', 'roam'],
@@ -625,6 +687,7 @@ const HEROES = [
   },
   {
     "name": 'Zephys',
+    'alt_names': ['Zephys', 'zephis'],
     "nickname": 'Doomspear',
     "classes": ['warrior', 'assassin'],
     'lanes': ['jungle', 'roam'],
@@ -635,6 +698,7 @@ const HEROES = [
   },
   {
     "name": 'Zill',
+    'alt_names': ['Zill'],
     "nickname": 'Tempest',
     "classes": ['mage', 'assassin'],
     'lanes': [],
@@ -645,6 +709,7 @@ const HEROES = [
   },
   {
     "name": 'Zuka',
+    'alt_names': ['Zuka'],
     "nickname": 'Pandharma Master',
     "classes": ['warrior', 'assassin'],
     'lanes': ['jungle', 'solo', 'ds'],

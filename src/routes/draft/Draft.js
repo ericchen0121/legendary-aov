@@ -150,7 +150,7 @@ class Draft extends React.Component {
   //VIDEO SEARCH FUNCTIONS
   onVideoSearchTermChange = (video_search_term) => {
     this.setState({video_search_term}, () => {
-      this.handleFetchYoutubeVideos(this.state.selected_hero.name, this.state.selected_hero.position)
+      this.handleFetchYoutubeVideos(this.state.selected_hero.name)
     })
   }
 
@@ -167,6 +167,8 @@ class Draft extends React.Component {
     this.props.actions.fetchYoutubeList(this.createQuery(name))
   }
 
+  // tests whether prev selected hero is same as newly selected one
+  // and if it's a new selection, resets the grid to not be full-width
   collapse_expanded_view = (prev_selection, new_selection) => {
     if (this.state.is_hero_filter_grid_view_expanded && prev_selection && (prev_selection !== new_selection)) {
       this.setState({
@@ -179,8 +181,26 @@ class Draft extends React.Component {
     return `${name}+${this.state.video_search_term_default}+${this.state.video_search_term}`
   }
 
+  getHeroObject = (hero_name) => {
+    return HEROES.filter((hero_obj) => {
+      return hero_obj.alt_names.findIndex(alt_name => alt_name.toLowerCase() === hero_name.toLowerCase()) > -1
+    })[0] //get first object that matches the filter ;)
+  }
+
+  componentDidMount() {
+    let hero = this.props.params.hero
+    if (hero) {
+      this.handleFetchYoutubeVideos(hero)
+      let hero_obj = this.getHeroObject(hero)
+      this.props.actions.selectHero(hero_obj)
+    } else {
+      // redirect to ALL heroes, change url in router...
+    }
+  }
+
   render() {
     const { classes } = this.props;
+
     const {
       top_level_filter_selected,
       lower_level_filter_selected,
@@ -190,6 +210,7 @@ class Draft extends React.Component {
       hero_filter_list_view,
       is_hero_filter_grid_view_expanded
     } = this.state
+
 
     let order_hero = null
     let alpha_filter_info = null
