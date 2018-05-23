@@ -4,7 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
 import classNames from 'classnames'
 import { DEFAULT_IMAGE_URL } from './DraftConstants'
-import GridList, {GridListTile } from 'material-ui/GridList';
+import GridList, { GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
 import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutline';
 
