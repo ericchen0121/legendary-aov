@@ -103,3 +103,19 @@
     left: 16%;
   }
 }
+
+@font-face {
+  font-family: 'Reckoner';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(./../../resources/fonts/Reckoner.ttf) format('truetype'),
+}
+
+@font-face {
+  font-family: 'Reckoner Bold';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(./../../resources/fonts/Reckoner_Bold.ttf) format('truetype'),
+}

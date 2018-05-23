@@ -10,6 +10,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import './../../resources/fonts/Reckoner_Bold.ttf'
+import './../../resources/fonts/Reckoner.ttf'
 
 // external-global styles must be imported in your JS.
 import normalizeCss from 'normalize.css';
@@ -26,6 +28,12 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
+        <style type="text/css">
+          '@font-face' {
+              font-family: "Reckoner";
+              src: url('./../../resources/fonts/Reckoner.ttf') format("truetype");
+          }
+        </style>
         {this.props.children}
         <Footer />
       </div>
