@@ -23,7 +23,7 @@ import DraftVideoSearch from './DraftVideoSearch';
 import DraftPlaylist from './DraftPlaylist';
 import DraftFilters from './DraftFilters';
 import HEROES from './AovHeroes';
-import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS } from './DraftConstants'
+import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS, DEFAULT_VIDEO_SEARCH_TERM } from './DraftConstants'
 import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants'
 
 import List from 'material-ui/List';
@@ -71,7 +71,7 @@ class Draft extends React.Component {
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0],
-    video_search_term_default: 'arena of valor',
+    video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM,
     window_width: null
   }
 
@@ -80,7 +80,6 @@ class Draft extends React.Component {
 
   //HERO_FILTERS FUNCTIONS
   onTopLevelFilterChange = (e, filter) => {
-    console.log('top level filer', e, filter)
     this.setState({
       top_level_filter_selected: filter,
       lower_level_filter_selected: HERO_FILTERS[filter][0] // select the first lower level filter
@@ -163,6 +162,10 @@ class Draft extends React.Component {
   // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
   handleFetchYoutubeVideos = (name) => {
+    this.props.actions.fetchYoutubeList(this.createQuery(name))
+  }
+
+  uiSelectHero = (name) => {
     this.collapse_expanded_view(this.state.selected_hero.name, name)
     this.setState({
       selected_hero: {
@@ -170,9 +173,8 @@ class Draft extends React.Component {
         active: true
       }
     })
-    this.props.actions.fetchYoutubeList(this.createQuery(name))
+    this.handleFetchYoutubeVideos(this.createQuery(name))
   }
-
   // tests whether prev selected hero is same as newly selected one
   // and if it's a new selection, resets the grid to not be full-width
   collapse_expanded_view = (prev_selection, new_selection) => {
@@ -193,19 +195,39 @@ class Draft extends React.Component {
     })[0] //get first object that matches the filter ;)
   }
 
+  handleRouteParams = () => {
+    let params = this.props.params
+
+    // Get params from Route
+    let { hero, video_search_term } = params
+
+    // www.../video/hero/chaugnar
+    if (hero) {
+      let hero_obj = this.getHeroObject(hero)
+      this.uiSelectHero(hero_obj.name)
+      this.props.actions.selectHero(hero_obj)
+    } else {
+      // redirect to ALL heroes, change url in router...
+    }
+
+    // www.../video/abrownbag
+    if (video_search_term) {
+      this.setState({
+        video_search_term,
+        is_hero_filter_grid_view_expanded: false
+       }, () => {
+        console.log(this.state)
+        this.handleFetchYoutubeVideos('')
+      })
+    }
+  }
+
   componentDidMount() {
     // In case you need a resize event handler...
     // https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
     this.setState({ window_width: window.innerWidth })
 
-    let hero = this.props.params.hero
-    if (hero) {
-      this.handleFetchYoutubeVideos(hero)
-      let hero_obj = this.getHeroObject(hero)
-      this.props.actions.selectHero(hero_obj)
-    } else {
-      // redirect to ALL heroes, change url in router...
-    }
+    this.handleRouteParams()
   }
 
   render() {
@@ -257,7 +279,7 @@ class Draft extends React.Component {
         <DraftListItem
           hero={h}
           {...this.props}
-          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
+          handleFetchYoutubeVideos={this.uiSelectHero}
         />
       ))
       list_grid = <List>{ list }</List>
@@ -269,7 +291,7 @@ class Draft extends React.Component {
         <DraftGrid
           is_mobile={isMobile}
           order_hero={order_hero}
-          handleFetchYoutubeVideos={this.handleFetchYoutubeVideos}
+          handleFetchYoutubeVideos={this.uiSelectHero}
           {...this.props}
         />
       )
@@ -278,7 +300,7 @@ class Draft extends React.Component {
     }
 
     let expand_grid_arrow = null
-    if (selected_hero.active && !hero_filter_list_view) {
+    if (!hero_filter_list_view) {
       if (is_hero_filter_grid_view_expanded) {
         expand_grid_arrow = (
           <span onClick={this.onFilterExpand}>
@@ -313,17 +335,18 @@ class Draft extends React.Component {
       hero_view_grid_cols = 12
       hero_view_video_cols = 7
       hero_view_video_list_cols = 3
+    } else {
+      hero_view_grid_cols = 3
+      hero_view_video_cols = 7
+      hero_view_video_list_cols = 2
     }
 
-    let video_search = null
-    if (selected_hero.name) {
-      video_search = (
+    let video_search = (
         <DraftVideoSearch
           onVideoSearchTermChange={this.onVideoSearchTermChange}
           {...this.props}
         />
       )
-    }
 
     return (
       <div classNames={classes.root, s.root_container}>
