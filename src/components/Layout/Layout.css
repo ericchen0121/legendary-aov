@@ -191,7 +191,7 @@ textarea {
   font-style: normal;
   font-weight: 400;
   src:
-    url(./../../resources/fonts/Reckoner.ttf) format('truetype'),
+    url('./../../resources/fonts/Reckoner.ttf') format('truetype'),
 }
 
 @font-face {
@@ -199,5 +199,5 @@ textarea {
   font-style: normal;
   font-weight: 400;
   src:
-    url(./../../resources/fonts/Reckoner_Bold.ttf) format('truetype'),
+    url('./../../resources/fonts/Reckoner_Bold.ttf') format('truetype'),
 }

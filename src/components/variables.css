@@ -13,7 +13,7 @@
    * ======================================================================== */
 
   --font-family-base: 'Segoe UI', 'HelveticaNeue-Light', sans-serif;
-
+  --font-family-reckoner: 'Reckoner';
   /*
    * Layout
    * ======================================================================== */
@@ -29,4 +29,20 @@
   --screen-sm-min: 768px;  /* Small screen / tablet */
   --screen-md-min: 992px;  /* Medium screen / desktop */
   --screen-lg-min: 1200px; /* Large screen / wide desktop */
+}
+
+@font-face {
+  font-family: 'Reckoner';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(/fonts/Reckoner.ttf) format('truetype'),
+}
+
+@font-face {
+  font-family: 'Reckoner Bold';
+  font-style: normal;
+  font-weight: 400;
+  src:
+    url(/fonts/Reckoner_Bold.ttf) format('truetype'),
 }

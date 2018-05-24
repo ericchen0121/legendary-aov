@@ -8,20 +8,21 @@
  */
 
 @import '../variables.css';
-@import '../Layout/Layout.css'
 
 :root {
   --brand-color: #61dafb;
 }
 
 .root {
-  background: #bea67c;
+  background: #e1eec3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e1eec3, #f05053); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e1eec3, #f05053); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #fff;
 }
 
 .container {
   margin: 0 auto;
-  padding: 6px 0 1px 0;
+  padding: 6px 0 5px 0;
   max-width: var(--max-content-header-width);
 }
 
@@ -48,15 +49,12 @@
 }
 
 .brandTxt {
-  font-family: 'Reckoner Bold';
-  font-size: 34px;
-  letter-spacing: 1.3px;
-  color: #660000;
-  /* text-shadow: .5px .5px white */
-}
-.brandTxtAccent {
-  /* color: lightgray;
-  text-shadow: .5px .5px #660000 */
+  /* font-family: var(--font-family-reckoner) !important; */
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  text-shadow: .65px .65px red
 }
 
 .banner {
@@ -102,20 +100,4 @@
     right: 83.5%;
     left: 16%;
   }
-}
-
-@font-face {
-  font-family: 'Reckoner';
-  font-style: normal;
-  font-weight: 400;
-  src:
-    url(./../../resources/fonts/Reckoner.ttf) format('truetype'),
-}
-
-@font-face {
-  font-family: 'Reckoner Bold';
-  font-style: normal;
-  font-weight: 400;
-  src:
-    url(./../../resources/fonts/Reckoner_Bold.ttf) format('truetype'),
 }

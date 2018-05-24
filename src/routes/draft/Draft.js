@@ -13,6 +13,7 @@ import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import s from './Aov.css';
+import Reckoner from '../../resources/fonts/Reckoner.ttf'
 
 import DraftListItem from './DraftListItem';
 import DraftGrid from './DraftGrid';
