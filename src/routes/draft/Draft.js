@@ -223,10 +223,7 @@ class Draft extends React.Component {
   }
 
   componentDidMount() {
-    // In case you need a resize event handler...
-    // https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
-    this.setState({ window_width: window.innerWidth })
-
+    this.setState({ window_width: window.innerWidth }) // for resize event handler: https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
     this.handleRouteParams()
   }
 
@@ -246,6 +243,8 @@ class Draft extends React.Component {
 
     const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
 
+    // VIEW SELECTION
+    //
     let order_hero = null
     let alpha_filter_info = null
     // let list_filter_active = hero_filter_alphabetical
@@ -269,6 +268,8 @@ class Draft extends React.Component {
       view_info = 'grid view'
     }
 
+    // VIEWS - LIST OR GRID
+    //
     let list = null
     let list_grid = null
     let hero_view_grid_cols = null
@@ -299,6 +300,8 @@ class Draft extends React.Component {
       hero_view_video_cols = false
     }
 
+    // GRID EXPAND
+    //
     let expand_grid_arrow = null
     if (!hero_filter_list_view) {
       if (is_hero_filter_grid_view_expanded) {
@@ -317,6 +320,8 @@ class Draft extends React.Component {
     }
 
 
+    // SET LAYOUT
+    //
     if (selected_hero.active) {
       hero_view_grid_cols = 3
       hero_view_video_cols = 7
@@ -341,6 +346,7 @@ class Draft extends React.Component {
       hero_view_video_list_cols = 2
     }
 
+    // VIDEO SEARCH FILTER
     let video_search = (
         <DraftVideoSearch
           onVideoSearchTermChange={this.onVideoSearchTermChange}
