@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": ">=6.13.1",
-    "npm": ">=3.10.10"
+    "node": "^9.10.1",
+    "npm": "^5.6.0"
   },
   "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
   "dependencies": {
@@ -25,6 +25,7 @@
     "material-ui": "^1.0.0-beta.47",
     "node-fetch": "^2.1.1",
     "normalize.css": "^8.0.0",
+    "npm": "^6.0.1",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "pretty-error": "^2.1.1",
@@ -42,6 +43,7 @@
     "sequelize": "^4.37.3",
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.5.4",
+    "sqlite3": "^4.0.0",
     "universal-router": "^6.0.0",
     "whatwg-fetch": "^2.0.3"
   },
