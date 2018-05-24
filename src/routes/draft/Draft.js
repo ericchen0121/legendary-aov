@@ -175,6 +175,7 @@ class Draft extends React.Component {
     })
     this.handleFetchYoutubeVideos(this.createQuery(name))
   }
+  
   // tests whether prev selected hero is same as newly selected one
   // and if it's a new selection, resets the grid to not be full-width
   collapse_expanded_view = (prev_selection, new_selection) => {
@@ -201,7 +202,7 @@ class Draft extends React.Component {
     // Get params from Route
     let { hero, video_search_term } = params
 
-    // www.../video/hero/chaugnar
+    // ie. www.../video/hero/chaugnar
     if (hero) {
       let hero_obj = this.getHeroObject(hero)
       this.uiSelectHero(hero_obj.name)
@@ -210,7 +211,7 @@ class Draft extends React.Component {
       // redirect to ALL heroes, change url in router...
     }
 
-    // www.../video/abrownbag
+    // ie. www.../video/abrownbag
     if (video_search_term) {
       this.setState({
         video_search_term,
