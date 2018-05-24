@@ -25,7 +25,7 @@ class Navigation extends React.Component {
           <Icon icon={twitter} style={{'color': 'white'}}/>
         </a>
         <span className={s.spacer}> | </span>
-        <Link className={cx(s.link, s.highlight)} to="/register">
+        <Link className={cx(s.link, s.highlight, s.signup)} to="/register">
           Sign up
         </Link>
       </div>

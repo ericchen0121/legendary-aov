@@ -231,11 +231,11 @@ class Draft extends React.Component {
 
     if (hero_filter_alphabetical) {
       order_hero = this.sortResultsAlpha(this.filterResults(HEROES))
-      alpha_filter_info = 'ordered alphabetically'
+      alpha_filter_info = 'alpha order'
       hero_filter_alphabetical_color = AOV_GOLD
     } else {
       order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
-      alpha_filter_info = 'ordered by tier'
+      alpha_filter_info = 'hero tier order'
     }
 
     let view_info = null

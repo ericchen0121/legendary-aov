@@ -8,13 +8,14 @@ import {arrowCircleLeft} from 'react-icons-kit/fa/arrowCircleLeft'
 import {arrowCircleUp} from 'react-icons-kit/fa/arrowCircleUp'
 import { withBaseIcon } from 'react-icons-kit'
 import {iosGameControllerBOutline} from 'react-icons-kit/ionicons/iosGameControllerBOutline'
+import { HIGHLIGHT_COLOR } from '../../constants'
 
 const VID_HEIGHT = 430
 const VID_WIDTH = 640
 const VID_RATIO = 1
 
 const IconContainer =
-    withBaseIcon({ size: 24, style: {color: 'lightgray', marginTop: 10}})
+    withBaseIcon({ size: 24, style: {color: HIGHLIGHT_COLOR, marginTop: 10}})
 
 export const UpArrow = () => <IconContainer icon={arrowCircleUp}/>
 export const LeftArrow = () => <IconContainer icon={arrowCircleLeft}/>
@@ -62,9 +63,10 @@ class DraftVideo extends React.Component {
     else {
       vid = (
         <div className={s.select_player}>
-          <Icon icon={iosGameControllerBOutline} size={140} style={{'color': 'green'}} />
-          <div><UpArrow /> <span className={s.instruction}>filter heroes and</span></div>
-          <div><LeftArrow /> <span className={s.instruction}>select a hero to watch videos</span></div>
+          <Icon icon={iosGameControllerBOutline} size={140} style={{'color': '#22c1c3'}} />
+          <div><UpArrow /> <span className={s.instruction}>FILTER HEROES &</span></div>
+          <div><LeftArrow /> <span className={s.instruction}>SELECT, WATCH, & BECOME LEGENDARY </span></div>
+          <div><span className={s.instruction}>(or CONQUERER, MASTER, DIAMOND, GOLD...)</span></div>
         </div>
       )
     }
