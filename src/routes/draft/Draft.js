@@ -13,7 +13,7 @@ import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
 import s from './Aov.css';
-import Reckoner from '../../resources/fonts/Reckoner.ttf'
+import Reckoner from '../../resources/fonts/Reckoner.ttf';
 
 import DraftListItem from './DraftListItem';
 import DraftGrid from './DraftGrid';
@@ -23,20 +23,25 @@ import DraftVideoSearch from './DraftVideoSearch';
 import DraftPlaylist from './DraftPlaylist';
 import DraftFilters from './DraftFilters';
 import HEROES from './AovHeroes';
-import { HERO_FILTERS, DEFAULT_TOP_LEVEL_FILTER, VIDEO_SEARCH_TERMS, DEFAULT_VIDEO_SEARCH_TERM } from './DraftConstants'
-import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants'
+import {
+  HERO_FILTERS,
+  DEFAULT_TOP_LEVEL_FILTER,
+  VIDEO_SEARCH_TERMS,
+  DEFAULT_VIDEO_SEARCH_TERM,
+} from './DraftConstants';
+import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants';
 
 import List from 'material-ui/List';
 import Grid from 'material-ui/Grid';
-import GridList, {GridListTile } from 'material-ui/GridList';
+import GridList, { GridListTile } from 'material-ui/GridList';
 
-import { Icon } from 'react-icons-kit'
-import {ic_sort_by_alpha} from 'react-icons-kit/md/ic_sort_by_alpha'
-import {sortAlphabetically} from 'react-icons-kit/typicons/sortAlphabetically'
-import {grid} from 'react-icons-kit/feather/grid'
-import {ic_view_list} from 'react-icons-kit/md/ic_view_list'
-import {ic_chevron_right} from 'react-icons-kit/md/ic_chevron_right'
-import {ic_chevron_left} from 'react-icons-kit/md/ic_chevron_left'
+import { Icon } from 'react-icons-kit';
+import { ic_sort_by_alpha } from 'react-icons-kit/md/ic_sort_by_alpha';
+import { sortAlphabetically } from 'react-icons-kit/typicons/sortAlphabetically';
+import { grid } from 'react-icons-kit/feather/grid';
+import { ic_view_list } from 'react-icons-kit/md/ic_view_list';
+import { ic_chevron_right } from 'react-icons-kit/md/ic_chevron_right';
+import { ic_chevron_left } from 'react-icons-kit/md/ic_chevron_left';
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -47,8 +52,8 @@ const styles = theme => ({
     flexGrow: 1,
     main_one: {
       order: 2,
-      marginRight: 30
-    }
+      marginRight: 30,
+    },
   },
   grid_container: {
     display: 'flex',
@@ -56,14 +61,14 @@ const styles = theme => ({
     justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-  }
-})
+  },
+});
 
 class Draft extends React.Component {
   state = {
     selected_hero: {
       name: null,
-      active: false
+      active: false,
     },
     hero_filter_alphabetical: false,
     hero_filter_list_view: false,
@@ -72,160 +77,175 @@ class Draft extends React.Component {
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0],
     video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM,
-    window_width: null
-  }
+    window_width: null,
+  };
 
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  //HERO_FILTERS FUNCTIONS
+  // HERO_FILTERS FUNCTIONS
   onTopLevelFilterChange = (e, filter) => {
     this.setState({
       top_level_filter_selected: filter,
-      lower_level_filter_selected: HERO_FILTERS[filter][0] // select the first lower level filter
-    })
-  }
+      lower_level_filter_selected: HERO_FILTERS[filter][0], // select the first lower level filter
+    });
+  };
 
   onLowerLevelFilterChange = (e, filter) => {
     this.setState({
-      lower_level_filter_selected: filter // select the first lower level filter
-    })
-  }
+      lower_level_filter_selected: filter, // select the first lower level filter
+    });
+  };
 
-  onFilterAlphabeticalChange = (e) => {
+  onFilterAlphabeticalChange = e => {
     this.setState({
-      hero_filter_alphabetical: !this.state.hero_filter_alphabetical
-    })
-  }
+      hero_filter_alphabetical: !this.state.hero_filter_alphabetical,
+    });
+  };
 
-  onFilterGridListViewChange = (e) => {
+  onFilterGridListViewChange = e => {
     this.setState({
-      hero_filter_list_view: !this.state.hero_filter_list_view
-    })
-  }
+      hero_filter_list_view: !this.state.hero_filter_list_view,
+    });
+  };
 
-  onFilterExpand = (e) => {
+  onFilterExpand = e => {
     this.setState({
-      is_hero_filter_grid_view_expanded: !this.state.is_hero_filter_grid_view_expanded
-    })
-  }
+      is_hero_filter_grid_view_expanded: !this.state
+        .is_hero_filter_grid_view_expanded,
+    });
+  };
 
   // hero is ARRAY of hero objects
   // returns filtered array of hero objects based on top and lower level filters
-  filterResults = (heroes) => {
-    let {top_level_filter_selected, lower_level_filter_selected} = this.state
-    let key = null
-    if(top_level_filter_selected === 'CLASS') {
-      key = 'classes'
+  filterResults = heroes => {
+    const {
+      top_level_filter_selected,
+      lower_level_filter_selected,
+    } = this.state;
+    let key = null;
+    if (top_level_filter_selected === 'CLASS') {
+      key = 'classes';
     } else if (top_level_filter_selected === 'ROLE') {
-      key = 'roles'
+      key = 'roles';
     } else if (top_level_filter_selected === 'TIER') {
-      key = 'tier'
+      key = 'tier';
     } else if (top_level_filter_selected === 'LANE') {
-      key = 'lanes'
+      key = 'lanes';
     }
 
-    let filtered_heroes = null
+    let filtered_heroes = null;
     if (lower_level_filter_selected === 'all') {
-      filtered_heroes  = heroes
+      filtered_heroes = heroes;
     } else {
-      filtered_heroes = heroes.filter(hero => {
-        return hero[key].includes(lower_level_filter_selected)
-      })
+      filtered_heroes = heroes.filter(hero =>
+        hero[key].includes(lower_level_filter_selected),
+      );
     }
 
-    return filtered_heroes
-  }
+    return filtered_heroes;
+  };
 
-  sortResultsAlpha = (heroes) => {
-    heroes = heroes.sort((a,b) => a.name.localeCompare(b.name))
-    return heroes
-  }
+  sortResultsAlpha = heroes => {
+    heroes = heroes.sort((a, b) => a.name.localeCompare(b.name));
+    return heroes;
+  };
 
-  sortResultsTier = (heroes) => {
-    heroes = heroes.sort((a,b) => a.tier_index - b.tier_index)
-    return heroes
-  }
+  sortResultsTier = heroes => {
+    heroes = heroes.sort((a, b) => a.tier_index - b.tier_index);
+    return heroes;
+  };
 
-  sortResultsTierAlpha = (heroes) => {
-    heroes = heroes.sort((a,b) => { return a.tier_index - b.tier_index || a.name.localeCompare(b.name)})
-    return heroes
-  }
+  sortResultsTierAlpha = heroes => {
+    heroes = heroes.sort(
+      (a, b) => a.tier_index - b.tier_index || a.name.localeCompare(b.name),
+    );
+    return heroes;
+  };
 
-  //VIDEO SEARCH FUNCTIONS
-  onVideoSearchTermChange = (video_search_term) => {
-    this.setState({video_search_term}, () => {
-      this.handleFetchYoutubeVideos(this.state.selected_hero.name)
-    })
-  }
+  // VIDEO SEARCH FUNCTIONS
+  onVideoSearchTermChange = video_search_term => {
+    this.setState({ video_search_term }, () => {
+      this.handleFetchYoutubeVideos(this.state.selected_hero.name);
+    });
+  };
 
   // handling the click on the hero list item
   // it also fires off the request to fetch YT videos
-  handleFetchYoutubeVideos = (name) => {
-    this.props.actions.fetchYoutubeList(this.createQuery(name))
-  }
+  handleFetchYoutubeVideos = name => {
+    this.props.actions.fetchYoutubeList(this.createQuery(name));
+  };
 
-  uiSelectHero = (name) => {
-    this.collapse_expanded_view(this.state.selected_hero.name, name)
+  uiSelectHero = name => {
+    this.collapse_expanded_view(this.state.selected_hero.name, name);
     this.setState({
       selected_hero: {
         name,
-        active: true
-      }
-    })
-    this.handleFetchYoutubeVideos(this.createQuery(name))
-  }
-  
+        active: true,
+      },
+    });
+    this.handleFetchYoutubeVideos(this.createQuery(name));
+  };
+
   // tests whether prev selected hero is same as newly selected one
   // and if it's a new selection, resets the grid to not be full-width
   collapse_expanded_view = (prev_selection, new_selection) => {
-    if (this.state.is_hero_filter_grid_view_expanded && prev_selection && (prev_selection !== new_selection)) {
+    if (
+      this.state.is_hero_filter_grid_view_expanded &&
+      prev_selection &&
+      prev_selection !== new_selection
+    ) {
       this.setState({
-        is_hero_filter_grid_view_expanded: false
-      })
+        is_hero_filter_grid_view_expanded: false,
+      });
     }
-  }
+  };
 
-  createQuery = (name) => {
-    return `${name}+${this.state.video_search_term_default}+${this.state.video_search_term}`
-  }
+  createQuery = name =>
+    `${name}+${this.state.video_search_term_default}+${
+      this.state.video_search_term
+    }`;
 
-  getHeroObject = (hero_name) => {
-    return HEROES.filter((hero_obj) => {
-      return hero_obj.alt_names.findIndex(alt_name => alt_name.toLowerCase() === hero_name.toLowerCase()) > -1
-    })[0] //get first object that matches the filter ;)
-  }
+  getHeroObject = hero_name =>
+    HEROES.filter(
+      hero_obj =>
+        hero_obj.alt_names.findIndex(
+          alt_name => alt_name.toLowerCase() === hero_name.toLowerCase(),
+        ) > -1,
+    )[0]; // get first object that matches the filter ;)
 
   handleRouteParams = () => {
-    let params = this.props.params
+    const params = this.props.params;
 
     // Get params from Route
-    let { hero, video_search_term } = params
+    const { hero, video_search_term } = params;
 
     // ie. www.../video/hero/chaugnar
     if (hero) {
-      let hero_obj = this.getHeroObject(hero)
-      this.uiSelectHero(hero_obj.name)
-      this.props.actions.selectHero(hero_obj)
+      const hero_obj = this.getHeroObject(hero);
+      this.uiSelectHero(hero_obj.name);
+      this.props.actions.selectHero(hero_obj);
     } else {
       // redirect to ALL heroes, change url in router...
     }
 
     // ie. www.../video/abrownbag
     if (video_search_term) {
-      this.setState({
-        video_search_term,
-        is_hero_filter_grid_view_expanded: false
-       }, () => {
-        console.log(this.state)
-        this.handleFetchYoutubeVideos('')
-      })
+      this.setState(
+        {
+          video_search_term,
+          is_hero_filter_grid_view_expanded: false,
+        },
+        () => {
+          console.log(this.state);
+          this.handleFetchYoutubeVideos('');
+        },
+      );
     }
-  }
+  };
 
   componentDidMount() {
-    this.setState({ window_width: window.innerWidth }) // for resize event handler: https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
-    this.handleRouteParams()
+    this.setState({ window_width: window.innerWidth }); // for resize event handler: https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
+    this.handleRouteParams();
   }
 
   render() {
@@ -239,43 +259,55 @@ class Draft extends React.Component {
       selected_hero,
       hero_filter_alphabetical,
       hero_filter_list_view,
-      is_hero_filter_grid_view_expanded
-    } = this.state
+      is_hero_filter_grid_view_expanded,
+    } = this.state;
 
     const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
 
     // VIEW SELECTION
     //
-    let order_hero = null
-    let alpha_filter_info = null
+    let order_hero = null;
+    let alpha_filter_info = null;
     // let list_filter_active = hero_filter_alphabetical
-    let hero_filter_alphabetical_color = 'gray'
+    let hero_filter_alphabetical_color = 'gray';
 
     if (hero_filter_alphabetical) {
-      order_hero = this.sortResultsAlpha(this.filterResults(HEROES))
-      alpha_filter_info = 'alpha order'
-      hero_filter_alphabetical_color = AOV_GOLD
+      order_hero = this.sortResultsAlpha(this.filterResults(HEROES));
+      alpha_filter_info = 'alpha order';
+      hero_filter_alphabetical_color = AOV_GOLD;
     } else {
-      order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES))
-      alpha_filter_info = 'hero tier order'
+      order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES));
+      alpha_filter_info = 'hero tier order';
     }
 
-    let view_info = null
-    let filter_list_grid_icon = <Icon icon={grid} size={20} style={{color: 'gray', cursor: 'pointer'}}/>
+    let view_info = null;
+    let filter_list_grid_icon = (
+      <Icon
+        icon={grid}
+        size={20}
+        style={{ color: 'gray', cursor: 'pointer' }}
+      />
+    );
     if (hero_filter_list_view) {
-      filter_list_grid_icon = <Icon icon={ic_view_list} size={20} style={{color: 'gray', cursor: 'pointer'}}/>
-      view_info = 'list view'
+      filter_list_grid_icon = (
+        <Icon
+          icon={ic_view_list}
+          size={20}
+          style={{ color: 'gray', cursor: 'pointer' }}
+        />
+      );
+      view_info = 'list view';
     } else {
-      view_info = 'grid view'
+      view_info = 'grid view';
     }
 
     // VIEWS - LIST OR GRID
     //
-    let list = null
-    let list_grid = null
-    let hero_view_grid_cols = null
-    let hero_view_video_cols = null
-    let hero_view_video_list_cols = null
+    let list = null;
+    let list_grid = null;
+    let hero_view_grid_cols = null;
+    let hero_view_video_cols = null;
+    let hero_view_video_list_cols = null;
     if (hero_filter_list_view) {
       list = order_hero.map(h => (
         <DraftListItem
@@ -283,11 +315,10 @@ class Draft extends React.Component {
           {...this.props}
           handleFetchYoutubeVideos={this.uiSelectHero}
         />
-      ))
-      list_grid = <List>{ list }</List>
-      hero_view_grid_cols = 3
-      hero_view_video_cols = 7
-
+      ));
+      list_grid = <List>{list}</List>;
+      hero_view_grid_cols = 3;
+      hero_view_video_cols = 7;
     } else {
       list_grid = (
         <DraftGrid
@@ -296,105 +327,133 @@ class Draft extends React.Component {
           handleFetchYoutubeVideos={this.uiSelectHero}
           {...this.props}
         />
-      )
-      hero_view_grid_cols = 12
-      hero_view_video_cols = false
+      );
+      hero_view_grid_cols = 12;
+      hero_view_video_cols = false;
     }
 
     // GRID EXPAND
     //
-    let expand_grid_arrow = null
+    let expand_grid_arrow = null;
     if (!hero_filter_list_view) {
       if (is_hero_filter_grid_view_expanded) {
         expand_grid_arrow = (
           <span onClick={this.onFilterExpand}>
-            <Icon icon={ic_chevron_left} size={18} style={{cursor: 'pointer'}}/>
+            <Icon
+              icon={ic_chevron_left}
+              size={18}
+              style={{ cursor: 'pointer' }}
+            />
           </span>
-        )
+        );
       } else {
-        expand_grid_arrow =  (
+        expand_grid_arrow = (
           <span onClick={this.onFilterExpand}>
-            <Icon icon={ic_chevron_right} size={18} style={{cursor: 'pointer'}}/>
+            <Icon
+              icon={ic_chevron_right}
+              size={18}
+              style={{ cursor: 'pointer' }}
+            />
           </span>
-        )
+        );
       }
     }
-
 
     // SET LAYOUT
     //
     if (selected_hero.active) {
-      hero_view_grid_cols = 3
-      hero_view_video_cols = 7
-      hero_view_video_list_cols = 2
+      hero_view_grid_cols = 3;
+      hero_view_video_cols = 7;
+      hero_view_video_list_cols = 2;
     } else if (hero_filter_list_view) {
-      hero_view_grid_cols = 3
-      hero_view_video_cols = 7
-      hero_view_video_list_cols = 2
+      hero_view_grid_cols = 3;
+      hero_view_video_cols = 7;
+      hero_view_video_list_cols = 2;
     } else {
-      hero_view_grid_cols = 12
-      hero_view_video_cols = false
-      hero_view_video_list_cols = false
+      hero_view_grid_cols = 12;
+      hero_view_video_cols = false;
+      hero_view_video_list_cols = false;
     }
 
     if (is_hero_filter_grid_view_expanded) {
-      hero_view_grid_cols = 12
-      hero_view_video_cols = 7
-      hero_view_video_list_cols = 3
+      hero_view_grid_cols = 12;
+      hero_view_video_cols = 7;
+      hero_view_video_list_cols = 3;
     } else {
-      hero_view_grid_cols = 3
-      hero_view_video_cols = 7
-      hero_view_video_list_cols = 2
+      hero_view_grid_cols = 3;
+      hero_view_video_cols = 7;
+      hero_view_video_list_cols = 2;
     }
 
     // VIDEO SEARCH FILTER
-    let video_search = (
-        <DraftVideoSearch
-          onVideoSearchTermChange={this.onVideoSearchTermChange}
-          {...this.props}
-        />
-      )
+    const video_search = (
+      <DraftVideoSearch
+        onVideoSearchTermChange={this.onVideoSearchTermChange}
+        {...this.props}
+      />
+    );
 
     return (
-      <div classNames={classes.root, s.root_container}>
+      <div classNames={(classes.root, s.root_container)}>
         <Grid container>
           <Grid item xs={12} md={12} classNames={s.main_one}>
             <DraftFilters
               is_mobile={isMobile}
-              filters = {HERO_FILTERS}
+              filters={HERO_FILTERS}
               onTopLevelFilterChange={this.onTopLevelFilterChange}
               onLowerLevelFilterChange={this.onLowerLevelFilterChange}
               top_level_filter_selected={top_level_filter_selected}
-              lower_level_filter_selected= {lower_level_filter_selected}
+              lower_level_filter_selected={lower_level_filter_selected}
             />
             <div className={s.list_filter_container}>
               <span
-                className={ classNames(s.list_filter, {[s.list_filter_active]: hero_filter_alphabetical}, s.cursor_pointer ) }
-                onClick={ this.onFilterAlphabeticalChange }
+                className={classNames(
+                  s.list_filter,
+                  { [s.list_filter_active]: hero_filter_alphabetical },
+                  s.cursor_pointer,
+                )}
+                onClick={this.onFilterAlphabeticalChange}
               >
-                <Icon icon={sortAlphabetically} size={20} style={{color: hero_filter_alphabetical_color, cursor: 'pointer'}}/>
+                <Icon
+                  icon={sortAlphabetically}
+                  size={20}
+                  style={{
+                    color: hero_filter_alphabetical_color,
+                    cursor: 'pointer',
+                  }}
+                />
               </span>
-              <span className={s.list_filter_info}>
-                { alpha_filter_info }
-              </span>
+              <span className={s.list_filter_info}>{alpha_filter_info}</span>
               <span
-                className={ classNames(s.list_filter_view, s.cursor_pointer) }
-                onClick={ this.onFilterGridListViewChange }
+                className={classNames(s.list_filter_view, s.cursor_pointer)}
+                onClick={this.onFilterGridListViewChange}
               >
-                { filter_list_grid_icon }
+                {filter_list_grid_icon}
               </span>
-              <span className={s.list_filter_info}>
-                { view_info }
-              </span>
-              <span className={s.list_filter_arrow}>
-                { expand_grid_arrow }
-              </span>
+              <span className={s.list_filter_info}>{view_info}</span>
+              <span className={s.list_filter_arrow}>{expand_grid_arrow}</span>
             </div>
           </Grid>
-          <Grid item xs={12} sm={5} md={hero_view_grid_cols} lg={hero_view_grid_cols} zeroMinWidth classNames={s.main_two}>
-            { list_grid }
+          <Grid
+            item
+            xs={12}
+            sm={5}
+            md={hero_view_grid_cols}
+            lg={hero_view_grid_cols}
+            zeroMinWidth
+            classNames={s.main_two}
+          >
+            {list_grid}
           </Grid>
-          <Grid item xs={12} sm={7} md={hero_view_video_cols} lg={hero_view_video_cols} zeroMinWidth classNames={s.main_three}>
+          <Grid
+            item
+            xs={12}
+            sm={7}
+            md={hero_view_video_cols}
+            lg={hero_view_video_cols}
+            zeroMinWidth
+            classNames={s.main_three}
+          >
             <div className={s.draft_video_container}>
               <DraftVideo
                 video_search_term={video_search_term}
@@ -404,8 +463,16 @@ class Draft extends React.Component {
               <DraftVideoTitle {...this.props} />
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} md={hero_view_video_list_cols} lg={hero_view_video_list_cols} zeroMinWidth classNames={s.main_four}>
-            { video_search }
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md={hero_view_video_list_cols}
+            lg={hero_view_video_list_cols}
+            zeroMinWidth
+            classNames={s.main_four}
+          >
+            {video_search}
             <DraftPlaylist {...this.props} />
           </Grid>
         </Grid>
@@ -424,6 +491,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles2(s)(withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(Draft),
-));
+export default withStyles2(s)(
+  withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Draft)),
+);
