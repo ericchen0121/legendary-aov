@@ -1,25 +1,7 @@
 export const HERO_FILTERS = {
-  ALL: [
-    'all'
-  ],
-  CLASS: [
-    'all',
-    'tank',
-    'warrior',
-    'assassin',
-    'mage',
-    'marksman',
-    'support',
-  ],
-  LANE: [
-    'solo',
-    'mid',
-    'jungle',
-    'roam',
-    'support',
-    'ds',
-    'damage'
-  ],
+  ALL: ['all'],
+  CLASS: ['all', 'tank', 'warrior', 'assassin', 'mage', 'marksman', 'support'],
+  LANE: ['solo', 'mid', 'jungle', 'roam', 'support', 'ds', 'damage'],
   ROLE: [
     'all',
     'buffs',
@@ -30,46 +12,18 @@ export const HERO_FILTERS = {
     'life steal',
     'mobility',
   ],
-  TIER: [
-    'all',
-    'ss',
-    's',
-    'a',
-    'b',
-    'c',
-    'd'
-  ],
-}
+  TIER: ['all', 'ss', 's', 'a', 'b', 'c', 'd'],
+};
 
 export const TEAM_FILTERS = {
-  REGIONS: [ 'EU', 'NA', 'SEA'],
-}
+  REGIONS: ['EU', 'NA', 'SEA'],
+};
 
 export const ARMORY_FILTERS = {
-  ITEMS: [
-    'attack',
-    'magic',
-    'defense',
-    'movement',
-    'jungle'
-  ],
-  TALENTS: [
-    'assassin',
-    'mage',
-    'marksman',
-    'support',
-    'tank',
-    'warrior'
-  ],
-  ARCANA: [
-    'assassin',
-    'mage',
-    'marksman',
-    'support',
-    'tank',
-    'warrior'
-  ]
-}
+  ITEMS: ['attack', 'magic', 'defense', 'movement', 'jungle'],
+  TALENTS: ['assassin', 'mage', 'marksman', 'support', 'tank', 'warrior'],
+  ARCANA: ['assassin', 'mage', 'marksman', 'support', 'tank', 'warrior'],
+};
 
 export const VIDEO_SEARCH_TERMS = [
   'hero spotlight',
@@ -114,7 +68,18 @@ export const VIDEO_SEARCH_TERMS = [
   'vietnam',
   'skins',
   'garena aov',
-]
-export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS'
-export const DEFAULT_IMAGE_URL = 'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png'
-export const DEFAULT_VIDEO_SEARCH_TERM = 'arena of valor'
+];
+
+export const AOV_CHANNELS = [
+  {
+    channel_id: 'abrownbag',
+    channel_nickname: 'abrownbag, a mobile hoebag streamer',
+    id: 1,
+    header_color: 'black',
+    custom_search_terms: [],
+  },
+];
+export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS';
+export const DEFAULT_IMAGE_URL =
+  'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png';
+export const DEFAULT_VIDEO_SEARCH_TERM = 'arena of valor';

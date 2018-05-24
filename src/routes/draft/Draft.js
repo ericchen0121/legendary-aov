@@ -15,6 +15,7 @@ import classNames from 'classnames';
 import s from './Aov.css';
 import Reckoner from '../../resources/fonts/Reckoner.ttf';
 
+import ChannelHeader from './ChannelHeader';
 import DraftListItem from './DraftListItem';
 import DraftGrid from './DraftGrid';
 import DraftVideo from './DraftVideo';
@@ -28,6 +29,7 @@ import {
   DEFAULT_TOP_LEVEL_FILTER,
   VIDEO_SEARCH_TERMS,
   DEFAULT_VIDEO_SEARCH_TERM,
+  AOV_CHANNELS,
 } from './DraftConstants';
 import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants';
 
@@ -78,6 +80,7 @@ class Draft extends React.Component {
     video_search_term: VIDEO_SEARCH_TERMS[0],
     video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM,
     window_width: null,
+    channel: null,
   };
 
   componentWillMount() {}
@@ -186,8 +189,19 @@ class Draft extends React.Component {
     this.handleFetchYoutubeVideos(this.createQuery(name));
   };
 
-  // tests whether prev selected hero is same as newly selected one
-  // and if it's a new selection, resets the grid to not be full-width
+  handleVideoSearch = video_search_term => {
+    this.setState(
+      {
+        video_search_term,
+        is_hero_filter_grid_view_expanded: false,
+      },
+      () => {
+        const hero = ''; // just search default search term without any hero (ie. hero = '')
+        this.handleFetchYoutubeVideos(hero);
+      },
+    );
+  };
+  // collapses expanded grid if new hero is selected
   collapse_expanded_view = (prev_selection, new_selection) => {
     if (
       this.state.is_hero_filter_grid_view_expanded &&
@@ -217,7 +231,7 @@ class Draft extends React.Component {
     const params = this.props.params;
 
     // Get params from Route
-    const { hero, video_search_term } = params;
+    const { hero, video_search_term, channel_id } = params;
 
     // ie. www.../video/hero/chaugnar
     if (hero) {
@@ -230,16 +244,15 @@ class Draft extends React.Component {
 
     // ie. www.../video/abrownbag
     if (video_search_term) {
-      this.setState(
-        {
-          video_search_term,
-          is_hero_filter_grid_view_expanded: false,
-        },
-        () => {
-          console.log(this.state);
-          this.handleFetchYoutubeVideos('');
-        },
-      );
+      this.handleVideoSearch(video_search_term);
+    }
+
+    if (channel_id) {
+      const channel = AOV_CHANNELS.filter(c => c.channel_id == channel_id)[0];
+      if (channel) {
+        this.setState({ channel });
+        this.handleVideoSearch(channel.channel_id);
+      }
     }
   };
 
@@ -260,6 +273,7 @@ class Draft extends React.Component {
       hero_filter_alphabetical,
       hero_filter_list_view,
       is_hero_filter_grid_view_expanded,
+      channel,
     } = this.state;
 
     const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
@@ -454,6 +468,9 @@ class Draft extends React.Component {
             zeroMinWidth
             classNames={s.main_three}
           >
+            <div className={s.channel_header_container}>
+              <ChannelHeader channel={channel} />
+            </div>
             <div className={s.draft_video_container}>
               <DraftVideo
                 video_search_term={video_search_term}

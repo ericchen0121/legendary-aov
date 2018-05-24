@@ -9,7 +9,7 @@
 
 /* eslint-disable global-require */
 
-import {ROUTE_CONSTANTS} from './routes_constants'
+import { ROUTE_CONSTANTS } from './routes_constants';
 
 // The top-level (parent) route
 const routes = {
@@ -31,6 +31,10 @@ const routes = {
     },
     {
       path: '/video/:video_search_term',
+      load: () => import(/* webpackChunkName: 'draft' */ './draft'),
+    },
+    {
+      path: '/video/channel/:channel_id',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {

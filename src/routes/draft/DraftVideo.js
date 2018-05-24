@@ -2,45 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ReactPlayer from 'react-player';
-import s from './Aov.css'
-import { Icon } from 'react-icons-kit'
-import {arrowCircleLeft} from 'react-icons-kit/fa/arrowCircleLeft'
-import {arrowCircleUp} from 'react-icons-kit/fa/arrowCircleUp'
-import { withBaseIcon } from 'react-icons-kit'
-import {iosGameControllerBOutline} from 'react-icons-kit/ionicons/iosGameControllerBOutline'
-import { HIGHLIGHT_COLOR } from '../../constants'
+import s from './Aov.css';
+import { Icon } from 'react-icons-kit';
+import { arrowCircleLeft } from 'react-icons-kit/fa/arrowCircleLeft';
+import { arrowCircleUp } from 'react-icons-kit/fa/arrowCircleUp';
+import { withBaseIcon } from 'react-icons-kit';
+import { iosGameControllerBOutline } from 'react-icons-kit/ionicons/iosGameControllerBOutline';
+import { HIGHLIGHT_COLOR } from '../../constants';
 
-const VID_HEIGHT = 430
-const VID_WIDTH = 640
-const VID_RATIO = 1
+const VID_HEIGHT = 430;
+const VID_WIDTH = 640;
+const VID_RATIO = 1;
 
-const IconContainer =
-    withBaseIcon({ size: 24, style: {color: HIGHLIGHT_COLOR, marginTop: 10}})
+const IconContainer = withBaseIcon({
+  size: 24,
+  style: { color: HIGHLIGHT_COLOR, marginTop: 10 },
+});
 
-export const UpArrow = () => <IconContainer icon={arrowCircleUp}/>
-export const LeftArrow = () => <IconContainer icon={arrowCircleLeft}/>
+export const UpArrow = () => <IconContainer icon={arrowCircleUp} />;
+export const LeftArrow = () => <IconContainer icon={arrowCircleLeft} />;
 
 class DraftVideo extends React.Component {
   //  examples here: https://github.com/CookPete/react-player/blob/master/src/demo/App.js
   onEnded = () => {
-    console.log('replaying video')
-    this.player.seekTo(0)
-  }
+    this.restartVideo();
+  };
+
+  restartVideo = () => {
+    this.player.seekTo(0);
+  };
 
   ref = player => {
-    this.player = player
-  }
+    this.player = player;
+  };
 
   render() {
     const { youtube_list, is_mobile } = this.props;
 
     let vid = null;
 
-    let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`
-    let WIDTH = '95%'
+    let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`;
+    const WIDTH = '95%';
 
     if (is_mobile) {
-      HEIGHT = 220
+      HEIGHT = 220;
     }
 
     if (youtube_list.data.length !== 0) {
@@ -54,24 +59,38 @@ class DraftVideo extends React.Component {
             width={WIDTH}
             height={HEIGHT}
             playing
-            controls={true}
+            controls
             onEnded={this.onEnded}
-            />
+          />
         </div>
-      )
-    }
-    else {
+      );
+    } else {
       vid = (
         <div className={s.select_player}>
-          <Icon icon={iosGameControllerBOutline} size={140} style={{'color': '#22c1c3'}} />
-          <div><UpArrow /> <span className={s.instruction}>FILTER HEROES &</span></div>
-          <div><LeftArrow /> <span className={s.instruction}>SELECT, WATCH, & BECOME LEGENDARY </span></div>
-          <div><span className={s.instruction}>(or CONQUERER, MASTER, DIAMOND, GOLD...)</span></div>
+          <Icon
+            icon={iosGameControllerBOutline}
+            size={140}
+            style={{ color: '#22c1c3' }}
+          />
+          <div>
+            <UpArrow /> <span className={s.instruction}>FILTER HEROES &</span>
+          </div>
+          <div>
+            <LeftArrow />{' '}
+            <span className={s.instruction}>
+              SELECT, WATCH, & BECOME LEGENDARY{' '}
+            </span>
+          </div>
+          <div>
+            <span className={s.instruction}>
+              (or CONQUERER, MASTER, DIAMOND, GOLD...)
+            </span>
+          </div>
         </div>
-      )
+      );
     }
 
-    return <div className="video_player_container">{vid}</div>
+    return <div className="video_player_container">{vid}</div>;
   }
 }
 

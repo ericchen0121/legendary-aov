@@ -26,7 +26,7 @@
 
 .list_filter {
   margin: 10px 0 0 35px;
-  padding: 4px 3px 0px 3px;
+  padding: 4px 3px 0 3px;
   border: 1px solid lightgray;
 }
 
@@ -44,13 +44,14 @@
 
 .list_filter_arrow {
   position: relative;
-  bottom: 0px;
+  bottom: 0;
 }
 
 .list_filter_view {
   margin-top: 6px;
   margin-left: 20px
 }
+
 .avatar_container {
   margin-right: -33%;
   position: relative;
@@ -71,9 +72,9 @@
   font-style: italic;
   font-weight: 300;
   font-family: 'Josefin Sans', sans-serif;
-  color: rgba(255,255,255,.85);
+  color: rgba(255,255,255,0.85);
   width: 88%;
-  background-color: rgba(75,65,49,.6)
+  background-color: rgba(75,65,49,0.6)
 }
 
 
@@ -83,7 +84,7 @@
 
 .avatar_small {
   position: relative;
-  border-radius: .5em;
+  border-radius: 0.5em;
   border: gold;
   border-width: 1.25px;
   border-style: solid;
@@ -96,7 +97,7 @@
 
 .avatar {
   position: relative;
-  border-radius: .5em;
+  border-radius: 0.5em;
   border: gold;
   border-width: 1.25px;
   border-style: solid;
@@ -235,7 +236,7 @@
 }
 
 .sub_info_center {
-    margin-left: 1.9em;
+  margin-left: 1.9em;
 }
 
 .draft_rd {
@@ -258,7 +259,7 @@
 .name {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
-  font-size: .85em
+  font-size: 0.85em
 }
 
 .nickname {
@@ -269,7 +270,7 @@
 }
 
 .info_title {
-  font-size: .65em;
+  font-size: 0.65em;
 }
 
 .info {
@@ -288,7 +289,7 @@
 }
 
 .video_player_title_container {
-  margin: 20px 20px 20px 0px;
+  margin: 20px 20px 20px 0;
 }
 
 .instruction {
@@ -328,12 +329,29 @@
   text-decoration: none;
   color: gray
 }
+
 .item_yt_icon {
   margin-left: 8px
 }
 
 .line_height_sm {
   line-height: 1
+}
+
+
+/* CHANNELS */
+.channel_container {
+  background: black;
+  text-align: center;
+  width: 95%;
+  padding: 15px 0;
+
+  /* margin-right: 20px */
+}
+
+.channel_avatar {
+  width: 60px;
+  height: 60px
 }
 
 @media screen and (min-width: 376px) and (max-width: 450px) {
@@ -353,11 +371,13 @@
   .draft_video_container {
     margin-left: 15px
   }
+
   /* override mobile video title size */
   .avatar_small_title {
     width: 45px;
     margin-top: 0;
   }
+
   .avatar_text {
     font-size: 10px
   }
@@ -388,12 +408,15 @@
   .main_one {
     order: 1
   }
+
   .main_two {
     order: 4
   }
+
   .main_three {
     order: 2
   }
+
   .main_four {
     order: 3
   }
@@ -401,12 +424,15 @@
   .root_container :nth-child(1){
     order: 1
   }
+
   .root_container :nth-child(2){
     order: 4
   }
+
   .root_container :nth-child(3){
     order: 2
   }
+
   .root_container :nth-child(4){
     order: 3
   }
