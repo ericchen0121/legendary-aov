@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "<=9",
+    "node": ">=6.13.1",
     "npm": ">=3.10.10"
   },
   "browserslist": [">1%", "last 4 versions", "Firefox ESR", "not ie < 9"],
@@ -23,7 +23,6 @@
     "isomorphic-style-loader": "^4.0.0",
     "jsonwebtoken": "^8.2.0",
     "material-ui": "^1.0.0-beta.47",
-    "node-sqlite3": "3.1.13",
     "node-fetch": "^2.1.1",
     "normalize.css": "^8.0.0",
     "passport": "^0.4.0",
@@ -43,7 +42,6 @@
     "sequelize": "^4.37.3",
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.5.4",
-    "sqlite3": "^4.0.0",
     "universal-router": "^6.0.0",
     "whatwg-fetch": "^2.0.3"
   },
