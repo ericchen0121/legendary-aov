@@ -49,8 +49,8 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 450px) {
   .signup {
-    font-size: .8em
+    font-size: 0.8em
   }
 }

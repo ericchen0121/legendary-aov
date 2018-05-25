@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cx from 'classnames'
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
@@ -8,7 +8,7 @@ import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/Menu/MenuItem';
-import { VIDEO_SEARCH_TERMS } from './DraftConstants'
+import { VIDEO_SEARCH_TERMS } from './DraftConstants';
 
 const styles = theme => ({
   root: {
@@ -27,16 +27,15 @@ const styles = theme => ({
     width: 200,
   },
   white_text: {
-    color: 'white'
-  }
+    color: 'white',
+  },
 });
 
 const white_text = {
-  color: 'white'
-}
+  color: 'white',
+};
 
 class DraftVideoSearch extends Component {
-
   state = {
     player: '',
     search_term: VIDEO_SEARCH_TERMS[0],
@@ -44,42 +43,48 @@ class DraftVideoSearch extends Component {
 
   handleChange = key => event => {
     this.setState({ [key]: event.target.value });
-    this.props.onVideoSearchTermChange(event.target.value) // send to parent component
+    this.props.onVideoSearchTermChange(event.target.value); // send to parent component
   };
 
   render() {
-    const { classes, player, youtube_list, onVideoSearchTermChange, utilities } = this.props;
-    const { dark_mode_active } = utilities
-    let selected_player = null
+    const {
+      classes,
+      player,
+      youtube_list,
+      onVideoSearchTermChange,
+      utilities,
+    } = this.props;
+    const { dark_mode_active } = utilities;
+    let selected_player = null;
     if (youtube_list.selected_player) {
-      selected_player = youtube_list.selected_player.PLAYER
+      selected_player = youtube_list.selected_player.PLAYER;
     }
 
     return (
       <div className={cx(classes.root, s.video_search_container)}>
-          <TextField
-              select
-              label={selected_player}
-              className={cx(
-                classes.margin,
-                classes.textField,
-                {[classes.white_text]: dark_mode_active }
-              )}
-              value={this.state.search_term}
-              onChange={this.handleChange('search_term')}
-              InputProps={{
-                startAdornment: <InputAdornment position="start">youtube</InputAdornment>,
-                color: 'blue'
-              }}
-            >
-            {VIDEO_SEARCH_TERMS.map(option => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
+        <TextField
+          select
+          label={selected_player}
+          className={cx(classes.margin, classes.textField, {
+            [classes.white_text]: dark_mode_active,
+          })}
+          value={this.state.search_term}
+          onChange={this.handleChange('search_term')}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">youtube</InputAdornment>
+            ),
+            color: 'blue',
+          }}
+        >
+          {VIDEO_SEARCH_TERMS.map(option => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
       </div>
-    )
+    );
   }
 }
 

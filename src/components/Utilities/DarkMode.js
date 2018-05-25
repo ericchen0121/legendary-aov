@@ -12,25 +12,26 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './DarkMode.css';
 import { Icon } from 'react-icons-kit';
 
-import {ic_lightbulb_outline} from 'react-icons-kit/md/ic_lightbulb_outline'
+import { ic_lightbulb_outline } from 'react-icons-kit/md/ic_lightbulb_outline';
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class DarkMode extends React.Component {
-
   render() {
-    const { utilities } = this.props
-    const { dark_mode_active } = utilities
+    const { utilities } = this.props;
+    const { dark_mode_active } = utilities;
 
-    let icon_color = '#303030'
-    if (dark_mode_active) { icon_color = 'white' }
+    let icon_color = '#303030';
+    if (dark_mode_active) {
+      icon_color = 'white';
+    }
 
     return (
       <span
         onClick={this.props.actions.toggleDarkMode}
-        style={{'color': icon_color }}
+        style={{ color: icon_color }}
       >
         <Icon icon={ic_lightbulb_outline} size={16} />
       </span>
@@ -49,5 +50,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(s)(
-  connect(mapStateToProps, mapDispatchToProps)(DarkMode)
-)
+  connect(mapStateToProps, mapDispatchToProps)(DarkMode),
+);

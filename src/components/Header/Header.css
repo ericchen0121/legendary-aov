@@ -27,7 +27,7 @@
 }
 
 .brand_slash::before {
-  background: rgba(255,255,255,.4);
+  background: rgba(255,255,255,0.4);
   right: 87.5%;
   left: 12%;
 }
@@ -54,7 +54,7 @@
   font-size: 24px;
   font-weight: bold;
   color: black;
-  text-shadow: .65px .65px red
+  text-shadow: 0.65px 0.65px red
 }
 
 .banner {
@@ -82,11 +82,12 @@
   margin-left: 25px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 450px) {
   .brand_slash::before {
     right: 61%;
     left: 37%;
   }
+
   .brandTxt {
     font-size: 19px
   }
@@ -107,6 +108,7 @@
     left: 20%;
   }
 }
+
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .brand_slash::before {
     right: 83.5%;

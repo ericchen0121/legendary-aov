@@ -14,17 +14,16 @@ import s from './Navigation.css';
 import Link from '../Link';
 import DarkMode from '../Utilities/DarkMode.js';
 
-import { TWITTER } from '../../constants'
-import { Icon } from 'react-icons-kit'
-import {twitter} from 'react-icons-kit/icomoon/twitter'
+import { TWITTER } from '../../constants';
+import { Icon } from 'react-icons-kit';
+import { twitter } from 'react-icons-kit/icomoon/twitter';
 
 class Navigation extends React.Component {
-
   render() {
     return (
       <div className={s.root} role="navigation">
-        <a href={TWITTER} target='_blank'>
-          <Icon icon={twitter} style={{'color': 'white'}}/>
+        <a href={TWITTER} target="_blank">
+          <Icon icon={twitter} style={{ color: 'white' }} />
         </a>
         <span className={s.spacer}> | </span>
         <Link className={cx(s.link, s.highlight, s.signup)} to="/register">

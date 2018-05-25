@@ -30,11 +30,11 @@ const styles = theme => ({
     marginLeft: 1,
   },
   gridListLeft: {
-    marginLeft: 20
+    marginLeft: 20,
   },
   dark_mode: {
-    backgroundColor: 'black'
-  }
+    backgroundColor: 'black',
+  },
 });
 class DraftGrid extends React.Component {
   static propTypes = {
@@ -42,14 +42,9 @@ class DraftGrid extends React.Component {
   };
 
   render() {
-    const {
-      order_hero,
-      classes,
-      is_mobile,
-      utilities
-    } = this.props;
+    const { order_hero, classes, is_mobile, utilities } = this.props;
 
-    const { dark_mode_active } = utilities
+    const { dark_mode_active } = utilities;
 
     let list = null;
     let list_grid = null;
@@ -65,7 +60,13 @@ class DraftGrid extends React.Component {
     if (is_mobile) {
       list_grid = (
         <div className={classes.grid_container}>
-          <GridList className={cx(classes.gridList, {[classes.gridListLeft]: dark_mode_active} )} cellHeight={150} cols={1}>
+          <GridList
+            className={cx(classes.gridList, {
+              [classes.gridListLeft]: dark_mode_active,
+            })}
+            cellHeight={150}
+            cols={1}
+          >
             {list}
           </GridList>
         </div>

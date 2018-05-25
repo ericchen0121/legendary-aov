@@ -17,7 +17,7 @@ class Header extends React.Component {
   // <div className={s.brand_slash}/> would go after the img. Change it to true px left and right in css, not %-based
 
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
 
     return (
       <div className={s.root}>
@@ -27,7 +27,7 @@ class Header extends React.Component {
             <Link className={s.brand} to="/">
               <span className={s.brandTxt}>LEGENDARY</span>
             </Link>
-            <img className={s.logo} src='/aov/logo/aov-logo-white-small.png' />
+            <img className={s.logo} src="/aov/logo/aov-logo-white-small.png" />
           </div>
         </div>
       </div>
