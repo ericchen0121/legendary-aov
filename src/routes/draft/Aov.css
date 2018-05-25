@@ -28,7 +28,7 @@
 }
 
 .list_filter_container {
-  padding-top: 14px
+  padding: 8px 0;
 }
 
 .list_filter {
@@ -383,7 +383,7 @@
   }
 
   .draft_video_container {
-    margin: 0 5px;
+
   }
 
   /* override mobile video title size */
@@ -397,7 +397,8 @@
   }
 
   .select_player {
-    margin-right: 0
+    margin-right: 0;
+    margin-top: 25px;
   }
 
   .item_playlist_container_more {
@@ -445,7 +446,8 @@
   }
 
   .select_player {
-    margin-right: 0
+    margin-right: 0;
+    margin-top: 25px;
   }
 
   .item_playlist_container_more {
