@@ -61,7 +61,7 @@ class DraftVideoSearch extends Component {
     }
 
     return (
-      <div className={cx(classes.root, s.video_search_container)}>
+      <div className={cx(classes.root, s.video_search_container, {[s.video_search_dark_mode]: dark_mode_active} )}>
         <TextField
           select
           label={selected_player}

@@ -366,6 +366,12 @@
   height: 60px
 }
 
+.video_search_dark_mode {
+  background: #6d675e;
+  border-radius: 2px;
+  border: .75px solid var(--highlight-color);
+}
+
 @media screen and (min-width: 376px) and (max-width: 450px) {
   .avatar_container {
     margin-right: -25%;
@@ -379,7 +385,7 @@
   }
 
   .video_search_container {
-    margin-left: 15%
+    padding-left: 15%;
   }
 
   .draft_video_container {
@@ -441,7 +447,7 @@
   }
 
   .video_search_container {
-    margin-left: 15%
+    padding-left: 15%
   }
 
   .draft_video_container {
