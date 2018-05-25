@@ -349,27 +349,29 @@ class Draft extends React.Component {
     // GRID EXPAND
     //
     let expand_grid_arrow = null;
-    if (!hero_filter_list_view) {
-      if (is_hero_filter_grid_view_expanded) {
-        expand_grid_arrow = (
-          <span onClick={this.onFilterExpand}>
-            <Icon
-              icon={ic_chevron_left}
-              size={18}
-              style={{ cursor: 'pointer' }}
-            />
-          </span>
-        );
-      } else {
-        expand_grid_arrow = (
-          <span onClick={this.onFilterExpand}>
-            <Icon
-              icon={ic_chevron_right}
-              size={18}
-              style={{ cursor: 'pointer' }}
-            />
-          </span>
-        );
+    if (!isMobile) {
+      if (!hero_filter_list_view) {
+        if (is_hero_filter_grid_view_expanded) {
+          expand_grid_arrow = (
+            <span onClick={this.onFilterExpand}>
+              <Icon
+                icon={ic_chevron_left}
+                size={18}
+                style={{ cursor: 'pointer' }}
+              />
+            </span>
+          );
+        } else {
+          expand_grid_arrow = (
+            <span onClick={this.onFilterExpand}>
+              <Icon
+                icon={ic_chevron_right}
+                size={18}
+                style={{ cursor: 'pointer' }}
+              />
+            </span>
+          );
+        }
       }
     }
 

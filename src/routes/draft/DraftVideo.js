@@ -42,7 +42,7 @@ class DraftVideo extends React.Component {
     let vid = null;
 
     let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`;
-    const WIDTH = '95%';
+    const WIDTH = '100%';
 
     if (is_mobile) {
       HEIGHT = 220;
