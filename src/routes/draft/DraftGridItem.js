@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
-import classNames from 'classnames'
+import cx from 'classnames'
 import { DEFAULT_IMAGE_URL } from './DraftConstants'
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
@@ -24,9 +24,10 @@ class DraftGridItem extends React.Component {
   }
 
   render() {
-    const { hero } = this.props;
+    const { hero, utilities } = this.props;
     const { name, nickname, classes, lanes, roles, tier, folder } = hero
-
+    const { dark_mode_active } = utilities
+    console.log('griditem', dark_mode_active)
     const query = this.createQuery(name)
     const handleItemClick = this.handleItemClick.bind(this)
 
@@ -43,11 +44,11 @@ class DraftGridItem extends React.Component {
     let avatar = null
     if (folder) {
       avatar = <div className={s.avatar_grid_container}>
-        <img className={classNames(s.avatar_small, s.avatar_grid)} src={`/aov/heroes/${folder}/hero.png`} />
-        <div className={s.avatar_text}>{name.toUpperCase()}</div>
+        <img className={cx(s.avatar_small, s.avatar_grid)} src={`/aov/heroes/${folder}/hero.png`} />
+        <div className={cx(s.avatar_text, {[s.white_text]: dark_mode_active } )}> { name.toUpperCase() }</div>
       </div>
     } else {
-      avatar = <div className={s.avatar_grid_container}><img className={classNames(s.avatar_small, s.avatar_grid)} src={DEFAULT_IMAGE_URL} /></div>
+      avatar = <div className={s.avatar_grid_container}><img className={cx(s.avatar_small, s.avatar_grid)} src={DEFAULT_IMAGE_URL} /></div>
     }
 
     let nickname_container = null

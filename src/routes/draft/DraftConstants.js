@@ -46,6 +46,7 @@ export const VIDEO_SEARCH_TERMS = [
   'iflekzz',
   'franjosetv',
   'valor series',
+  'zuchiha aov',
   'aic',
   'rumblytv',
   'mr. peeperz',

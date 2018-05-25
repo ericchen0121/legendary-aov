@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
-import classNames from 'classnames'
+import cx from 'classnames'
 import Divider from 'material-ui/Divider';
 
 class DraftPlaylist extends Component {
 
   render() {
-    const { youtube_list } = this.props;
+    const { youtube_list, utilities } = this.props;
+    const { dark_mode_active } = utilities
     const more_playlist_alert = 'SCROLL FOR MORE'
+
     let list = youtube_list.data
     let imgs = list.map((item) => {
       let url = item.snippet.thumbnails.medium.url
@@ -19,8 +21,8 @@ class DraftPlaylist extends Component {
         <div>
           <div className={s.item_playlist} onClick={() => this.props.actions.selectYoutubeVideo(item)}>
             <img className={s.yt_img} src={url} />
-            <div className={s.item_title}>{title}</div>
-            <div className={s.item_channel}>{channel}</div>
+            <div className={cx(s.item_title, {[s.white_text]: dark_mode_active } )}>{title}</div>
+            <div className={cx(s.item_channel, {[s.white_text]: dark_mode_active } )}>{channel}</div>
           </div>
           <Divider />
         </div>
@@ -29,7 +31,7 @@ class DraftPlaylist extends Component {
 
     return (
         <div>
-          <div className={classNames(s.wrapper, s.item_playlist_container)}>
+          <div className={cx(s.wrapper, s.item_playlist_container)}>
             {imgs}
           </div>
           <div className={s.item_playlist_container_more}>{more_playlist_alert}</div>

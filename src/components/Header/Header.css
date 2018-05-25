@@ -79,13 +79,25 @@
 .logo {
   vertical-align: text-bottom;
   width: 60px;
-  margin-left: 25px
+  margin-left: 25px;
 }
 
 @media (max-width: 375px) {
   .brand_slash::before {
     right: 61%;
     left: 37%;
+  }
+  .brandTxt {
+    font-size: 19px
+  }
+
+  .container {
+    padding: 2px 0 5px 0;
+  }
+
+  .logo {
+    width: 45px;
+    margin-left: 10px
   }
 }
 

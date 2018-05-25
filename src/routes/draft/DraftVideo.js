@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ReactPlayer from 'react-player';
 import s from './Aov.css';
+import cx from 'classnames'
 import { Icon } from 'react-icons-kit';
 import { arrowCircleLeft } from 'react-icons-kit/fa/arrowCircleLeft';
 import { arrowCircleUp } from 'react-icons-kit/fa/arrowCircleUp';
@@ -37,7 +38,8 @@ class DraftVideo extends React.Component {
   };
 
   render() {
-    const { youtube_list, is_mobile } = this.props;
+    const { youtube_list, is_mobile, utilities } = this.props;
+    const { dark_mode_active } = utilities
 
     let vid = null;
 
@@ -73,16 +75,16 @@ class DraftVideo extends React.Component {
             style={{ color: '#22c1c3' }}
           />
           <div>
-            <UpArrow /> <span className={s.instruction}>FILTER HEROES &</span>
+            <UpArrow /> <span className={cx(s.instruction, {[s.white_text]: dark_mode_active } )}>FILTER HEROES &</span>
           </div>
           <div>
             <LeftArrow />{' '}
-            <span className={s.instruction}>
+            <span className={cx(s.instruction, {[s.white_text]: dark_mode_active } )}>
               SELECT, WATCH, & BECOME LEGENDARY{' '}
             </span>
           </div>
           <div>
-            <span className={s.instruction}>
+            <span className={cx(s.instruction, {[s.white_text]: dark_mode_active } )}>
               (or CONQUERER, MASTER, DIAMOND, GOLD...)
             </span>
           </div>
@@ -90,7 +92,7 @@ class DraftVideo extends React.Component {
       );
     }
 
-    return <div className="video_player_container">{vid}</div>;
+    return <div className={s.video_player_container}>{vid}</div>;
   }
 }
 

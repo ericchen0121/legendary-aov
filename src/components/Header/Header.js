@@ -28,7 +28,6 @@ class Header extends React.Component {
               <span className={s.brandTxt}>LEGENDARY</span>
             </Link>
             <img className={s.logo} src='/aov/logo/aov-logo-white-small.png' />
-
           </div>
         </div>
       </div>

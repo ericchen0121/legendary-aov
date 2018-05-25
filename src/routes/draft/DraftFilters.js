@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import s from './Aov.css';
+import classNames from 'classnames'
 
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
@@ -33,7 +34,8 @@ class DraftFilters extends Component {
       top_level_filter_selected,
       lower_level_filter_selected,
       filters,
-      is_mobile
+      is_mobile,
+      dark_mode_active
     } = this.props;
 
     let top_level_appbar = null
@@ -50,8 +52,6 @@ class DraftFilters extends Component {
           return <Tab label={ filter } value = { filter }/>
       }
     })
-
-    // let typography =  <Typography className={classes.typography}>Ant Design UI powered by Material-UI</Typography>
 
     if (is_mobile) {
       top_level_appbar = (
@@ -122,10 +122,8 @@ class DraftFilters extends Component {
       return <img className={s.logo} src={`https://static.nfl.com/static/site/img/logos/svg/teams/${team}.svg`}/>
     }
 
-
-
     return (
-        <div className="filter_container">
+        <div className= {"filter_container"}>
           <div className={s.center}>{ top_level_appbar }</div>
           <div className={s.center}>{ lower_level_appbar }</div>
         </div>

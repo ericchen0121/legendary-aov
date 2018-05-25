@@ -12,12 +12,14 @@ import cx from 'classnames';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Navigation.css';
 import Link from '../Link';
+import DarkMode from '../Utilities/DarkMode.js';
 
 import { TWITTER } from '../../constants'
 import { Icon } from 'react-icons-kit'
 import {twitter} from 'react-icons-kit/icomoon/twitter'
 
 class Navigation extends React.Component {
+
   render() {
     return (
       <div className={s.root} role="navigation">
@@ -28,6 +30,8 @@ class Navigation extends React.Component {
         <Link className={cx(s.link, s.highlight, s.signup)} to="/register">
           Sign up
         </Link>
+        <span className={s.spacer}> | </span>
+        <DarkMode />
       </div>
     );
   }

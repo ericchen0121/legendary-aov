@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames'
+import cx from 'classnames'
 // import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import s from './Aov.css';
@@ -12,7 +12,8 @@ import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutl
 class DraftVideoTitle extends React.Component {
 
   render() {
-    const { youtube_list } = this.props
+    const { youtube_list, utilities } = this.props
+    const { dark_mode_active } = utilities
     const hero = youtube_list.selected_hero
     const selected_video = youtube_list.selected_video
 
@@ -27,13 +28,13 @@ class DraftVideoTitle extends React.Component {
     if (folder) {
       avatar = (
         <div className={s.avatar_container}>
-          <img className={classNames(s.avatar_small, s.avatar_small_title)} src={`/aov/heroes/${folder}/hero.png`} />
+          <img className={cx(s.avatar_small, s.avatar_small_title)} src={`/aov/heroes/${folder}/hero.png`} />
         </div>
       )
     } else {
       avatar = (
         <div className={s.avatar_container}>
-          <img className={classNames(s.avatar_small, s.avatar_small_title)} src={DEFAULT_IMAGE_URL} />
+          <img className={cx(s.avatar_small, s.avatar_small_title)} src={DEFAULT_IMAGE_URL} />
         </div>
       )
     }
@@ -49,18 +50,20 @@ class DraftVideoTitle extends React.Component {
 
       return (
         <div className={s.flex_container_row}>
-          <div className={classNames(s.video_player_title_container, s.flex_container_row)}>
+          <div className={cx(s.video_player_title_container, s.flex_container_row)}>
             { avatar }
           </div>
-          <div className={classNames(s.item_playlist, s.margin_top_title)}>
-            <div className={s.item_title}>{title}</div>
-            <div className={classNames(s.flex_container_row)}>
+          <div className={cx(s.item_playlist, s.margin_top_title)}>
+            <div className={cx(s.item_title, {[s.white_text]: dark_mode_active } )}>
+              {title}
+            </div>
+            <div className={cx(s.flex_container_row)}>
               <a
                 className={s.channel_link}
                 href={`https://www.youtube.com/channel/${channel_id}`}
                 target="blank"
               >
-                <span className={classNames(s.item_channel)}>{channel}</span>
+                <span className={cx(s.item_channel, {[s.white_text]: dark_mode_active })}>{channel}</span>
                 <Icon
                   style={{ color: '#E62117' }}
                   className={s.item_yt_icon}

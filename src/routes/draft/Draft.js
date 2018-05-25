@@ -11,7 +11,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
-import classNames from 'classnames';
+import cx from 'classnames';
 import s from './Aov.css';
 import Reckoner from '../../resources/fonts/Reckoner.ttf';
 
@@ -62,8 +62,11 @@ const styles = theme => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
   },
+  dark_mode: {
+    background: '#303030',
+    color: 'white'
+  }
 });
 
 class Draft extends React.Component {
@@ -262,7 +265,10 @@ class Draft extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const {
+      classes,
+      utilities,
+    } = this.props;
 
     const {
       window_width,
@@ -276,6 +282,7 @@ class Draft extends React.Component {
       channel,
     } = this.state;
 
+    const { dark_mode_active } = utilities
     const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
 
     // VIEW SELECTION
@@ -410,20 +417,25 @@ class Draft extends React.Component {
     );
 
     return (
-      <div classNames={(classes.root, s.root_container)}>
+      <div classNames={cx(classes.root, s.root_container, {[classes.dark_mode]: dark_mode_active})}>
         <Grid container>
-          <Grid item xs={12} md={12} classNames={s.main_one}>
+          <Grid item xs={12} md={12} classNames={ cx(
+              s.main_one,
+              {[classes.dark_mode]: dark_mode_active}
+            )}
+          >
             <DraftFilters
               is_mobile={isMobile}
+              dark_mode_active={dark_mode_active}
               filters={HERO_FILTERS}
               onTopLevelFilterChange={this.onTopLevelFilterChange}
               onLowerLevelFilterChange={this.onLowerLevelFilterChange}
               top_level_filter_selected={top_level_filter_selected}
               lower_level_filter_selected={lower_level_filter_selected}
             />
-            <div className={s.list_filter_container}>
+            <div className={cx(s.list_filter_container, {[classes.dark_mode]: dark_mode_active })}>
               <span
-                className={classNames(
+                className={cx(
                   s.list_filter,
                   { [s.list_filter_active]: hero_filter_alphabetical },
                   s.cursor_pointer,
@@ -441,7 +453,7 @@ class Draft extends React.Component {
               </span>
               <span className={s.list_filter_info}>{alpha_filter_info}</span>
               <span
-                className={classNames(s.list_filter_view, s.cursor_pointer)}
+                className={cx(s.list_filter_view, s.cursor_pointer)}
                 onClick={this.onFilterGridListViewChange}
               >
                 {filter_list_grid_icon}
@@ -457,7 +469,9 @@ class Draft extends React.Component {
             md={hero_view_grid_cols}
             lg={hero_view_grid_cols}
             zeroMinWidth
-            classNames={s.main_two}
+            className={cx(
+              {[classes.dark_mode]: dark_mode_active}
+            )}
           >
             {list_grid}
           </Grid>
@@ -468,7 +482,9 @@ class Draft extends React.Component {
             md={hero_view_video_cols}
             lg={hero_view_video_cols}
             zeroMinWidth
-            classNames={s.main_three}
+            className={cx(
+              {[classes.dark_mode]: dark_mode_active}
+            )}
           >
             <div className={s.channel_header_container}>
               <ChannelHeader channel={channel} />
@@ -489,7 +505,9 @@ class Draft extends React.Component {
             md={hero_view_video_list_cols}
             lg={hero_view_video_list_cols}
             zeroMinWidth
-            classNames={s.main_four}
+            className={cx(
+              {[classes.dark_mode]: dark_mode_active}
+            )}
           >
             {video_search}
             <DraftPlaylist {...this.props} />
