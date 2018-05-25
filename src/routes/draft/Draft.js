@@ -144,11 +144,15 @@ class Draft extends React.Component {
 
     let filtered_heroes = null;
     if (lower_level_filter_selected === 'all') {
-      filtered_heroes = heroes;
+      filtered_heroes = heroes
+    } else if (top_level_filter_selected === 'TIER'){
+      filtered_heroes = heroes.filter(hero =>
+        hero[key] == lower_level_filter_selected
+      )
     } else {
       filtered_heroes = heroes.filter(hero =>
-        hero[key].includes(lower_level_filter_selected),
-      );
+        hero[key].includes(lower_level_filter_selected) // use includes because of array of values
+      )
     }
 
     return filtered_heroes;
