@@ -53,29 +53,28 @@ class DraftVideoSearch extends Component {
       youtube_list,
       onVideoSearchTermChange,
       utilities,
+      is_mobile
     } = this.props;
     const { dark_mode_active } = utilities;
+
+    let adornment = {}
+    if (!is_mobile) { adornment = { startAdornment: <InputAdornment position="start">youtube</InputAdornment> } }
+
     let selected_player = null;
     if (youtube_list.selected_player) {
       selected_player = youtube_list.selected_player.PLAYER;
     }
+
 
     return (
       <div className={cx(classes.root, s.video_search_container, {[s.video_search_dark_mode]: dark_mode_active} )}>
         <TextField
           select
           label={selected_player}
-          className={cx(classes.margin, classes.textField, {
-            [classes.white_text]: dark_mode_active,
-          })}
+          className={cx(classes.margin, classes.textField )}
           value={this.state.search_term}
           onChange={this.handleChange('search_term')}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">youtube</InputAdornment>
-            ),
-            color: 'blue',
-          }}
+          InputProps={adornment}
         >
           {VIDEO_SEARCH_TERMS.map(option => (
             <MenuItem key={option} value={option}>

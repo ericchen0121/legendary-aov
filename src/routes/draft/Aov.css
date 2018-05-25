@@ -388,6 +388,10 @@
     padding-left: 15%;
   }
 
+  .video_search_container.is_mobile {
+    width: 50%
+  }
+
   .draft_video_container {
     margin: 15px 0 0 0;
   }
@@ -411,7 +415,7 @@
   }
 
   .select_player {
-    margin: 25px 0 0 10%;
+    display: none
   }
 
   .item_playlist_container_more {

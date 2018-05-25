@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
+import s from './Aov.css';
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
-import s from './Aov.css';
-import cx from 'classnames';
-import DraftGridItem from './DraftGridItem';
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
+import DraftGridItem from './DraftGridItem';
 
 const styles = theme => ({
   root: {

@@ -67,6 +67,9 @@ const styles = theme => ({
     background: '#303030',
     color: 'white',
   },
+  textFieldMobile: {
+    width: 100
+  }
 });
 
 class Draft extends React.Component {
@@ -204,6 +207,7 @@ class Draft extends React.Component {
       },
     );
   };
+
   // collapses expanded grid if new hero is selected
   collapse_expanded_view = (prev_selection, new_selection) => {
     if (
@@ -232,7 +236,7 @@ class Draft extends React.Component {
 
   handleRouteParams = () => {
     const params = this.props.params;
-
+    console.log('params is', params)
     // Get params from Route
     const { hero, video_search_term, channel_id } = params;
 
@@ -257,11 +261,24 @@ class Draft extends React.Component {
         this.handleVideoSearch(channel.channel_id);
       }
     }
+
+    if (!(hero && video_search_term && channel_id)) {
+      if (this.isWindowMobile(this.state.window_width)) {
+        this.handleVideoSearch('')
+      }
+    }
   };
 
+  isWindowMobile = (w) => { return w <= MOBILE_MAX_WINDOW_WIDTH }
+
   componentDidMount() {
-    this.setState({ window_width: window.innerWidth }); // for resize event handler: https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
-    this.handleRouteParams();
+    // PS... for resize event handler: https://stackoverflow.com/questions/40580424/react-isomorphic-rendering-handle-window-resize-event
+
+    this.setState({ window_width: window.innerWidth },
+      () => {
+        this.handleRouteParams(); // relies on window width, so using cb
+      }
+    );
   }
 
   render() {
@@ -280,7 +297,7 @@ class Draft extends React.Component {
     } = this.state;
 
     const { dark_mode_active } = utilities;
-    const isMobile = window_width <= MOBILE_MAX_WINDOW_WIDTH;
+    const isMobile = this.isWindowMobile(window_width);
 
     // VIEW SELECTION
     //
@@ -406,9 +423,12 @@ class Draft extends React.Component {
     }
 
     // VIDEO SEARCH FILTER
+    // NOTE: for if you want to change placement of video search/dropdown (into header bar)
     const video_search = (
       <DraftVideoSearch
         onVideoSearchTermChange={this.onVideoSearchTermChange}
+        is_mobile={isMobile}
+        className={classes.textFieldMobile}
         {...this.props}
       />
     );
