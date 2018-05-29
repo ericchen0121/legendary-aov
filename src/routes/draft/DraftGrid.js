@@ -46,8 +46,8 @@ class DraftGrid extends React.Component {
 
     const { dark_mode_active } = utilities;
 
-    let list = null;
-    let list_grid = null;
+    let list = null
+    let list_grid = null
 
     list = order_hero.map(h => (
       <DraftGridItem
@@ -70,7 +70,7 @@ class DraftGrid extends React.Component {
             {list}
           </GridList>
         </div>
-      );
+      )
     } else {
       list_grid = (
         <div className={cx(classes.grid_container)}>
@@ -78,10 +78,10 @@ class DraftGrid extends React.Component {
             {list}
           </GridList>
         </div>
-      );
+      )
     }
 
-    return list_grid;
+    return list_grid
   }
 }
 

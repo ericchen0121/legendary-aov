@@ -38,6 +38,18 @@ const routes = {
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
+      path: '/item/build',
+      load: () => import(/* webpackChunkName: 'build' */ './build'),
+    },
+    {
+      path: '/item/build/:build_id',
+      load: () => import(/* webpackChunkName: 'build' */ './build'),
+    },
+    {
+      path: '/item/build/:hero',
+      load: () => import(/* webpackChunkName: 'build' */ './build'),
+    },
+    {
       path: '/login',
       load: () => import(/* webpackChunkName: 'login' */ './login'),
     },

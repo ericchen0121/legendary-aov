@@ -25,7 +25,6 @@ class DraftGridItem extends React.Component {
     const { hero, utilities } = this.props;
     const { name, nickname, classes, lanes, roles, tier, folder } = hero;
     const { dark_mode_active } = utilities;
-    console.log('griditem', dark_mode_active);
     const query = this.createQuery(name);
     const handleItemClick = this.handleItemClick.bind(this);
 

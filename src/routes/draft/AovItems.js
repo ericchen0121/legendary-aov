@@ -3,7 +3,7 @@
  //
 const ITEMS = [
   {
-    name 'Spear of Longinus',
+    name: 'Spear of Longinus',
     type: 'attack',
     tier: 3,
     cost: 2060,
@@ -26,6 +26,7 @@ const ITEMS = [
       description: 'Decreases target armor by 50 on hit for 5 seconds. Stacks up to 5 times.',
       type: ['strip']
     }],
+  },
   {
     name: "Fafnir's Talon",
     type: 'attack',
@@ -55,7 +56,7 @@ const ITEMS = [
     name: "Claves Sancti",
     type: 'attack',
     tier: 3,
-    cost: ,
+    cost: 2250,
     effects: [
       {
         type: 'attack damage',
@@ -125,7 +126,7 @@ const ITEMS = [
     name: "Omni Arms",
     type: 'attack',
     tier: 3,
-    cost: ,
+    cost: 2150,
     effects: [
       {
         type: 'attack damage',
@@ -752,7 +753,7 @@ const ITEMS = [
       },
       {
         type: 'hp',
-        power: 100
+        power: 100,
         detail: 'per 5 seconds'
       },
     ],

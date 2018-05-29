@@ -221,7 +221,7 @@ class Draft extends React.Component {
     ) {
       this.setState({
         is_hero_filter_grid_view_expanded: false,
-      });
+      })
     }
   };
 
@@ -236,7 +236,7 @@ class Draft extends React.Component {
         hero_obj.alt_names.findIndex(
           alt_name => alt_name.toLowerCase() === hero_name.toLowerCase(),
         ) > -1,
-    )[0]; // get first object that matches the filter ;)
+    )[0] // get first object that matches the filter ;)
 
   handleRouteParams = () => {
     const params = this.props.params;

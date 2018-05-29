@@ -100,7 +100,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'batman',
-    "regions": ['eu']
+    "regions": ['na', 'eu']
   },
   {
     "name": 'Butterfly',
