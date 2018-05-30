@@ -3,6 +3,7 @@
  //
 const HEROES = [
   {
+    "id": 1,
     "name": 'Tulen',
     'alt_names': ['Tulen'],
     "nickname": 'Pure',
@@ -14,6 +15,7 @@ const HEROES = [
     "folder": 'tulen'
   },
   {
+    "id": 2,
     "name": 'Airi',
     'alt_names': ['Airi'],
     "nickname": 'Kunoichi',
@@ -25,6 +27,7 @@ const HEROES = [
     "folder": 'airi'
   },
   {
+    "id": 3,
     "name": 'Aleister',
     'alt_names': ['Aleister'],
     "nickname": 'Lord of Mischief',
@@ -36,6 +39,7 @@ const HEROES = [
     "folder": 'aleister'
   },
   {
+    "id": 4,
     "name": 'Alice',
     'alt_names': ['Alice'],
     "nickname": 'Adorable Mystic',
@@ -47,6 +51,7 @@ const HEROES = [
     "folder": 'alice'
   },
   {
+    "id": 5,
     "name": 'Arduin',
     'alt_names': ['Arduin'],
     "nickname": 'Spirit',
@@ -58,6 +63,7 @@ const HEROES = [
     "folder": 'arduin'
   },
   {
+    "id": 6,
     "name": 'Arthur',
     'alt_names': ['Arthur'],
     "nickname": 'Chosen',
@@ -69,6 +75,7 @@ const HEROES = [
     "folder": 'arthur'
   },
   {
+    "id": 7,
     "name": 'Astrid',
     'alt_names': ['Astrid'],
     "nickname": 'Indomitable',
@@ -80,6 +87,7 @@ const HEROES = [
     "folder": 'astrid'
   },
   {
+    "id": 8,
     "name": "Azzen'Ka",
     'alt_names': ["Azzen'Ka", 'azzenka', 'azzen'],
     "nickname": 'Forgotten',
@@ -91,6 +99,7 @@ const HEROES = [
     "folder": 'azzenka'
   },
   {
+    "id": 9,
     "name": 'Batman',
     'alt_names': ['Batman'],
     "nickname": 'Dark Knight',
@@ -103,6 +112,7 @@ const HEROES = [
     "regions": ['na', 'eu']
   },
   {
+    "id": 10,
     "name": 'Butterfly',
     'alt_names': ['Butterfly', 'bf', 'butter'],
     "nickname": "Death's Whisper",
@@ -114,6 +124,7 @@ const HEROES = [
     "folder": 'butterfly'
   },
   {
+    "id": 11,
     "name": 'Chaugnar',
     'alt_names': ['Chaugnar', 'chaug'],
     "nickname": 'Herald of the Void',
@@ -125,6 +136,7 @@ const HEROES = [
     "folder": 'chaugnar'
   },
   {
+    "id": 12,
     "name": 'Cresht',
     'alt_names': ['Cresht'],
     "nickname": 'Mermidon',
@@ -136,6 +148,7 @@ const HEROES = [
     "folder": 'cresht'
   },
   {
+    "id": 13,
     "name": 'Diaochan',
     'alt_names': ['Diaochan', 'diao'],
     "nickname": 'Crystal Lotus',
@@ -147,6 +160,7 @@ const HEROES = [
     "folder": 'diaochan'
   },
   {
+    "id": 14,
     "name": 'Fennik',
     'alt_names': ['Fennik'],
     "nickname": 'Vulpis Ignis',
@@ -158,6 +172,7 @@ const HEROES = [
     "folder": 'fennik'
   },
   {
+    "id": 15,
     "name": 'Gildur',
     'alt_names': ['Gildur'],
     "nickname": 'Gilded',
@@ -169,6 +184,7 @@ const HEROES = [
     "folder": 'gildur'
   },
   {
+    "id": 16,
     "name": 'Grakk',
     'alt_names': ['Grakk', 'grak'],
     "nickname": 'Glutton',
@@ -180,6 +196,7 @@ const HEROES = [
     "folder": 'grakk'
   },
   {
+    "id": 17,
     "name": 'Ignis',
     'alt_names': ['Ignis'],
     "nickname": 'Anointed One',
@@ -191,6 +208,7 @@ const HEROES = [
     "folder": 'ignis'
   },
   {
+    "id": 18,
     "name": 'Ilumia',
     'alt_names': ['Ilumia', 'illumia'],
     "nickname": 'Seer',
@@ -202,6 +220,7 @@ const HEROES = [
     "folder": 'ilumia'
   },
   {
+    "id": 19,
     "name": 'Jinnar',
     'alt_names': ['Jinnar'],
     "nickname": 'Incorruptible',
@@ -213,6 +232,7 @@ const HEROES = [
     "folder": 'jinnar'
   },
   {
+    "id": 20,
     "name": 'Kahlii',
     'alt_names': ['Kahlii'],
     "nickname": 'Ghost Guardian',
@@ -224,6 +244,7 @@ const HEROES = [
     "folder": 'kahlii'
   },
   {
+    "id": 21,
     "name": "Kil'Groth",
     'alt_names': ["Kil'Groth", 'kill', 'kilgroth', 'kil'],
     "nickname": 'Terror',
@@ -235,6 +256,7 @@ const HEROES = [
     "folder": 'kilgroth'
   },
   {
+    "id": 22,
     "name": 'Kriknak',
     'alt_names': ['Kriknak', 'krik'],
     "nickname": 'Scarabin',
@@ -246,6 +268,7 @@ const HEROES = [
     "folder": 'kriknak'
   },
   {
+    "id": 23,
     "name": 'Krixi',
     'alt_names': ['Krixi'],
     "nickname": 'Pixie',
@@ -257,6 +280,7 @@ const HEROES = [
     "folder": 'krixi'
   },
   {
+    "id": 24,
     "name": 'Lauriel',
     'alt_names': ['Lauriel', 'laurel'],
     "nickname": 'Archangel',
@@ -268,6 +292,7 @@ const HEROES = [
     "folder": 'lauriel'
   },
   {
+    "id": 25,
     "name": 'Liliana',
     'alt_names': ['Liliana', 'lil', 'lilliana'],
     "nickname": 'Elegant',
@@ -279,6 +304,7 @@ const HEROES = [
     "folder": 'liliana'
   },
   {
+    "id": 26,
     "name": 'Lindis',
     'alt_names': ['Lindis'],
     "nickname": 'Sentinel',
@@ -290,6 +316,7 @@ const HEROES = [
     "folder": 'lindis'
   },
   {
+    "id": 27,
     "name": 'Lu Bu',
     'alt_names': ['Lu Bu', 'lubu'],
     "nickname": 'Great Warlord',
@@ -301,6 +328,7 @@ const HEROES = [
     "folder": 'lubu'
   },
   {
+    "id": 28,
     "name": 'Lumburr',
     'alt_names': ['Lumburr', 'lumbur'],
     "nickname": 'Elemental',
@@ -312,6 +340,7 @@ const HEROES = [
     "folder": 'lumburr'
   },
   {
+    "id": 29,
     "name": 'Maloch',
     'alt_names': ['Maloch', 'maloc', 'malock'],
     "nickname": 'Merciless',
@@ -323,6 +352,7 @@ const HEROES = [
     "folder": 'maloch'
   },
   {
+    "id": 30,
     "name": 'Max',
     'alt_names': ['Max'],
     "nickname": 'Wunderkind',
@@ -334,6 +364,7 @@ const HEROES = [
     "folder": 'max'
   },
   {
+    "id": 31,
     "name": 'Mganga',
     'alt_names': ['Mganga', 'mgangster', 'ganga'],
     "nickname": 'Unspeakable',
@@ -345,6 +376,7 @@ const HEROES = [
     "folder": 'mganga'
   },
   {
+    "id": 32,
     "name": 'Mina',
     'alt_names': ['Mina'],
     "nickname": 'Reaper Queen',
@@ -356,6 +388,7 @@ const HEROES = [
     "folder": 'mina'
   },
   {
+    "id": 33,
     "name": 'Moren',
     'alt_names': ['Moren'],
     "nickname": 'Technowiz',
@@ -367,6 +400,7 @@ const HEROES = [
     "folder": 'moren'
   },
   {
+    "id": 34,
     "name": 'Murad',
     'alt_names': ['Murad'],
     "nickname": 'Wanderer',
@@ -378,6 +412,7 @@ const HEROES = [
     "folder": 'murad'
   },
   {
+    "id": 35,
     "name": 'Nakroth',
     'alt_names': ['Nakroth', 'nak'],
     "nickname": "Executioner's Blade",
@@ -389,6 +424,7 @@ const HEROES = [
     "folder": 'nakroth'
   },
   {
+    "id": 36,
     "name": 'Natalya',
     'alt_names': ['Natalya', 'nat'],
     "nickname": 'Nether Queen',
@@ -400,6 +436,7 @@ const HEROES = [
     "folder": 'natalya'
   },
   {
+    "id": 37,
     "name": 'Omega',
     'alt_names': ['Omega'],
     "nickname": 'Awoken Mech',
@@ -411,6 +448,7 @@ const HEROES = [
     "folder": 'omega'
   },
   {
+    "id": 38,
     "name": 'Omen',
     'alt_names': ['Omen'],
     "nickname": 'Insatiable',
@@ -422,6 +460,7 @@ const HEROES = [
     "folder": 'omen'
   },
   {
+    "id": 39,
     "name": 'Ormarr',
     'alt_names': ['Ormarr', 'ormar', 'omar'],
     "nickname": 'Frenzy',
@@ -433,6 +472,7 @@ const HEROES = [
     "folder": 'ormarr'
   },
   {
+    "id": 40,
     "name": 'Peura',
     'alt_names': ['Peura', 'pura'],
     "nickname": 'Guardian of the Glade',
@@ -444,6 +484,7 @@ const HEROES = [
     "folder": 'peura'
   },
   {
+    "id": 41,
     "name": 'Preyta',
     'alt_names': ['Preyta'],
     "nickname": 'Illest',
@@ -455,6 +496,7 @@ const HEROES = [
     "folder": 'preyta'
   },
   {
+    "id": 42,
     "name": 'Raz',
     'alt_names': ['Raz'],
     "nickname": 'Fist',
@@ -466,6 +508,7 @@ const HEROES = [
     "folder": 'raz'
   },
   {
+    "id": 43,
     "name": 'Ryoma',
     'alt_names': ['Ryoma', 'rioma'],
     "nickname": 'Ronin',
@@ -477,6 +520,7 @@ const HEROES = [
     "folder": 'ryoma'
   },
   {
+    "id": 44,
     "name": 'Skud',
     'alt_names': ['Skud'],
     "nickname": 'Smasher',
@@ -488,6 +532,7 @@ const HEROES = [
     "folder": 'skud'
   },
   {
+    "id": 45,
     "name": 'Slimz',
     'alt_names': ['Slimz', 'slims'],
     "nickname": 'Trustworthy',
@@ -499,6 +544,7 @@ const HEROES = [
     "folder": 'slimz'
   },
   {
+    "id": 46,
     "name": 'Superman',
     'alt_names': ['Superman', 'super', 'sm'],
     "nickname": 'Man of Steel',
@@ -510,6 +556,7 @@ const HEROES = [
     "folder": 'superman'
   },
   {
+    "id": 47,
     "name": 'Taara',
     'alt_names': ['Taara', 'tara'],
     "nickname": 'War Hammer',
@@ -521,8 +568,9 @@ const HEROES = [
     "folder": 'taara'
   },
   {
+    "id": 48,
     "name": 'TeeMee',
-    'alt_names': ['TeeMee', 'tee'],
+    'alt_names': ['TeeMee', 'tee', 'teme'],
     "nickname": 'Stalwart Twins',
     "classes": ['support', 'tank'],
     'lanes': ['support', 'roam'],
@@ -532,6 +580,7 @@ const HEROES = [
     "folder": 'teemee'
   },
   {
+    "id": 49,
     "name": "Tel'Annas",
     'alt_names': ["Tel'Annas", 'tel', 'telannas', 'telanas'],
     "nickname": 'Ageless',
@@ -543,6 +592,7 @@ const HEROES = [
     "folder": 'telannas'
   },
   {
+    "id": 50,
     "name": 'Thane',
     'alt_names': ['Thane'],
     "nickname": 'Protector',
@@ -554,6 +604,7 @@ const HEROES = [
     "folder": 'thane'
   },
   {
+    "id": 51,
     "name": 'Flash',
     'alt_names': ['Flash'],
     "nickname": 'Fastest Man Alive',
@@ -565,6 +616,7 @@ const HEROES = [
     "folder": 'flash'
   },
   {
+    "id": 52,
     "name": 'Joker',
     'alt_names': ['Joker'],
     "nickname": 'Clown Prince of Crime',
@@ -576,6 +628,7 @@ const HEROES = [
     "folder": 'joker'
   },
   {
+    "id": 53,
     "name": 'Toro',
     'alt_names': ['Toro'],
     "nickname": '',
@@ -587,6 +640,7 @@ const HEROES = [
     "folder": 'toro'
   },
   {
+    "id": 54,
     "name": 'Valhein',
     'alt_names': ['Valhein', 'val'],
     "nickname": 'Demon Hunter',
@@ -598,6 +652,7 @@ const HEROES = [
     "folder": 'valhein'
   },
   {
+    "id": 55,
     "name": 'Veera',
     'alt_names': ['Veera', 'vera'],
     "nickname": 'Soul Harvester',
@@ -609,6 +664,7 @@ const HEROES = [
     "folder": 'veera'
   },
   {
+    "id": 56,
     "name": 'Violet',
     'alt_names': ['Violet', 'vio'],
     "nickname": 'Pistol Assassin',
@@ -620,6 +676,7 @@ const HEROES = [
     "folder": 'violet'
   },
   {
+    "id": 57,
     "name": 'Wisp',
     'alt_names': ['Wisp'],
     "nickname": 'Mischievous',
@@ -631,6 +688,7 @@ const HEROES = [
     "folder": 'wisp'
   },
   {
+    "id": 58,
     "name": 'Wonder Woman',
     'alt_names': ['Wonder Woman', 'wonderwoman', 'ww', 'wonder'],
     "nickname": 'Amazon of Themyscira',
@@ -642,6 +700,7 @@ const HEROES = [
     "folder": 'wonderwoman'
   },
   {
+    "id": 59,
     "name": 'Wukong',
     'alt_names': ['Wukong', 'monkey'],
     "nickname": 'Monkey King',
@@ -653,6 +712,7 @@ const HEROES = [
     "folder": 'wukong'
   },
   {
+    "id": 60,
     "name": 'Xeniel',
     'alt_names': ['Xeniel', 'xenel', 'x'],
     "nickname": 'Immaculate',
@@ -664,6 +724,7 @@ const HEROES = [
     "folder": 'xeniel'
   },
   {
+    "id": 61,
     "name": 'Yorn',
     'alt_names': ['Yorn'],
     "nickname": 'Hotshot',
@@ -675,6 +736,7 @@ const HEROES = [
     "folder": 'yorn'
   },
   {
+    "id": 62,
     "name": 'Zanis',
     'alt_names': ['Zanis'],
     "nickname": 'Dragoon',
@@ -686,6 +748,7 @@ const HEROES = [
     "folder": 'zanis'
   },
   {
+    "id": 63,
     "name": 'Zephys',
     'alt_names': ['Zephys', 'zephis'],
     "nickname": 'Doomspear',
@@ -697,6 +760,7 @@ const HEROES = [
     "folder": 'zephys'
   },
   {
+    "id": 64,
     "name": 'Zill',
     'alt_names': ['Zill'],
     "nickname": 'Tempest',
@@ -708,6 +772,7 @@ const HEROES = [
     "folder": 'zill'
   },
   {
+    "id": 65,
     "name": 'Zuka',
     'alt_names': ['Zuka'],
     "nickname": 'Pandharma Master',
