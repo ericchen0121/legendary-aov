@@ -266,10 +266,8 @@ class Draft extends React.Component {
       }
     }
 
-    if (!(hero && video_search_term && channel_id)) {
-      if (this.isWindowMobile(this.state.window_width)) {
-        this.handleVideoSearch('')
-      }
+    if (!(hero || video_search_term || channel_id) && this.isWindowMobile(this.state.window_width)) {
+      this.handleVideoSearch('')
     }
   };
 
