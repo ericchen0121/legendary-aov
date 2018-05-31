@@ -372,6 +372,9 @@
   border: .75px solid var(--highlight-color);
 }
 
+.short_lh {
+  line-height: .7em;
+}
 @media screen and (min-width: 376px) and (max-width: 450px) {
   .avatar_container {
     margin-right: -25%;

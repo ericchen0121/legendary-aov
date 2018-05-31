@@ -10,6 +10,11 @@ import { Icon } from 'react-icons-kit';
 import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutline';
 
 class DraftVideoTitle extends React.Component {
+  formatDate = (ISODate) => {
+    let date_arr = ISODate.split("T")[0].split('-')
+    return `${date_arr[1]}/${date_arr[2]}/${date_arr[0]}`
+  }
+
   render() {
     const { youtube_list, utilities } = this.props;
     const { dark_mode_active } = utilities;
@@ -47,11 +52,13 @@ class DraftVideoTitle extends React.Component {
     let title = null;
     let channel = null;
     let channel_id = null;
+    let publish_date = null;
 
     if (selected_video) {
       title = selected_video.snippet.title;
       channel = selected_video.snippet.channelTitle;
       channel_id = selected_video.snippet.channelId;
+      publish_date = this.formatDate(selected_video.snippet.publishedAt)
 
       return (
         <div className={s.flex_container_row}>
@@ -86,6 +93,17 @@ class DraftVideoTitle extends React.Component {
                   size={12}
                 />
               </a>
+            </div>
+            <div className={s.short_lh}>
+              <span
+                className={cx(
+                  s.item_channel,
+                  {[s.white_text]: dark_mode_active,},
+                )}
+              >
+                Published on {publish_date}
+              </span>
+
             </div>
           </div>
         </div>

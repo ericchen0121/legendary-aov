@@ -52,6 +52,7 @@ export const VIDEO_SEARCH_TERMS = [
   'zuchiha aov',
   'aic',
   'rumblytv',
+  'kayzeepi gaming',
   'mr. peeperz',
   'death match',
   'meta',
