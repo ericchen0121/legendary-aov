@@ -78,7 +78,7 @@ class Draft extends React.Component {
       name: null,
       active: false,
     },
-    hero_filter_alphabetical: false,
+    hero_filter_alphabetical: true,
     hero_filter_list_view: false,
     is_hero_filter_grid_view_expanded: false,
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
@@ -240,33 +240,34 @@ class Draft extends React.Component {
 
   handleRouteParams = () => {
     const params = this.props.params;
-    console.log('params is', params)
+    // console.log('params is', params)
+
     // Get params from Route
     const { hero, video_search_term, channel_id } = params;
 
-    // ie. www.../video/hero/chaugnar
-    if (hero) {
-      const hero_obj = this.getHeroObject(hero);
-      this.uiSelectHero(hero_obj.name);
-      this.props.actions.selectHero(hero_obj);
-    } else {
-      // redirect to ALL heroes, change url in router...
-    }
-
-    // ie. www.../video/abrownbag
-    if (video_search_term) {
-      this.handleVideoSearch(video_search_term);
-    }
-
-    if (channel_id) {
-      const channel = AOV_CHANNELS.filter(c => c.channel_id == channel_id)[0];
-      if (channel) {
-        this.setState({ channel });
-        this.handleVideoSearch(channel.channel_id);
+    if ( hero || video_search_term || channel_id) {
+      // ie. www.../video/hero/chaugnar
+      if (hero) {
+        const hero_obj = this.getHeroObject(hero);
+        this.uiSelectHero(hero_obj.name);
+        this.props.actions.selectHero(hero_obj);
+      } else {
+        // redirect to ALL heroes, change url in router...
       }
-    }
 
-    if (!(hero || video_search_term || channel_id) && this.isWindowMobile(this.state.window_width)) {
+      // ie. www.../video/abrownbag
+      if (video_search_term) {
+        this.handleVideoSearch(video_search_term);
+      }
+
+      if (channel_id) {
+        const channel = AOV_CHANNELS.filter(c => c.channel_id == channel_id)[0];
+        if (channel) {
+          this.setState({ channel });
+          this.handleVideoSearch(channel.channel_id);
+        }
+      }
+    } else {
       this.handleVideoSearch('')
     }
   };
