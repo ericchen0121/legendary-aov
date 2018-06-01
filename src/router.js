@@ -8,12 +8,13 @@
  */
 
 import UniversalRouter from 'universal-router';
+import generateUrls from 'universal-router/generateUrls'
 import routes from './routes';
 
 export default new UniversalRouter(routes, {
   resolveRoute(context, params) {
     console.log('ROUTING:::', context, params)
-    console.log('PARAMS:::', params.hero)
+    console.log('PARAMS:::', params)
     if (typeof context.route.load === 'function') {
       return context.route
         .load()
