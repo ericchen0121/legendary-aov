@@ -782,6 +782,18 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'zuka'
+  },
+  {
+    "id": 66,
+    "name": 'Rourke',
+    'alt_names': ['rorke'],
+    "nickname": 'The Captain',
+    "classes": ['warrior', 'marksman'],
+    'lanes': ['solo', 'dragon'],
+    'roles': ['mobility', 'finisher'],
+    'tier': 'b',
+    'tier_index': 3,
+    "folder": 'rourke'
   }
 ]
 
