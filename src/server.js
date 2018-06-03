@@ -6,6 +6,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE.txt file in the root directory of this source tree.
  */
+  // ENV variable configuration on .env file in root
+ import dotenv from 'dotenv'
+ dotenv.config()
 
 import path from 'path';
 import express from 'express';
@@ -28,6 +31,7 @@ import passport from './passport';
 import router from './router';
 import models from './data/models';
 import schema from './data/schema';
+
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
