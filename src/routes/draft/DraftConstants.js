@@ -46,6 +46,7 @@ export const VIDEO_SEARCH_TERMS = [
   'be chanh',
   'IMT immortals',
   'kzfox',
+  'alg',
   'IMT Bobo',
   'apok',
   'franjosetv',
