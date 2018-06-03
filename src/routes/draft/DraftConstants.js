@@ -85,6 +85,13 @@ export const AOV_CHANNELS = [
     header_color: 'black',
     custom_search_terms: [],
   },
+  {
+    channel_id: 'assdave',
+    channel_nickname: 'ass_dave',
+    id: 2,
+    header_color: 'white',
+    custom_search_terms: [],
+  },
 ];
 export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS';
 export const DEFAULT_IMAGE_URL =
