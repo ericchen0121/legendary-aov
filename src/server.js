@@ -7,8 +7,6 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
   // ENV variable configuration on .env file in root
- import dotenv from 'dotenv'
- dotenv.config()
 
 import path from 'path';
 import express from 'express';
@@ -32,11 +30,15 @@ import router from './router';
 import models from './data/models';
 import schema from './data/schema';
 
+import dotenv from 'dotenv'
+import config from './config';
+dotenv.config()
+
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
-import config from './config';
+
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -118,11 +120,12 @@ app.use(
   '/graphql',
   expressGraphQL(req => ({
     schema,
-    graphiql: __DEV__,
+    graphiql: true,
     rootValue: { request: req },
     pretty: __DEV__,
   })),
 );
+
 
 //
 // Register server-side rendering middleware

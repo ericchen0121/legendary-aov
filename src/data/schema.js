@@ -14,6 +14,7 @@ import {
 
 import me from './queries/me';
 import news from './queries/news';
+import build from './queries/builds';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -21,8 +22,11 @@ const schema = new Schema({
     fields: {
       me,
       news,
+      build,
     },
   }),
 });
+
+console.log("SCHEMA", schema)
 
 export default schema;

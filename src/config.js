@@ -15,7 +15,6 @@ if (process.env.BROWSER) {
   );
 }
 
-
 module.exports = {
   // Node.js app
   port: process.env.PORT || 3000,
@@ -34,7 +33,9 @@ module.exports = {
   },
 
   // Database
-  databaseUrl: process.env.DATABASE_URL || null,
+  // databaseUrl: process.env.DATABASE_URL || 'postgresql://ericchen0121:Ch3n3r1c@legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com:5432/legendaryaov',
+
+  databaseUrl: process.env.DATABASE_URL,
 
   // Web analytics
   analytics: {
