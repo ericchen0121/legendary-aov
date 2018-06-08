@@ -6,14 +6,8 @@ const Build = Model.define(
   {
     id: {
       type: DataType.INTEGER,
-      defaultValue: DataType.UUIDV1,
+      autoIncrement: true,
       primaryKey: true,
-    },
-    hero_id: {
-      type: DataType.INTEGER,
-    },
-    user_id: {
-      type: DataType.INTEGER
     },
     item_1: {
       type: DataType.INTEGER,
@@ -51,15 +45,28 @@ const Build = Model.define(
     item_6_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
     },
-    game_mode_id: {
-      type: DataType.INTEGER,
-    }
   },
   {
-    underscored: true,
-    tableName: 'builds',
-    freezeTableName: true
+    underscored: true
   }
 );
 
+// const build = Build.build({title: 'very important task'})
+
+Build
+  .build({
+    item_1: 3,
+    item_2: 1,
+    item_3: 4,
+    item_4: 5,
+    item_5: 1,
+    item_6: 1,
+    item_1_alt: [1],
+    item_2_alt: [1],
+    item_3_alt: [1],
+    item_4_alt: [1],
+    item_5_alt: [1],
+    item_6_alt: [1],
+  })
+  .save()
 export default Build;

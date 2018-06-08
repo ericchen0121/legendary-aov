@@ -6,18 +6,15 @@ const GameMode = Model.define(
   {
     id: {
       type: DataType.INTEGER,
-      defaultValue: DataType.UUIDV1,
+      autoIncrement: true,
       primaryKey: true,
     },
-
     name: {
       type: DataType.STRING(255),
     },
   },
   {
-    underscored: true,
-    tableName: 'game_modes',
-    freezeTableName: true
+    underscored: true
   }
 );
 

@@ -14,8 +14,8 @@ const User = Model.define(
   'User',
   {
     id: {
-      type: DataType.UUID,
-      defaultValue: DataType.UUIDV1,
+      type: DataType.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
 
@@ -24,13 +24,14 @@ const User = Model.define(
       validate: { isEmail: true },
     },
 
-    emailConfirmed: {
+    email_confirmed: {
       type: DataType.BOOLEAN,
       defaultValue: false,
     },
   },
   {
     indexes: [{ fields: ['email'] }],
+    underscored: true
   },
 );
 

@@ -5,27 +5,30 @@ const Version = Model.define(
   'Version',
   {
     id: {
-      type: DataType.UUID,
-      defaultValue: DataType.UUIDV1,
+      type: DataType.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
-
     version_number: {
       type: DataType.STRING(255),
     },
-
     version_date: {
       type: DataType.DATEONLY,
     },
     server: {
       type: DataType.STRING,
+      defaultValue: 'NA'
     },
   },
   {
-    underscored: true,
-    tableName: 'version',
-    freezeTableName: true
- }
+    underscored: true
+  }
 );
 
+// Version
+//   .build({
+//     version_number: '1',
+//     version_date: '2018-05-25',
+//   })
+//   .save()
 export default Version;

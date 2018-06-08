@@ -41,8 +41,13 @@ const build = {
     id: {type: IntType}
   },
   resolve(parent, args){
-    return builds.find(b => b.id === args.id)
-    // return db.models.Build.findAll()
+    // return builds.find(b => b.id === args.id)
+    console.log('MODELS IS', db.models.Build)
+    return Build.findOne({
+      where: {
+        id: 5
+      }
+    })
     // query db with the args.id
     // code to get data from db
   }

@@ -19,26 +19,22 @@ const BuildType = new ObjectType({
   fields: () => ({
     id: { type: IntType },
     hero_id: { type: IntType },
-    game_mode: { type: IntType}
+    user_id: { type: IntType },
+    game_mode: { type: IntType},
+    item_1: { type: IntType },
+    item_2: { type: IntType },
+    item_3: { type: IntType },
+    item_4: { type: IntType },
+    item_5: { type: IntType },
+    item_6: { type: IntType },
+    item_1_alt: { type: ListType(IntType) },
+    item_2_alt: { type: ListType(IntType) },
+    item_3_alt: { type: ListType(IntType) },
+    item_4_alt: { type: ListType(IntType) },
+    item_5_alt: { type: ListType(IntType) },
+    item_6_alt: { type: ListType(IntType) },
   })
 });
 
-// fields: () => ({
-//   hero_id: { type: IntType },
-//   user_id: { type: IntType },
-//   game_mode: { type: IntType },
-//   item_1: { type: IntType },
-//   item_2: { type: IntType },
-//   item_3: { type: IntType },
-//   item_4: { type: IntType },
-//   item_5: { type: IntType },
-//   item_6: { type: IntType },
-//   item_1_alt: { type: ListType },
-//   item_2_alt: { type: ListType },
-//   item_3_alt: { type: ListType },
-//   item_4_alt: { type: ListType },
-//   item_5_alt: { type: ListType },
-//   item_6_alt: { type: ListType },
-// })
 
 export default BuildType;

@@ -10,31 +10,34 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 
-const UserProfile = Model.define('UserProfile', {
-  userId: {
-    type: DataType.UUID,
-    primaryKey: true,
-  },
+const UserProfile = Model.define('UserProfile',
+  {
+    userId: {
+      type: DataType.INTEGER,
+      primaryKey: true,
+    },
 
-  displayName: {
-    type: DataType.STRING(100),
-  },
+    displayName: {
+      type: DataType.STRING(100),
+    },
 
-  picture: {
-    type: DataType.STRING(255),
-  },
+    picture: {
+      type: DataType.STRING(255),
+    },
 
-  gender: {
-    type: DataType.STRING(50),
-  },
+    gender: {
+      type: DataType.STRING(50),
+    },
 
-  location: {
-    type: DataType.STRING(100),
-  },
+    location: {
+      type: DataType.STRING(100),
+    },
 
-  website: {
-    type: DataType.STRING(255),
+    website: {
+      type: DataType.STRING(255),
+    },
   },
-});
+  {underscored: true,}
+);
 
 export default UserProfile;

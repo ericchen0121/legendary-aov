@@ -5,19 +5,22 @@ const Item = Model.define(
   'Item',
   {
     id: {
-      type: DataType.UUID,
-      defaultValue: DataType.UUIDV1,
+      type: DataType.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
     },
-
-     name: {
+    name: {
       type: DataType.STRING(255),
+    },
+    type: {
+      type: DataType.STRING(255),
+    },
+    cost: {
+      type: DataType.INTEGER,
     },
   },
   {
-    underscored: true,
-    tableName: 'items',
-    freezeTableName: true
+    underscored: true
   }
 );
 

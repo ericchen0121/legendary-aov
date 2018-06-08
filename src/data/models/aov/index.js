@@ -8,35 +8,32 @@
  */
 
 import sequelize from '../../sequelize';
-import Build from './Build';
-import GameMode from './GameMode';
-import Hero from './Hero';
-import Item from './Item';
 import Version from './Version';
+import GameMode from './GameMode';
+import User from '../User';
+import Hero from './Hero';
+import Build from './Build';
+import Item from './Item';
 
-console.log('AOV INDEX --------')
-// Build.belongsTo(Hero) // hero_id on Build
-// Build.belongsTo()
-// User.hasMany(UserLogin, {
-//   foreignKey: 'userId',
-//   as: 'logins',
-//   onUpdate: 'cascade',
-//   onDelete: 'cascade',
-// });
-//
-// User.hasMany(UserClaim, {
-//   foreignKey: 'userId',
-//   as: 'claims',
-//   onUpdate: 'cascade',
-//   onDelete: 'cascade',
-// });
-//
-// User.hasOne(UserProfile, {
-//   foreignKey: 'userId',
-//   as: 'profile',
-//   onUpdate: 'cascade',
-//   onDelete: 'cascade',
-// });
+// Item
+Version.hasMany(Item, {
+  foreignKey: 'version_id',
+  as: 'logins',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+});
+
+// Hero
+Hero.belongsTo(Version)
+
+// Build
+Hero.hasOne(Build) // ie. Build will get hero_id
+GameMode.hasOne(Build) // Build gets game_mode_id
+User.hasMany(Build, {
+  foreignKey: 'user_id',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+});
 
 function sync(...args) {
   return sequelize.sync(...args);

@@ -12,28 +12,24 @@ import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
-import Hero from './aov/Hero'
-import Build from './aov/Build'
-import Item from './aov/Item'
-import GameMode from './aov/GameMode'
-import Version from './aov/Version'
+import { Hero, Build, Item, GameMode, Version } from './aov'
 
 User.hasMany(UserLogin, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'logins',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
 User.hasMany(UserClaim, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'claims',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
 User.hasOne(UserProfile, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'profile',
   onUpdate: 'cascade',
   onDelete: 'cascade',

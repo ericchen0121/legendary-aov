@@ -4,7 +4,7 @@ import {
   GraphQLString as StringType,
  } from 'graphql'
 import axios from 'axios'
-import db from '../sequelize';
+import db from 'sequelize';
 // import {resolver} from 'graphql-sequelize';
 import Hero from '../models/aov/Hero'
 
@@ -28,17 +28,16 @@ const hero = {
   },
   resolve(parent, args){
   //   console.log('DB', db)
-  //   console.log('DB MODELS ---------', db.models.Hero)
+    console.log('DB MODELS ---------', db)
   //
   //   return heroes.find(b => b.id === args.id)
   // }
   //   else if (args.id) {
   //     return heroes.find(b => b.id === args.id)
   //   }
-
     return db.models.Hero.findAll({
       where: {
-        name: "Tulen"
+        name: args.id
       }
     })
   }
