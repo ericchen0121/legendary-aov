@@ -6,6 +6,8 @@ const Build = Model.define(
   {
     id: {
       type: DataType.INTEGER,
+      defaultValue: DataType.UUIDV1,
+      primaryKey: true,
     },
     hero_id: {
       type: DataType.INTEGER,

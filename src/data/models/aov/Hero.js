@@ -6,6 +6,8 @@ const Hero = Model.define(
   {
     id: {
       type: DataType.INTEGER,
+      defaultValue: DataType.UUIDV1,
+      primaryKey: true,
     },
 
     name: {
@@ -15,9 +17,5 @@ const Hero = Model.define(
   { underscored: true }
 );
 
-// id: {
-//   type: DataType.UUID,
-//   defaultValue: DataType.UUIDV1,
-//   primaryKey: true,
-// },
+
 export default Hero;
