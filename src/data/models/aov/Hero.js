@@ -14,7 +14,11 @@ const Hero = Model.define(
       type: DataType.STRING(255),
     },
   },
-  { underscored: true }
+  {
+    underscored: true,
+    tableName: 'heroes',
+    freezeTableName: true
+  }
 );
 
 

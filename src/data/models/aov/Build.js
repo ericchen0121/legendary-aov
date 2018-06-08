@@ -34,28 +34,32 @@ const Build = Model.define(
       type: DataType.INTEGER,
     },
     item_1_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
     item_2_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
     item_3_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
     item_4_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
     item_5_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
     item_6_alt: {
-      type: DataType.ARRAY,
+      type: DataType.ARRAY(DataType.INTEGER),
     },
-    game_mode: {
+    game_mode_id: {
       type: DataType.INTEGER,
     }
   },
-  { underscored: true }
+  {
+    underscored: true,
+    tableName: 'builds',
+    freezeTableName: true
+  }
 );
 
 export default Build;

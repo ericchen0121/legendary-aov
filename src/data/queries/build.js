@@ -1,5 +1,9 @@
 import BuildType from '../types/BuildType';
-import {  GraphQLInt as IntType } from 'graphql'
+import {
+  GraphQLInt as IntType
+} from 'graphql'
+import db from '../sequelize';
+import Build from '../models/aov/Build'
 
 const builds = [
   {
@@ -44,5 +48,4 @@ const build = {
   }
 };
 
-console.log('BUILDS>........... ', builds, build)
 export default build;

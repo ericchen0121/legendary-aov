@@ -21,7 +21,11 @@ const Version = Model.define(
       type: DataType.STRING,
     },
   },
-  { underscored: true }
+  {
+    underscored: true,
+    tableName: 'version',
+    freezeTableName: true
+ }
 );
 
 export default Version;

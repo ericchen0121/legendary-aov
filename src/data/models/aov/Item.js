@@ -14,7 +14,11 @@ const Item = Model.define(
       type: DataType.STRING(255),
     },
   },
-  { underscored: true }
+  {
+    underscored: true,
+    tableName: 'items',
+    freezeTableName: true
+  }
 );
 
 export default Item;

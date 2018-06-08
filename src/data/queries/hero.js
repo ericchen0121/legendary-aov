@@ -30,18 +30,18 @@ const hero = {
   //   console.log('DB', db)
   //   console.log('DB MODELS ---------', db.models.Hero)
   //
-    return heroes.find(b => b.id === args.id)
-  }
+  //   return heroes.find(b => b.id === args.id)
+  // }
   //   else if (args.id) {
   //     return heroes.find(b => b.id === args.id)
   //   }
 
-    // return db.models.Hero.findAll({
-    //   where: {
-    //     name: "Tulen"
-    //   }
-    // })
-  // }
+    return db.models.Hero.findAll({
+      where: {
+        name: "Tulen"
+      }
+    })
+  }
     // query db with the args.id
     // code to get data from db
   // resolve: resolver(Hero)

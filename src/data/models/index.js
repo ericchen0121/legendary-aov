@@ -12,13 +12,11 @@ import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
-// import {
-  // Build
-//   GameMode,
-//   Hero,
-//   Item,
-//   Version
-// } from './aov'
+import Hero from './aov/Hero'
+import Build from './aov/Build'
+import Item from './aov/Item'
+import GameMode from './aov/GameMode'
+import Version from './aov/Version'
 
 User.hasMany(UserLogin, {
   foreignKey: 'userId',
@@ -46,6 +44,6 @@ function sync(...args) {
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile, Build }
+export { User, UserLogin, UserClaim, UserProfile, Hero, Build, Item, GameMode, Version }
 // export { User, UserLogin, UserClaim, UserProfile, Build, GameMode, Hero, Item, Version };
 // export { Build, GameMode, Hero, Item, Version };

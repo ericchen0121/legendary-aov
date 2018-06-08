@@ -17,12 +17,12 @@ import {
 const BuildType = new ObjectType({
   name: 'Build',
   fields: () => ({
+    id: { type: IntType },
     hero_id: { type: IntType },
     game_mode: { type: IntType}
   })
 });
 
-console.log('BUILDTYPE', BuildType)
 // fields: () => ({
 //   hero_id: { type: IntType },
 //   user_id: { type: IntType },
