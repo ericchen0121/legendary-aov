@@ -15,8 +15,10 @@ import {
 import me from './queries/me';
 import news from './queries/news';
 import build from './queries/build';
+import builds from './queries/builds';
 import hero from './queries/hero';
 import item from './queries/item';
+import items from './queries/items';
 import version from './queries/version';
 
 const schema = new Schema({
@@ -26,13 +28,13 @@ const schema = new Schema({
       me,
       news,
       build,
+      builds,
       hero,
       item,
+      items,
       version
     },
   }),
 });
-
-console.log("SCHEMA", schema)
 
 export default schema;

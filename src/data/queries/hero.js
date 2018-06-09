@@ -3,7 +3,6 @@ import {
   GraphQLInt as IntType,
   GraphQLString as StringType,
  } from 'graphql'
-import axios from 'axios'
 import Hero from '../models/aov/Hero'
 
 const hero = {
