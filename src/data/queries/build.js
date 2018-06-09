@@ -2,7 +2,6 @@ import BuildType from '../types/BuildType';
 import {
   GraphQLInt as IntType
 } from 'graphql'
-import db from '../sequelize';
 import Build from '../models/aov/Build'
 
 const builds = [
@@ -41,15 +40,12 @@ const build = {
     id: {type: IntType}
   },
   resolve(parent, args){
-    // return builds.find(b => b.id === args.id)
-    console.log('MODELS IS', db.models.Build)
+    Build.findAll().then(b => console.log('EACH BUILD', b))
     return Build.findOne({
       where: {
-        id: 5
+        id: args.id
       }
     })
-    // query db with the args.id
-    // code to get data from db
   }
 };
 

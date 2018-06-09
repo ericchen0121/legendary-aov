@@ -53,20 +53,20 @@ const Build = Model.define(
 
 // const build = Build.build({title: 'very important task'})
 
-Build
-  .build({
-    item_1: 3,
-    item_2: 1,
-    item_3: 4,
-    item_4: 5,
-    item_5: 1,
-    item_6: 1,
-    item_1_alt: [1],
-    item_2_alt: [1],
-    item_3_alt: [1],
-    item_4_alt: [1],
-    item_5_alt: [1],
-    item_6_alt: [1],
-  })
-  .save()
+// Build
+//   .build({
+//     item_1: 3,
+//     item_2: 1,
+//     item_3: 4,
+//     item_4: 5,
+//     item_5: 1,
+//     item_6: 1,
+//     item_1_alt: [1],
+//     item_2_alt: [1],
+//     item_3_alt: [1],
+//     item_4_alt: [1],
+//     item_5_alt: [1],
+//     item_6_alt: [1],
+//   })
+//   .save()
 export default Build;
