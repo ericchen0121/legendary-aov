@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.42",
     "@babel/runtime": "^7.0.0-beta.49",
+    "apollo-boost": "^0.1.7",
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
@@ -25,6 +26,7 @@
     "express-graphql": "^0.6.12",
     "express-jwt": "^5.3.1",
     "graphql": "^0.13.2",
+    "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
     "isomorphic-style-loader": "^4.0.0",
     "jsonwebtoken": "^8.2.0",
@@ -39,6 +41,7 @@
     "prop-types": "^15.6.1",
     "query-string": "^6.0.0",
     "react": "^16.2.0",
+    "react-apollo": "^2.1.4",
     "react-dom": "^16.2.0",
     "react-icons-kit": "^1.1.4",
     "react-player": "^1.5.0",
