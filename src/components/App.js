@@ -11,7 +11,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider as ReduxProvider } from 'react-redux';
 
-import fetch from 'whatwg-fetch';
+// Apollo!!!!
+import fetch from 'isomorphic-fetch';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
@@ -74,14 +75,10 @@ class App extends React.PureComponent {
   // Original render() {...}
   // return React.Children.only(this.props.children);
   render() {
-    console.log('APOL CLIENT', client)
-    // Here, we are at universe level, sure? ;-)
-    // const { client } = this.props.context;
-    // console.log('PROPS IN APP', this.props)
     // NOTE: If you need to add or modify header, footer etc. of the app,
     // please do that inside the Layout component.
     return (
-      <ApolloProvider client={client}>{this.props.children}</ApolloProvider>
+      <ApolloProvider client={client}>{React.Children.only(this.props.children)}</ApolloProvider>
     )
   }
 }
