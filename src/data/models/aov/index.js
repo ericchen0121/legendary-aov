@@ -27,7 +27,7 @@ Version.hasMany(Item, {
 Hero.belongsTo(Version)
 
 // Build
-Hero.hasOne(Build) // ie. Build will get hero_id
+Build.belongsTo(Hero) // ie. Build will get hero_id
 GameMode.hasOne(Build) // Build gets game_mode_id
 User.hasMany(Build, {
   foreignKey: 'user_id',

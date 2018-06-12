@@ -14,7 +14,7 @@ const Hero = Model.define(
     },
   },
   {
-    underscored: true
+    underscored: true,
   }
 );
 

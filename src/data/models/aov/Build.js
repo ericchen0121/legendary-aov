@@ -29,21 +29,27 @@ const Build = Model.define(
     },
     item_1_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
     item_2_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
     item_3_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
     item_4_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
     item_5_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
     item_6_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
     },
   },
   {

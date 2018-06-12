@@ -1,23 +1,18 @@
-/**
- * React Starter Kit (https://www.reactstarterkit.com/)
- *
- * Copyright © 2014-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
 import {
-  GraphQLObjectType as ObjectType,
+  GraphQLString,
+  GraphQLInputObjectType,
+  GraphQLNonNull,
   GraphQLString as StringType,
   GraphQLInt as IntType,
   GraphQLList as ListType,
 } from 'graphql';
+import BuildType from '../types/BuildType';
 
-const BuildType = new ObjectType({
-  name: 'Build',
-  fields: () => ({
-    id: { type: IntType },
+const BuildInputType = new GraphQLInputObjectType({
+  name: 'BuildInputType',
+  type: BuildType,
+  description: 'Input build payload',
+  fields: {
     hero_id: { type: IntType },
     user_id: { type: IntType },
     game_mode_id: { type: IntType},
@@ -33,8 +28,7 @@ const BuildType = new ObjectType({
     item_4_alt: { type: ListType(IntType) },
     item_5_alt: { type: ListType(IntType) },
     item_6_alt: { type: ListType(IntType) },
-  })
+  },
 });
 
-
-export default BuildType;
+export default BuildInputType;
