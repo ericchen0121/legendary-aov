@@ -16,6 +16,7 @@ const BuildInputType = new GraphQLInputObjectType({
     hero_id: { type: IntType },
     user_id: { type: IntType },
     game_mode_id: { type: IntType},
+    talent_id: { type: IntType },
     item_1: { type: IntType },
     item_2: { type: IntType },
     item_3: { type: IntType },
@@ -28,6 +29,7 @@ const BuildInputType = new GraphQLInputObjectType({
     item_4_alt: { type: ListType(IntType) },
     item_5_alt: { type: ListType(IntType) },
     item_6_alt: { type: ListType(IntType) },
+    talent_id_alt: { type: ListType(IntType) }
   },
 });
 
