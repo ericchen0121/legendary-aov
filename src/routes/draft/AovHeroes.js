@@ -794,7 +794,19 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 3,
     "folder": 'rourke'
-  }
+  },
+  {
+    "id": 67,
+    "name": 'Arum',
+    'alt_names': ['Arum'],
+    "nickname": 'Conjurer',
+    "classes": ['tank'],
+    'lanes': ['roam'],
+    'roles': ['life steal', 'initiator'],
+    'tier': 's',
+    'tier_index': 2,
+    "folder": 'arum'
+  },
 ]
 
 export default HEROES
