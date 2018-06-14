@@ -14,6 +14,8 @@ export const SELECT_HERO = 'SELECT_HERO'
 // Build Creator
 export const FILTER_ITEM_CATEGORY = 'FILTER_ITEM_CATEGORY'
 export const SELECTED_ITEM = 'SELECTED_ITEM'
+export const EDIT_CURRENT_BUILD = 'EDIT_CURRENT_BUILD'
+export const INSERT_ITEM_TO_BUILD = 'INSERT_ITEM_TO_BUILD'
 
 // Route Page Titles
 export const MAIN_TITLE = 'Legendary AOV'
