@@ -17,6 +17,7 @@ export const SELECTED_ITEM = 'SELECTED_ITEM'
 export const EDIT_CURRENT_BUILD = 'EDIT_CURRENT_BUILD'
 export const INSERT_ITEM_TO_BUILD = 'INSERT_ITEM_TO_BUILD'
 export const REMOVE_ITEM_FROM_BUILD = 'REMOVE_ITEM_FROM_BUILD'
+export const SET_HERO_ID = 'SET_HERO_ID'
 
 // Route Page Titles
 export const MAIN_TITLE = 'Legendary AOV'
