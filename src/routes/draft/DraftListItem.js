@@ -47,14 +47,14 @@ class DraftListItem extends React.Component {
         })
       }
 
-    let avatar = null
+    let avatar
     if (folder) {
       avatar = <div className={s.avatar_container}><img className={s.avatar} src={`/aov/heroes/${folder}/hero.png`} /></div>
     } else {
       avatar = <div className={s.avatar_container}><img className={s.avatar} src={DEFAULT_IMAGE_URL} /></div>
     }
 
-    let nickname_container = null
+    let nickname_container
     if (nickname) { nickname_container = (<span className={s.nickname}>{`/ The ${ nickname }`}</span>)}
 
     let name_container = (

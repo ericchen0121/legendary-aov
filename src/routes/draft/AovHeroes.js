@@ -1,6 +1,3 @@
-// From CBS.com NFL Draft page
-// copied table into TSV -> JSON converter
- //
 const HEROES = [
   {
     "id": 1,
@@ -810,3 +807,7 @@ const HEROES = [
 ]
 
 export default HEROES
+
+export function find_hero_by_id(id) {
+  return HEROES.find(h => h.id === id)
+}

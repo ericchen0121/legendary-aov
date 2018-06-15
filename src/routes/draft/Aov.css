@@ -92,9 +92,7 @@
 .avatar_small {
   position: relative;
   border-radius: 0.5em;
-  border: gold;
-  border-width: 1.25px;
-  border-style: solid;
+  border: 2px solid gold;
   margin: -0 0 6px 13px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
   overflow: hidden;
   width: 90px;
@@ -105,9 +103,7 @@
 .avatar {
   position: relative;
   border-radius: 0.5em;
-  border: gold;
-  border-width: 1.25px;
-  border-style: solid;
+  border: 2px solid gold;
   margin: 0 0 6px 13px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
   overflow: hidden;
   width: 35%;
