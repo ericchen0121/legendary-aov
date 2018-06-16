@@ -8,9 +8,10 @@ import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
+import BuildHeroImage from './create/BuildHeroImage'
 
-import { ITEMS, TALENTS } from './Items'
-import HEROES from '../draft/AovHeroes'
+import { ITEMS, TALENTS, find_talent_by_id } from './Items'
+import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
 import CustomBuilds from './CustomBuilds'
 
 import * as Actions from './actions';
@@ -24,12 +25,14 @@ let query = gql`
   {
     builds {
       id
+      name
       item_1
       item_2
       item_3
       item_4
       item_5
       item_6
+      talent_id
       hero_id
     }
   }
@@ -74,7 +77,7 @@ class BuildViewer extends React.Component {
           if (data.builds) {
             let all_builds = data.builds.map(b => {
               let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
-              let hero = HEROES.find(h => (h.id === b.hero_id))
+              let hero = find_hero_by_id(b.hero_id)
 
               // Item List
               let item_list = items.map(i => {
@@ -189,17 +192,16 @@ class BuildViewer extends React.Component {
                 </div>
               )
 
-              // let talent = TALENTS.find(t => t.id === b.talent_id)
-              let talent = TALENTS.find(t => t.id === 1)
+              let talent = find_talent_by_id(b.talent_id)
               let talent_html = (
-                <div className={cx()}>
+                <span className={cx()}>
                   <div>
                     <span><img className={s.talent_img} src={`/aov/talents/${talent.folder}.png`} /></span>
                   </div>
                   <div className={s.talent_name}>
                     {talent.name.toUpperCase()}
                   </div>
-                </div>
+                </span>
               )
 
               // For Each Build Container
@@ -207,6 +209,13 @@ class BuildViewer extends React.Component {
               // <h4>{b.info.description} for {hero.name}</h4> {talent_html}
               return (
                 <div key={b.id} className={s.build_container}>
+
+                  <BuildHeroImage
+                    hero={hero}
+                    size='xs'
+                    border='gold'
+                  />
+                  { b.name }
                   {talent_html}
                   <ExpansionPanel className={classes.ep}>
                     <ExpansionPanelSummary className={classes.eps}>

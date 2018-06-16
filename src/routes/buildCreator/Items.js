@@ -1215,6 +1215,106 @@ export const ITEMS = [
       },
     ]
   },
+  {
+    id: 47,
+    name: "Tome of the Reaper",
+    type: 'magic',
+    tier: 2,
+    cost: 2050,
+    folder: 'tomeofthereaper',
+    effects: [
+      {
+        type: 'ability power',
+        power: 240,
+      },
+      {
+        type: 'max hp',
+        power: 500,
+      },
+    ],
+    passives: [
+      {
+        name: "Soul Prison",
+        description: "On dealing damage, reduces target’s HP regeneration by 50% for 1.5 seconds. If this is triggered by normal attacks, the duration is extended to 3 seconds.",
+        type: ['reduces target HP regen']
+      },
+    ]
+  },
+  {
+    id: 48,
+    name: "Virtues Bracelet",
+    type: 'magic',
+    tier: 2,
+    cost: 1020,
+    folder: 'virtuesbracelet',
+    effects: [
+      {
+        type: 'ability power',
+        power: 60,
+      },
+      {
+        type: 'cooldown speed',
+        power: .1,
+      },
+      {
+        type: 'mana',
+        power: '+20/5 sec',
+      }
+    ],
+    passives: [
+      {
+        name: "Soaring Spirit",
+        description: "Restores 20% mana after earning a kill or assist.",
+        type: ['mana regen']
+      },
+    ]
+  },
+  {
+    id: 49,
+    name: "Knights Plate",
+    type: 'defense',
+    tier: 2,
+    cost: 730,
+    folder: 'knightsplate',
+    effects: [
+      {
+        type: 'armor',
+        power: 210,
+      },
+    ],
+    passives: [
+      {
+        name: "Spirit Bond",
+        description: "When taking damage, reduces the attacker’s attack speed by 30%.",
+        type: ['reduce attackers speed']
+      },
+    ]
+  },
+  {
+    id: 50,
+    name: "Asterion's Buckler",
+    type: 'defense',
+    tier: 2,
+    cost: 1600,
+    folder: 'asterionsbuckler',
+    effects: [
+      {
+        type: 'max hp',
+        power: 1000,
+      },
+      {
+        type: 'hp',
+        power: '+60 / 5 sec',
+      },
+    ],
+    passives: [
+      {
+        name: "War Cry",
+        description: "Increases damage dealt and damage reduction of nearby friendly units by 5% and 10%, respectively. [samurai gamers: Getting within 200 units of an ally will trigger War Cry for 2-3 seconds]",
+        type: ['buff']
+      },
+    ]
+  },
 ]
 
 export const TALENTS = [
@@ -1280,4 +1380,8 @@ export const ITEM_CATEGORIES  = [
 
 export function find_item_by_id(id) {
   return ITEMS.find(i => i.id === id)
+}
+
+export function find_talent_by_id(id) {
+  return TALENTS.find(i => i.id === id)
 }

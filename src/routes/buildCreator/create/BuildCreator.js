@@ -136,10 +136,6 @@ class BuildCreator extends React.Component {
       talent_alt: current_build.talent_alt,
     }
 
-    console.log("BUILD IS", build)
-
-    // TODO: make this a map function
-
     let build_name = (
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
