@@ -1,0 +1,3 @@
+
+// restart id counter back to 1 on a table
+ALTER SEQUENCE "Hero_id_seq" RESTART 1;

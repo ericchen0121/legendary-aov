@@ -9,6 +9,9 @@ const Build = Model.define(
       autoIncrement: true,
       primaryKey: true,
     },
+    name: {
+      type: DataType.STRING,
+    },
     item_1: {
       type: DataType.INTEGER,
     },
@@ -50,6 +53,9 @@ const Build = Model.define(
     item_6_alt: {
       type: DataType.ARRAY(DataType.INTEGER),
       defaultValue: []
+    },
+    talent_id: {
+      type: DataType.STRING
     },
   },
   {

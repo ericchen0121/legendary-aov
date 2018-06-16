@@ -18,7 +18,6 @@ import Item from './Item';
 // Item
 Version.hasMany(Item, {
   foreignKey: 'version_id',
-  as: 'logins',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
@@ -33,7 +32,12 @@ User.hasMany(Build, {
   foreignKey: 'user_id',
   onUpdate: 'cascade',
   onDelete: 'cascade',
-});
+})
+Version.hasMany(Build, {
+  foreignKey: 'version_id',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+})
 
 function sync(...args) {
   return sequelize.sync(...args);

@@ -34,18 +34,6 @@ let query = gql`
     }
   }
 `
-const ADD_BUILD = gql`
-  mutation addBuild($type: Build!) {
-    addBuild(type: $type) {
-      item_1
-      item_2
-      item_3
-      item_4
-      item_5
-      item_6
-    }
-  }
-`;
 
 const styles = theme => ({
   root: theme.mixins.gutters({

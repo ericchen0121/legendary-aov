@@ -13,10 +13,7 @@ const BuildInputType = new GraphQLInputObjectType({
   type: BuildType,
   description: 'Input build payload',
   fields: {
-    hero_id: { type: IntType },
-    user_id: { type: IntType },
-    game_mode_id: { type: IntType},
-    talent_id: { type: IntType },
+    name: { type: StringType },
     item_1: { type: IntType },
     item_2: { type: IntType },
     item_3: { type: IntType },
@@ -29,7 +26,12 @@ const BuildInputType = new GraphQLInputObjectType({
     item_4_alt: { type: ListType(IntType) },
     item_5_alt: { type: ListType(IntType) },
     item_6_alt: { type: ListType(IntType) },
-    talent_id_alt: { type: ListType(IntType) }
+    talent_id: { type: IntType },
+    talent_alt: { type: ListType(IntType) },
+    hero_id: { type: IntType },
+    user_id: { type: IntType },
+    game_mode_id: { type: IntType},
+    version_id: { type: IntType },
   },
 });
 

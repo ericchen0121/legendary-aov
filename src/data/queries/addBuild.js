@@ -15,16 +15,20 @@ const addBuild = {
     input: { type: BuildInputType }
   },
   async resolve(parent, { input }){
+    console.log('INPUT', input)
     return Build.create({
-     hero_id: input.hero_id,
-     game_mode_id: input.game_mode_id,
+     name: input.name,
      user_id: input.user_id,
      item_1: input.item_1,
      item_2: input.item_2,
      item_3: input.item_3,
      item_4: input.item_4,
      item_5: input.item_5,
-     item_6: input.item_6
+     item_6: input.item_6,
+     talent_id: input.talent_id,
+     hero_id: input.hero_id,
+     game_mode_id: input.game_mode_id,
+     version_id: input.version_id
    }, {
      include: [
        { model: Hero },

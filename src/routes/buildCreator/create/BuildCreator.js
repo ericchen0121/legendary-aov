@@ -32,6 +32,7 @@ const ADD_BUILD = gql`
   mutation addBuild($input: BuildInputType!) {
     addBuild(input: $input) {
         id
+        name
         user_id
         item_1
         item_2
@@ -39,9 +40,9 @@ const ADD_BUILD = gql`
         item_4
         item_5
         item_6
+        talent_id
         hero_id
         game_mode_id
-        item_1_alt
     }
   }`
 
@@ -95,20 +96,30 @@ class BuildCreator extends React.Component {
     const { classes, build_creator } = this.props
     const { current_build } = build_creator
 
+    console.log(current_build)
     let build = {
-      hero_id: 11, // placeholder
-      game_mode_id: 1, // placeholder
-      user_id: 1, // placeholder
-      talent_id: 5, // placeholder
+      name: 'Tulen build',
       item_1: current_build[1],
       item_2: current_build[2],
       item_3: current_build[3],
       item_4: current_build[4],
       item_5: current_build[5],
       item_6: current_build[6],
+      talent_id: current_build.talent_id,
+      hero_id: current_build.hero_id,
+      game_mode_id: current_build.game_mode_id,
+      user_id: current_build.user_id,
+      version_id: current_build.version_id,
+      item_1_alt: current_build.item_1_alt,
+      item_2_alt: current_build.item_2_alt,
+      item_3_alt: current_build.item_3_alt,
+      item_4_alt: current_build.item_4_alt,
+      item_5_alt: current_build.item_5_alt,
+      item_6_alt: current_build.item_6_alt,
+      talent_alt: current_build.talent_alt,
     }
 
-    console.log(build)
+    console.log("BUILD IS", build)
 
     // TODO: make this a map function
 

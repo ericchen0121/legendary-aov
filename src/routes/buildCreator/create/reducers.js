@@ -12,15 +12,25 @@ const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
   current_build: {
-    hero_id: 1,
+    name: 'Tulen Build',
     1: null,
     2: null,
     3: null,
     4: null,
     5: null,
     6: null,
+    hero_id: 1,
     talent_id: 1,
-    game_mode_id: 1
+    game_mode_id: 1,
+    user_id: 1,
+    version_id: 1,
+    item_1_alt: [],
+    item_2_alt: [],
+    item_3_alt: [],
+    item_4_alt: [],
+    item_5_alt: [],
+    item_6_alt: [],
+    talent_alt: [],
   }
 }
 
