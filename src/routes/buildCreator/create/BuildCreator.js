@@ -115,71 +115,26 @@ class BuildCreator extends React.Component {
     return (
       <Mutation mutation={ADD_BUILD} variables={ {input: build} }>
         {(addBuild, {data}) => {
-          console.log("WHAT IS", addBuild)
           let item_editor = (
             <div>
               <Grid container spacing={24}>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_1_${current_build[1]}` || 'item_1'}
-                      item={this.get_item(current_build[1])}
-                      pos={1}
-                      {...this.props}
-                      className={classes.no_margin}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_2_${current_build[2]}` || 'item_2'}
-                      item={this.get_item(current_build[2])}
-                      pos={2}
-                      {...this.props}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_3_${current_build[3]}` || 'item_3'}
-                      item={this.get_item(current_build[3])}
-                      pos={3}
-                      {...this.props}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_4_${current_build[4]}` || 'item_4'}
-                      item={this.get_item(current_build[4])}
-                      pos={4}
-                      {...this.props}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_5_${current_build[5]}` || 'item_5'}
-                      item={this.get_item(current_build[5])}
-                      pos={5}
-                      {...this.props}
-                    />
-                  </div>
-                </Grid>
-                <Grid item xs={2}>
-                  <div className={classes.pointer}>
-                    <BuildItemEdit
-                      key={`item_6_${current_build[6]}` || 'item_6'}
-                      item={this.get_item(current_build[6])}
-                      pos={6}
-                      {...this.props}
-                    />
-                  </div>
-                </Grid>
+                {
+                  [1,2,3,4,5,6].map(i => {
+                    return (
+                      <Grid item xs={2}>
+                        <div className={classes.pointer}>
+                          <BuildItemEdit
+                            key={`item_{i}_${current_build[i]}` || `item_{i}`}
+                            item={this.get_item(current_build[i])}
+                            pos={i}
+                            {...this.props}
+                            className={classes.no_margin}
+                          />
+                        </div>
+                      </Grid>
+                    )
+                  })
+                }
               </Grid>
             </div>
           )

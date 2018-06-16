@@ -20,6 +20,7 @@ const styles = theme => ({
     minWidth: 275,
     maxWidth: '90%',
     marginLeft: 10,
+    marginTop: 35
   },
   bullet: {
     display: 'inline-block',
