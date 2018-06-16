@@ -98,7 +98,7 @@ class BuildCreator extends React.Component {
 
     console.log(current_build)
     let build = {
-      name: 'Tulen build',
+      name: current_build.name,
       item_1: current_build[1],
       item_2: current_build[2],
       item_3: current_build[3],

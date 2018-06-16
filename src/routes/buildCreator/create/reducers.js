@@ -12,7 +12,7 @@ const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
   current_build: {
-    name: 'Tulen Build',
+    name: 'My Tulen Build',
     1: null,
     2: null,
     3: null,

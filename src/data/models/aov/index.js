@@ -28,6 +28,7 @@ Hero.belongsTo(Version)
 // Build
 Build.belongsTo(Hero) // ie. Build will get hero_id
 GameMode.hasOne(Build) // Build gets game_mode_id
+Version.hasOne(Build)
 User.hasMany(Build, {
   foreignKey: 'user_id',
   onUpdate: 'cascade',
