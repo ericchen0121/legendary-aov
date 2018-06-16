@@ -9,17 +9,16 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Template from './Template';
-
+import BuildViewer from './Build';
 const title = 'Item Builds';
 
 function action() {
   return {
-    chunks: ['template'],
+    chunks: ['build'],
     title,
     component: (
       <Layout>
-        <Template title={title} />
+        <BuildViewer title={title} />
       </Layout>
     ),
   };

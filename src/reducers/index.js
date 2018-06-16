@@ -3,7 +3,7 @@ import user from './user';
 import runtime from './runtime';
 import youtube_list from '../routes/draft/reducers';
 import utilities from '../components/Utilities/reducers';
-import build_creator from '../routes/build/create/reducers';
+import build_creator from '../routes/buildCreator/create/reducers';
 
 export default combineReducers({
   user,

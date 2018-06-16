@@ -1,0 +1,85 @@
+.main_container {
+  margin: 0 13%;
+}
+
+.build_container {
+  padding: 0 0 20px 0
+}
+
+.item_img {
+  width: 50px;
+  height: 50px;
+  border: 1.8px gold solid;
+}
+.talent_img {
+  width: 30px;
+  height: 30px
+}
+.talent_name {
+  font-size: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  color:  gray;
+}
+.item_name {
+  font-size: 10px;
+  font-weight: 500;
+  font-family: 'Josefin Sans', sans-serif;
+  color:  black;
+}
+
+.item_passive_container {
+}
+
+.item_effects_container {
+  height: 125px
+}
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.item {
+  flex-grow: 1; /* default 0 */
+}
+
+.item_container {
+  width: 80px;
+  text-align: center;
+  margin: 0 7px
+}
+
+.item_effect_type {
+  font-size: 13px;
+}
+
+.item_effect_power {
+  font-size: 12px
+}
+
+.passive_title {
+  font-size: 10px;
+  color: lightgray
+}
+
+.total_effects_title {
+  font-size: 18px;
+  color: gold
+}
+.font {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.ep_spacer {
+  width: 96%
+}
+hr {
+  margin: .3em 0 0 0;
+  width: 33%;
+  margin: 0 33%;
+  border-color: lightgray
+}
+
+.top_margin_spacer {
+  margin-top: 30px
+}

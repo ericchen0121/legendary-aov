@@ -1,0 +1,23 @@
+.item_img {
+  width: 60px;
+  height: 60px;
+  border: 2px gold solid
+}
+
+.avatar {
+  position: relative;
+  border-radius: 0.5em;
+  border: 2px solid gold;
+  margin: 0 0 6px 13px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
+  overflow: hidden;
+  width: 35%;
+}
+
+.hero_img_small {
+  width: 90px;
+  height: 117px;
+  position: relative;
+  top: 25px;
+  margin: 3px;
+  clip: rect(30px, 30px, 20px, 30px)
+}
