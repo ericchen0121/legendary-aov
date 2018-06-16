@@ -3,7 +3,8 @@ import {
   SELECTED_ITEM,
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
-  SET_HERO_ID
+  SET_HERO_ID,
+  NAME_BUILD
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
@@ -63,19 +64,19 @@ const build_creator = (state = initialState, action) => {
         }
       }
     case SET_HERO_ID:
-      console.log({
-        ...state,
-        current_build: {
-          ...state.current_build,
-          hero_id: action.data
-        }
-      })
-
       return {
         ...state,
         current_build: {
           ...state.current_build,
           hero_id: action.data
+        }
+      }
+    case NAME_BUILD:
+      return {
+        ...state,
+        current_build: {
+          ...state.current_build,
+          name: action.data
         }
       }
     default:

@@ -15,7 +15,6 @@ const addBuild = {
     input: { type: BuildInputType }
   },
   async resolve(parent, { input }){
-    console.log('INPUT', input)
     return Build.create({
      name: input.name,
      user_id: input.user_id,

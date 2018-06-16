@@ -11,6 +11,8 @@ import Button from 'material-ui/Button'
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
+import { MenuItem } from 'material-ui/Menu';
+import TextField from 'material-ui/TextField';
 
 import { Icon } from 'react-icons-kit'
 import {ic_send} from 'react-icons-kit/md/ic_send'
@@ -22,8 +24,6 @@ import HEROES from '../../draft/AovHeroes'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-
 
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
@@ -74,14 +74,22 @@ const styles = theme => ({
   save_button: {
     border: '1px solid #00bfff',
     color: 'gray',
-    marginTop: 20,
+    top: -40,
     marginLeft: '83.5%',
     right: 0,
     position: 'relative'
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 200,
   }
 })
 
 class BuildCreator extends React.Component {
+  state = {
+    name: this.props.build_creator.current_build.name
+  }
 
   sortAlpha = items => {
     return items.sort((a, b) => a.type.localeCompare(b.type))
@@ -90,6 +98,15 @@ class BuildCreator extends React.Component {
 
   get_item = (id) => {
     return ITEMS.find(i => i.id === id)
+  }
+
+  handleChange = name => {
+    this.setState({ name });
+  };
+
+  name_build = (e) => {
+    this.props.actions.nameBuild(e.target.value)
+    this.handleChange(e.target.value)
   }
 
   render() {
@@ -123,6 +140,19 @@ class BuildCreator extends React.Component {
 
     // TODO: make this a map function
 
+    let build_name = (
+      <form className={classes.container} noValidate autoComplete="off">
+        <TextField
+          id="name"
+          label="Build Name"
+          className={classes.textField}
+          value={this.state.name}
+          onChange={this.name_build}
+          margin="normal"
+        />
+      </form>
+    )
+
     return (
       <Mutation mutation={ADD_BUILD} variables={ {input: build} }>
         {(addBuild, {data}) => {
@@ -153,6 +183,7 @@ class BuildCreator extends React.Component {
           return (
             <div>
               { item_editor }
+              {  build_name }
               <Button
                 variant="outlined"
                 color="primary"
