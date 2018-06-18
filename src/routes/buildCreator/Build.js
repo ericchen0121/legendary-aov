@@ -46,7 +46,8 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 2,
   }),
   ep: {
-    padding: 0
+    padding: 0,
+    width: '60%'
   },
   eps: {
     padding: 0,
