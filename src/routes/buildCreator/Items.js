@@ -1322,51 +1322,61 @@ export const TALENTS = [
     id: 1,
     name: 'Sprint',
     folder: 'sprint',
+    active: true,
   },
   {
     id: 2,
     name: 'Execute',
     folder: 'execute',
+    active: true,
   },
   {
     id: 3,
     name: 'Punish',
     folder: 'punish',
+    active: true,
   },
   {
     id: 4,
     name: 'Roar',
     folder: 'roar',
+    active: true,
   },
   {
     id: 5,
     name: 'Heal',
     folder: 'heal',
+    active: true,
   },
   {
     id: 6,
     name: 'Disrupt',
     folder: 'disrupt',
+    active: true,
   },
   {
     id: 7,
     name: 'Daze',
     folder: 'daze',
+    active: true,
   },
   {
     id: 8,
     name: 'Purify',
     folder: 'purify',
+    active: true,
   },
   {
     id: 9,
     name: 'Flicker',
     folder: 'flicker',
+    active: true,
   },
   {
     id: 10,
     name: 'Endure',
     folder: 'endure',
+    active: false
   },
 ]
 

@@ -1,6 +1,7 @@
 import {
   FILTER_ITEM_CATEGORY,
   SELECTED_ITEM,
+  INSERT_TALENT_TO_BUILD,
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
   SET_HERO_ID,
@@ -63,6 +64,14 @@ const build_creator = (state = initialState, action) => {
           [action.data.pos]: null
         }
       }
+    case INSERT_TALENT_TO_BUILD:
+      return {
+        ...state,
+        current_build: {
+          ...state.current_build,
+          talent_id: action.data
+        }
+      }
     case SET_HERO_ID:
       return {
         ...state,
@@ -79,6 +88,7 @@ const build_creator = (state = initialState, action) => {
           name: action.data
         }
       }
+
     default:
       return state;
   }

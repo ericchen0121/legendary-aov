@@ -33,5 +33,48 @@
 }
 
 .border_none {
-  
+  border: none
+}
+
+.talent_img {
+  width: 40px;
+  height: 40px;
+}
+
+.talent_border {
+  border: 1px solid gold;
+  border-radius: 50%
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.talent_spacer {
+  margin-right: 10px
+}
+
+.low_opacity {
+  opacity: .35
+}
+
+.full_opacity {
+  opacity: 1
+}
+
+.item_small {
+  width: 40px;
+  height: 40px
+}
+.item_medium {
+  width: 60px;
+  height: 60px
+}
+
+.item_large {
+  width: 80px;
+  height: 80px
 }

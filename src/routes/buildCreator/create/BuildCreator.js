@@ -11,6 +11,7 @@ import Button from 'material-ui/Button'
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
+import BuildTalent from './BuildTalent'
 import { MenuItem } from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
 
@@ -18,7 +19,7 @@ import { Icon } from 'react-icons-kit'
 import {ic_send} from 'react-icons-kit/md/ic_send'
 import {ic_save} from 'react-icons-kit/md/ic_save'
 
-import { ITEMS, TALENTS } from '../Items'
+import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
 
 import * as Actions from './actions';
@@ -91,15 +92,6 @@ class BuildCreator extends React.Component {
     name: this.props.build_creator.current_build.name
   }
 
-  sortAlpha = items => {
-    return items.sort((a, b) => a.type.localeCompare(b.type))
-  }
-
-
-  get_item = (id) => {
-    return ITEMS.find(i => i.id === id)
-  }
-
   handleChange = name => {
     this.setState({ name });
   };
@@ -149,6 +141,26 @@ class BuildCreator extends React.Component {
       </form>
     )
 
+    let talents = TALENTS.filter(t=> t.active).map(t => {
+      return (
+        <span className={s.talent_spacer}>
+          <BuildTalent
+            key={t.id}
+            talent={t}
+            highlighted={(t.id === current_build.talent_id)}
+          />
+        </span>
+      )
+    })
+
+    let talent_selector = (
+      <div>
+        <div className={cx(s.wrapper)}>
+          { talents }
+        </div>
+      </div>
+    )
+
     return (
       <Mutation mutation={ADD_BUILD} variables={ {input: build} }>
         {(addBuild, {data}) => {
@@ -162,7 +174,7 @@ class BuildCreator extends React.Component {
                         <div className={classes.pointer}>
                           <BuildItemEdit
                             key={`item_{i}_${current_build[i]}` || `item_{i}`}
-                            item={this.get_item(current_build[i])}
+                            item={find_item_by_id(current_build[i])}
                             pos={i}
                             {...this.props}
                             className={classes.no_margin}
@@ -179,7 +191,8 @@ class BuildCreator extends React.Component {
           return (
             <div>
               { item_editor }
-              {  build_name }
+              { build_name }
+              { talent_selector }
               <Button
                 variant="outlined"
                 color="primary"

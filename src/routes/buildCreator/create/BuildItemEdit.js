@@ -85,7 +85,11 @@ class BuildItemEdit extends React.Component {
               onClick={(e) => actions.removeItemFromBuild({pos}) }
             />
           </Button>
-          <BuildItem item={item} />
+          <span
+            onClick={() => actions.selectItem(item.id)}
+          >
+            <BuildItem item={item} />
+          </span>
         </div>
       )
     } else { // or show empty edit container

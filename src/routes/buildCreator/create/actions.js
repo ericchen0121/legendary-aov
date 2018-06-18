@@ -5,6 +5,7 @@ import {
   SELECTED_ITEM,
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
+  INSERT_TALENT_TO_BUILD,
   SET_HERO_ID,
   NAME_BUILD
 } from '../../../constants';
@@ -29,6 +30,10 @@ export const insertItemToBuild = (data) => {
 
 export const removeItemFromBuild = (data) => {
   return { type: REMOVE_ITEM_FROM_BUILD, data }
+}
+
+export const insertTalentToBuild = (data) => {
+  return { type: INSERT_TALENT_TO_BUILD, data }
 }
 
 export const setHeroId = (data) => {

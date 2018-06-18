@@ -64,15 +64,10 @@ class BuildHeroContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      is_hovering: false,
       is_editing_hero: false,
       hero_id: props.build_creator.current_build.hero_id || DEFAULT_HERO_ID
     }
-    this.set_hover = this.set_hover.bind(this)
-  }
-
-  set_hover = () => {
-    this.setState({is_hovering: !this.state.is_hovering})
+    this.set_edit_hero = this.set_edit_hero.bind(this)
   }
 
   set_edit_hero = () => {
@@ -101,11 +96,10 @@ class BuildHeroContainer extends React.Component {
             <img
               className={s.avatar}
               src={hero && `/aov/heroes/${hero.folder}/hero.png` || DEFAULT_IMAGE_URL}
-              onMouseEnter={this.set_hover}
-              onMouseLeave={this.set_hover}
+              onClick={this.set_edit_hero}
             />
           </span>
-          <span onMouseEnter={this.set_edit_hero} onClick={this.set_edit_hero}>
+          <span onClick={this.set_edit_hero}>
             <Tooltip title={SELECT_TEXT}>
               <IconButton className={classes.edit_icon} aria-label="Delete">
                 <Icon icon={edit} style={{color: EDIT_COLOR}} size={20}/>
@@ -120,7 +114,6 @@ class BuildHeroContainer extends React.Component {
               <Select
                 value={this.state.hero_id}
                 className={classes.select_item_small}
-                // onChange={this.handleChange}
                 onChange={this.update_build_with_hero}
                 defaultValue={0}
               >

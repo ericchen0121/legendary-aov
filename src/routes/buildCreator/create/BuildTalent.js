@@ -3,7 +3,7 @@ import cx from 'classnames'
 import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
-import BuildItemImage from './BuildItemImage'
+import BuildTalentImage from './BuildTalentImage'
 import Tooltip from 'material-ui/Tooltip';
 import Button from 'material-ui/Button';
 
@@ -21,19 +21,20 @@ const styles = theme => ({
   },
 })
 
-class BuildItem extends React.Component {
+class BuildTalent extends React.Component {
 
   render() {
-    const { item, classes, actions } = this.props
-
-
+    const { talent, highlighted, classes, actions } = this.props
+    
     return (
-      <div className={classes.pointer}>
-        <Tooltip title={item.name.toUpperCase()}>
-          <Button size="small">
-            <BuildItemImage item={item} {...this.props}/>
-          </Button>
-        </Tooltip>
+      <div onClick={() => actions.insertTalentToBuild(talent.id)}>
+        <div className={cx(classes.pointer, highlighted ? s.full_opacity : s.low_opacity)}>
+          <Tooltip title={talent.name.toUpperCase()}>
+            <Button mini variant='fab'>
+              <BuildTalentImage talent={talent} />
+            </Button>
+          </Tooltip>
+        </div>
       </div>
     )
   }
@@ -50,5 +51,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(BuildItem)
+  connect(mapStateToProps, mapDispatchToProps)(BuildTalent)
 );
