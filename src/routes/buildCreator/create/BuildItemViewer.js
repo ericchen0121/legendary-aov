@@ -25,7 +25,7 @@ const styles = theme => ({
 class BuildItemViewer extends React.Component {
 
   render() {
-    const { classes, build_creator, actions } = this.props
+    const { classes, actions, build_creator, ...other } = this.props
     const { item_filter } = build_creator
 
     let filter_items = (item_filter, tier) => {
@@ -42,7 +42,7 @@ class BuildItemViewer extends React.Component {
               <BuildItem
                 key={i.id}
                 item={i}
-                {...this.props}
+                {...other}
               />
             </div>
           </Grid>

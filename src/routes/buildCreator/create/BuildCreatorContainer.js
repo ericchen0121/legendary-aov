@@ -1,15 +1,14 @@
 import React from 'react'
 import cx from 'classnames'
-import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
+import s from './Build.scss';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
-import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
-import Paper from 'material-ui/Paper';
+
 import BuildCreator from './BuildCreator';
 import BuildItemCard from './BuildItemCard';
-import BuildItemViewerList from './BuildItemViewerList'
+import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import { ITEMS, TALENTS } from '../Items'
@@ -56,14 +55,14 @@ const styles = theme => ({
 class BuildCreatorContainer extends React.Component {
 
   render() {
-    const { classes } = this.props
+    const { classes, context } = this.props
 
     return (
-      <Grid container spacing={24}>
+      <Grid container spacing={24} zeroMinWidth>
         <Grid item xs={2}>
           <BuildHeroContainer/>
           <Divider className={classes.divider}/>
-          <BuildItemViewerList />
+          <BuildItemList />
         </Grid>
         <Grid item xs={7}>
           <BuildCreator />
@@ -74,6 +73,21 @@ class BuildCreatorContainer extends React.Component {
         </Grid>
       </Grid>
     )
+
+    // return (
+    //   <Grid container spacing={24} zeroMinWidth>
+    //     <Grid item xs={2}>
+    //       um
+    //     </Grid>
+    //     <Grid item xs={7}>
+    //       <BuildCreator />
+    //       <BuildItemViewer />
+    //     </Grid>
+    //     <Grid item xs={3}>
+    //       <BuildItemCard />
+    //     </Grid>
+    //   </Grid>
+    // )
   }
 }
 
@@ -87,6 +101,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(BuildCreatorContainer)
+export default withStyles2(s)(
+  withStyles(styles)(
+    connect(mapStateToProps, mapDispatchToProps)(BuildCreatorContainer)
+  )
 )

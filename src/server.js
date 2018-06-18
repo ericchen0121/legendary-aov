@@ -30,6 +30,18 @@ import router from './router';
 import models from './data/models';
 import schema from './data/schema';
 
+// Mui theme provider
+import { renderToString } from 'react-dom/server'
+import { SheetsRegistry } from 'react-jss/lib/jss';
+import JssProvider from 'react-jss/lib/JssProvider';
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  createGenerateClassName,
+} from 'material-ui/styles';
+import green from 'material-ui/colors'
+
+// env config
 import dotenv from 'dotenv'
 import config from './config';
 dotenv.config()
@@ -126,7 +138,6 @@ app.use(
   })),
 );
 
-
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
@@ -178,6 +189,23 @@ app.get('*', async (req, res, next) => {
       storeSubscription: null,
     };
 
+    // https://material-ui.com/guides/server-rendering/
+    // MUI
+    const sheetsRegistry = new SheetsRegistry();
+
+    // MUI Create a theme instance.
+    const theme = createMuiTheme({
+      palette: {
+        primary: green,
+        accent: green,
+        type: 'light',
+      },
+    });
+
+    // MUI classnames
+    const generateClassName = createGenerateClassName();
+    let mui_css = sheetsRegistry.toString() //MUI
+
     const route = await router.resolve(context);
 
     if (route.redirect) {
@@ -186,10 +214,9 @@ app.get('*', async (req, res, next) => {
     }
 
     const data = { ...route };
-    data.children = ReactDOM.renderToString(
-      <App context={context}>{route.component}</App>,
-    );
-    data.styles = [{ id: 'css', cssText: [...css].join('') }];
+
+
+    data.styles = [{ id: 'css', cssText: [...css, mui_css].join('') }];
 
     const scripts = new Set();
     const addChunk = chunk => {
@@ -209,7 +236,23 @@ app.get('*', async (req, res, next) => {
       state: context.store.getState(),
     };
 
-    const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
+    data.children = ReactDOM.renderToString(
+      <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
+        <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
+          <App context={context}>{route.component}</App>
+        </MuiThemeProvider>
+      </JssProvider>
+    );
+
+    data.css = mui_css
+    // MUI is jssprovider and muithemeprovider tags
+    const html = ReactDOM.renderToStaticMarkup(
+      <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
+        <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
+          <Html {...data} />
+        </MuiThemeProvider>
+      </JssProvider>)
+
     res.status(route.status || 200);
     res.send(`<!doctype html>${html}`);
   } catch (err) {

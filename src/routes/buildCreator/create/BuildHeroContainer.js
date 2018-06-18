@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 import s from './Build.scss'
+import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import Tooltip from 'material-ui/Tooltip';
 import Button from 'material-ui/Button';
@@ -61,13 +62,9 @@ const styles = theme => ({
 
 class BuildHeroContainer extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      is_editing_hero: false,
-      hero_id: props.build_creator.current_build.hero_id || DEFAULT_HERO_ID
-    }
-    this.set_edit_hero = this.set_edit_hero.bind(this)
+  state = {
+    is_editing_hero: false,
+    hero_id: this.props.build_creator.current_build.hero_id || DEFAULT_HERO_ID
   }
 
   set_edit_hero = () => {
@@ -88,6 +85,7 @@ class BuildHeroContainer extends React.Component {
     const {item, classes, actions, build_creator } = this.props
     const hero_id = build_creator.current_build.hero_id || this.state.hero_id
     let hero = find_hero_by_id(hero_id)
+    this.set_edit_hero = this.set_edit_hero.bind(this)
 
     return (
       <div className={classes.root}>
@@ -148,5 +146,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(BuildHeroContainer)
-);
+    connect(mapStateToProps, mapDispatchToProps)(BuildHeroContainer)
+)

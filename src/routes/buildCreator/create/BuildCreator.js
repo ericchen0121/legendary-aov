@@ -1,19 +1,28 @@
 import React from 'react'
+
+import { Mutation } from "react-apollo";
+
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import cx from 'classnames'
 import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
+
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button'
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
+import { MenuItem } from 'material-ui/Menu';
+import TextField from 'material-ui/TextField';
+
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
-import { MenuItem } from 'material-ui/Menu';
-import TextField from 'material-ui/TextField';
 
 import { Icon } from 'react-icons-kit'
 import {ic_send} from 'react-icons-kit/md/ic_send'
@@ -22,11 +31,8 @@ import {ic_save} from 'react-icons-kit/md/ic_save'
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
 
-import * as Actions from './actions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import { Mutation } from "react-apollo";
+
 import gql from "graphql-tag";
 
 const ADD_BUILD = gql`
@@ -102,7 +108,7 @@ class BuildCreator extends React.Component {
   }
 
   render() {
-    const { classes, build_creator } = this.props
+    const { classes, build_creator, ...other } = this.props
     const { current_build } = build_creator
 
     console.log(current_build)
@@ -176,7 +182,6 @@ class BuildCreator extends React.Component {
                             key={`item_{i}_${current_build[i]}` || `item_{i}`}
                             item={find_item_by_id(current_build[i])}
                             pos={i}
-                            {...this.props}
                             className={classes.no_margin}
                           />
                         </div>
@@ -194,7 +199,7 @@ class BuildCreator extends React.Component {
               { build_name }
               { talent_selector }
               <Button
-                variant="outlined"
+                variant="flat"
                 color="primary"
                 className={classes.save_button}
                 onClick={addBuild}>
@@ -219,8 +224,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles2(s)(
-  withStyles(styles)(
-    connect(mapStateToProps, mapDispatchToProps)(BuildCreator)
-  )
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(BuildCreator)
 )

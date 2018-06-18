@@ -23,7 +23,7 @@ const styles = theme => ({
   inactive: {}
 })
 
-class BuildItemViewerList extends React.Component {
+class BuildItemList extends React.Component {
 
   upper_case_first = (word) => word.charAt(0).toUpperCase() + word.slice(1)
 
@@ -60,5 +60,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(styles)(
-    connect(mapStateToProps, mapDispatchToProps)(BuildItemViewerList)
+    connect(mapStateToProps, mapDispatchToProps)(BuildItemList)
 )

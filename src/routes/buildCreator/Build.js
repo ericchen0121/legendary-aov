@@ -20,8 +20,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { Query } from "react-apollo";
-import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
+
 let query = gql`
   {
     builds {
@@ -108,8 +108,7 @@ class BuildViewer extends React.Component {
 
                 let effects = item.effects.map((e, i) => {
                   let power = e.power
-                  let percent = null
-                  let plus = null
+                  let percent, plus
                   // if power is really Percentages
                   if (power < 1) {
                     power = Math.floor(power * 100)
@@ -270,8 +269,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles2(s)(
-  withStyles(styles)(
+export default withStyles(styles)(
+  withStyles2(s)(
     connect(mapStateToProps, mapDispatchToProps)(BuildViewer)
   )
 )

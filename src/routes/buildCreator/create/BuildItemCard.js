@@ -59,7 +59,11 @@ class BuildItemCard extends React.Component {
         plus = '+'
       }
 
-      return <div>{e.type}: {plus}{power}{percent}</div>
+      return (
+        <div key={item.name}>
+          {e.type}: {plus}{power}{percent}
+        </div>
+      )
     })
 
 
@@ -101,14 +105,15 @@ class BuildItemCard extends React.Component {
         </div>
     ))
 
-
+    // <Typography className={classes.title} color="textSecondary">
+    // </Typography>
     return (
       <div>
         <Card className={classes.card}>
           <CardContent>
-            <Typography className={classes.title} color="textSecondary">
-            { item_card}
-            </Typography>
+
+            { item_card }
+
           </CardContent>
         </Card>
       </div>

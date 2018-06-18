@@ -60,7 +60,17 @@ const ContextType = {
  *     container,
  *   );
  */
+
+
 class App extends React.PureComponent {
+  // MUI 
+  // componentDidMount() {
+  //   const jssStyles = document.getElementById('jss-server-side');
+  //   if (jssStyles && jssStyles.parentNode) {
+  //     jssStyles.parentNode.removeChild(jssStyles);
+  //   }
+  // }
+
   static propTypes = {
     context: PropTypes.shape(ContextType).isRequired,
     children: PropTypes.element.isRequired,

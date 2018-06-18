@@ -1,7 +1,5 @@
 import React from 'react'
 import cx from 'classnames'
-import s from './Build.scss'
-import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import BuildItemImage from './BuildItemImage'
 import Tooltip from 'material-ui/Tooltip';
@@ -24,14 +22,16 @@ const styles = theme => ({
 class BuildItem extends React.Component {
 
   render() {
-    const { item, classes, actions } = this.props
-
+    const { classes, actions, item, ...other } = this.props
 
     return (
       <div className={classes.pointer}>
         <Tooltip title={item.name.toUpperCase()}>
           <Button size="small">
-            <BuildItemImage item={item} {...this.props}/>
+            <BuildItemImage
+              item={item}
+              {...other}
+            />
           </Button>
         </Tooltip>
       </div>

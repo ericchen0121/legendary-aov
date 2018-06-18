@@ -6,15 +6,18 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import BuildItem from './BuildItem'
+import Tooltip from 'material-ui/Tooltip';
 
 import Button from 'material-ui/Button';
 import { Icon } from 'react-icons-kit'
-import {ic_add_circle} from 'react-icons-kit/md/ic_add_circle'
 import {plus} from 'react-icons-kit/fa/plus'
-import {x} from 'react-icons-kit/iconic/x'
 import {closeCircled} from 'react-icons-kit/ionicons/closeCircled'
 
-import Tooltip from 'material-ui/Tooltip';
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
 
 const styles = theme => ({
   root: {
@@ -140,4 +143,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles(styles)(BuildItemEdit);
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(BuildItemEdit)
+)
