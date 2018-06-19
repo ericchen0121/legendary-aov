@@ -73,21 +73,6 @@ class BuildCreatorContainer extends React.Component {
         </Grid>
       </Grid>
     )
-
-    // return (
-    //   <Grid container spacing={24} zeroMinWidth>
-    //     <Grid item xs={2}>
-    //       um
-    //     </Grid>
-    //     <Grid item xs={7}>
-    //       <BuildCreator />
-    //       <BuildItemViewer />
-    //     </Grid>
-    //     <Grid item xs={3}>
-    //       <BuildItemCard />
-    //     </Grid>
-    //   </Grid>
-    // )
   }
 }
 

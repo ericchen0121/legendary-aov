@@ -41,7 +41,8 @@ class DraftVideo extends React.Component {
     const { youtube_list, is_mobile, utilities } = this.props;
     const { dark_mode_active } = utilities;
 
-    console.log(youtube_list)
+    // console.log(youtube_list)
+    
     let vid = null;
 
     let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`;

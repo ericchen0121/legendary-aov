@@ -163,7 +163,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Elemental Power",
-      description: 'After using an ability, the net normal attack within 5 seconds deals 100% more physical damage. 2-second cooldown.',
+      description: 'After using an ability, the next normal attack within 5 seconds deals 100% more physical damage. 2-second cooldown.',
       type: ['attack damage']
     }]
   },

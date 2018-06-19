@@ -28,15 +28,19 @@ const styles = theme => ({
     transform: 'scale(0.8)',
   },
   title: {
-    marginBottom: 16,
-    fontSize: 14,
+    fontSize: 18,
   },
   pos: {
     marginBottom: 12,
+    marginLeft: 20
   },
   item_type: {
-    marginLeft: 15,
+    marginRight: 15,
     fontSize: 11
+  },
+  divider: {
+    marginTop: 5,
+    marginBottom: 5
   }
 });
 
@@ -60,23 +64,23 @@ class BuildItemCard extends React.Component {
       }
 
       return (
-        <div key={item.name}>
-          {e.type}: {plus}{power}{percent}
+        <div key={ item.name + Math.random()*100 }>
+          <span className={s.item_power_type}>{e.type}:</span> <span className={s.item_effect_power}>{plus}{power}{percent}</span>
         </div>
       )
     })
 
 
     let item_passives = (
-      <div className={s.item_passive_container}>
+      <div className={s.passive_container}>
         <div className={s.passive_title}>Passive</div>
         { item && item.passives.map((p, i) => {
 
-          let divider = <Divider />
+          let divider = <Divider className={classes.divider}/>
           if (i === item.passives.length - 1) { divider = null }
           return  (
             <div>
-              <span className={s.item_effect_type}>{p.name}</span>: <span className={s.item_effect_power}>{p.description}</span>
+              <span className={s.item_passive_title}>{p.name}</span>: <span className={s.item_passive_desc}>{p.description}</span>
               { divider }
             </div>
           )
@@ -87,16 +91,20 @@ class BuildItemCard extends React.Component {
     let item_card = (
       item && (
         <div>
-          <div>
+          <div className={s.wrapper}>
             <BuildItemImage item={item} />
-            <span>{item.name}</span>
-            <span className={classes.item_type}>Tier {item.tier}</span>
-            <span className={classes.item_type}>{item.type}</span>
+            <div className={classes.type_container}>
+              <Typography variant="headline" component="h3" className={classes.title}>
+                <span>{item.name}</span>
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary">
+                <span className={classes.item_type}>Tier {item.tier}</span>
+                <span className={classes.item_type}>{item.type}</span>
+                <span className={classes.item_type}>{item.cost}</span>
+              </Typography>
+            </div>
           </div>
-          <div>
-            <span className={classes.item_type}>{item.cost}</span>
-          </div>
-          <div>
+          <div className={s.item_effects_container}>
             { item_effects }
           </div>
           <div>

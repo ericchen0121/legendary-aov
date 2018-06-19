@@ -53,7 +53,6 @@ const ADD_BUILD = gql`
     }
   }`
 
-
 const EDIT_COLOR = '#00bfff'
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -111,7 +110,6 @@ class BuildCreator extends React.Component {
     const { classes, build_creator, ...other } = this.props
     const { current_build } = build_creator
 
-    console.log(current_build)
     let build = {
       name: current_build.name,
       item_1: current_build[1],
@@ -140,7 +138,7 @@ class BuildCreator extends React.Component {
           id="name"
           label="Build Name"
           className={classes.textField}
-          value={this.state.name}
+          value={current_build.name}
           onChange={this.name_build}
           margin="normal"
         />
@@ -176,7 +174,7 @@ class BuildCreator extends React.Component {
                 {
                   [1,2,3,4,5,6].map(i => {
                     return (
-                      <Grid item xs={2}>
+                      <Grid item xs={2} key={i+Math.random()*100}>
                         <div className={classes.pointer}>
                           <BuildItemEdit
                             key={`item_{i}_${current_build[i]}` || `item_{i}`}
@@ -202,9 +200,15 @@ class BuildCreator extends React.Component {
                 variant="flat"
                 color="primary"
                 className={classes.save_button}
-                onClick={addBuild}>
+                onClick={addBuild}
+              >
                 SAVE
-                <Icon style={{color: EDIT_COLOR}} icon={ic_save} size={19} className={classes.save}/>
+                <Icon
+                  style={{color: EDIT_COLOR}}
+                  icon={ic_save} 
+                  size={19}
+                  className={classes.save}
+                />
               </Button>
             </div>
           )

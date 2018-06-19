@@ -9,21 +9,26 @@ import {
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
+import {find_hero_by_id} from '../../draft/AovHeroes'
+
+const DEFAULT_HERO_ID = 1
+const DEFAULT_TALENT_ID = 1
+const DEFAULT_GAME_MODE_ID = 1
 
 const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
   current_build: {
-    name: 'My Tulen Build',
+    name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
     1: null,
     2: null,
     3: null,
     4: null,
     5: null,
     6: null,
-    hero_id: 1,
-    talent_id: 1,
-    game_mode_id: 1,
+    hero_id: DEFAULT_HERO_ID,
+    talent_id: DEFAULT_TALENT_ID,
+    game_mode_id: DEFAULT_GAME_MODE_ID,
     user_id: 1,
     version_id: 1,
     item_1_alt: [],
@@ -77,7 +82,8 @@ const build_creator = (state = initialState, action) => {
         ...state,
         current_build: {
           ...state.current_build,
-          hero_id: action.data
+          hero_id: action.data,
+          name: `${find_hero_by_id(action.data).name} Build`,
         }
       }
     case NAME_BUILD:

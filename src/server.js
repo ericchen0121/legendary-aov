@@ -251,7 +251,8 @@ app.get('*', async (req, res, next) => {
         <MuiThemeProvider theme={theme} sheetsManager={new Map()}>
           <Html {...data} />
         </MuiThemeProvider>
-      </JssProvider>)
+      </JssProvider>
+    )
 
     res.status(route.status || 200);
     res.send(`<!doctype html>${html}`);
