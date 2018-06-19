@@ -97,7 +97,7 @@ class BuildViewer extends React.Component {
                   >
                     <div>
                       <span
-                        onClick={() => actions.selectItem(item.id)}
+                        onMouseOver={() => actions.selectItem(item.id)}
                       >
                         <BuildItem
                           item={item}
@@ -272,7 +272,9 @@ class BuildViewer extends React.Component {
                   </div>
                 </Grid>
                 <Grid item xs={3}>
-                  <BuildItemCard />
+                  <div className={s.fixed}>
+                    <BuildItemCard />
+                  </div>
                 </Grid>
               </Grid>
             )
