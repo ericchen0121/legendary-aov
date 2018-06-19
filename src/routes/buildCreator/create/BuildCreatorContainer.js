@@ -59,12 +59,12 @@ class BuildCreatorContainer extends React.Component {
 
     return (
       <Grid container spacing={24} zeroMinWidth>
-        <Grid item xs={2}>
+        <Grid item xs={1}>
           <BuildHeroContainer/>
           <Divider className={classes.divider}/>
           <BuildItemList />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={8}>
           <BuildCreator />
           <BuildItemViewer />
         </Grid>

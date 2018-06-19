@@ -3,17 +3,20 @@ import cx from 'classnames'
 import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
+
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
-import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
+import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
+
 import BuildHeroImage from './create/BuildHeroImage'
 import BuildItem from './create/BuildItem'
+import CustomBuilds from './CustomBuilds'
+import BuildItemCard from './create/BuildItemCard'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from './Items'
 import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
-import CustomBuilds from './CustomBuilds'
 
 import * as Actions from './create/actions';
 import { connect } from 'react-redux';
@@ -47,7 +50,7 @@ const styles = theme => ({
   }),
   ep: {
     padding: 0,
-    width: '60%'
+    width: '100%'
   },
   eps: {
     padding: 0,
@@ -76,6 +79,9 @@ class BuildViewer extends React.Component {
         query={query}
       >
         {({ loading, error, data }) => {
+          if (error) {
+            return <div>OOPS!</div>
+          }
           if (data.builds) {
             let all_builds = data.builds.map(b => {
               let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
@@ -217,38 +223,58 @@ class BuildViewer extends React.Component {
               // <h4>{b.info.description} for {hero.name}</h4> {talent_html}
               return (
                 <div key={b.id} className={s.build_container}>
-
-                  <BuildHeroImage
-                    hero={hero}
-                    size='xs'
-                    border='gold'
-                  />
-                  { b.name }
-                  {talent_html}
-                  <ExpansionPanel className={classes.ep}>
-                    <ExpansionPanelSummary className={classes.eps}>
+                  <Grid container>
+                    <Grid item xs={3}>
                       <div className={s.wrapper}>
-                        {item_list}
+                        <BuildHeroImage
+                          hero={hero}
+                          size='xs'
+                          border='gold'
+                        />
+                        <span className={s.build_name_container}>
+                          { b.name }
+                        </span>
+                        <span className={s.talent_container}>
+                          <span className={s.talent_sub_container}>
+                            {talent_html}
+                          </span>
+                        </span>
                       </div>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails className={classes.epd}>
-                      <div className={cx(s.wrapper, s.ep_spacer)}>
-                        {item_details}
-                      </div>
-                      <div className={cx(s.wrapper, s.top_margin_spacer)}>
-                        {all_effects_html}
-                      </div>
-                    </ExpansionPanelDetails>
-                  </ExpansionPanel>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <ExpansionPanel className={classes.ep}>
+                        <ExpansionPanelSummary className={classes.eps}>
+                          <div className={s.wrapper}>
+                            {item_list}
+                          </div>
+                        </ExpansionPanelSummary>
+                        <ExpansionPanelDetails className={classes.epd}>
+                          <div className={cx(s.wrapper, s.ep_spacer)}>
+                            {item_details}
+                          </div>
+                          <div className={cx(s.wrapper, s.top_margin_spacer)}>
+                            {all_effects_html}
+                          </div>
+                        </ExpansionPanelDetails>
+                      </ExpansionPanel>
+                    </Grid>
+                  </Grid>
                 </div>
               )
             })
 
             return (
-              <div className={s.main_container}>
-                <h2>All Custom Builds</h2>
-                { all_builds }
-              </div>
+              <Grid container zeroMinWidth>
+                <Grid item xs={9}>
+                  <div className={s.main_container}>
+                    <h2>All Custom Builds</h2>
+                    { all_builds }
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <BuildItemCard />
+                </Grid>
+              </Grid>
             )
           } else {
             return <div>Loading</div>
