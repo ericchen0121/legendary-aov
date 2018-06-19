@@ -16,7 +16,7 @@ import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import Button from 'material-ui/Button'
-import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
+import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
 import { MenuItem } from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
 
@@ -30,8 +30,6 @@ import {ic_save} from 'react-icons-kit/md/ic_save'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
-
-
 
 import gql from "graphql-tag";
 
@@ -54,6 +52,8 @@ const ADD_BUILD = gql`
   }`
 
 const EDIT_COLOR = '#00bfff'
+const CONTINUE_EDIT_COLOR = 'rgba(0,0,0,.2)'
+
 const styles = theme => ({
   root: theme.mixins.gutters({
     paddingTop: 16,
@@ -79,7 +79,15 @@ const styles = theme => ({
   },
   save_button: {
     border: '1px solid #00bfff',
-    color: 'gray',
+    color: '#00aaff',
+    top: -40,
+    marginLeft: '83.5%',
+    right: 0,
+    position: 'relative'
+  },
+  save_button_inactive: {
+    border: '1px solid rgba(0,0,0, .2)',
+    color: 'rgba(0,0,0, .2)',
     top: -40,
     marginLeft: '83.5%',
     right: 0,
@@ -191,11 +199,25 @@ class BuildCreator extends React.Component {
             </div>
           )
 
-          return (
-            <div>
-              { item_editor }
-              { build_name }
-              { talent_selector }
+          let save_button
+          if (Object.values(build).includes(null)) { // check for empty build items
+            save_button = (
+              <Button
+                variant="flat"
+                color="primary"
+                className={classes.save_button_inactive}
+              >
+                SAVE
+                <Icon
+                  style={{color: CONTINUE_EDIT_COLOR}}
+                  icon={ic_save}
+                  size={19}
+                  className={classes.save}
+                />
+              </Button>
+            )
+          } else {
+            save_button = (
               <Button
                 variant="flat"
                 color="primary"
@@ -205,11 +227,21 @@ class BuildCreator extends React.Component {
                 SAVE
                 <Icon
                   style={{color: EDIT_COLOR}}
-                  icon={ic_save} 
+                  icon={ic_save}
                   size={19}
                   className={classes.save}
                 />
               </Button>
+            )
+          }
+
+          console.log('save button is', save_button)
+          return (
+            <div>
+              { item_editor }
+              { build_name }
+              { talent_selector }
+              { save_button }
             </div>
           )
         }}

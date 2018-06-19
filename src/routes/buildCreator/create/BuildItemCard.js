@@ -30,10 +30,6 @@ const styles = theme => ({
   title: {
     fontSize: 18,
   },
-  pos: {
-    marginBottom: 12,
-    marginLeft: 20
-  },
   item_type: {
     marginRight: 15,
     fontSize: 11
@@ -41,6 +37,9 @@ const styles = theme => ({
   divider: {
     marginTop: 5,
     marginBottom: 5
+  },
+  type_container: {
+    marginLeft: 20
   }
 });
 
@@ -91,13 +90,13 @@ class BuildItemCard extends React.Component {
     let item_card = (
       item && (
         <div>
-          <div className={s.wrapper}>
+          <div className={cx(s.wrapper, s.text_align_left)}>
             <BuildItemImage item={item} />
             <div className={classes.type_container}>
               <Typography variant="headline" component="h3" className={classes.title}>
                 <span>{item.name}</span>
               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
+              <Typography color="textSecondary">
                 <span className={classes.item_type}>Tier {item.tier}</span>
                 <span className={classes.item_type}>{item.type}</span>
                 <span className={classes.item_type}>{item.cost}</span>
