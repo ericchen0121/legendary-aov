@@ -647,7 +647,7 @@ export const ITEMS = [
         power: 1100,
       },
       {
-        type: 'movement s %peed',
+        type: 'movement speed %',
         power: 0.05,
       },
     ],

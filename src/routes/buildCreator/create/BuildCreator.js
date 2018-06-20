@@ -19,6 +19,8 @@ import Button from 'material-ui/Button'
 import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
 import { MenuItem } from 'material-ui/Menu';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
+import green from 'material-ui/colors/green';
 
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
@@ -33,24 +35,6 @@ import HEROES from '../../draft/AovHeroes'
 
 import gql from "graphql-tag";
 
-const ADD_BUILD = gql`
-  mutation addBuild($input: BuildInputType!) {
-    addBuild(input: $input) {
-        id
-        name
-        user_id
-        item_1
-        item_2
-        item_3
-        item_4
-        item_5
-        item_6
-        talent_id
-        hero_id
-        game_mode_id
-    }
-  }`
-
 const EDIT_COLOR = '#00bfff'
 const CONTINUE_EDIT_COLOR = 'rgba(0,0,0,.2)'
 
@@ -60,6 +44,9 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 2,
   }),
+  snackbar: {
+    backgroundColor: green
+  },
   ep: {
     padding: 0
   },
@@ -97,26 +84,83 @@ const styles = theme => ({
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
+  },
+  create_new: {
+    fontStyle: 'bold',
+    color: 'gold',
+    marginLeft: 15,
+    border: '1px solid gold',
+    padding: 5,
+    cursor: 'pointer'
   }
 })
 
+const ADD_BUILD = gql`
+  mutation addBuild($input: BuildInputType!) {
+    addBuild(input: $input) {
+        id
+        name
+        user_id
+        item_1
+        item_2
+        item_3
+        item_4
+        item_5
+        item_6
+        talent_id
+        hero_id
+        game_mode_id
+    }
+  }`
+
 class BuildCreator extends React.Component {
   state = {
-    name: this.props.build_creator.current_build.name
+    name: this.props.build_creator.current_build.name,
+    is_saved: false,
+    open: false
   }
 
   handleChange = name => {
     this.setState({ name });
   };
 
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
+
   name_build = (e) => {
     this.props.actions.nameBuild(e.target.value)
     this.handleChange(e.target.value)
   }
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleSave = () => {
+    this.setState({ is_saved: true })
+  }
+
+  handleSaveAndOpen = () => {
+    this.handleSave()
+    this.handleOpen()
+  }
+
+  resetBuild = () => {
+    this.setState({ is_saved: false }, () => setTimeout(this.handleClose, 1500))
+    this.props.actions.resetBuild()
+  }
+
   render() {
     const { classes, build_creator, ...other } = this.props
     const { current_build } = build_creator
+    const { is_saved, open } = this.state
+
+    console.log(is_saved, open)
+    let handleSave = this.handleSave.bind(this)
+    let handleOpen = this.handleOpen.bind(this)
+    let handleSaveAndOpen = this.handleSaveAndOpen.bind(this)
+    let resetBuild = this.resetBuild.bind(this)
 
     let build = {
       name: current_build.name,
@@ -199,49 +243,95 @@ class BuildCreator extends React.Component {
             </div>
           )
 
-          let save_button
-          if (Object.values(build).includes(null)) { // check for empty build items
+          let save_button, button_action, color, button_class, alert_text
+          let button_text = 'SAVE'
+          let is_build_complete = !Object.values(build).includes(null)
+
+          // incomplete, complete, complete and already saved
+          if (is_saved) {
+            alert_text = (<span><span>Saved</span><span className={classes.create_new} onClick={resetBuild}>Create New</span></span>)
             save_button = (
-              <Button
-                variant="flat"
-                color="primary"
-                className={classes.save_button_inactive}
-              >
-                SAVE
-                <Icon
-                  style={{color: CONTINUE_EDIT_COLOR}}
-                  icon={ic_save}
-                  size={19}
-                  className={classes.save}
-                />
-              </Button>
+              <div onClick={handleOpen}>
+                <Button
+                  variant="flat"
+                  color="primary"
+                  className={classes.save_button_inactive}
+                >
+                  SAVED!
+                  <Icon
+                    style={{color: CONTINUE_EDIT_COLOR}}
+                    icon={ic_save}
+                    size={19}
+                    className={classes.save}
+                  />
+                </Button>
+              </div>
             )
-          } else {
+          }
+          else if (!is_build_complete) {
+            alert_text = 'Add items to build to save'
             save_button = (
-              <Button
-                variant="flat"
-                color="primary"
-                className={classes.save_button}
-                onClick={addBuild}
-              >
-                SAVE
-                <Icon
-                  style={{color: EDIT_COLOR}}
-                  icon={ic_save}
-                  size={19}
-                  className={classes.save}
-                />
-              </Button>
+              <div onClick={handleOpen}>
+                <Button
+                  variant="flat"
+                  color="primary"
+                  className={classes.save_button_inactive}
+                >
+                  SAVE
+                  <Icon
+                    style={{color: CONTINUE_EDIT_COLOR}}
+                    icon={ic_save}
+                    size={19}
+                    className={classes.save}
+                  />
+                </Button>
+              </div>
+            )
+          }
+          else if (is_build_complete) {
+            alert_text = 'Click Save'
+            save_button = (
+              <div onClick={handleSaveAndOpen}>
+                <Button
+                  variant="flat"
+                  color="primary"
+                  className={classes.save_button}
+                  onClick={addBuild}
+                >
+                  SAVE
+                  <Icon
+                    style={{color: EDIT_COLOR}}
+                    icon={ic_save}
+                    size={19}
+                    className={classes.save}
+                  />
+                </Button>
+              </div>
             )
           }
 
-          console.log('save button is', save_button)
           return (
             <div>
               { item_editor }
               { build_name }
               { talent_selector }
               { save_button }
+              <Snackbar
+                className={classes.snackbar}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open}
+                ContentProps={{
+                  'aria-describedby': 'message-id',
+                }}
+                message={(
+                  <div>
+                    <span id="message-id">{alert_text}</span>
+                  </div>
+                )}
+              />
             </div>
           )
         }}
@@ -249,6 +339,7 @@ class BuildCreator extends React.Component {
     )
   }
 }
+
 
 function mapStateToProps(state) {
   return state;

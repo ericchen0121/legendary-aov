@@ -5,7 +5,8 @@ import {
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
   SET_HERO_ID,
-  NAME_BUILD
+  NAME_BUILD,
+  RESET_BUILD
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
@@ -94,7 +95,9 @@ const build_creator = (state = initialState, action) => {
           name: action.data
         }
       }
-
+    case RESET_BUILD:
+      return initialState
+      
     default:
       return state;
   }

@@ -14,6 +14,7 @@ import BuildHeroImage from './create/BuildHeroImage'
 import BuildItem from './create/BuildItem'
 import CustomBuilds from './CustomBuilds'
 import BuildItemCard from './create/BuildItemCard'
+import BuildHeroContainer from './create/BuildHeroContainer'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from './Items'
 import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
@@ -27,9 +28,26 @@ import { RingLoader } from 'react-spinners';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-let query = gql`
+let builds_query = gql`
   {
     builds {
+      id
+      name
+      item_1
+      item_2
+      item_3
+      item_4
+      item_5
+      item_6
+      talent_id
+      hero_id
+    }
+  }
+`
+
+let hero_builds_query = gql`
+  query buildsByHero($hero_id: Int!){
+    buildsByHero(hero_id: $hero_id ) {
       id
       name
       item_1
@@ -74,18 +92,22 @@ class BuildViewer extends React.Component {
   }
 
   render() {
-    const { classes, actions } = this.props
+    const { classes, actions, build_creator } = this.props
+
+    // Re-using component from created build
+    let selected_hero_id = build_creator.current_build.hero_id
 
     return (
       <Query
-        query={query}
+        query={hero_builds_query}
+        variables={{ hero_id: selected_hero_id }}
       >
         {({ loading, error, data }) => {
           if (error) {
-            return <div>OOPS!</div>
+            return <div>ERROR BOI! Sorry!</div>
           }
-          if (data.builds) {
-            let all_builds = data.builds.map(b => {
+          if (data.buildsByHero) {
+            let all_builds = data.buildsByHero.map(b => {
               let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
               let hero = find_hero_by_id(b.hero_id)
 
@@ -223,6 +245,12 @@ class BuildViewer extends React.Component {
               // For Each Build Container
               //
               // <h4>{b.info.description} for {hero.name}</h4> {talent_html}
+
+              // Removed all item descriptions from build in ExpansionPanel
+              // <div className={cx(s.wrapper, s.ep_spacer)}>
+              //   {item_details}
+              // </div>
+              //
               return (
                 <div key={b.id} className={s.build_container}>
                   <Grid container>
@@ -251,9 +279,6 @@ class BuildViewer extends React.Component {
                           </div>
                         </ExpansionPanelSummary>
                         <ExpansionPanelDetails className={classes.epd}>
-                          <div className={cx(s.wrapper, s.ep_spacer)}>
-                            {item_details}
-                          </div>
                           <div className={cx(s.wrapper, s.top_margin_spacer)}>
                             {all_effects_html}
                           </div>
@@ -276,6 +301,9 @@ class BuildViewer extends React.Component {
                 <Grid item xs={3}>
                   <div className={s.fixed}>
                     <BuildItemCard />
+                  </div>
+                  <div>
+                    <BuildHeroContainer />
                   </div>
                 </Grid>
               </Grid>

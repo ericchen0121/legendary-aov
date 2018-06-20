@@ -13,6 +13,7 @@ import { InputLabel } from 'material-ui/Input'
 import { find_hero_by_id } from '../../draft/AovHeroes'
 import BuildHeroImage from './BuildHeroImage'
 import { DEFAULT_IMAGE_URL } from '../../draft/DraftConstants';
+import Snackbar from 'material-ui/Snackbar';
 
 import {edit} from 'react-icons-kit/entypo/edit'
 import { Icon } from 'react-icons-kit'
@@ -75,6 +76,10 @@ class BuildHeroContainer extends React.Component {
     this.setState({ hero_id: id });
   };
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   update_build_with_hero = (e) => {
     this.props.actions.setHeroId(e.target.value)
     this.handleChange('hero_id')
@@ -82,7 +87,7 @@ class BuildHeroContainer extends React.Component {
   }
 
   render() {
-    const {item, classes, actions, build_creator } = this.props
+    const {item, classes, actions, build_creator, is_build_viewer } = this.props
     const hero_id = build_creator.current_build.hero_id || this.state.hero_id
     let hero = find_hero_by_id(hero_id)
     this.set_edit_hero = this.set_edit_hero.bind(this)

@@ -17,6 +17,7 @@ import me from './queries/me';
 import news from './queries/news';
 import build from './queries/build';
 import builds from './queries/builds';
+import buildsByHero from './queries/buildsByHero';
 import hero from './queries/hero';
 import item from './queries/item';
 import items from './queries/items';
@@ -33,6 +34,7 @@ const schema = new Schema({
       news,
       build,
       builds,
+      buildsByHero,
       hero,
       item,
       items,
