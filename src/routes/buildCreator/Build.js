@@ -22,6 +22,8 @@ import * as Actions from './create/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { RingLoader } from 'react-spinners';
+
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -279,7 +281,14 @@ class BuildViewer extends React.Component {
               </Grid>
             )
           } else {
-            return <div>Loading</div>
+            return (
+              <div className={s.loader_container}>
+                <RingLoader
+                  color={'#123abc'}
+                  loading={loading}
+                />
+              </div>
+            )
           }
         }}
       </Query>
