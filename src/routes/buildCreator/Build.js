@@ -16,9 +16,11 @@ import BuildItem from './create/BuildItem'
 import CustomBuilds from './CustomBuilds'
 import BuildItemCard from './create/BuildItemCard'
 import BuildHeroContainer from './create/BuildHeroContainer'
+import BuildItemsEffects from './BuildItemsEffects'
+import BuildItemsContainer from './BuildItemsContainer'
 
-import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from './Items'
-import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
+import { find_talent_by_id, find_item_by_id } from './Items'
+import { find_hero_by_id } from '../draft/AovHeroes'
 import { to_uppercase_first } from './utilities'
 
 import * as Actions from './create/actions';
@@ -159,193 +161,6 @@ class BuildViewer extends React.Component {
           }
 
           if (data.buildsByHero) {
-            let all_builds = data.buildsByHero.map(b => {
-              let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
-              if (items.includes(null)) {
-                return
-              }
-
-              let hero = find_hero_by_id(b.hero_id)
-
-              // Item List
-              let item_list = items.map(i => {
-                let item = find_item_by_id(i)
-                return (
-                  <div
-                    key={i.id}
-                    className={cx(s.item, s.item_container)}
-                  >
-                    <div>
-                      <span
-                        onMouseOver={() => actions.selectItem(item.id)}
-                      >
-                        <BuildItem
-                          item={item}
-                          size='small'
-                        />
-                      </span>
-                    </div>
-                  </div>
-                )
-              })
-
-              let item_details = items.map(i => {
-                let item = find_item_by_id(i) // i is the item id
-
-                let effects = item.effects.map((e, i) => {
-                  let power = e.power
-                  let percent, plus
-                  // if power is really Percentages
-                  if (power < 1) {
-                    power = Math.floor(power * 100)
-                    percent = '%'
-                    plus = '+'
-                  }
-
-                  let divider = <Divider className={classes.divider}/>
-                  if (i === item.effects.length - 1) { divider = null }
-
-                  return (
-                    <div key={(i.folder + e.type)}>
-                      <span className={s.item_effect_type}>{e.type}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
-                      { divider }
-                    </div>
-                  )
-                })
-
-                return (
-                  <div className={cx(s.item, s.item_container, s.font)}>
-                    <div className={s.item_effects_container}>
-                      {effects}
-                    </div>
-                    <div className={s.item_passive_container}>
-                      <div className={s.passive_title}>Passive</div>
-                      { item.passives.map((p, i) => {
-
-                        let divider = <Divider />
-                        if (i === item.passives.length - 1) { divider = null }
-                        return  (
-                          <div>
-                            <span className={s.item_effect_type}>{p.name}</span>: <span className={s.item_effect_power}>{p.description}</span>
-                            { divider }
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )
-              })
-
-              // ---------------------- TOTAL EFFECTS PER BUILD ---------------------
-              //
-              // Gather all effects from all items in the build
-              let all_effects = []
-              for (let id of items) {
-                let item = find_item_by_id(id)
-                all_effects.push(...item.effects)
-              }
-
-              // Create a map of all unique effects, and the combined power
-              // Create Map, and reduce https://stackoverflow.com/questions/19233283/sum-javascript-object-propertya-values-with-same-object-propertyb-in-array-of-ob
-              let all_effects_counts_map = all_effects.reduce((prev, curr) => {
-                let count = prev.get(curr.type) || 0;
-                prev.set(curr.type, curr.power + count)
-                return prev;
-              }, new Map());
-
-              // then, map your counts object back to an array
-              let all_effects_counts = [...all_effects_counts_map].map(([type, power]) => {
-                return {type, power}
-              })
-
-              let all_effects_inner_html = this.sortAlpha(all_effects_counts).map((e, i) => {
-                let power = e.power
-                let percent, plus
-                // if power is really Percentages
-                if (power < 1) {
-                  power = Math.floor(power * 100)
-                  percent = '%'
-                  plus = '+'
-                }
-
-                let divider = <Divider className={classes.divider}/>
-                if (i === all_effects_counts.length - 1) { divider = null }
-
-                return (
-                  <div key={(e.type + i)}>
-                    <span className={s.item_effect_type}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
-                    { divider }
-                  </div>
-                )
-              })
-
-              let all_effects_html = (
-                <div className={cx(s.item, s.item_container, s.font)}>
-                  <div className={s.total_effects_title}>Full Build Totals</div>
-                  {all_effects_inner_html}
-                </div>
-              )
-
-              let talent = find_talent_by_id(b.talent_id)
-              let talent_html = (
-                <span className={cx()}>
-                  <div>
-                    <span><img className={s.talent_img} src={`/aov/talents/${talent.folder}.png`} /></span>
-                  </div>
-                  <div className={s.talent_name}>
-                    {talent.name.toUpperCase()}
-                  </div>
-                </span>
-              )
-
-              // For Each Build Container
-              //
-              // <h4>{b.info.description} for {hero.name}</h4> {talent_html}
-
-              // Removed all item descriptions from build in ExpansionPanel
-              // <div className={cx(s.wrapper, s.ep_spacer)}>
-              //   {item_details}
-              // </div>
-              //
-              return (
-                <div key={b.id} className={s.build_container}>
-                  <Grid container>
-                    <Grid item xs={3}>
-                      <div className={s.wrapper}>
-                        <BuildHeroImage
-                          hero={hero}
-                          size='xs'
-                          border='gold'
-                        />
-                        <span className={s.build_name_container}>
-                          { b.name }
-                        </span>
-                        <span className={s.talent_container}>
-                          <span className={s.talent_sub_container}>
-                            {talent_html}
-                          </span>
-                        </span>
-                      </div>
-                    </Grid>
-                    <Grid item xs={9}>
-                      <ExpansionPanel className={classes.ep}>
-                        <ExpansionPanelSummary className={classes.eps}>
-                          <div className={s.wrapper}>
-                            {item_list}
-                          </div>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails className={classes.epd}>
-                          <div className={cx(s.wrapper, s.top_margin_spacer)}>
-                            {all_effects_html}
-                          </div>
-                        </ExpansionPanelDetails>
-                      </ExpansionPanel>
-                    </Grid>
-                  </Grid>
-                </div>
-              )
-            })
-
             return (
               <div>
                 <Grid container zeroMinWidth>
@@ -363,7 +178,7 @@ class BuildViewer extends React.Component {
                 <Grid container zeroMinWidth className={classes.grid_container}>
                   <Grid item xs={9}>
                     <div className={s.main_container}>
-                      { all_builds }
+                      { data.buildsByHero.map(b => <BuildItemsContainer build={b} /> ) }
                     </div>
                   </Grid>
                   <Grid item xs={3}>

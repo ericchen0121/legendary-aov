@@ -46,7 +46,7 @@ export const ITEMS = [
         power: 0.30,
       },
       {
-        type: 'life steal',
+        type: 'life steal %',
         power: 0.1,
       },
     ],
@@ -126,7 +126,7 @@ export const ITEMS = [
         power: 100,
       },
       {
-        type: 'life steal',
+        type: 'life steal %',
         power: 0.25,
       },
     ],
@@ -149,7 +149,7 @@ export const ITEMS = [
         power: 0.15,
       },
       {
-        type: 'life steal',
+        type: 'life steal %',
         power: 0.1,
       },
       {
@@ -234,7 +234,7 @@ export const ITEMS = [
         power: 0.30,
       },
       {
-        type: 'life steal',
+        type: 'life steal %',
         power: 0.1,
       },
       {
@@ -245,7 +245,7 @@ export const ITEMS = [
     passives: [{
       name: "Chain Lightning",
       description: ' Every 8 seconds, the next normal attack triggers a chain lightning that deals 150 (+20% attack damage) physical damage. Each normal attack also carries Life Steal and reduces cooldown by 1 second on hit.',
-      type: ['attack damage', 'life steal', 'cooldown speed']
+      type: ['attack damage', 'life steal %', 'cooldown speed']
     }]
   },
   {
@@ -398,7 +398,7 @@ export const ITEMS = [
     {
       name: "Magic Life Steal",
       description: '+25%',
-      type: ['magic life steal', 'life steal']
+      type: ['magic life steal', 'life steal %']
     },
     ]
   },
@@ -1031,7 +1031,7 @@ export const ITEMS = [
         power: 0.2,
       },
       {
-        type: 'life steal',
+        type: 'life steal %',
         power: 0.1,
       },
     ],
@@ -1186,7 +1186,7 @@ export const ITEMS = [
       {
         name: "Blood Thirst",
         description: 'Increases Life Steal by 90% fo 3 seconds. 60-second cooldown. Only usable by ranged heroes.',
-        type: ['life steal']
+        type: ['life steal %']
       },
     ]
   },

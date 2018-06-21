@@ -11,6 +11,7 @@ import BuildItemCard from './BuildItemCard';
 import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
+import BuildItemEffects from '../BuildItemsEffects'
 import { ITEMS, TALENTS } from '../Items'
 import HEROES from '../../draft/AovHeroes'
 
@@ -58,7 +59,16 @@ const styles = theme => ({
 class BuildCreatorContainer extends React.Component {
 
   render() {
-    const { classes, context } = this.props
+    const { classes, context, build_creator } = this.props
+
+    let items = [
+      build_creator.current_build[1],
+      build_creator.current_build[2],
+      build_creator.current_build[3],
+      build_creator.current_build[4],
+      build_creator.current_build[5],
+      build_creator.current_build[6],
+    ]
 
     return (
       <Grid container spacing={24} zeroMinWidth className={classes.container}>
@@ -72,6 +82,7 @@ class BuildCreatorContainer extends React.Component {
           <BuildItemViewer />
         </Grid>
         <Grid item xs={3}>
+          <BuildItemEffects items={items} />
           <BuildItemCard />
         </Grid>
       </Grid>
