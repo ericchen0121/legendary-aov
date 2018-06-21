@@ -93,6 +93,8 @@ class BuildItemEdit extends React.Component {
           </Button>
           <span
             onClick={() => actions.selectItem(item.id)}
+            onMouseOver={() => actions.hoverItem(item.id)}
+            onMouseOut={() => actions.clearHoverItem(item.id)}
           >
             <BuildItem item={item} />
           </span>
