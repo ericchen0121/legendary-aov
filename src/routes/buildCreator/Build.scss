@@ -100,7 +100,8 @@ hr {
 }
 
 .fixed {
-  position: fixed
+  position: fixed;
+  margin-top: -30px
 }
 
 .loader_container {
@@ -109,4 +110,13 @@ hr {
   width: 100%;
   margin-left: 45%;
   margin-top: 15%
+}
+
+.title {
+  margin-left: 20px
+}
+
+.cta {
+  margin-top: 20px;
+  z-index: 5
 }

@@ -9,6 +9,7 @@ import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
+import Button from 'material-ui/Button'
 
 import BuildHeroImage from './create/BuildHeroImage'
 import BuildItem from './create/BuildItem'
@@ -82,6 +83,19 @@ const styles = theme => ({
   },
   divider: {
     margin: '0 33%'
+  },
+  grid_container: {
+    minHeight: 800
+  },
+  center: {
+    textAlign: 'center',
+  },
+  new_build_button: {
+    border: '1px solid #00aaff',
+  },
+  no_underline_link: {
+    textDecoration: 'none',
+    color: '#00aaff'
   }
 })
 
@@ -96,7 +110,19 @@ class BuildViewer extends React.Component {
 
     // Re-using component from created build
     let selected_hero_id = build_creator.current_build.hero_id
+    let hero = find_hero_by_id(selected_hero_id)
 
+    let title = (
+      <div className={s.title}>
+        <h2>{`All ${hero.name} Builds`}</h2>
+      </div>
+    )
+
+    let create_new_button = (
+      <Button className={classes.new_build_button}>
+        <a href='/build/create' className={classes.no_underline_link}>Create New Build</a>
+      </Button>
+    )
     return (
       <Query
         query={hero_builds_query}
@@ -104,11 +130,40 @@ class BuildViewer extends React.Component {
       >
         {({ loading, error, data }) => {
           if (error) {
-            return <div>ERROR BOI! Sorry!</div>
+            return <div>ERROR! Sorry!</div>
           }
+
+          if (!data.buildsByHero || data.buildsByHero.length === 0) {
+            return (
+              <Grid container zeroMinWidth className={classes.grid_container}>
+                <Grid item xs={9}>
+                  <div className={s.main_container}>
+                    {title}
+                    <div className={classes.center}>
+                      <div className={s.cta}>
+                        {create_new_button}
+                      </div>
+                    </div>
+                  </div>
+                </Grid>
+                <Grid item xs={3}>
+                  <div className={s.fixed}>
+                    <BuildHeroContainer
+                      cover_image={false}
+                    />
+                  </div>
+                </Grid>
+              </Grid>
+            )
+          }
+
           if (data.buildsByHero) {
             let all_builds = data.buildsByHero.map(b => {
               let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
+              if (items.includes(null)) {
+                return
+              }
+
               let hero = find_hero_by_id(b.hero_id)
 
               // Item List
@@ -291,22 +346,35 @@ class BuildViewer extends React.Component {
             })
 
             return (
-              <Grid container zeroMinWidth>
-                <Grid item xs={9}>
-                  <div className={s.main_container}>
-                    <h2>All Custom Builds</h2>
-                    { all_builds }
-                  </div>
+              <div>
+                <Grid container zeroMinWidth>
+                  <Grid item xs={10}>
+                    <div>
+                      {title}
+                    </div>
+                  </Grid>
+                  <Grid item xs={2}>
+                    <div className={s.cta}>
+                      {create_new_button}
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={3}>
-                  <div className={s.fixed}>
-                    <BuildItemCard />
-                  </div>
-                  <div>
-                    <BuildHeroContainer />
-                  </div>
+                <Grid container zeroMinWidth className={classes.grid_container}>
+                  <Grid item xs={9}>
+                    <div className={s.main_container}>
+                      { all_builds }
+                    </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <div className={s.fixed}>
+                      <BuildHeroContainer
+                        cover_image={false}
+                      />
+                      <BuildItemCard />
+                    </div>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </div>
             )
           } else {
             return (

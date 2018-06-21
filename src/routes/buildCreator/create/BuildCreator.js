@@ -156,7 +156,6 @@ class BuildCreator extends React.Component {
     const { current_build } = build_creator
     const { is_saved, open } = this.state
 
-    console.log(is_saved, open)
     let handleSave = this.handleSave.bind(this)
     let handleOpen = this.handleOpen.bind(this)
     let handleSaveAndOpen = this.handleSaveAndOpen.bind(this)
@@ -218,124 +217,127 @@ class BuildCreator extends React.Component {
     )
 
     return (
-      <Mutation mutation={ADD_BUILD} variables={ {input: build} }>
-        {(addBuild, {data}) => {
-          let item_editor = (
-            <div>
-              <Grid container spacing={24}>
-                {
-                  [1,2,3,4,5,6].map(i => {
-                    return (
-                      <Grid item xs={2} key={i+Math.random()*100}>
-                        <div className={classes.pointer}>
-                          <BuildItemEdit
-                            key={`item_{i}_${current_build[i]}` || `item_{i}`}
-                            item={find_item_by_id(current_build[i])}
-                            pos={i}
-                            className={classes.no_margin}
-                          />
-                        </div>
-                      </Grid>
-                    )
-                  })
-                }
-              </Grid>
-            </div>
-          )
-
-          let save_button, button_action, color, button_class, alert_text
-          let button_text = 'SAVE'
-          let is_build_complete = !Object.values(build).includes(null)
-
-          // incomplete, complete, complete and already saved
-          if (is_saved) {
-            alert_text = (<span><span>Saved</span><span className={classes.create_new} onClick={resetBuild}>Create New</span></span>)
-            save_button = (
-              <div onClick={handleOpen}>
-                <Button
-                  variant="flat"
-                  color="primary"
-                  className={classes.save_button_inactive}
-                >
-                  SAVED!
-                  <Icon
-                    style={{color: CONTINUE_EDIT_COLOR}}
-                    icon={ic_save}
-                    size={19}
-                    className={classes.save}
-                  />
-                </Button>
+        <Mutation
+          mutation={ADD_BUILD}
+          variables={ {input: build} }
+        >
+          {(addBuild, {data}) => {
+            let item_editor = (
+              <div>
+                <Grid container spacing={24} >
+                  {
+                    [1,2,3,4,5,6].map(i => {
+                      return (
+                        <Grid item xs={2} key={i+Math.random()*100}>
+                          <div className={classes.pointer}>
+                            <BuildItemEdit
+                              key={`item_{i}_${current_build[i]}` || `item_{i}`}
+                              item={find_item_by_id(current_build[i])}
+                              pos={i}
+                              className={classes.no_margin}
+                            />
+                          </div>
+                        </Grid>
+                      )
+                    })
+                  }
+                </Grid>
               </div>
             )
-          }
-          else if (!is_build_complete) {
-            alert_text = 'Add items to build to save'
-            save_button = (
-              <div onClick={handleOpen}>
-                <Button
-                  variant="flat"
-                  color="primary"
-                  className={classes.save_button_inactive}
-                >
-                  SAVE
-                  <Icon
-                    style={{color: CONTINUE_EDIT_COLOR}}
-                    icon={ic_save}
-                    size={19}
-                    className={classes.save}
-                  />
-                </Button>
-              </div>
-            )
-          }
-          else if (is_build_complete) {
-            alert_text = 'Click Save'
-            save_button = (
-              <div onClick={handleSaveAndOpen}>
-                <Button
-                  variant="flat"
-                  color="primary"
-                  className={classes.save_button}
-                  onClick={addBuild}
-                >
-                  SAVE
-                  <Icon
-                    style={{color: EDIT_COLOR}}
-                    icon={ic_save}
-                    size={19}
-                    className={classes.save}
-                  />
-                </Button>
-              </div>
-            )
-          }
 
-          return (
-            <div>
-              { item_editor }
-              { build_name }
-              { talent_selector }
-              { save_button }
-              <Snackbar
-                className={classes.snackbar}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                ContentProps={{
-                  'aria-describedby': 'message-id',
-                }}
-                message={(
-                  <div>
-                    <span id="message-id">{alert_text}</span>
-                  </div>
-                )}
-              />
-            </div>
-          )
-        }}
-      </Mutation>
+            let save_button, button_action, color, button_class, alert_text
+            let button_text = 'SAVE'
+            let is_build_complete = !Object.values(build).includes(null)
+
+            // incomplete, complete, complete and already saved
+            if (is_saved) {
+              alert_text = (<span><span>Saved</span><span className={classes.create_new} onClick={resetBuild}>Create New</span></span>)
+              save_button = (
+                <div onClick={handleOpen}>
+                  <Button
+                    variant="flat"
+                    color="primary"
+                    className={classes.save_button_inactive}
+                  >
+                    SAVED!
+                    <Icon
+                      style={{color: CONTINUE_EDIT_COLOR}}
+                      icon={ic_save}
+                      size={19}
+                      className={classes.save}
+                    />
+                  </Button>
+                </div>
+              )
+            }
+            else if (!is_build_complete) {
+              alert_text = 'Add items to build to save'
+              save_button = (
+                <div onClick={handleOpen}>
+                  <Button
+                    variant="flat"
+                    color="primary"
+                    className={classes.save_button_inactive}
+                  >
+                    SAVE
+                    <Icon
+                      style={{color: CONTINUE_EDIT_COLOR}}
+                      icon={ic_save}
+                      size={19}
+                      className={classes.save}
+                    />
+                  </Button>
+                </div>
+              )
+            }
+            else if (is_build_complete) {
+              alert_text = 'Click Save'
+              save_button = (
+                <div onClick={handleSaveAndOpen}>
+                  <Button
+                    variant="flat"
+                    color="primary"
+                    className={classes.save_button}
+                    onClick={addBuild}
+                  >
+                    SAVE
+                    <Icon
+                      style={{color: EDIT_COLOR}}
+                      icon={ic_save}
+                      size={19}
+                      className={classes.save}
+                    />
+                  </Button>
+                </div>
+              )
+            }
+
+            return (
+              <div>
+                { item_editor }
+                { build_name }
+                { talent_selector }
+                { save_button }
+                <Snackbar
+                  className={classes.snackbar}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  ContentProps={{
+                    'aria-describedby': 'message-id',
+                  }}
+                  message={(
+                    <div>
+                      <span id="message-id">{alert_text}</span>
+                    </div>
+                  )}
+                />
+              </div>
+            )
+          }}
+        </Mutation>
     )
   }
 }

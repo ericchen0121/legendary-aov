@@ -51,7 +51,7 @@ class BuildItemCard extends React.Component {
   render() {
     const { classes, build_creator } = this.props
 
-    let item = ITEMS.find(i => i.id === build_creator.selected_item)
+    let item = ITEMS.find(i => i.id === (build_creator.hovered_item || build_creator.selected_item))
 
     let item_effects = item && this.sortAlpha(item.effects).map(e => {
       let power = e.power

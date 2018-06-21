@@ -49,6 +49,9 @@ const styles = theme => ({
     width: '70%',
     marginTop: 20,
     marginBottom: 10
+  },
+  container: {
+    minHeight: 800
   }
 })
 
@@ -58,9 +61,9 @@ class BuildCreatorContainer extends React.Component {
     const { classes, context } = this.props
 
     return (
-      <Grid container spacing={24} zeroMinWidth>
+      <Grid container spacing={24} zeroMinWidth className={classes.container}>
         <Grid item xs={2}>
-          <BuildHeroContainer/>
+          <BuildHeroContainer cover_image={true} />
           <Divider className={classes.divider}/>
           <BuildItemList />
         </Grid>

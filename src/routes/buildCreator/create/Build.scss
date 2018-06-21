@@ -1,7 +1,11 @@
 .item_img {
   width: 60px;
   height: 60px;
-  border: 2px gold solid
+  border: 2px rgba(191,155,48,.5) solid /* http://www.color-hex.com/color-palette/2799  */
+}
+
+.item_img_selected {
+  border: 2px rgba(255,191,0,1) solid !important
 }
 
 .avatar {

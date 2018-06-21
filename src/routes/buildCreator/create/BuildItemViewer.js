@@ -28,6 +28,8 @@ class BuildItemViewer extends React.Component {
     const { classes, actions, build_creator, ...other } = this.props
     const { item_filter } = build_creator
 
+    const {selected_item} = build_creator
+
     let filter_items = (item_filter, tier) => {
       return ITEMS.filter(i => {
           return (i.type === item_filter) && (i.tier === tier)
@@ -38,10 +40,15 @@ class BuildItemViewer extends React.Component {
       return list.map(i => {
         return (
           <Grid item xs={2}>
-            <div onClick={() => actions.selectItem(i.id)}>
+            <div
+              onClick={() => actions.selectItem(i.id)}
+              onMouseOver={() => actions.hoverItem(i.id)}
+              onMouseOut={() => actions.clearHoverItem(i.id)}
+            >
               <BuildItem
                 key={i.id}
                 item={i}
+                selected={selected_item === i.id}
                 {...other}
               />
             </div>

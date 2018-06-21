@@ -3,6 +3,8 @@
 import {
   FILTER_ITEM_CATEGORY,
   SELECTED_ITEM,
+  HOVERED_ITEM,
+  CLEAR_HOVERED_ITEM,
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
   INSERT_TALENT_TO_BUILD,
@@ -15,6 +17,14 @@ export const selectItem = (data) => {
   return { type: SELECTED_ITEM, data }
 }
 
+export const hoverItem = (data) => {
+  return { type: HOVERED_ITEM, data }
+}
+
+export const clearHoverItem = (data) => {
+  return { type: CLEAR_HOVERED_ITEM, data }
+}
+  
 export const filterItemCategory = (data) => {
   return {
     type: FILTER_ITEM_CATEGORY, data

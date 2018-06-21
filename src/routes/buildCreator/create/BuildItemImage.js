@@ -5,7 +5,7 @@ import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 
 class BuildItemImage extends React.Component {
   render() {
-    const { item, size } = this.props
+    const { item, size, selected } = this.props
 
     let size_class
     if (size === 'small') {
@@ -21,12 +21,17 @@ class BuildItemImage extends React.Component {
       size_class = s.item_medium
     }
 
+    let selected_class
+    if(selected) {
+      selected_class = s.item_img_selected
+    }
+    
     return (
       <span>
         { item &&
           <img
-            className={cx(s.item_img, size_class)}
-            src={`/aov/items/tier/${item.tier}/${item.folder}/${item.folder}.png`} 
+            className={cx(s.item_img, size_class, selected_class)}
+            src={`/aov/items/tier/${item.tier}/${item.folder}/${item.folder}.png`}
           />
         }
       </span>

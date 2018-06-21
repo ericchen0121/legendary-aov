@@ -57,6 +57,12 @@ const styles = theme => ({
     minWidth:20,
     width: 30,
     height: 30
+  },
+  hide: {
+    display: 'none'
+  },
+  show: {
+    display: 'inline'
   }
 })
 
@@ -68,7 +74,7 @@ class BuildHeroContainer extends React.Component {
     hero_id: this.props.build_creator.current_build.hero_id || DEFAULT_HERO_ID
   }
 
-  set_edit_hero = () => {
+  toggle_edit_hero = () => {
     this.setState({is_editing_hero: !this.state.is_editing_hero})
   }
 
@@ -80,29 +86,62 @@ class BuildHeroContainer extends React.Component {
     this.setState({ open: false });
   };
 
+  set_editing_hero = () => {
+    this.setState({is_editing_hero: true})
+  }
+
   update_build_with_hero = (e) => {
     this.props.actions.setHeroId(e.target.value)
     this.handleChange('hero_id')
-    this.set_edit_hero()
+    this.toggle_edit_hero()
   }
 
   render() {
-    const {item, classes, actions, build_creator, is_build_viewer } = this.props
+    const {item, classes, actions, build_creator, is_build_viewer, cover_image } = this.props
     const hero_id = build_creator.current_build.hero_id || this.state.hero_id
     let hero = find_hero_by_id(hero_id)
-    this.set_edit_hero = this.set_edit_hero.bind(this)
+    let toggle_edit_hero = this.toggle_edit_hero.bind(this)
+
+    let cover_class = classes.show
+    if (!cover_image) {
+      cover_class = classes.hide
+    }
+
+    let dropdown = (<div>
+      <FormControl className={classes.formControl}>
+        <InputLabel className={classes.select_item_small}>{SELECT_TEXT}</InputLabel>
+        <Select
+          value={this.state.hero_id}
+          className={classes.select_item_small}
+          onChange={this.update_build_with_hero}
+          defaultValue={0}
+        >
+            <MenuItem value={0} className={classes.select_item_small}>{SELECT_TEXT}</MenuItem>
+          {
+            HEROES.map(h => {
+              return (
+                <MenuItem value={h.id} className={classes.select_item}>
+                  <BuildHeroImage hero={find_hero_by_id(h.id)} />
+                  <span className={classes.name}>{h.name.toUpperCase()}</span>
+                </MenuItem>
+            )
+            })
+          }
+        </Select>
+      </FormControl>
+    </div>)
 
     return (
       <div className={classes.root}>
-        <div className={classes.pointer}>
+        <div className={cx(classes.pointer, cover_class)}>
           <span>
             <img
               className={s.avatar}
               src={hero && `/aov/heroes/${hero.folder}/hero.png` || DEFAULT_IMAGE_URL}
-              onClick={this.set_edit_hero}
+              onClick={toggle_edit_hero}
             />
           </span>
-          <span onClick={this.set_edit_hero}>
+          <span onClick={toggle_edit_hero}>
             <Tooltip title={SELECT_TEXT}>
               <IconButton className={classes.edit_icon} aria-label="Delete">
                 <Icon icon={edit} style={{color: EDIT_COLOR}} size={20}/>
@@ -110,31 +149,7 @@ class BuildHeroContainer extends React.Component {
             </Tooltip>
           </span>
         </div>
-        { this.state.is_editing_hero && (
-          <div>
-            <FormControl className={classes.formControl}>
-              <InputLabel className={classes.select_item_small}>{SELECT_TEXT}</InputLabel>
-              <Select
-                value={this.state.hero_id}
-                className={classes.select_item_small}
-                onChange={this.update_build_with_hero}
-                defaultValue={0}
-              >
-                  <MenuItem value={0} className={classes.select_item_small}>{SELECT_TEXT}</MenuItem>
-                {
-                  HEROES.map(h => {
-                    return (
-                      <MenuItem value={h.id} className={classes.select_item}>
-                        <BuildHeroImage hero={find_hero_by_id(h.id)} />
-                        <span className={classes.name}>{h.name.toUpperCase()}</span>
-                      </MenuItem>
-                  )
-                  })
-                }
-              </Select>
-            </FormControl>
-          </div>
-      )  }
+        { (this.state.is_editing_hero || !cover_image) && dropdown  }
       </div>
     )
   }

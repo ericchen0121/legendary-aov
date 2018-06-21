@@ -17,8 +17,6 @@ import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-
-
 const styles = theme => ({
   root: {
     margin: '0px !important',
@@ -27,7 +25,7 @@ const styles = theme => ({
   empty: {
     width: 60,
     height: 60,
-    backgroundColor: 'rgba(0,0,0, .1)',
+    backgroundColor: 'rgba(0,0,0, .05)',
     border: '2px solid gold',
     textAlign: 'center',
     marginTop: 33,
@@ -43,8 +41,13 @@ const styles = theme => ({
     width: 26,
     height: 26,
     minHeight: 20,
-    backgroundColor: 'gold',
     marginTop: 14,
+  },
+  inactive_item_plus: {
+    backgroundColor: 'rgba(0,0,0,.5)',
+  },
+  add_item_plus: {
+    backgroundColor: 'gold',
   },
   remove_button: {
     width: 26,
@@ -99,7 +102,7 @@ class BuildItemEdit extends React.Component {
       item_container = (
         <div className={classes.empty}>
           <Tooltip title="INSERT">
-            <Button mini variant="fab" color="secondary" className={classes.button}>
+            <Button mini variant="fab" color="secondary" className={build_creator.selected_item ? cx(classes.button, classes.add_item_plus) : cx(classes.button, classes.inactive_item_plus)}>
               <Icon icon={plus} style={{ color: 'white' }} size={14}/>
             </Button>
           </Tooltip>

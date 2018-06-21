@@ -1,6 +1,8 @@
 import {
   FILTER_ITEM_CATEGORY,
   SELECTED_ITEM,
+  HOVERED_ITEM,
+  CLEAR_HOVERED_ITEM,
   INSERT_TALENT_TO_BUILD,
   INSERT_ITEM_TO_BUILD,
   REMOVE_ITEM_FROM_BUILD,
@@ -19,6 +21,7 @@ const DEFAULT_GAME_MODE_ID = 1
 const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
+  hovered_item: null,
   current_build: {
     name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
     1: null,
@@ -53,6 +56,16 @@ const build_creator = (state = initialState, action) => {
       return {
         ...state,
         selected_item: action.data
+      }
+    case HOVERED_ITEM:
+      return {
+        ...state,
+        hovered_item: action.data
+      }
+    case CLEAR_HOVERED_ITEM:
+      return {
+        ...state,
+        hovered_item: null
       }
     case INSERT_ITEM_TO_BUILD:
       return {
@@ -97,7 +110,7 @@ const build_creator = (state = initialState, action) => {
       }
     case RESET_BUILD:
       return initialState
-      
+
     default:
       return state;
   }
