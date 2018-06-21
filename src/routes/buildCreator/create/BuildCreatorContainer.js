@@ -39,13 +39,6 @@ const styles = theme => ({
   divider: {
     margin: '0 33%'
   },
-  paper: {
-    padding: theme.spacing.unit,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    marginBottom: theme.spacing.unit,
-  },
   divider: {
     width: '70%',
     marginTop: 20,
@@ -53,7 +46,13 @@ const styles = theme => ({
   },
   container: {
     minHeight: 800
-  }
+  },
+  item_effects_container: {
+    textAlign: 'center',
+    padding: 15,
+    margin: '25px 25px 0px 10px',
+    boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)'
+  },
 })
 
 class BuildCreatorContainer extends React.Component {
@@ -82,7 +81,10 @@ class BuildCreatorContainer extends React.Component {
           <BuildItemViewer />
         </Grid>
         <Grid item xs={3}>
-          <BuildItemEffects items={items} />
+          <div className={cx(classes.item_effects_container)}>
+            <div className={s.combined_effects_title}>{'All Build Effects'.toUpperCase()}</div>
+            <BuildItemEffects items={items} />
+          </div>
           <BuildItemCard />
         </Grid>
       </Grid>
