@@ -19,6 +19,7 @@ import BuildHeroContainer from './create/BuildHeroContainer'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from './Items'
 import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
+import { to_uppercase_first } from './utilities'
 
 import * as Actions from './create/actions';
 import { connect } from 'react-redux';
@@ -239,8 +240,8 @@ class BuildViewer extends React.Component {
               //
               // Gather all effects from all items in the build
               let all_effects = []
-              for (let item_id of items) {
-                let item = ITEMS.find(item => item.id === item_id)
+              for (let id of items) {
+                let item = find_item_by_id(id)
                 all_effects.push(...item.effects)
               }
 
@@ -272,7 +273,7 @@ class BuildViewer extends React.Component {
 
                 return (
                   <div key={(e.type + i)}>
-                    <span className={s.item_effect_type}>{e.type}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
+                    <span className={s.item_effect_type}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
                     { divider }
                   </div>
                 )

@@ -14,6 +14,7 @@ import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import BuildItemImage from './BuildItemImage'
+import { to_uppercase_first } from '../utilities'
 
 const styles = theme => ({
   card: {
@@ -64,7 +65,7 @@ class BuildItemCard extends React.Component {
 
       return (
         <div key={ item.name + Math.random()*100 }>
-          <span className={s.item_power_type}>{e.type}:</span> <span className={s.item_effect_power}>{plus}{power}{percent}</span>
+          <span className={s.item_power_type}>{to_uppercase_first(e.type)}:</span> <span className={s.item_effect_power}>{plus}{power}{percent}</span>
         </div>
       )
     })
