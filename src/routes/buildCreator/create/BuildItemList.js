@@ -20,7 +20,12 @@ const styles = theme => ({
     borderRight: '3px gold solid',
     color: 'gold'
   },
-  inactive: {}
+  inactive: {},
+  text: {
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: 14,
+    color: 'gray'
+  }
 })
 
 class BuildItemList extends React.Component {
@@ -34,7 +39,8 @@ class BuildItemList extends React.Component {
       let item_class = (c === build_creator.item_filter) ? classes.active : classes.inactive
       return (
         <ListItem button onClick={() => actions.filterItemCategory(c)} className={item_class}>
-          <ListItemText primary={this.upper_case_first(c)} />
+          <ListItemText
+            primary={c.toUpperCase()} />
         </ListItem>
       )
     })

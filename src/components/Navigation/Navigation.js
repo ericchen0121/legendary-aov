@@ -22,13 +22,24 @@ class Navigation extends React.Component {
   render() {
     return (
       <div className={s.root} role="navigation">
-        <a href={TWITTER} target="_blank">
-          <Icon icon={twitter} style={{ color: 'white' }} />
-        </a>
+
+
+        <Link className={cx(s.link)} to="/video">
+          Videos
+        </Link>
+        <Link className={cx(s.link)} to="/build">
+          Builds
+        </Link>
+        <Link className={cx(s.link)} to="/build/create">
+          Create Build
+        </Link>
         <span className={s.spacer}> | </span>
         <Link className={cx(s.link, s.highlight, s.signup)} to="/register">
           Sign up
         </Link>
+        <a href={TWITTER} target="_blank">
+          <Icon icon={twitter} style={{ color: 'white' }} />
+        </a>
         <span className={s.spacer}> | </span>
         <DarkMode />
       </div>

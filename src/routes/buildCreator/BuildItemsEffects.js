@@ -83,7 +83,7 @@ class BuildItemsEffects extends React.Component {
         let power = e.power
         let percent, plus
         // if power is really Percentages
-        if (power < 1) {
+        if (power < 2) {
           power = Math.floor(power * 100)
           percent = '%'
           plus = '+'

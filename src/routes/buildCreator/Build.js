@@ -11,6 +11,7 @@ import Paper from 'material-ui/Paper';
 import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
 import Button from 'material-ui/Button'
 
+import Link from '../../components/Link';
 import BuildHeroImage from './create/BuildHeroImage'
 import BuildItem from './create/BuildItem'
 import CustomBuilds from './CustomBuilds'
@@ -123,7 +124,7 @@ class BuildViewer extends React.Component {
 
     let create_new_button = (
       <Button className={classes.new_build_button}>
-        <a href='/build/create' className={classes.no_underline_link}>Create New Build</a>
+        <Link to='/build/create' className={classes.no_underline_link}>Create New Build</Link>
       </Button>
     )
     return (
