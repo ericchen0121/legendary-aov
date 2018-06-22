@@ -9,7 +9,7 @@
 
 import DataType from 'sequelize';
 import Model from '../sequelize';
-
+import bcrypt from 'bcrypt'
 const User = Model.define(
   'User',
   {
@@ -28,7 +28,13 @@ const User = Model.define(
     },
     email: {
       type: DataType.STRING(255),
-      validate: { isEmail: true },
+      validate: {
+        isEmail: true
+      },
+      unique: {
+        args: true,
+        msg: 'Email address already in use!',
+      },
     },
 
     email_confirmed: {
@@ -37,12 +43,25 @@ const User = Model.define(
     },
     password: {
       type: Datatype.STRING,
-      allowNull: false
-    }
+    },
+    last_login: {
+      type: DataType.DATE,
+      default: sequelize.NOW,
+    },
   },
   {
     indexes: [{ fields: ['email'] }],
-    underscored: true
+    underscored: true,
+    classMethods: {
+      generateHash(password) {
+        return bcrypt.hashSync(password, bcrypt.genSaltSync(12), null);
+      },
+    },
+    instanceMethods: {
+      comparePassword(password) {
+        return bcrypt.compareSync(password, this.password);
+      },
+    },
   },
 );
 
