@@ -18,7 +18,14 @@ const User = Model.define(
       autoIncrement: true,
       primaryKey: true,
     },
-
+    username: {
+      type: DataType.STRING(255),
+      allowNull: false,
+      unique: true,
+      validate: {
+        is: /^[a-z0-9\_\-]+$/i,
+      }
+    },
     email: {
       type: DataType.STRING(255),
       validate: { isEmail: true },
@@ -28,6 +35,10 @@ const User = Model.define(
       type: DataType.BOOLEAN,
       defaultValue: false,
     },
+    password: {
+      type: Datatype.STRING,
+      allowNull: false
+    }
   },
   {
     indexes: [{ fields: ['email'] }],

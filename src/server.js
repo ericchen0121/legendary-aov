@@ -25,7 +25,7 @@ import Html from './components/Html';
 import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
-import passport from './passport';
+import passport_fb from './passport_fb';
 import router from './router';
 import models from './data/models';
 import schema from './data/schema';
@@ -102,18 +102,18 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.use(passport.initialize());
+app.use(passport_fb.initialize());
 
 app.get(
   '/login/facebook',
-  passport.authenticate('facebook', {
+  passport_fb.authenticate('facebook', {
     scope: ['email', 'user_location'],
     session: false,
   }),
 );
 app.get(
   '/login/facebook/return',
-  passport.authenticate('facebook', {
+  passport_fb.authenticate('facebook', {
     failureRedirect: '/login',
     session: false,
   }),

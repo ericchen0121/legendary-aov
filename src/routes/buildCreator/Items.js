@@ -1315,6 +1315,26 @@ export const ITEMS = [
       },
     ]
   },
+  {
+    id: 51,
+    name: "Hermes Select",
+    type: 'movement',
+    tier: 2,
+    cost: 580,
+    folder: 'hermesselect',
+    effects: [
+      {
+        type: 'movement speed',
+        power: 60,
+      },
+    ],
+    passives: [{
+      name: "Swift",
+      unique: true,
+      description: 'Increases movement speed by 60 after exiting battle.',
+      type: ['exit movement speed']
+    }]
+  },
 ]
 
 export const TALENTS = [
