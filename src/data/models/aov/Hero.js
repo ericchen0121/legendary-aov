@@ -12,6 +12,14 @@ const Hero = Model.define(
     name: {
       type: DataType.STRING(255),
     },
+    created_at: {
+      type: DataType.DATE,
+      defaultValue: DataType.NOW,
+    },
+    updated_at: {
+      type: DataType.DATE,
+      defaultValue: DataType.NOW,
+    }
   },
   {
     underscored: true,

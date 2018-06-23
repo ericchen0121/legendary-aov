@@ -38,10 +38,10 @@ const User = Model.define(
     },
     email: {
       type: DataType.STRING(255),
-      unique: {
-        args: true,
-        msg: 'Email address already in use!',
+      validate: {
+        isEmail: true
       },
+      unique: true,
     },
     email_confirmed: {
       type: DataType.BOOLEAN,
@@ -52,7 +52,7 @@ const User = Model.define(
     },
     last_login: {
       type: DataType.DATE,
-      default: DataType.NOW,
+      defaultValue: DataType.NOW,
     },
   },
   {
