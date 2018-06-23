@@ -58,15 +58,6 @@ const User = Model.define(
   {
     indexes: [{ fields: ['email'] }],
     underscored: true,
-    // classMethods: {
-    //   generateHash(password) {
-    //
-    //     return bcrypt.hash(password, 8).then(res => {
-    //       console.log('store hash in pw db field', password, res)
-    //       //STORE PW IN DB
-    //     })
-    //   },
-    // },
     instanceMethods: {
       comparePassword(password) {
         return bcrypt.compare(password, this.password).then(res => {

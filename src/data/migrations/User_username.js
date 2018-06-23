@@ -5,7 +5,7 @@ module.exports = {
         'User',
         'username',
         {
-          type: DataType.STRING(255),
+          type: Sequelize.STRING(255),
           unique: true,
           validate: {
             is: /^[a-z0-9\_\-]+$/i,

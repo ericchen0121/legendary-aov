@@ -13,6 +13,7 @@ const UserInputType = new GraphQLInputObjectType({
   fields: {
     email: { type: StringType },
     password: { type: StringType },
+    username: { type: StringType }
   },
 });
 

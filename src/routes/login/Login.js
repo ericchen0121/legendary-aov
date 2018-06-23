@@ -31,9 +31,9 @@ class Login extends React.Component {
     }, () => console.log(this.state))
   }
 
-  // handleChangeUsername = (e) => {
-  //   this.setState({user: {username: e.target.value }})
-  // }
+  handleChangeUsername = (e) => {
+    this.setState({username: e.target.value })
+  }
 
   handleChangePassword = (e) => {
     this.setState({
@@ -42,36 +42,39 @@ class Login extends React.Component {
   }
 
   handleLogin = (data) => {
-    console.log(data)
-    let id, email
+    let id, email, username
     if (data.addUser) {
       id = data.addUser.id
       email = data.addUser.email
+      username = data.addUser.username
 
       this.props.actions.loginUser({
         id,
-        email
+        email,
+        username
       })
     }
   }
 
   state = {
     email: null,
-    password: null
+    password: null,
+    username: null
   }
 
   render() {
 
-    // let handleChangeUsername = this.handleChangeUsername.bind(this)
+    let handleChangeUsername = this.handleChangeUsername.bind(this)
     let handleChangeEmail = this.handleChangeEmail.bind(this)
     let handleChangePassword =this.handleChangePassword.bind(this)
     let handleLogin = this.handleLogin.bind(this)
 
-    let {email, password} = this.state
+    let {email, password, username} = this.state
 
     let user = {
       email,
-      password
+      password,
+      username
     }
 
     const ADD_USER = gql`
@@ -79,6 +82,7 @@ class Login extends React.Component {
         addUser(input: $input) {
             id
             email
+            username
         }
       }`
 
@@ -178,7 +182,7 @@ class Login extends React.Component {
                       type="text"
                       name="username"
                       autoFocus // eslint-disable-line jsx-a11y/no-autofocus
-
+                      onChange={handleChangeUsername}
                     />
                   </label>
                 </div>

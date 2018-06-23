@@ -36,7 +36,7 @@ User.hasOne(UserProfile, {
 });
 
 function sync(...args) {
-  return sequelize.sync(...args);
+  return sequelize.sync({alter: true, ...args});
 }
 
 export default { sync };
