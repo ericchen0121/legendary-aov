@@ -13,7 +13,7 @@
  * https://github.com/membership/membership.db/tree/master/postgres
  */
 
-import passport from 'passport';
+import passport_fb from 'passport';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
 import { User, UserLogin, UserClaim, UserProfile } from './data/models';
 import config from './config';
@@ -21,7 +21,7 @@ import config from './config';
 /**
  * Sign in with Facebook.
  */
-passport.use(
+passport_fb.use(
   new FacebookStrategy(
     {
       clientID: config.auth.facebook.id,

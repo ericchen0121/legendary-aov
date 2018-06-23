@@ -16,4 +16,5 @@ const sequelize = new Sequelize(config.databaseUrl, {
   },
 });
 
+console.log("HELLO", sequelize)
 export default sequelize;

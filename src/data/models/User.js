@@ -10,6 +10,20 @@
 import DataType from 'sequelize';
 import Model from '../sequelize';
 import bcrypt from 'bcrypt'
+
+// bcrypt methods
+//
+// bcrypt: {
+// genSaltSync: [Function: genSaltSync],
+// genSalt: [Function: genSalt],
+// hashSync: [Function: hashSync],
+// hash: [Function: hash],
+// compareSync: [Function: compareSync],
+// compare: [Function: compare],
+// getRounds: [Function: getRounds] }
+// }
+
+
 const User = Model.define(
   'User',
   {
@@ -20,46 +34,44 @@ const User = Model.define(
     },
     username: {
       type: DataType.STRING(255),
-      allowNull: false,
       unique: true,
-      validate: {
-        is: /^[a-z0-9\_\-]+$/i,
-      }
     },
     email: {
       type: DataType.STRING(255),
-      validate: {
-        isEmail: true
-      },
       unique: {
         args: true,
         msg: 'Email address already in use!',
       },
     },
-
     email_confirmed: {
       type: DataType.BOOLEAN,
       defaultValue: false,
     },
     password: {
-      type: Datatype.STRING,
+      type: DataType.STRING,
     },
     last_login: {
       type: DataType.DATE,
-      default: sequelize.NOW,
+      default: DataType.NOW,
     },
   },
   {
     indexes: [{ fields: ['email'] }],
     underscored: true,
-    classMethods: {
-      generateHash(password) {
-        return bcrypt.hashSync(password, bcrypt.genSaltSync(12), null);
-      },
-    },
+    // classMethods: {
+    //   generateHash(password) {
+    //
+    //     return bcrypt.hash(password, 8).then(res => {
+    //       console.log('store hash in pw db field', password, res)
+    //       //STORE PW IN DB
+    //     })
+    //   },
+    // },
     instanceMethods: {
       comparePassword(password) {
-        return bcrypt.compareSync(password, this.password);
+        return bcrypt.compare(password, this.password).then(res => {
+          console.log('comparison is...', res)
+        })
       },
     },
   },

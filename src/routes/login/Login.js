@@ -11,15 +11,77 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Login.css';
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+
+
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 
 class Login extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
   };
 
+  handleChangeEmail = (e) => {
+    this.setState({
+      email: e.target.value,
+    }, () => console.log(this.state))
+  }
 
+  // handleChangeUsername = (e) => {
+  //   this.setState({user: {username: e.target.value }})
+  // }
+
+  handleChangePassword = (e) => {
+    this.setState({
+      password: e.target.value
+    }, () => console.log(this.state))
+  }
+
+  handleLogin = (data) => {
+    console.log(data)
+    let id, email
+    if (data.addUser) {
+      id = data.addUser.id
+      email = data.addUser.email
+
+      this.props.actions.loginUser({
+        id,
+        email
+      })
+    }
+  }
+
+  state = {
+    email: null,
+    password: null
+  }
 
   render() {
+
+    // let handleChangeUsername = this.handleChangeUsername.bind(this)
+    let handleChangeEmail = this.handleChangeEmail.bind(this)
+    let handleChangePassword =this.handleChangePassword.bind(this)
+    let handleLogin = this.handleLogin.bind(this)
+
+    let {email, password} = this.state
+
+    let user = {
+      email,
+      password
+    }
+
+    const ADD_USER = gql`
+      mutation addUser($input: UserInputType!) {
+        addUser(input: $input) {
+            id
+            email
+        }
+      }`
+
     let fb_login = (
       <div className={s.formGroup}>
         <a className={s.facebook} href="/login/facebook">
@@ -91,49 +153,88 @@ class Login extends React.Component {
         </a>
       </div>
     )
-    
+
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <h1>{this.props.title}</h1>
-          <p className={s.lead}>
-            Log in with your username / email
-          </p>
-          <strong className={s.lineThrough}>OR</strong>
-          <form method="post">
-            <div className={s.formGroup}>
-              <label className={s.label} htmlFor="usernameOrEmail">
-                Username or email address:
-                <input
-                  className={s.input}
-                  id="usernameOrEmail"
-                  type="text"
-                  name="usernameOrEmail"
-                  autoFocus // eslint-disable-line jsx-a11y/no-autofocus
-                />
-              </label>
+      <Mutation
+        mutation={ADD_USER}
+        variables={{ input: user }}
+        onCompleted={handleLogin}
+      >
+        {(addUser, {data}) => {
+          let container =(
+            <div className={s.root}>
+              <div className={s.container}>
+                <h1>{this.props.title}</h1>
+                <p className={s.lead}>
+                  Log in with your username / email
+                </p>
+                <strong className={s.lineThrough}>OR</strong>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="usernameOrEmail">
+                    Username:
+                    <input
+                      className={s.input}
+                      id="username"
+                      type="text"
+                      name="username"
+                      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="usernameOrEmail">
+                    Username or email address:
+                    <input
+                      className={s.input}
+                      id="email"
+                      type="text"
+                      name="email"
+                      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+                      onChange={handleChangeEmail}
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="password">
+                    Password:
+                    <input
+                      className={s.input}
+                      id="password"
+                      type="password"
+                      name="password"
+                      onChange={handleChangePassword}
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup} onClick={handleLogin}>
+                  <button className={s.button} onClick={addUser}>
+                    Log in
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className={s.formGroup}>
-              <label className={s.label} htmlFor="password">
-                Password:
-                <input
-                  className={s.input}
-                  id="password"
-                  type="password"
-                  name="password"
-                />
-              </label>
-            </div>
-            <div className={s.formGroup}>
-              <button className={s.button} type="submit">
-                Log in
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
+
+          )
+
+          return container
+
+        }}
+      </Mutation>
     );
   }
 }
 
-export default withStyles(s)(Login);
+function mapStateToProps(state) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+}
+
+export default withStyles(s)(
+  connect(mapStateToProps, mapDispatchToProps)(Login)
+)

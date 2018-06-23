@@ -17,6 +17,7 @@
     "@babel/runtime": "^7.0.0-beta.49",
     "apollo-boost": "^0.1.7",
     "axios": "^0.18.0",
+    "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "classnames": "^2.2.5",
@@ -56,7 +57,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "sequelize": "^4.37.3",
+    "sequelize": "^4.38.0",
     "serialize-javascript": "^1.4.0",
     "source-map-support": "^0.5.4",
     "sqlite3": "^4.0.0",
@@ -180,6 +181,6 @@
     "render": "babel-node tools/run render",
     "serve": "babel-node tools/run runServer",
     "start": "babel-node tools/run start",
-    "sequelize": "babel-node ./node_modules/.bin/sequelize $*"
+    "sequelize": "babel-node ./node_modules/sequelize/lib/sequelize $*"
   }
 }

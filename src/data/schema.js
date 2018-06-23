@@ -25,6 +25,7 @@ import version from './queries/version';
 
 import addBuild from './queries/addBuild';
 import addHero from './queries/addHero';
+import addUser from './queries/addUser';
 
 const schema = new Schema({
   query: new ObjectType({
@@ -45,7 +46,8 @@ const schema = new Schema({
     name: 'Mutation',
     fields: {
       addBuild,
-      addHero
+      addHero,
+      addUser
     }
   })
 });
