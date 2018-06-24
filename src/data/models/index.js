@@ -14,6 +14,7 @@ import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
 import { Hero, Build, Item, GameMode, Version } from './aov'
 
+
 User.hasMany(UserLogin, {
   foreignKey: 'user_id',
   as: 'logins',
@@ -36,7 +37,10 @@ User.hasOne(UserProfile, {
 });
 
 function sync(...args) {
-  return sequelize.sync({alter: true, ...args});
+  return sequelize.sync({
+    // alter: true,
+    ...args
+  });
 }
 
 export default { sync };

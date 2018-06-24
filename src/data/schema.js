@@ -26,6 +26,7 @@ import version from './queries/version';
 import addBuild from './queries/addBuild';
 import addHero from './queries/addHero';
 import addUser from './queries/addUser';
+import loginUser from './queries/loginUser'
 
 const schema = new Schema({
   query: new ObjectType({
@@ -39,7 +40,8 @@ const schema = new Schema({
       hero,
       item,
       items,
-      version
+      version,
+      loginUser
     },
   }),
   mutation: new ObjectType({

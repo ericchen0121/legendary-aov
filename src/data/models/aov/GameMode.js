@@ -11,6 +11,7 @@ const GameMode = Model.define(
     },
     name: {
       type: DataType.STRING(255),
+      unique: true
     },
   },
   {

@@ -13,8 +13,8 @@ import config from '../config';
 const sequelize = new Sequelize(config.databaseUrl, {
   define: {
     freezeTableName: true,
+    timestamps: false
   },
 });
 
-console.log("HELLO", sequelize)
 export default sequelize;

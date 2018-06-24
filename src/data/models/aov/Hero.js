@@ -1,6 +1,8 @@
 import DataType from 'sequelize';
 import Model from '../../sequelize';
 
+const CURRENT_VERSION = 1
+
 const Hero = Model.define(
   'Hero',
   {
@@ -12,14 +14,6 @@ const Hero = Model.define(
     name: {
       type: DataType.STRING(255),
     },
-    created_at: {
-      type: DataType.DATE,
-      defaultValue: DataType.NOW,
-    },
-    updated_at: {
-      type: DataType.DATE,
-      defaultValue: DataType.NOW,
-    }
   },
   {
     underscored: true,
