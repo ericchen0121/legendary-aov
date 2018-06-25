@@ -58,22 +58,20 @@ const User = Model.define(
   {
     indexes: [{ fields: ['email', 'username'] }],
     underscored: true,
-    instanceMethods: {
-      compare_password(password) {
-        return bcrypt.compare(password, this.password).then(res => {
-          console.log('comparison is...', res)
-          return res
-        })
-      },
-    },
-    // hooks: {
-    //   beforeCreate: (user, options) => {
-    //     bcrypt.hash(user.password, 8).then(hash => {
-    //       user.password = hash
-    //     })
-    //   }
-    // }
+    hooks: {
+      beforeCreate: (user, options) => {
+        // save pw hash instead of pw string
+        user.password = bcrypt.hashSync(user.password, 8)
+      }
+    }
   },
 );
+
+export function compare_password(string_pw, hash_pw) {
+  return bcrypt.compareSync(string_pw, hash_pw)
+}
+// User.prototype.compare_password = (password) => {
+//   return bcrypt.compareSync(password, this.password)
+// }
 
 export default User;

@@ -134,6 +134,7 @@ class BuildViewer extends React.Component {
       >
         {({ loading, error, data }) => {
           if (error) {
+            console.log(error)
             return <div>ERROR! Sorry!</div>
           }
 
