@@ -19,6 +19,8 @@ import { ADD_USER, LOGIN_USER } from '../../data/gql_queries/users'
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Paper from 'material-ui/Paper';
 
+import history from '../../history'
+
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -38,6 +40,9 @@ const styles = {
     textAlign: 'center'
   }
 };
+
+// https://github.com/ReactTraining/history
+const location = history.location
 
 class Login extends React.Component {
   static propTypes = {
@@ -83,6 +88,8 @@ class Login extends React.Component {
         email,
         username
       })
+      
+      history.push("/video")
     }
   }
 
@@ -98,7 +105,10 @@ class Login extends React.Component {
         email,
         username
       })
+
+      history.push("/video")
     }
+
   }
 
   state = {

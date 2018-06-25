@@ -7,8 +7,8 @@ const initialState = {
   is_logged_in: false,
   id: null,
   email: null,
-  username: null
-  // is_new_user: false
+  username: null,
+  is_new_user: false
 }
 
 const user_login = (state = initialState, action) => {
@@ -28,7 +28,7 @@ const user_login = (state = initialState, action) => {
         id: action.data.id,
         email: action.data.email,
         username: action.data.username,
-        // is_new_user: true
+        is_new_user: true
       }
     default:
       return state;
