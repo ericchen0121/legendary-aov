@@ -13,8 +13,6 @@ import routes from './routes';
 
 export default new UniversalRouter(routes, {
   resolveRoute(context, params) {
-    console.log('ROUTING:::', context, params)
-    console.log('PARAMS:::', params)
     if (typeof context.route.load === 'function') {
       return context.route
         .load()

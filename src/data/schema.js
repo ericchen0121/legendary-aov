@@ -10,10 +10,23 @@
 import {
   GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType,
+  GraphQLInputObjectType as InputObjectType,
 } from 'graphql';
 
 import me from './queries/me';
 import news from './queries/news';
+import build from './queries/build';
+import builds from './queries/builds';
+import buildsByHero from './queries/buildsByHero';
+import hero from './queries/hero';
+import item from './queries/item';
+import items from './queries/items';
+import version from './queries/version';
+
+import addBuild from './queries/addBuild';
+import addHero from './queries/addHero';
+import addUser from './queries/addUser';
+import loginUser from './queries/loginUser'
 
 const schema = new Schema({
   query: new ObjectType({
@@ -21,8 +34,24 @@ const schema = new Schema({
     fields: {
       me,
       news,
+      build,
+      builds,
+      buildsByHero,
+      hero,
+      item,
+      items,
+      version
     },
   }),
+  mutation: new ObjectType({
+    name: 'Mutation',
+    fields: {
+      addBuild,
+      addHero,
+      addUser,
+      loginUser
+    }
+  })
 });
 
 export default schema;

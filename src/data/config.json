@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "ericchen0121",
+    "password": "Ch3n3r1c",
+    "database": "legendaryaov",
+    "host": "legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "ericchen0121",
+    "password": "Ch3n3r1c",
+    "database": "legendaryaov",
+    "host": "legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "ericchen0121",
+    "password": "Ch3n3r1c",
+    "database": "legendaryaov",
+    "host": "legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com",
+    "dialect": "postgres"
+  }
+}

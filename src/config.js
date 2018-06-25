@@ -33,7 +33,9 @@ module.exports = {
   },
 
   // Database
-  databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
+  // databaseUrl: process.env.DATABASE_URL || 'postgresql://ericchen0121:Ch3n3r1c@legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com:5432/legendaryaov',
+
+  databaseUrl: process.env.DATABASE_URL,
 
   // Web analytics
   analytics: {
@@ -47,25 +49,22 @@ module.exports = {
 
     // https://developers.facebook.com/
     facebook: {
-      id: process.env.FACEBOOK_APP_ID || '186244551745631',
+      id: process.env.FACEBOOK_APP_ID || 'fb',
       secret:
-        process.env.FACEBOOK_APP_SECRET || 'a970ae3240ab4b9b8aae0f9f0661c6fc',
+        process.env.FACEBOOK_APP_SECRET || 'fb',
     },
 
     // https://cloud.google.com/console/project
     google: {
-      id:
-        process.env.GOOGLE_CLIENT_ID ||
-        '251410730550-ahcg0ou5mgfhl8hlui1urru7jn5s12km.apps.googleusercontent.com',
-      secret: process.env.GOOGLE_CLIENT_SECRET || 'Y8yR9yZAhm9jQ8FKAL8QIEcd',
+      id: process.env.GOOGLE_CLIENT_ID || null,
+      secret: process.env.GOOGLE_CLIENT_SECRET || null,
     },
 
     // https://apps.twitter.com/
     twitter: {
-      key: process.env.TWITTER_CONSUMER_KEY || 'Ie20AZvLJI2lQD5Dsgxgjauns',
+      key: process.env.TWITTER_CONSUMER_KEY || 'tweet',
       secret:
-        process.env.TWITTER_CONSUMER_SECRET ||
-        'KTZ6cxoKnEakQCeSpZlaUCJWGAlTEBJj0y2EMkUBujA7zWSvaQ',
+        process.env.TWITTER_CONSUMER_SECRET || 'tweet',
     },
   },
 };

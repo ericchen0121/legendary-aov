@@ -49,6 +49,12 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
+.username {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px;
+  margin-right: 10px;
+  padding: 10px 8px;
+}
 @media (max-width: 450px) {
   .signup {
     font-size: 0.8em

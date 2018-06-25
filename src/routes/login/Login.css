@@ -154,3 +154,14 @@
   border-bottom: 1px solid #ddd;
   content: '';
 }
+
+.switchFormText {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta {
+  font-weight: bold;
+  cursor: pointer
+}

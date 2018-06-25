@@ -6,8 +6,7 @@ node_modules/
 # Compiled output
 build
 
-# Runtime data
-database.sqlite
+# sequelize
 
 # Test coverage
 coverage
@@ -30,3 +29,6 @@ yarn-error.log*
 
 # Misc
 .DS_Store
+
+# ENV Variables
+.env

@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Template from './Build';
+import Template from './Template';
 
 const title = 'Item Builds';
 

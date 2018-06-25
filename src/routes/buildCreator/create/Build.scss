@@ -1,0 +1,132 @@
+.item_img {
+  width: 60px;
+  height: 60px;
+  border: 2px rgba(191,155,48,.5) solid /* http://www.color-hex.com/color-palette/2799  */
+}
+
+.item_img_selected {
+  border: 2px rgba(255,191,0,1) solid !important
+}
+
+.avatar {
+  position: relative;
+  border-radius: 0.5em;
+  border: 2px solid gold;
+  margin: 0 0 6px 13px;  /* crop 1px right whitespace, top negative margin was recommended but doesn't work*/
+  overflow: hidden;
+  width: 35%;
+}
+
+.hero_img_small {
+  width: 90px;
+  height: 117px;
+  position: relative;
+  top: 25px;
+  margin: 3px;
+  clip: rect(30px, 30px, 20px, 30px)
+}
+
+.hero_img_xs {
+  width: 45px;
+  height: 58px;
+}
+
+.border_gold {
+  border: 1px solid gold;
+  border-radius: 3px;
+}
+
+.border_none {
+  border: none
+}
+
+.talent_img {
+  width: 40px;
+  height: 40px;
+}
+
+.talent_border {
+  border: 1px solid gold;
+  border-radius: 50%
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.talent_spacer {
+  margin-right: 10px
+}
+
+.low_opacity {
+  opacity: .35
+}
+
+.full_opacity {
+  opacity: 1
+}
+
+.item_small {
+  width: 50px;
+  height: 50px
+}
+
+.item_medium {
+  width: 60px;
+  height: 60px
+}
+
+.item_large {
+  width: 80px;
+  height: 80px
+}
+
+.passive_container {
+}
+
+.item_effects_container {
+  margin-bottom: 15px
+}
+
+.item_passive_title {
+  font-weight: bold;
+  font-size: 13px
+}
+.item_passive_desc {
+  font-size: 12px
+}
+
+.item_power_type {
+  font-weight: 600;
+  font-size: 12px
+}
+
+.item_effect_power {
+  font-size: 12px;
+  color: rgba(0,0,0,.8)
+}
+
+.passive_title {
+  font-size: 12px;
+  color: gray;
+
+}
+
+.text_align_left {
+  text-align: left !important
+}
+
+.combined_effects_title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: gray
+}
+
+.text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 14px;
+  color: gray
+}

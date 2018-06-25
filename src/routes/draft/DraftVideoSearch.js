@@ -9,6 +9,8 @@ import { FormControl, FormHelperText } from 'material-ui/Form';
 import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import { VIDEO_SEARCH_TERMS } from './DraftConstants';
+import { Icon } from 'react-icons-kit'
+import {ic_search} from 'react-icons-kit/md/ic_search'
 
 const styles = theme => ({
   root: {
@@ -58,7 +60,15 @@ class DraftVideoSearch extends Component {
     const { dark_mode_active } = utilities;
 
     let adornment = {}
-    if (!is_mobile) { adornment = { startAdornment: <InputAdornment position="start">youtube</InputAdornment> } }
+    if (!is_mobile) {
+      adornment = {
+        startAdornment: (
+          <InputAdornment position="start">
+            <Icon icon={ic_search} />
+          </InputAdornment>
+        )
+      }
+    }
 
     let selected_player = null;
     if (youtube_list.selected_player) {

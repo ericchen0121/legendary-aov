@@ -20,6 +20,13 @@ import history from './history';
 import { updateMeta } from './DOMUtils';
 import router from './router';
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import green from 'material-ui/colors/green';
+
+// import createApolloClient from './core/createApolloClient';
+
+// const apolloClient = createApolloClient();
+
 // Global (context) variables that can be easily accessed from any React component
 // https://facebook.github.io/react/docs/context.html
 const context = {
@@ -81,9 +88,20 @@ async function onLocationChange(location, action) {
       return;
     }
 
+    const theme = createMuiTheme({
+       palette: {
+         primary: green,
+         accent: green,
+         type: 'light',
+       },
+     });
+
     const renderReactApp = isInitialRender ? ReactDOM.hydrate : ReactDOM.render;
     appInstance = renderReactApp(
-      <App context={context}>{route.component}</App>,
+      (<MuiThemeProvider theme={theme}>
+          <App context={context}>{route.component}</App>
+        </MuiThemeProvider>
+      ),
       container,
       () => {
         if (isInitialRender) {

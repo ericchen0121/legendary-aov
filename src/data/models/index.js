@@ -12,31 +12,38 @@ import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
+import { Hero, Build, Item, GameMode, Version } from './aov'
+
 
 User.hasMany(UserLogin, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'logins',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
 User.hasMany(UserClaim, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'claims',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
 User.hasOne(UserProfile, {
-  foreignKey: 'userId',
+  foreignKey: 'user_id',
   as: 'profile',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
 
 function sync(...args) {
-  return sequelize.sync(...args);
+  return sequelize.sync({
+    // alter: true,
+    ...args
+  });
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile };
+export { User, UserLogin, UserClaim, UserProfile, Hero, Build, Item, GameMode, Version }
+// export { User, UserLogin, UserClaim, UserProfile, Build, GameMode, Hero, Item, Version };
+// export { Build, GameMode, Hero, Item, Version };

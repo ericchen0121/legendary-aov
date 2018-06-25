@@ -35,7 +35,7 @@ class Html extends React.Component {
   };
 
   render() {
-    const { title, description, styles, scripts, app, children } = this.props;
+    const { title, description, styles, scripts, app, children, css } = this.props; // css is MUI
     return (
       <html className="no-js" lang="en">
         <head>
@@ -49,6 +49,7 @@ class Html extends React.Component {
           ))}
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="apple-touch-icon" href="/icon.png" />
+          <style id="jss-server-side">{css}</style>
           {styles.map(style => (
             <style
               key={style.id}
