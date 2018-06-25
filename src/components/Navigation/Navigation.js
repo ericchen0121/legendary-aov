@@ -18,12 +18,16 @@ import { TWITTER } from '../../constants';
 import { Icon } from 'react-icons-kit';
 import { twitter } from 'react-icons-kit/icomoon/twitter';
 
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 class Navigation extends React.Component {
+
   render() {
+    let { user_login } = this.props
     return (
       <div className={s.root} role="navigation">
-
-
         <Link className={cx(s.link)} to="/video">
           Videos
         </Link>
@@ -34,9 +38,16 @@ class Navigation extends React.Component {
           Create Build
         </Link>
         <span className={s.spacer}> | </span>
-        <Link className={cx(s.link, s.highlight, s.signup)} to="/register">
-          Sign up
-        </Link>
+        { !user_login.is_logged_in &&
+          <Link className={cx(s.link, s.highlight, s.signup)} to="/login">
+            Sign up
+          </Link>
+        }
+        { user_login.is_logged_in &&
+          <span className={cx(s.username, s.highlight)}>
+            {user_login.username}
+          </span>
+        }
         <a href={TWITTER} target="_blank">
           <Icon icon={twitter} style={{ color: 'white' }} />
         </a>
@@ -47,4 +58,16 @@ class Navigation extends React.Component {
   }
 }
 
-export default withStyles(s)(Navigation);
+function mapStateToProps(state) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+}
+
+export default withStyles(s)(
+    connect(mapStateToProps, mapDispatchToProps)(Navigation)
+)

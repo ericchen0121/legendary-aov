@@ -40,8 +40,7 @@ const schema = new Schema({
       hero,
       item,
       items,
-      version,
-      loginUser
+      version
     },
   }),
   mutation: new ObjectType({
@@ -49,7 +48,8 @@ const schema = new Schema({
     fields: {
       addBuild,
       addHero,
-      addUser
+      addUser,
+      loginUser
     }
   })
 });

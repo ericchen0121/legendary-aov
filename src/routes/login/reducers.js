@@ -1,11 +1,14 @@
 import {
-  LOGIN_USER
+  LOGIN_USER,
+  REGISTER_USER
 } from './constants';
 
 const initialState = {
   is_logged_in: false,
   id: null,
-  email: null
+  email: null,
+  username: null
+  // is_new_user: false
 }
 
 const user_login = (state = initialState, action) => {
@@ -15,7 +18,17 @@ const user_login = (state = initialState, action) => {
         ...state,
         is_logged_in: true,
         id: action.data.id,
-        email: action.data.email
+        email: action.data.email,
+        username: action.data.username,
+      }
+    case REGISTER_USER:
+      return {
+        ...state,
+        is_logged_in: true,
+        id: action.data.id,
+        email: action.data.email,
+        username: action.data.username,
+        // is_new_user: true
       }
     default:
       return state;

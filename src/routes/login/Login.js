@@ -9,26 +9,49 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
+import { withStyles } from 'material-ui/styles';
 import s from './Login.css';
-import { Mutation } from "react-apollo";
+import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
-
+import { ADD_USER, LOGIN_USER } from '../../data/gql_queries/users'
+// import Tab from 'material-ui/Tab';
+import Tabs, { Tab } from 'material-ui/Tabs';
+import Paper from 'material-ui/Paper';
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  register: {
+    width: '80%',
+    margin: '50px 10%',
+    paddingTop: 20,
+    paddingBottom: 20
+  },
+  title: {
+    textAlign: 'center'
+  }
+};
+
 class Login extends React.Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
   };
 
+  handleChange = (event, value) => {
+   this.setState({ value });
+ };
+
   handleChangeEmail = (e) => {
     this.setState({
       email: e.target.value,
-    }, () => console.log(this.state))
+    })
   }
 
   handleChangeUsername = (e) => {
@@ -38,10 +61,10 @@ class Login extends React.Component {
   handleChangePassword = (e) => {
     this.setState({
       password: e.target.value
-    }, () => console.log(this.state))
+    })
   }
 
-  handleLogin = (data) => {
+  handleRegisterUser = (data) => {
     let id, email, username
     if (data.addUser) {
       id = data.addUser.id
@@ -56,18 +79,35 @@ class Login extends React.Component {
     }
   }
 
+  handleLoginUser = (data) => {
+    let id, email, username
+    if (data.loginUser) {
+      id = data.loginUser.id
+      email = data.loginUser.email
+      username = data.loginUser.username
+
+      this.props.actions.loginUser({
+        id,
+        email,
+        username
+      })
+    }
+  }
+
   state = {
+    value: 0,
     email: null,
     password: null,
     username: null
   }
 
   render() {
-
+    let { classes } = this.props
     let handleChangeUsername = this.handleChangeUsername.bind(this)
     let handleChangeEmail = this.handleChangeEmail.bind(this)
     let handleChangePassword =this.handleChangePassword.bind(this)
-    let handleLogin = this.handleLogin.bind(this)
+    let handleRegisterUser = this.handleRegisterUser.bind(this)
+    let handleLoginUser = this.handleLoginUser.bind(this)
 
     let {email, password, username} = this.state
 
@@ -76,15 +116,6 @@ class Login extends React.Component {
       password,
       username
     }
-
-    const ADD_USER = gql`
-      mutation addUser($input: UserInputType!) {
-        addUser(input: $input) {
-            id
-            email
-            username
-        }
-      }`
 
     let fb_login = (
       <div className={s.formGroup}>
@@ -158,21 +189,21 @@ class Login extends React.Component {
       </div>
     )
 
-    return (
+    let register = (
+
       <Mutation
         mutation={ADD_USER}
         variables={{ input: user }}
-        onCompleted={handleLogin}
+        onCompleted={handleRegisterUser}
       >
-        {(addUser, {data}) => {
+        {(addUser, {loading, error, data}) => {
           let container =(
             <div className={s.root}>
               <div className={s.container}>
-                <h1>{this.props.title}</h1>
+                <h1 className={classes.title}>Register</h1>
                 <p className={s.lead}>
-                  Log in with your username / email
                 </p>
-                <strong className={s.lineThrough}>OR</strong>
+                <strong className={s.lineThrough}> ~ ~ ~ </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Username:
@@ -188,7 +219,7 @@ class Login extends React.Component {
                 </div>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
-                    Username or email address:
+                    Email address:
                     <input
                       className={s.input}
                       id="email"
@@ -211,11 +242,12 @@ class Login extends React.Component {
                     />
                   </label>
                 </div>
-                <div className={s.formGroup} onClick={handleLogin}>
+                <div className={s.formGroup} onClick={handleRegisterUser}>
                   <button className={s.button} onClick={addUser}>
-                    Log in
+                    Register
                   </button>
                 </div>
+                {error && <div>Username or Email invalid</div>}
               </div>
             </div>
 
@@ -225,6 +257,96 @@ class Login extends React.Component {
 
         }}
       </Mutation>
+    )
+
+    let login = (
+      <Mutation
+        mutation={LOGIN_USER}
+        variables={{ input: user }}
+        onCompleted={handleLoginUser}
+      >
+        {(loginUser, { loading, error, data }) => {
+          let container =(
+            <div className={s.root}>
+              <div className={s.container}>
+                <h1 className={classes.title}>Login</h1>
+                <p className={s.lead}>
+                  Log in with your username / email
+                </p>
+                <strong className={s.lineThrough}> ~ ~ ~ </strong>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="usernameOrEmail">
+                    Username:
+                    <input
+                      className={s.input}
+                      id="username"
+                      type="text"
+                      name="username"
+                      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+                      onChange={handleChangeUsername}
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="usernameOrEmail">
+                    Email address:
+                    <input
+                      className={s.input}
+                      id="email"
+                      type="text"
+                      name="email"
+                      autoFocus // eslint-disable-line jsx-a11y/no-autofocus
+                      onChange={handleChangeEmail}
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup}>
+                  <label className={s.label} htmlFor="password">
+                    Password:
+                    <input
+                      className={s.input}
+                      id="password"
+                      type="password"
+                      name="password"
+                      onChange={handleChangePassword}
+                    />
+                  </label>
+                </div>
+                <div className={s.formGroup} onClick={handleLoginUser}>
+                  <button className={s.button} onClick={loginUser}>
+                    Log in
+                  </button>
+                </div>
+                {error && <div>Username or Email invalid</div>}
+              </div>
+            </div>
+          )
+          return (
+            <div>{container}</div>
+          )
+        }}
+      </Mutation>
+    )
+
+    return (
+      <div>
+        <Paper className={classes.root}>
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="Register" />
+            <Tab label="Login" />
+          </Tabs>
+        </Paper>
+        <Paper className={classes.register}>
+        { (this.state.value === 0) && register }
+        { (this.state.value === 1) && login }
+        </Paper>
+      </div>
     );
   }
 }
@@ -239,6 +361,8 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles(s)(
-  connect(mapStateToProps, mapDispatchToProps)(Login)
+export default withStyles2(s)(
+  withStyles(styles)(
+    connect(mapStateToProps, mapDispatchToProps)(Login)
+  )
 )

@@ -70,8 +70,5 @@ const User = Model.define(
 export function compare_password(string_pw, hash_pw) {
   return bcrypt.compareSync(string_pw, hash_pw)
 }
-// User.prototype.compare_password = (password) => {
-//   return bcrypt.compareSync(password, this.password)
-// }
 
 export default User;
