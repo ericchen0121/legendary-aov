@@ -38,15 +38,13 @@ class Navigation extends React.Component {
           Create Build
         </Link>
         <span className={s.spacer}> | </span>
-        { !user_login.is_logged_in &&
-          <Link className={cx(s.link, s.highlight, s.signup)} to="/login">
-            Sign up
-          </Link>
-        }
-        { user_login.is_logged_in &&
-          <span className={cx(s.username, s.highlight)}>
+        { !user_login.is_logged_in ?
+          (<Link className={cx(s.link, s.highlight, s.signup)} to="/login">
+            Login/Register
+          </Link>) :
+          (<span className={cx(s.username, s.highlight)}>
             {user_login.username}
-          </span>
+          </span>)
         }
         <a href={TWITTER} target="_blank">
           <Icon icon={twitter} style={{ color: 'white' }} />

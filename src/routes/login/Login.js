@@ -29,8 +29,8 @@ const styles = {
     flexGrow: 1,
   },
   register: {
-    width: '80%',
-    margin: '50px 10%',
+    width: 404,
+    margin: '50px auto',
     paddingTop: 20,
     paddingBottom: 20
   },
@@ -203,10 +203,9 @@ class Login extends React.Component {
                 <h1 className={classes.title}>Register</h1>
                 <p className={s.lead}>
                 </p>
-                <strong className={s.lineThrough}> ~ ~ ~ </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
-                    Username:
+                    Create a Username:
                     <input
                       className={s.input}
                       id="username"
@@ -217,6 +216,7 @@ class Login extends React.Component {
                     />
                   </label>
                 </div>
+                <strong className={s.lineThrough}> AND </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Email address:
@@ -232,7 +232,7 @@ class Login extends React.Component {
                 </div>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="password">
-                    Password:
+                    Create a Password:
                     <input
                       className={s.input}
                       id="password"
@@ -270,10 +270,6 @@ class Login extends React.Component {
             <div className={s.root}>
               <div className={s.container}>
                 <h1 className={classes.title}>Login</h1>
-                <p className={s.lead}>
-                  Log in with your username / email
-                </p>
-                <strong className={s.lineThrough}> ~ ~ ~ </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Username:
@@ -287,6 +283,7 @@ class Login extends React.Component {
                     />
                   </label>
                 </div>
+                <strong className={s.lineThrough}> OR </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Email address:
