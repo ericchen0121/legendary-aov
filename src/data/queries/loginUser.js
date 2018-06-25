@@ -2,24 +2,24 @@ import UserType from '../types/UserType';
 import { GraphQLString as StringType, GraphQLObjectType as ObjectType } from 'graphql'
 import User, { compare_password } from '../models/User'
 import bcrypt from 'bcrypt'
+import UserInputType from '../types/UserInputType'
 
 const loginUser = {
   type: UserType,
   args: {
-    username: { type: StringType},
-    email: { type: StringType},
-    password: { type: StringType},
+    input: {type: UserInputType}
   },
-  resolve(parent, args){
+  resolve(parent, {input}){
     return User.findOne({
       where: {
         $or: [
-          {username: {$eq: args.username}},
-          {email: {$eq: args.email}}
+          {username: {$eq: input.username}},
+          {email: {$eq: input.email}}
         ]
       }
     }).then(user => {
-      if (user && compare_password(args.password, user.dataValues.password)) {
+      // user object returned in dataValues key
+      if (user && compare_password(input.password, user.dataValues.password)) {
         return user
       }
     })
