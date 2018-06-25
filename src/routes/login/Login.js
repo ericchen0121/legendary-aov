@@ -48,6 +48,13 @@ class Login extends React.Component {
    this.setState({ value });
  };
 
+  switchForm = () => {
+    if(this.state.value === 0) {
+      this.setState({value: 1})
+    } else {
+      this.setState({value: 0})
+    }
+  }
   handleChangeEmail = (e) => {
     this.setState({
       email: e.target.value,
@@ -108,6 +115,7 @@ class Login extends React.Component {
     let handleChangePassword =this.handleChangePassword.bind(this)
     let handleRegisterUser = this.handleRegisterUser.bind(this)
     let handleLoginUser = this.handleLoginUser.bind(this)
+    let switchForm = this.switchForm.bind(this)
 
     let {email, password, username} = this.state
 
@@ -248,6 +256,10 @@ class Login extends React.Component {
                   </button>
                 </div>
                 {error && <div>Username or Email invalid</div>}
+                <strong className={s.lineThrough}> </strong>
+                <div className={s.switchFormText}>
+                  Already Legendary? <span className={s.cta} onClick={switchForm}>Sign In</span>
+                </div>
               </div>
             </div>
 
@@ -315,6 +327,10 @@ class Login extends React.Component {
                   </button>
                 </div>
                 {error && <div>Username or Email invalid</div>}
+                <strong className={s.lineThrough}> </strong>
+                <div className={s.switchFormText}>
+                  Not Legendary yet? <span className={s.cta} onClick={switchForm}>Sign Up</span>
+                </div>
               </div>
             </div>
           )
