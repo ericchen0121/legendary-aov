@@ -8,7 +8,8 @@ import {
   REMOVE_ITEM_FROM_BUILD,
   SET_HERO_ID,
   NAME_BUILD,
-  RESET_BUILD
+  RESET_BUILD,
+  TOGGLE_ADD_NOTES_OPEN
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
@@ -22,6 +23,7 @@ const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
   hovered_item: null,
+  is_notes_open: false,
   current_build: {
     name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
     1: null,
@@ -42,6 +44,10 @@ const initialState = {
     item_5_alt: [],
     item_6_alt: [],
     talent_alt: [],
+    notes: {
+      summary: '',
+
+    }
   }
 }
 
@@ -111,6 +117,11 @@ const build_creator = (state = initialState, action) => {
     case RESET_BUILD:
       return initialState
 
+    case TOGGLE_ADD_NOTES_OPEN:
+      return {
+        ...state,
+        is_notes_open: !state.is_notes_open
+      }
     default:
       return state;
   }

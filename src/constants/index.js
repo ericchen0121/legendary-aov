@@ -23,6 +23,7 @@ export const REMOVE_ITEM_FROM_BUILD = 'REMOVE_ITEM_FROM_BUILD'
 export const SET_HERO_ID = 'SET_HERO_ID'
 export const NAME_BUILD = 'NAME_BUILD'
 export const RESET_BUILD = 'RESET_BUILD'
+export const TOGGLE_ADD_NOTES_OPEN = 'TOGGLE_ADD_NOTES_OPEN'
 
 // Route Page Titles
 export const MAIN_TITLE = 'Legendary AOV'

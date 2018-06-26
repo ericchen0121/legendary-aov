@@ -133,6 +133,7 @@ class BuildItemsContainer extends React.Component {
                     <div className={s.total_effects_title}>Full Build Totals</div>
                     <BuildItemsEffects
                       items={items}
+                      style={'bold'}
                     />
                   </div>
                 </div>

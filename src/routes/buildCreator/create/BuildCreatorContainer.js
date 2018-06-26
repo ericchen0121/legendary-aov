@@ -12,8 +12,7 @@ import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import BuildItemEffects from '../BuildItemsEffects'
-import { ITEMS, TALENTS } from '../Items'
-import HEROES from '../../draft/AovHeroes'
+import BuildNotes from './BuildNotes'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -83,7 +82,7 @@ class BuildCreatorContainer extends React.Component {
         <Grid item xs={3}>
           <div className={cx(classes.item_effects_container)}>
             <div className={s.combined_effects_title}>{'All Build Effects'.toUpperCase()}</div>
-            <BuildItemEffects items={items} />
+            <BuildItemEffects items={items} style={'bold'}/>
           </div>
           <BuildItemCard />
         </Grid>

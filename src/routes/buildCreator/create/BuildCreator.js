@@ -25,10 +25,12 @@ import green from 'material-ui/colors/green';
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
+import BuildNotes from './BuildNotes'
 
 import { Icon } from 'react-icons-kit'
 import {ic_send} from 'react-icons-kit/md/ic_send'
 import {ic_save} from 'react-icons-kit/md/ic_save'
+import {plus} from 'react-icons-kit/fa/plus'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
@@ -44,6 +46,9 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 2,
   }),
+  item_editor_container: {
+    marginBottom: 5
+  },
   snackbar: {
     backgroundColor: green
   },
@@ -75,7 +80,7 @@ const styles = theme => ({
   save_button_inactive: {
     border: '1px solid rgba(0,0,0, .2)',
     color: 'rgba(0,0,0, .2)',
-    top: -40,
+    top: -58,
     marginLeft: '83.5%',
     right: 0,
     position: 'relative'
@@ -92,6 +97,14 @@ const styles = theme => ({
     border: '1px solid gold',
     padding: 5,
     cursor: 'pointer'
+  },
+  add_notes_button: {
+    marginRight: 7
+  },
+  add_notes_button_container: {
+    position: 'relative',
+    left: '57%',
+    marginTop: -60
   }
 })
 
@@ -133,6 +146,10 @@ class BuildCreator extends React.Component {
     this.handleChange(e.target.value)
   }
 
+  handleNotesOpen = () => {
+    this.props.actions.toggleAddNotesOpen()
+  }
+
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -153,13 +170,14 @@ class BuildCreator extends React.Component {
 
   render() {
     const { classes, build_creator, ...other } = this.props
-    const { current_build } = build_creator
+    const { current_build, is_notes_open } = build_creator
     const { is_saved, open } = this.state
 
     let handleSave = this.handleSave.bind(this)
     let handleOpen = this.handleOpen.bind(this)
     let handleSaveAndOpen = this.handleSaveAndOpen.bind(this)
     let resetBuild = this.resetBuild.bind(this)
+    let handleNotesOpen = this.handleNotesOpen.bind(this)
 
     let build = {
       name: current_build.name,
@@ -216,6 +234,24 @@ class BuildCreator extends React.Component {
       </div>
     )
 
+    let add_notes_button = (
+      <div onClick={handleNotesOpen}>
+        <Button
+          variant="flat"
+          color="primary"
+          className={classes.add_notes_button_container}
+        >
+        <Icon
+          style={{color: CONTINUE_EDIT_COLOR}}
+          icon={plus}
+          size={14}
+          className={classes.add_notes_button}
+          style={{color: 'green'}}
+        />
+          ADD NOTES
+        </Button>
+      </div>
+    )
     return (
         <Mutation
           mutation={ADD_BUILD}
@@ -223,7 +259,7 @@ class BuildCreator extends React.Component {
         >
           {(addBuild, {data}) => {
             let item_editor = (
-              <div>
+              <div className={classes.item_editor_container}>
                 <Grid container spacing={24} >
                   {
                     [1,2,3,4,5,6].map(i => {
@@ -317,7 +353,9 @@ class BuildCreator extends React.Component {
                 { item_editor }
                 { build_name }
                 { talent_selector }
+                { add_notes_button }
                 { save_button }
+                { is_notes_open  && <BuildNotes />}
                 <Snackbar
                   className={classes.snackbar}
                   anchorOrigin={{

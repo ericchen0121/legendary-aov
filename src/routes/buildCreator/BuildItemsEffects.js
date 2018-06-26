@@ -41,6 +41,9 @@ const styles = theme => ({
   no_underline_link: {
     textDecoration: 'none',
     color: '#00aaff'
+  },
+  bold: {
+    fontWeight: 'bold'
   }
 })
 
@@ -51,8 +54,14 @@ class BuildItemsEffects extends React.Component {
   }
 
   render() {
-    const { classes, items } = this.props
+    const { classes, items, style } = this.props
 
+    let type_class
+    if (style === 'bold') {
+      type_class = cx(s.item_effect_type, classes.bold)
+    } else {
+      type_class = s.item_effect_type
+    }
     let current_items = items.filter(i => i != null)
 
     if ( current_items.length > 0 ) {
@@ -94,7 +103,7 @@ class BuildItemsEffects extends React.Component {
 
         return (
           <div key={(e.type + i)}>
-            <span className={s.item_effect_type}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
+            <span className={type_class}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
             { divider }
           </div>
         )

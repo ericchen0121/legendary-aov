@@ -10,7 +10,8 @@ import {
   INSERT_TALENT_TO_BUILD,
   SET_HERO_ID,
   NAME_BUILD,
-  RESET_BUILD
+  RESET_BUILD,
+  TOGGLE_ADD_NOTES_OPEN
 } from '../../../constants';
 
 export const selectItem = (data) => {
@@ -24,7 +25,7 @@ export const hoverItem = (data) => {
 export const clearHoverItem = (data) => {
   return { type: CLEAR_HOVERED_ITEM, data }
 }
-  
+
 export const filterItemCategory = (data) => {
   return {
     type: FILTER_ITEM_CATEGORY, data
@@ -57,4 +58,8 @@ export const nameBuild = (data) => {
 
 export const resetBuild = (data) => {
   return { type: RESET_BUILD, data }
+}
+
+export const toggleAddNotesOpen = (data) => {
+    return { type: TOGGLE_ADD_NOTES_OPEN, data }
 }
