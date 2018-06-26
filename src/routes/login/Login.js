@@ -89,7 +89,7 @@ class Login extends React.Component {
         username
       })
 
-      history.push("/video")
+      history.goBack()
     }
   }
 
@@ -106,7 +106,7 @@ class Login extends React.Component {
         username
       })
 
-      history.push("/build/me")
+      history.goBack()
     }
 
   }
