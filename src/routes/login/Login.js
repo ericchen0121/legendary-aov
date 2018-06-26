@@ -88,7 +88,7 @@ class Login extends React.Component {
         email,
         username
       })
-      
+
       history.push("/video")
     }
   }
@@ -106,7 +106,7 @@ class Login extends React.Component {
         username
       })
 
-      history.push("/video")
+      history.push("/build/me")
     }
 
   }

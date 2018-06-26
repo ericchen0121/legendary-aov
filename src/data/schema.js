@@ -17,6 +17,7 @@ import me from './queries/me';
 import news from './queries/news';
 import build from './queries/build';
 import builds from './queries/builds';
+import myBuilds from './queries/myBuilds';
 import buildsByHero from './queries/buildsByHero';
 import hero from './queries/hero';
 import item from './queries/item';
@@ -40,7 +41,8 @@ const schema = new Schema({
       hero,
       item,
       items,
-      version
+      version,
+      myBuilds
     },
   }),
   mutation: new ObjectType({
