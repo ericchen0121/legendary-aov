@@ -76,7 +76,12 @@ class MyBuildViewer extends React.Component {
   }
 
   filter_builds_by_hero_id = (builds, hero_id) => {
-    return builds.filter(b => b.hero_id === hero_id)
+    if (hero_id) {
+      return builds.filter(b => b.hero_id === hero_id)
+    }
+    else {
+      return builds
+    }
   }
 
   render() {
@@ -117,7 +122,7 @@ class MyBuildViewer extends React.Component {
             return <div>ERROR! Sorry!</div>
           }
 
-          if (!data.myBuilds || data.myBuilds.length === 0) {
+          if (!data.myBuilds ||filter_builds_by_hero_id(data.myBuilds, selected_hero_id).length === 0) {
             return (
               <Grid container zeroMinWidth className={classes.grid_container}>
                 <Grid item xs={9}>

@@ -97,7 +97,7 @@ const build_creator = (state = initialState, action) => {
         current_build: {
           ...state.current_build,
           hero_id: action.data,
-          name: `${find_hero_by_id(action.data).name} Build`,
+          name: action.data ? `${find_hero_by_id(action.data).name} Build` : 'Build'
         }
       }
     case NAME_BUILD:
