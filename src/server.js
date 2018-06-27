@@ -29,6 +29,7 @@ import passport_fb from './passport_fb';
 import router from './router';
 import models from './data/models';
 import schema from './data/schema';
+import config from './config';
 
 // Mui theme provider
 import { renderToString } from 'react-dom/server'
@@ -43,7 +44,6 @@ import green from 'material-ui/colors'
 
 // env config
 // import dotenv from 'dotenv'
-// import config from './config';
 // dotenv.config()
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
