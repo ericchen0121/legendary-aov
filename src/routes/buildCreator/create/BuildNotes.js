@@ -24,20 +24,29 @@ const styles = theme => ({
   },
   heading: {
     fontFamily: "'Josefin Sans', sans-serif"
+  },
+  note_saved: {
+    color: 'green'
+  },
+  note_not_saved: {
+    color: 'grey'
+  },
+  save_text_position: {
+    marginLeft: 30
   }
 })
 
 class BuildItem extends React.Component {
-  state = {
-    expanded: null,
-    notes: {
-      summary: '',
-      items: '',
-      matchups: '',
-      arcana: '',
-      combos: ''
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      expanded: null,
+      notes: props.build_creator.current_build.notes
     }
-  };
+  }
+
+  timeout = 0
 
   handleChange = panel => (event, expanded) => {
     this.setState({
@@ -50,11 +59,20 @@ class BuildItem extends React.Component {
   handleTextChange = name => event => {
     // https://forum.freecodecamp.org/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772/4
     let notes = Object.assign({}, this.state.notes);
-    notes[name] = event.target.value
+    let text = event.target.value
+    notes[name] = text
+
     this.setState({
       notes
     });
-  };
+
+    //save to redux after user stops typing
+    // https://stackoverflow.com/questions/42217121/searching-in-react-when-user-stops-typing
+    if(this.timeout) clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.props.actions.addNotes({field: name, text}) // redux save!
+    }, 1000);
+  }
 
   saveTextChange = (field, text) => event => {
     this.props.actions.addNotes({field, text})
@@ -66,13 +84,23 @@ class BuildItem extends React.Component {
 
     let panels = ['summary', 'items', 'arcana', 'matchups', 'combos']
     let notes = build_creator.current_build.notes
+
+
     return (
       <div className={classes.root}>
        { panels.map(p => {
+         let is_saved = (notes[p] === this.state.notes[p]) && notes[p] !== ''
+         let note_class = is_saved ? classes.note_saved : classes.note_not_saved
+         let is_saved_text = is_saved ? 'saved' : 'editing'
+
          return (
            <ExpansionPanel expanded={expanded === p} onChange={this.handleChange(p)}>
              <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-               <Typography className={classes.heading}>{p.toUpperCase()}</Typography>
+               <Typography className={classes.heading}>
+                {p.toUpperCase()}
+                <span className={cx(note_class, classes.save_text_position)}>{ is_saved_text }</span>
+              </Typography>
+
              </ExpansionPanelSummary>
              <ExpansionPanelDetails>
                <Input
@@ -80,12 +108,8 @@ class BuildItem extends React.Component {
                  multiline={true}
                  value={this.state.notes[p]}
                  onChange={this.handleTextChange(p)}
+                 className={note_class}
                />
-               <Button
-                 variant="flat"
-                 color="primary"
-                 onClick={this.saveTextChange(p, this.state.notes[p])}
-               >SAVE</Button>
              </ExpansionPanelDetails>
            </ExpansionPanel>
          )
