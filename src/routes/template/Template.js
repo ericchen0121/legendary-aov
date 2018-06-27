@@ -19,12 +19,7 @@ const styles = theme => ({
 })
 
 class Template extends React.Component {
-
-
   render() {
-    // const { builds, selected_build } = this.props
-    // const { id, items, hero_id, info } = selected_build
-
     return (
       <Template
         {...this.props}

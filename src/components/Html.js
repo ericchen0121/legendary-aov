@@ -15,6 +15,7 @@ import config from '../config';
 /* eslint-disable react/no-danger */
 
 class Html extends React.Component {
+  
   static propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

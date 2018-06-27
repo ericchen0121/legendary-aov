@@ -18,11 +18,30 @@ import { TWITTER } from '../../constants';
 import { Icon } from 'react-icons-kit';
 import { twitter } from 'react-icons-kit/icomoon/twitter';
 
-import * as Actions from './actions';
+import * as Actions from '../../routes/login/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class Navigation extends React.Component {
+    constructor(props) {
+      super(props)
+      if (typeof(localStorage) !== 'undefined'){
+        this._retrieveUserData()
+      }
+    }
+
+    _retrieveUserData = () => {
+      let id = localStorage.getItem('id', id)
+      let email = localStorage.getItem('email', email)
+      let username = localStorage.getItem('username', username)
+      let is_logged_in = localStorage.getItem('is_logged_in', is_logged_in)
+      this.props.actions.loginUser({
+        id,
+        email,
+        username,
+        is_logged_in
+      })
+    }
 
   render() {
     let { user_login } = this.props

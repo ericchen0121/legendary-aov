@@ -89,6 +89,8 @@ class Login extends React.Component {
         username
       })
 
+      this._saveUserData(id, email, username, true)
+
       history.goBack()
     }
   }
@@ -106,9 +108,19 @@ class Login extends React.Component {
         username
       })
 
+      this._saveUserData(id, email, username, true)
+
       history.goBack()
     }
 
+
+  }
+
+  _saveUserData = (id, email, username, is_logged_in) => {
+    localStorage.setItem('id', id)
+    localStorage.setItem('email', email)
+    localStorage.setItem('username', username)
+    localStorage.setItem('is_logged_in', is_logged_in)
   }
 
   state = {

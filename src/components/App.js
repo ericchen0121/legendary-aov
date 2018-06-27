@@ -63,7 +63,8 @@ const ContextType = {
 
 
 class App extends React.PureComponent {
-  // MUI 
+
+  // MUI
   // componentDidMount() {
   //   const jssStyles = document.getElementById('jss-server-side');
   //   if (jssStyles && jssStyles.parentNode) {
@@ -92,5 +93,4 @@ class App extends React.PureComponent {
     )
   }
 }
-
-export default App;
+export default App
