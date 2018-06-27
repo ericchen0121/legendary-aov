@@ -1,8 +1,4 @@
 import BuildType from '../types/BuildType';
-import {
-  GraphQLInt as IntType,
-  GraphQLList as ListType
-} from 'graphql'
 import Build from '../models/aov/Build'
 import Hero from '../models/aov/Hero'
 import GameMode from '../models/aov/Hero'

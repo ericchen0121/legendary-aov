@@ -6,6 +6,7 @@ import {
   GraphQLInt as IntType,
   GraphQLList as ListType,
 } from 'graphql';
+import GraphQLJSON from 'graphql-type-json'
 import BuildType from '../types/BuildType';
 
 const BuildInputType = new GraphQLInputObjectType({
@@ -32,6 +33,7 @@ const BuildInputType = new GraphQLInputObjectType({
     user_id: { type: IntType },
     game_mode_id: { type: IntType},
     version_id: { type: IntType },
+    notes: { type: GraphQLJSON }
   },
 });
 

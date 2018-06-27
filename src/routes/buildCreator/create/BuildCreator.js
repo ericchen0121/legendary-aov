@@ -26,6 +26,7 @@ import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
 import BuildNotes from './BuildNotes'
+import {ADD_BUILD} from '../../../data/gql_queries/builds'
 
 import { Icon } from 'react-icons-kit'
 import {ic_send} from 'react-icons-kit/md/ic_send'
@@ -107,24 +108,6 @@ const styles = theme => ({
     marginTop: -60
   }
 })
-
-const ADD_BUILD = gql`
-  mutation addBuild($input: BuildInputType!) {
-    addBuild(input: $input) {
-        id
-        name
-        user_id
-        item_1
-        item_2
-        item_3
-        item_4
-        item_5
-        item_6
-        talent_id
-        hero_id
-        game_mode_id
-    }
-  }`
 
 class BuildCreator extends React.Component {
   state = {

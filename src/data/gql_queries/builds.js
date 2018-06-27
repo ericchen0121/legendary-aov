@@ -18,3 +18,22 @@ export const MY_BUILDS = gql`
     }
   }
 `
+
+export const ADD_BUILD = gql`
+  mutation addBuild($input: BuildInputType!) {
+    addBuild(input: $input) {
+        id
+        name
+        user_id
+        item_1
+        item_2
+        item_3
+        item_4
+        item_5
+        item_6
+        talent_id
+        hero_id
+        game_mode_id
+        notes
+    }
+  }`

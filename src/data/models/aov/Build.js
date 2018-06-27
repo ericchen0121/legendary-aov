@@ -76,6 +76,9 @@ const Build = Model.define(
     version_id: {
       type: DataType.INTEGER,
       defaultValue: CURRENT_VERSION
+    },
+    notes: {
+      type: DataType.JSONB
     }
   },
   {
