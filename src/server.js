@@ -42,9 +42,9 @@ import {
 import green from 'material-ui/colors'
 
 // env config
-import dotenv from 'dotenv'
-import config from './config';
-dotenv.config()
+// import dotenv from 'dotenv'
+// import config from './config';
+// dotenv.config()
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
