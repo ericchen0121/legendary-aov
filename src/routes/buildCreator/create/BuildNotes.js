@@ -27,11 +27,9 @@ const styles = theme => ({
 class BuildItem extends React.Component {
   state = {
     expanded: null,
-    panel1_text: '',
-    panel2_text: '',
-    panel3_text: '',
-    panel4_text: '',
-    panel5_text: ''
+    notes: {
+      summary: ''
+    }
   };
 
   handleChange = panel => (event, expanded) => {
@@ -40,16 +38,24 @@ class BuildItem extends React.Component {
     });
   };
 
-  handleTextChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
+  // handleTextChange = name => event => {
+  //   // https://forum.freecodecamp.org/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772/4
+  //   let notes = Object.assign({}, this.state.notes);
+  //   notes[name] = event.target.value
+  //   this.setState({
+  //     notes
+  //   });
+  // };
 
+  handleTextChange = name => event => {
+    this.props.actions.addNotes({field: name, text: event.target.value})
+  }
   render() {
-    const { classes, actions, ...other } = this.props
+    const { classes, actions, build_creator, ...other } = this.props
     const { expanded } = this.state;
 
+    let notes = build_creator.current_build.notes
+    console.log('NOTES is', notes)
     return (
       <div className={classes.root}>
         <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
@@ -60,8 +66,8 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={this.state.panel1_text}
-              onChange={this.handleTextChange('panel1_text')}
+              value={notes.summary || ''}
+              onChange={this.handleTextChange('summary')}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -73,6 +79,8 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
+              value={notes.items || ''}
+              onChange={this.handleTextChange('items')}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -84,6 +92,8 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
+              value={notes.matchups || ''}
+              onChange={this.handleTextChange('matchups')}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -95,6 +105,8 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
+              value={notes.arcana || ''}
+              onChange={this.handleTextChange('arcana')}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -106,6 +118,8 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
+              value={notes.combos || ''}
+              onChange={this.handleTextChange('combos')}
             />
           </ExpansionPanelDetails>
         </ExpansionPanel>

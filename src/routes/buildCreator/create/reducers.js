@@ -9,7 +9,8 @@ import {
   SET_HERO_ID,
   NAME_BUILD,
   RESET_BUILD,
-  TOGGLE_ADD_NOTES_OPEN
+  TOGGLE_ADD_NOTES_OPEN,
+  ADD_NOTES
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
@@ -46,7 +47,10 @@ const initialState = {
     talent_alt: [],
     notes: {
       summary: '',
-
+      arcana: '',
+      items: '',
+      matchups: '',
+      combos: ''
     }
   }
 }
@@ -121,6 +125,19 @@ const build_creator = (state = initialState, action) => {
       return {
         ...state,
         is_notes_open: !state.is_notes_open
+      }
+    case ADD_NOTES:
+      let notes = Object.assign({}, state.notes);
+      notes[action.data.field] = action.data.text
+      return {
+        ...state,
+        current_build: {
+          ...state.current_build,
+          notes: {
+            ...state.current_build.notes,
+            ...notes
+          }
+        }
       }
     default:
       return state;

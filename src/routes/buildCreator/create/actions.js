@@ -11,7 +11,8 @@ import {
   SET_HERO_ID,
   NAME_BUILD,
   RESET_BUILD,
-  TOGGLE_ADD_NOTES_OPEN
+  TOGGLE_ADD_NOTES_OPEN,
+  ADD_NOTES
 } from '../../../constants';
 
 export const selectItem = (data) => {
@@ -61,5 +62,9 @@ export const resetBuild = (data) => {
 }
 
 export const toggleAddNotesOpen = (data) => {
-    return { type: TOGGLE_ADD_NOTES_OPEN, data }
+  return { type: TOGGLE_ADD_NOTES_OPEN, data }
+}
+
+export const addNotes = (data) => {
+  return { type: ADD_NOTES, data}
 }
