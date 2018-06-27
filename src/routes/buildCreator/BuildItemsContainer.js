@@ -15,6 +15,7 @@ import CustomBuilds from './CustomBuilds'
 import BuildItemCard from './create/BuildItemCard'
 import BuildHeroContainer from './create/BuildHeroContainer'
 import BuildItemsEffects from './BuildItemsEffects'
+import BuildNotesViewer from './create/BuildNotesViewer'
 
 import { find_talent_by_id, find_item_by_id } from './Items'
 import { find_hero_by_id } from '../draft/AovHeroes'
@@ -48,6 +49,9 @@ const styles = theme => ({
   center: {
     textAlign: 'center',
   },
+  marginBot: {
+    marginBottom: 40
+  }
 })
 
 class BuildItemsContainer extends React.Component {
@@ -134,6 +138,10 @@ class BuildItemsContainer extends React.Component {
                     <BuildItemsEffects
                       items={items}
                       style={'bold'}
+                    />
+                    <div className={classes.marginBot}/>
+                    <BuildNotesViewer
+                      build={b}
                     />
                   </div>
                 </div>

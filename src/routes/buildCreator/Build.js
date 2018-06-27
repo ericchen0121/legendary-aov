@@ -32,40 +32,7 @@ import { RingLoader } from 'react-spinners';
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-
-let builds_query = gql`
-  {
-    builds {
-      id
-      name
-      item_1
-      item_2
-      item_3
-      item_4
-      item_5
-      item_6
-      talent_id
-      hero_id
-    }
-  }
-`
-
-let hero_builds_query = gql`
-  query buildsByHero($hero_id: Int!){
-    buildsByHero(hero_id: $hero_id ) {
-      id
-      name
-      item_1
-      item_2
-      item_3
-      item_4
-      item_5
-      item_6
-      talent_id
-      hero_id
-    }
-  }
-`
+import { HERO_BUILDS } from '../../data/gql_queries/builds'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -129,13 +96,13 @@ class BuildViewer extends React.Component {
     )
     return (
       <Query
-        query={hero_builds_query}
+        query={HERO_BUILDS}
         variables={{ hero_id: selected_hero_id }}
       >
         {({ loading, error, data }) => {
           if (error) {
             console.log(error)
-            return <div>ERROR! Sorry!</div>
+            return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
 
           if (!data.buildsByHero || data.buildsByHero.length === 0) {

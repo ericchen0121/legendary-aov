@@ -25,7 +25,7 @@ import green from 'material-ui/colors/green';
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
-import BuildNotes from './BuildNotes'
+import BuildNotesEditor from './BuildNotesEditor'
 import {ADD_BUILD} from '../../../data/gql_queries/builds'
 
 import { Icon } from 'react-icons-kit'
@@ -337,7 +337,7 @@ class BuildCreator extends React.Component {
                 { talent_selector }
                 { add_notes_button }
                 { save_button }
-                { is_notes_open  && <BuildNotes />}
+                { is_notes_open  && <BuildNotesEditor />}
                 <Snackbar
                   className={classes.snackbar}
                   anchorOrigin={{

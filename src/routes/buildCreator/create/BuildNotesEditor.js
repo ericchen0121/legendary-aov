@@ -36,7 +36,7 @@ const styles = theme => ({
   }
 })
 
-class BuildItem extends React.Component {
+class BuildNotesEditor extends React.Component {
 
   constructor(props) {
     super(props)
@@ -130,5 +130,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(BuildItem)
+  connect(mapStateToProps, mapDispatchToProps)(BuildNotesEditor)
 );

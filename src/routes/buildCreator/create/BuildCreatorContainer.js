@@ -12,7 +12,6 @@ import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import BuildItemEffects from '../BuildItemsEffects'
-import BuildNotes from './BuildNotes'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
