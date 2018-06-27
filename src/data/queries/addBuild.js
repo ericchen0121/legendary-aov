@@ -27,7 +27,8 @@ const addBuild = {
      talent_id: input.talent_id,
      hero_id: input.hero_id,
      game_mode_id: input.game_mode_id,
-     version_id: input.version_id
+     version_id: input.version_id,
+     notes: input.notes
    }, {
      include: [
        { model: Hero },

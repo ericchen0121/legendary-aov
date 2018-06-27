@@ -14,6 +14,7 @@ export const MY_BUILDS = gql`
       talent_id
       hero_id
       user_id
+      notes
     }
   }
 `
