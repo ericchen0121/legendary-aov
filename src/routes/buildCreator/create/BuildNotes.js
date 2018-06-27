@@ -28,7 +28,11 @@ class BuildItem extends React.Component {
   state = {
     expanded: null,
     notes: {
-      summary: ''
+      summary: '',
+      items: '',
+      matchups: '',
+      arcana: '',
+      combos: ''
     }
   };
 
@@ -38,24 +42,26 @@ class BuildItem extends React.Component {
     });
   };
 
-  // handleTextChange = name => event => {
-  //   // https://forum.freecodecamp.org/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772/4
-  //   let notes = Object.assign({}, this.state.notes);
-  //   notes[name] = event.target.value
-  //   this.setState({
-  //     notes
-  //   });
-  // };
-
+  // TLDR: storing text in state for faster UI updates in the text field.
+  // Storing to redux with Save button, so UI doesn't have to make roundtrip to Redux to (slowly) update UI
   handleTextChange = name => event => {
-    this.props.actions.addNotes({field: name, text: event.target.value})
+    // https://forum.freecodecamp.org/t/reactjs-using-setstate-to-update-a-single-property-on-an-object/146772/4
+    let notes = Object.assign({}, this.state.notes);
+    notes[name] = event.target.value
+    this.setState({
+      notes
+    });
+  };
+
+  saveTextChange = (field, text) => event => {
+    this.props.actions.addNotes({field, text})
   }
+
   render() {
     const { classes, actions, build_creator, ...other } = this.props
     const { expanded } = this.state;
 
     let notes = build_creator.current_build.notes
-    console.log('NOTES is', notes)
     return (
       <div className={classes.root}>
         <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
@@ -66,9 +72,14 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={notes.summary || ''}
+              value={this.state.notes['summary']}
               onChange={this.handleTextChange('summary')}
             />
+            <Button
+              variant="flat"
+              color="primary"
+              onClick={this.saveTextChange('summary', this.state.notes.summary)}
+            >SAVE</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
@@ -79,9 +90,14 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={notes.items || ''}
+              value={this.state.notes['items']}
               onChange={this.handleTextChange('items')}
             />
+            <Button
+              variant="flat"
+              color="primary"
+              onClick={this.saveTextChange('items', this.state.notes['items'])}
+            >SAVE</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
@@ -92,9 +108,14 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={notes.matchups || ''}
+              value={this.state.notes['matchups']}
               onChange={this.handleTextChange('matchups')}
             />
+            <Button
+              variant="flat"
+              color="primary"
+              onClick={this.saveTextChange('matchups', this.state.notes['matchups'])}
+            >SAVE</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded={expanded === 'panel4'} onChange={this.handleChange('panel4')}>
@@ -105,9 +126,14 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={notes.arcana || ''}
+              value={this.state.notes['arcana']}
               onChange={this.handleTextChange('arcana')}
             />
+            <Button
+              variant="flat"
+              color="primary"
+              onClick={this.saveTextChange('arcana', this.state.notes['arcana'])}
+            >SAVE</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel expanded={expanded === 'panel5'} onChange={this.handleChange('panel5')}>
@@ -118,9 +144,14 @@ class BuildItem extends React.Component {
             <Input
               fullWidth={true}
               multiline={true}
-              value={notes.combos || ''}
+              value={this.state.notes['combos']}
               onChange={this.handleTextChange('combos')}
             />
+            <Button
+              variant="flat"
+              color="primary"
+              onClick={this.saveTextChange('combos', this.state.notes['combos'])}
+            >SAVE</Button>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>
