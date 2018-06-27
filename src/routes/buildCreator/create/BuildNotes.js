@@ -22,6 +22,9 @@ const styles = theme => ({
       marginRight: 30,
     },
   },
+  heading: {
+    fontFamily: "'Josefin Sans', sans-serif"
+  }
 })
 
 class BuildItem extends React.Component {
@@ -61,99 +64,32 @@ class BuildItem extends React.Component {
     const { classes, actions, build_creator, ...other } = this.props
     const { expanded } = this.state;
 
+    let panels = ['summary', 'items', 'arcana', 'matchups', 'combos']
     let notes = build_creator.current_build.notes
     return (
       <div className={classes.root}>
-        <ExpansionPanel expanded={expanded === 'panel1'} onChange={this.handleChange('panel1')}>
-          <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-            <Typography className={classes.heading}>Summary</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Input
-              fullWidth={true}
-              multiline={true}
-              value={this.state.notes['summary']}
-              onChange={this.handleTextChange('summary')}
-            />
-            <Button
-              variant="flat"
-              color="primary"
-              onClick={this.saveTextChange('summary', this.state.notes.summary)}
-            >SAVE</Button>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel2'} onChange={this.handleChange('panel2')}>
-          <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-            <Typography className={classes.heading}>Items</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Input
-              fullWidth={true}
-              multiline={true}
-              value={this.state.notes['items']}
-              onChange={this.handleTextChange('items')}
-            />
-            <Button
-              variant="flat"
-              color="primary"
-              onClick={this.saveTextChange('items', this.state.notes['items'])}
-            >SAVE</Button>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel3'} onChange={this.handleChange('panel3')}>
-          <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-            <Typography className={classes.heading}>Matchups</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Input
-              fullWidth={true}
-              multiline={true}
-              value={this.state.notes['matchups']}
-              onChange={this.handleTextChange('matchups')}
-            />
-            <Button
-              variant="flat"
-              color="primary"
-              onClick={this.saveTextChange('matchups', this.state.notes['matchups'])}
-            >SAVE</Button>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel4'} onChange={this.handleChange('panel4')}>
-          <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-            <Typography className={classes.heading}>Arcana</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Input
-              fullWidth={true}
-              multiline={true}
-              value={this.state.notes['arcana']}
-              onChange={this.handleTextChange('arcana')}
-            />
-            <Button
-              variant="flat"
-              color="primary"
-              onClick={this.saveTextChange('arcana', this.state.notes['arcana'])}
-            >SAVE</Button>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel expanded={expanded === 'panel5'} onChange={this.handleChange('panel5')}>
-          <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
-            <Typography className={classes.heading}>Combos</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Input
-              fullWidth={true}
-              multiline={true}
-              value={this.state.notes['combos']}
-              onChange={this.handleTextChange('combos')}
-            />
-            <Button
-              variant="flat"
-              color="primary"
-              onClick={this.saveTextChange('combos', this.state.notes['combos'])}
-            >SAVE</Button>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+       { panels.map(p => {
+         return (
+           <ExpansionPanel expanded={expanded === p} onChange={this.handleChange(p)}>
+             <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
+               <Typography className={classes.heading}>{p.toUpperCase()}</Typography>
+             </ExpansionPanelSummary>
+             <ExpansionPanelDetails>
+               <Input
+                 fullWidth={true}
+                 multiline={true}
+                 value={this.state.notes[p]}
+                 onChange={this.handleTextChange(p)}
+               />
+               <Button
+                 variant="flat"
+                 color="primary"
+                 onClick={this.saveTextChange(p, this.state.notes[p])}
+               >SAVE</Button>
+             </ExpansionPanelDetails>
+           </ExpansionPanel>
+         )
+       })}
       </div>
     )
   }
