@@ -444,7 +444,7 @@ class Draft extends React.Component {
 
     return (
       <div
-        classNames={cx(classes.root, s.root_container, {
+        className={cx(classes.root, s.root_container, {
           [classes.dark_mode]: dark_mode_active,
         })}
       >
@@ -453,7 +453,7 @@ class Draft extends React.Component {
             item
             xs={12}
             md={12}
-            classNames={cx(s.main_one, {
+            className={cx(s.main_one, {
               [classes.dark_mode]: dark_mode_active,
             })}
           >

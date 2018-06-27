@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
-import classNames from 'classnames'
+import cx from 'classnames'
 import { DEFAULT_IMAGE_URL } from './DraftConstants'
 import { ListItem } from 'material-ui/List';
 import Icon from 'react-icons-kit';
