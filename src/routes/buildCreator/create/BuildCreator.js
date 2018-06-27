@@ -70,21 +70,19 @@ const styles = theme => ({
   save: {
     marginLeft: 7
   },
-  save_button: {
-    border: '1px solid #00bfff',
-    color: '#00aaff',
-    top: -40,
-    marginLeft: '83.5%',
-    right: 0,
-    position: 'relative'
-  },
-  save_button_inactive: {
-    border: '1px solid rgba(0,0,0, .2)',
-    color: 'rgba(0,0,0, .2)',
+  save_button_position: {
     top: -58,
     marginLeft: '83.5%',
     right: 0,
     position: 'relative'
+  },
+  save_button: {
+    border: '1px solid #00bfff',
+    color: '#00aaff',
+  },
+  save_button_inactive: {
+    border: '1px solid rgba(0,0,0, .2)',
+    color: 'rgba(0,0,0, .2)',
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -277,7 +275,7 @@ class BuildCreator extends React.Component {
                   <Button
                     variant="flat"
                     color="primary"
-                    className={classes.save_button_inactive}
+                    className={cx(classes.save_button_inactive, classes.save_button_position)}
                   >
                     SAVED!
                     <Icon
@@ -297,7 +295,7 @@ class BuildCreator extends React.Component {
                   <Button
                     variant="flat"
                     color="primary"
-                    className={classes.save_button_inactive}
+                    className={cx(classes.save_button_inactive, classes.save_button_position)}
                   >
                     SAVE
                     <Icon
@@ -317,7 +315,7 @@ class BuildCreator extends React.Component {
                   <Button
                     variant="flat"
                     color="primary"
-                    className={classes.save_button}
+                    className={cx(classes.save_button, classes.save_button_position)}
                     onClick={addBuild}
                   >
                     SAVE

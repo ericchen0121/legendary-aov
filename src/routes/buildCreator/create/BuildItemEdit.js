@@ -23,8 +23,8 @@ const styles = theme => ({
     padding: '0px !important'
   },
   empty: {
-    width: 60,
-    height: 60,
+    width: 64,
+    height: 64,
     backgroundColor: 'rgba(0,0,0, .05)',
     border: '2px solid gold',
     textAlign: 'center',

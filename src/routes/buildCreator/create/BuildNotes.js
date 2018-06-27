@@ -71,7 +71,7 @@ class BuildItem extends React.Component {
     if(this.timeout) clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       this.props.actions.addNotes({field: name, text}) // redux save!
-    }, 1000);
+    }, 800);
   }
 
   saveTextChange = (field, text) => event => {
