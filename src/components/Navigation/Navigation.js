@@ -31,20 +31,13 @@ class Navigation extends React.Component {
     }
 
     _retrieveUserData = () => {
-      let id = localStorage.getItem('id', id)
-      let email = localStorage.getItem('email', email)
-      let username = localStorage.getItem('username', username)
-      let is_logged_in = localStorage.getItem('is_logged_in', is_logged_in)
-      this.props.actions.loginUser({
-        id,
-        email,
-        username,
-        is_logged_in
-      })
+      let legendaryaov_user = JSON.parse(localStorage.getItem('legendaryaov_user'))
+      this.props.actions.loginUser(legendaryaov_user)
     }
 
   render() {
     let { user_login } = this.props
+    console.log( user_login )
     return (
       <div className={s.root} role="navigation">
         <Link className={cx(s.link)} to="/video">
@@ -53,6 +46,11 @@ class Navigation extends React.Component {
         <Link className={cx(s.link)} to="/build">
           Builds
         </Link>
+        { user_login.is_logged_in &&
+          (<Link className={cx(s.link)} to="/build/me">
+            My Builds
+          </Link>)
+        }
         <Link className={cx(s.link)} to="/build/create">
           Create Build
         </Link>

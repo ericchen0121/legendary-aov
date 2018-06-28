@@ -14,21 +14,29 @@ const initialState = {
 const user_login = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      return {
-        ...state,
-        is_logged_in: true,
-        id: action.data.id,
-        email: action.data.email,
-        username: action.data.username,
+      if (action.data) {
+        return {
+          ...state,
+          is_logged_in: true,
+          id: action.data.id,
+          email: action.data.email,
+          username: action.data.username,
+        }
+      } else {
+        return state
       }
     case REGISTER_USER:
-      return {
-        ...state,
-        is_logged_in: true,
-        id: action.data.id,
-        email: action.data.email,
-        username: action.data.username,
-        is_new_user: true
+      if (action.data) {
+        return {
+          ...state,
+          is_logged_in: true,
+          id: action.data.id,
+          email: action.data.email,
+          username: action.data.username,
+          is_new_user: true
+        }
+      } else {
+        return state
       }
     default:
       return state;

@@ -804,6 +804,18 @@ const HEROES = [
     'tier_index': 2,
     "folder": 'arum'
   },
+  {
+    "id": 68,
+    "name": 'Marja',
+    'alt_names': [],
+    "nickname": 'Ash Weaver',
+    "classes": ['mage', 'tank'],
+    'lanes': ['roam'],
+    'roles': ['life steal'],
+    'tier': 'a',
+    'tier_index': 2,
+    "folder": 'marja'
+  },
 ]
 
 export default HEROES

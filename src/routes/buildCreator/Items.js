@@ -1335,6 +1335,26 @@ export const ITEMS = [
       type: ['exit movement speed']
     }]
   },
+  {
+    id: 52,
+    name: "Phoenix Tear",
+    type: 'magic',
+    tier: 2,
+    cost: 600,
+    folder: 'phoenixtear',
+    effects: [
+      {
+        type: 'ability power',
+        power: 60,
+      },
+    ],
+    passives: [{
+      name: "From the Ashes",
+      unique: true,
+      description: 'When the hero gains a level, 20% of HP and Mana are restored over 3 seconds.',
+      type: ['exit movement speed']
+    }]
+  },
 ]
 
 export const TALENTS = [

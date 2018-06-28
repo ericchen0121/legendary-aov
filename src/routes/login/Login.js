@@ -117,10 +117,14 @@ class Login extends React.Component {
   }
 
   _saveUserData = (id, email, username, is_logged_in) => {
-    localStorage.setItem('id', id)
-    localStorage.setItem('email', email)
-    localStorage.setItem('username', username)
-    localStorage.setItem('is_logged_in', is_logged_in)
+    let legendaryaov_user = JSON.stringify({
+      id,
+      email,
+      username,
+      is_logged_in
+    })
+
+    localStorage.setItem('legendaryaov_user', legendaryaov_user)
   }
 
   state = {
