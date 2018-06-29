@@ -33,7 +33,7 @@ const BuildInputType = new GraphQLInputObjectType({
     user_id: { type: IntType },
     game_mode_id: { type: IntType},
     version_id: { type: IntType },
-    notes: { type: GraphQLJSON }
+    notes: { type: GraphQLJSON },
   },
 });
 

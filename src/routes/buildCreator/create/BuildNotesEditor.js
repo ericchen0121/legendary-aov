@@ -78,11 +78,13 @@ class BuildNotesEditor extends React.Component {
     this.props.actions.addNotes({field, text})
   }
 
+  remove_underscore = (string) => string.replace(/_/g, ' ')
+
   render() {
     const { classes, actions, build_creator, ...other } = this.props
     const { expanded } = this.state;
 
-    let panels = ['summary', 'items', 'arcana', 'matchups', 'combos']
+    let panels = ['summary', 'items', 'arcana', 'matchups', 'combos', 'video_url', 'url']
     let notes = build_creator.current_build.notes
 
 
@@ -92,24 +94,60 @@ class BuildNotesEditor extends React.Component {
          let is_saved = (notes[p] === this.state.notes[p]) && notes[p] !== ''
          let note_class = is_saved ? classes.note_saved : classes.note_not_saved
          let is_saved_text = is_saved ? 'saved' : 'editing'
+         let input_field, input_type, input_placeholder
 
+         if (p === 'video_url') {
+           input_placeholder = 'Enter a youtube or twitch url'
+           input_type = 'url'
+           input_field = (
+             <Input
+               fullWidth={true}
+               placeholder={input_placeholder}
+               value={this.state.notes[p]}
+               onChange={this.handleTextChange(p)}
+               className={note_class}
+               type={input_type}
+             />
+           )
+         }
+         else if (p === 'url') {
+           input_placeholder = 'Enter a link to a website'
+           input_type = 'url'
+           input_field = (
+             <Input
+               fullWidth={true}
+               placeholder={input_placeholder}
+               value={this.state.notes[p]}
+               onChange={this.handleTextChange(p)}
+               className={note_class}
+               type={input_type}
+             />
+           )
+         }
+         else {
+           input_field = (
+             <Input
+               fullWidth={true}
+               multiline={true}
+               value={this.state.notes[p]}
+               onChange={this.handleTextChange(p)}
+               className={note_class}
+               type={input_type}
+             />
+           )
+
+         }
          return (
            <ExpansionPanel expanded={expanded === p} onChange={this.handleChange(p)}>
              <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
                <Typography className={classes.heading}>
-                {p.toUpperCase()}
+                {this.remove_underscore(p).toUpperCase()}
                 <span className={cx(note_class, classes.save_text_position)}>{ is_saved_text }</span>
               </Typography>
 
              </ExpansionPanelSummary>
              <ExpansionPanelDetails>
-               <Input
-                 fullWidth={true}
-                 multiline={true}
-                 value={this.state.notes[p]}
-                 onChange={this.handleTextChange(p)}
-                 className={note_class}
-               />
+               { input_field }
              </ExpansionPanelDetails>
            </ExpansionPanel>
          )

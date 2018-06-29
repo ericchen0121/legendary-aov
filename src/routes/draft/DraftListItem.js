@@ -58,7 +58,7 @@ class DraftListItem extends React.Component {
     if (nickname) { nickname_container = (<span className={s.nickname}>{`/ The ${ nickname }`}</span>)}
 
     let name_container = (
-      <span className={classNames(s.flex_container, s.line_height_sm)}>
+      <span className={cx(s.flex_container, s.line_height_sm)}>
         <div ><span className={s.name}>{ name.toUpperCase() }</span>  { nickname_container }</div>
         <div><span className={s.info_title}>Tier:</span> <span className={s.info}>{tier.toUpperCase()}</span></div>
         <div><span className={s.info_title}>Classes:</span>

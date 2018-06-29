@@ -79,7 +79,7 @@ const Build = Model.define(
     },
     notes: {
       type: DataType.JSONB
-    }
+    },
   },
   {
     underscored: true

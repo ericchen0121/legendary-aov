@@ -6,10 +6,14 @@ import Tooltip from 'material-ui/Tooltip';
 import Button from 'material-ui/Button';
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
 import Input from 'material-ui/Input'
+import ReactPlayer from 'react-player';
+
 import Typography from 'material-ui/Typography';
 import { Icon } from 'react-icons-kit';
 import {ic_expand_more} from 'react-icons-kit/md/ic_expand_more'
 
+let WIDTH = 450
+let HEIGHT = 300
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -42,11 +46,13 @@ class BuildNotesViewer extends React.Component {
     });
   };
 
+  remove_underscore = (string) => string.replace(/_/g, ' ')
+
   render() {
     const { classes, actions, build } = this.props
-    const { expanded } = this.state;
+    const { expanded } = this.state
 
-    let panels = ['summary', 'items', 'arcana', 'matchups', 'combos']
+    let panels = ['summary', 'items', 'arcana', 'matchups', 'combos', 'video_url', 'url']
     let notes
     if (build.notes) {
       notes = JSON.parse(build.notes)
@@ -57,19 +63,36 @@ class BuildNotesViewer extends React.Component {
     return (
       <div className={classes.root}>
        { panels.map(p => {
+          let content
+          if (p === 'video_url') {
+            content = (
+              <ReactPlayer
+                ref={this.ref}
+                url={notes[p]}
+                width={WIDTH}
+                height={HEIGHT}
+                controls
+              />
+            )
+          }
+          else if (p === 'url') {
+            content = <a href={notes[p]} target='_blank'>{notes[p]}</a>
+          }
+          else if(notes[p] !== '') { // show non-empty fields
+            content = notes[p]
+          }
 
-          if(notes[p] !== '') { // show non-empty fields
-            console.log(notes[p])
+          if(notes[p] !== '') {
             return (
               <ExpansionPanel expanded={expanded === p} onChange={this.handleChange(p)}>
                 <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
                   <Typography className={classes.heading}>
-                   {p.toUpperCase()}
+                   {this.remove_underscore(p).toUpperCase()}
                  </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Typography className={classes.details}>
-                    {notes[p]}
+                    {content}
                   </Typography>
                 </ExpansionPanelDetails>
               </ExpansionPanel>

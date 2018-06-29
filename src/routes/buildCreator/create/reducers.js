@@ -50,7 +50,9 @@ const initialState = {
       arcana: '',
       items: '',
       matchups: '',
-      combos: ''
+      combos: '',
+      video_url: '',
+      url: ''
     }
   }
 }

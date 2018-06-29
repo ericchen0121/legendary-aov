@@ -44,6 +44,7 @@ import { grid } from 'react-icons-kit/feather/grid';
 import { ic_view_list } from 'react-icons-kit/md/ic_view_list';
 import { ic_chevron_right } from 'react-icons-kit/md/ic_chevron_right';
 import { ic_chevron_left } from 'react-icons-kit/md/ic_chevron_left';
+import {ic_filter_list} from 'react-icons-kit/md/ic_filter_list'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -78,6 +79,7 @@ class Draft extends React.Component {
       name: null,
       active: false,
     },
+    hero_filter_toggle: false,
     hero_filter_alphabetical: true,
     hero_filter_list_view: false,
     is_hero_filter_grid_view_expanded: false,
@@ -116,6 +118,12 @@ class Draft extends React.Component {
       hero_filter_list_view: !this.state.hero_filter_list_view,
     });
   };
+
+  onFilterToggleChange = e => {
+    this.setState({
+      hero_filter_toggle: !this.state.hero_filter_toggle
+    })
+  }
 
   onFilterExpand = e => {
     this.setState({
@@ -321,7 +329,7 @@ class Draft extends React.Component {
       hero_filter_alphabetical_color = AOV_GOLD;
     } else {
       order_hero = this.sortResultsTierAlpha(this.filterResults(HEROES));
-      alpha_filter_info = 'hero tier order';
+      alpha_filter_info = 'tier order';
     }
 
     let view_info = null;
@@ -345,6 +353,13 @@ class Draft extends React.Component {
       view_info = 'grid view';
     }
 
+    let filters_on_icon = (
+      <Icon
+        icon={ic_filter_list}
+        size={20}
+        style={{ color: 'gray', cursor: 'pointer' }}
+      />
+    )
     // VIEWS - LIST OR GRID
     //
     let list = null;
@@ -457,7 +472,7 @@ class Draft extends React.Component {
               [classes.dark_mode]: dark_mode_active,
             })}
           >
-            <DraftFilters
+            { this.state.hero_filter_toggle && <DraftFilters
               is_mobile={isMobile}
               dark_mode_active={dark_mode_active}
               filters={HERO_FILTERS}
@@ -466,6 +481,7 @@ class Draft extends React.Component {
               top_level_filter_selected={top_level_filter_selected}
               lower_level_filter_selected={lower_level_filter_selected}
             />
+            }
             <div
               className={cx(s.list_filter_container, {
                 [classes.dark_mode]: dark_mode_active,
@@ -496,6 +512,13 @@ class Draft extends React.Component {
                 {filter_list_grid_icon}
               </span>
               <span className={s.list_filter_info}>{view_info}</span>
+              <span
+                className={cx(s.list_filter_view, s.cursor_pointer)}
+                onClick={this.onFilterToggleChange}
+              >
+                {filters_on_icon}
+              </span>
+              <span className={s.list_filter_info}>filter</span>
               <span className={s.list_filter_arrow}>{expand_grid_arrow}</span>
             </div>
           </Grid>
