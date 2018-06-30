@@ -51,14 +51,24 @@ const styles = theme => ({
   },
   marginBot: {
     marginBottom: 40
+  },
+  video_label: {
+    fontSize: 8,
+    border: '1px solid red',
+    borderRadius: 2,
+    padding: '4px 3px 1px 4px',
+    width: 27
   }
 })
 
-class BuildItemsContainer extends React.Component {
+class BuildViewerContainer extends React.Component {
 
   render() {
     const { classes, actions, build } = this.props
     let b = build
+
+    let video_url = b.notes ? JSON.parse(build.notes).video_url : null
+
     // Generate a container for each Build
     let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
 
@@ -115,7 +125,8 @@ class BuildItemsContainer extends React.Component {
                 border='gold'
               />
               <span className={s.build_name_container}>
-                { b.name }
+                <div>{ b.name }</div>
+                { video_url && <div className={classes.video_label}>VIDEO</div>}
               </span>
               <span className={s.talent_container}>
                 <span className={s.talent_sub_container}>
@@ -166,6 +177,6 @@ function mapDispatchToProps(dispatch) {
 
 export default withStyles(styles)(
   withStyles2(s)(
-    connect(mapStateToProps, mapDispatchToProps)(BuildItemsContainer)
+    connect(mapStateToProps, mapDispatchToProps)(BuildViewerContainer)
   )
 )

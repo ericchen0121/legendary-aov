@@ -46,19 +46,23 @@ const routes = {
       load: () => import(/* webpackChunkName: 'buildcreator' */ './buildCreator/create'),
     },
     {
-      path: '/build',
-      load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
-    },
-    {
       path: '/build/all',
       load: () => import(/* webpackChunkName: 'buildcreator' */ './buildCreator'),
     },
     {
-      path: '/build/:build_id',
+      path: '/build/id/:build_id',
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
     },
     {
-      path: '/build/:hero',
+      path: '/build/hero/:hero',
+      load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
+    },
+    {
+      path: '/build/user/:user_id',
+      load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
+    },
+    {
+      path: '/build',
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
     },
     {

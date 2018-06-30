@@ -7,7 +7,7 @@ export const ITEMS = [
     name: 'Spear of Longinus',
     type: 'attack',
     tier: 3,
-    cost: 2060,
+    cost: 2080,
     folder: 'spearoflonginus',
     effects: [
       {
@@ -19,8 +19,8 @@ export const ITEMS = [
         power: 0.15,
       },
       {
-        type: 'armor',
-        power: 150,
+        type: 'max hp',
+        power: 400,
       },
     ],
     passives: [{
@@ -439,7 +439,7 @@ export const ITEMS = [
     name: "Frosty's Revenge",
     type: 'magic',
     tier: 3,
-    cost: 1780,
+    cost: 2020,
     folder: 'frostysrevenge',
     effects: [
       {
@@ -447,17 +447,17 @@ export const ITEMS = [
         power: 140,
       },
       {
-        type: 'magic defense',
-        power: 220,
+        type: 'max hp',
+        power: 850,
       },
       {
         type: 'movement speed %',
-        power: 0.07,
+        power: 0.05,
       },
     ],
     passives: [{
       name: "Chill",
-      description: 'Abilities that deal damage will also reduce enemy movement speed by 25% for 2 seconds.',
+      description: 'Abilities that deal damage will also reduce enemy movement speed by 20% for 2 seconds.',
       type: ['slow']
     }]
   },
@@ -758,7 +758,7 @@ export const ITEMS = [
     name: "Frost Cape",
     type: 'defense',
     tier: 3,
-    cost: 2000,
+    cost: 1970,
     folder: 'frostcape',
     effects: [
       {
@@ -767,7 +767,7 @@ export const ITEMS = [
       },
       {
         type: 'armor',
-        power: 250,
+        power: 200,
       },
       {
         type: 'max hp',
@@ -959,11 +959,11 @@ export const ITEMS = [
     effects: [
       {
         type: 'armor',
-        power: 120,
+        power: 100,
       },
       {
         type: 'max hp',
-        power: 800,
+        power: 750,
       },
     ],
     passives: [

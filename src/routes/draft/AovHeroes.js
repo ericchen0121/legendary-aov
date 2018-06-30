@@ -823,3 +823,11 @@ export default HEROES
 export function find_hero_by_id(id) {
   return HEROES.find(h => h.id === id)
 }
+
+export function find_hero_by_name(name) {
+  return HEROES.filter(hero_obj =>
+    hero_obj.alt_names.findIndex(
+      alt_name => alt_name.toLowerCase() === name.toLowerCase(),
+    ) > -1,
+  )[0] // get first object that matches the filter ;)
+}

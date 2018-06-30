@@ -18,10 +18,10 @@ import CustomBuilds from './CustomBuilds'
 import BuildItemCard from './create/BuildItemCard'
 import BuildHeroContainer from './create/BuildHeroContainer'
 import BuildItemsEffects from './BuildItemsEffects'
-import BuildItemsContainer from './BuildItemsContainer'
+import BuildViewerContainer from './BuildViewerContainer'
 
 import { find_talent_by_id, find_item_by_id } from './Items'
-import { find_hero_by_id } from '../draft/AovHeroes'
+import { find_hero_by_id, find_hero_by_name } from '../draft/AovHeroes'
 import { to_uppercase_first } from './utilities'
 
 import * as Actions from './create/actions';
@@ -71,9 +71,45 @@ const styles = theme => ({
 })
 
 class BuildViewer extends React.Component {
+  componentDidMount() {
+    this.handleRouteParams(); // relies on window width, so using cb
+    this.handleRouteQuery();
+  }
 
   sortAlpha = items => {
     return items.sort((a, b) => a.type.localeCompare(b.type))
+  }
+
+  handleRouteParams = () => {
+    const params = this.props.params;
+    console.log('params is', params)
+
+    // Get params from Route
+    let { build_id, hero, user_id } = params
+    //
+    if ( build_id || hero || user_id) {
+      // ie. www.../build/hero/chaugnar
+      if (hero) {
+        const hero_obj = find_hero_by_name(hero);
+        this.props.actions.setHeroId(hero_obj.id);
+        console.log('hero', hero_obj)
+      } else {
+        // redirect to ALL heroes, change url in router...
+      }
+
+      // ie. www.../video/abrownbag
+      if (build_id) {
+
+      }
+
+      if (user_id) {
+
+      }
+    }
+  };
+
+  handleRouteQuery = () => {
+    const props = this.props;
   }
 
   render() {
@@ -147,7 +183,7 @@ class BuildViewer extends React.Component {
                 <Grid container zeroMinWidth className={classes.grid_container}>
                   <Grid item xs={9}>
                     <div className={s.main_container}>
-                      { data.buildsByHero.map(b => <BuildItemsContainer build={b} /> ) }
+                      { data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) }
                     </div>
                   </Grid>
                   <Grid item xs={3}>

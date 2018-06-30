@@ -64,6 +64,7 @@ class BuildNotesViewer extends React.Component {
       <div className={classes.root}>
        { panels.map(p => {
           let content
+
           if (p === 'video_url') {
             content = (
               <ReactPlayer

@@ -282,7 +282,6 @@ class Draft extends React.Component {
 
   handleRouteQuery = () => {
     const props = this.props;
-    console.log('props...', props)
   }
 
   isWindowMobile = (w) => { return w <= MOBILE_MAX_WINDOW_WIDTH }

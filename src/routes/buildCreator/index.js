@@ -12,13 +12,16 @@ import Layout from '../../components/Layout';
 import BuildViewer from './Build';
 const title = 'Item Builds';
 
-function action() {
+function action(context, params) {
   return {
     chunks: ['build'],
     title,
     component: (
       <Layout>
-        <BuildViewer title={title} />
+        <BuildViewer
+          title={title}
+          params={params}
+        />
       </Layout>
     ),
   };

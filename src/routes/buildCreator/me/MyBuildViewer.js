@@ -18,7 +18,7 @@ import CustomBuilds from '../CustomBuilds'
 import BuildItemCard from '../create/BuildItemCard'
 import BuildHeroContainer from '../create/BuildHeroContainer'
 import BuildItemsEffects from '../BuildItemsEffects'
-import BuildItemsContainer from '../BuildItemsContainer'
+import BuildViewerContainer from '../BuildViewerContainer'
 
 import { find_talent_by_id, find_item_by_id } from '../Items'
 import { find_hero_by_id } from '../../draft/AovHeroes'
@@ -164,7 +164,7 @@ class MyBuildViewer extends React.Component {
                 <Grid container zeroMinWidth className={classes.grid_container}>
                   <Grid item xs={9}>
                     <div className={s.main_container}>
-                      { filter_builds_by_hero_id(data.myBuilds, selected_hero_id).map(b => <BuildItemsContainer build={b} /> ) }
+                      { filter_builds_by_hero_id(data.myBuilds, selected_hero_id).map(b => <BuildViewerContainer build={b} /> ) }
                     </div>
                   </Grid>
                   <Grid item xs={3}>
