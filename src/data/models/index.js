@@ -12,8 +12,7 @@ import User from './User';
 import UserLogin from './UserLogin';
 import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
-import { Hero, Build, Item, GameMode, Version } from './aov'
-
+import { Hero, Build, Item, GameMode, Version, Player } from './aov'
 
 User.hasMany(UserLogin, {
   foreignKey: 'user_id',
@@ -38,12 +37,12 @@ User.hasOne(UserProfile, {
 
 function sync(...args) {
   return sequelize.sync({
-    // alter: true,
+    alter: true,
     ...args
   });
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile, Hero, Build, Item, GameMode, Version }
+export { User, UserLogin, UserClaim, UserProfile, Hero, Build, Item, GameMode, Version, Player }
 // export { User, UserLogin, UserClaim, UserProfile, Build, GameMode, Hero, Item, Version };
 // export { Build, GameMode, Hero, Item, Version };

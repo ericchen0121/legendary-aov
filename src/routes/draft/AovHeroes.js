@@ -9,7 +9,8 @@ const HEROES = [
     'roles': ['finisher', 'harass'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'tulen'
+    "folder": 'tulen',
+    "version_id": 1
   },
   {
     "id": 2,
@@ -21,7 +22,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'airi'
+    "folder": 'airi',
+    "version_id": 1
   },
   {
     "id": 3,
@@ -33,7 +35,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'aleister'
+    "folder": 'aleister',
+    "version_id": 1
   },
   {
     "id": 4,
@@ -45,7 +48,8 @@ const HEROES = [
     'roles': ['control', 'buffs'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'alice'
+    "folder": 'alice',
+    "version_id": 1
   },
   {
     "id": 5,
@@ -57,7 +61,8 @@ const HEROES = [
     'roles': ['mobility', 'control'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'arduin'
+    "folder": 'arduin',
+    "version_id": 1
   },
   {
     "id": 6,
@@ -69,7 +74,8 @@ const HEROES = [
     'roles': ['initiator', 'mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'arthur'
+    "folder": 'arthur',
+    "version_id": 1
   },
   {
     "id": 7,
@@ -81,7 +87,8 @@ const HEROES = [
     'roles': ['initiator'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'astrid'
+    "folder": 'astrid',
+    "version_id": 1
   },
   {
     "id": 8,
@@ -93,7 +100,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'azzenka'
+    "folder": 'azzenka',
+    "version_id": 1
   },
   {
     "id": 9,
@@ -106,7 +114,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'batman',
-    "regions": ['na', 'eu']
+    "version_id": 1
   },
   {
     "id": 10,
@@ -118,7 +126,8 @@ const HEROES = [
     'roles': ['mobility', 'finisher'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'butterfly'
+    "folder": 'butterfly',
+    "version_id": 1
   },
   {
     "id": 11,
@@ -130,7 +139,8 @@ const HEROES = [
     'roles': ['buffs'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'chaugnar'
+    "folder": 'chaugnar',
+    "version_id": 1
   },
   {
     "id": 12,
@@ -142,7 +152,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'cresht'
+    "folder": 'cresht',
+    "version_id": 1
   },
   {
     "id": 13,
@@ -154,7 +165,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'diaochan'
+    "folder": 'diaochan',
+    "version_id": 1
   },
   {
     "id": 14,
@@ -166,7 +178,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'fennik'
+    "folder": 'fennik',
+    "version_id": 1
   },
   {
     "id": 15,
@@ -178,7 +191,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'gildur'
+    "folder": 'gildur',
+    "version_id": 1
   },
   {
     "id": 16,
@@ -190,7 +204,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'grakk'
+    "folder": 'grakk',
+    "version_id": 1
   },
   {
     "id": 17,
@@ -202,7 +217,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'ignis'
+    "folder": 'ignis',
+    "version_id": 1
   },
   {
     "id": 18,
@@ -214,7 +230,8 @@ const HEROES = [
     'roles': ['control', 'harass'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'ilumia'
+    "folder": 'ilumia',
+    "version_id": 1
   },
   {
     "id": 19,
@@ -226,7 +243,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'jinnar'
+    "folder": 'jinnar',
+    "version_id": 1
   },
   {
     "id": 20,
@@ -238,7 +256,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'kahlii'
+    "folder": 'kahlii',
+    "version_id": 1
   },
   {
     "id": 21,
@@ -250,7 +269,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'kilgroth'
+    "folder": 'kilgroth',
+    "version_id": 1
   },
   {
     "id": 22,
@@ -262,7 +282,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'kriknak'
+    "folder": 'kriknak',
+    "version_id": 1
   },
   {
     "id": 23,
@@ -274,7 +295,8 @@ const HEROES = [
     'roles': ['mobility', 'harass'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'krixi'
+    "folder": 'krixi',
+    "version_id": 1
   },
   {
     "id": 24,
@@ -286,7 +308,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'lauriel'
+    "folder": 'lauriel',
+    "version_id": 1
   },
   {
     "id": 25,
@@ -298,7 +321,8 @@ const HEROES = [
     'roles': ['mobility', 'finisher'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'liliana'
+    "folder": 'liliana',
+    "version_id": 1
   },
   {
     "id": 26,
@@ -310,7 +334,8 @@ const HEROES = [
     'roles': ['initiator', 'finisher'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'lindis'
+    "folder": 'lindis',
+    "version_id": 1
   },
   {
     "id": 27,
@@ -322,7 +347,8 @@ const HEROES = [
     'roles': ['life steal'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'lubu'
+    "folder": 'lubu',
+    "version_id": 1
   },
   {
     "id": 28,
@@ -334,7 +360,8 @@ const HEROES = [
     'roles': ['control', 'buffs'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'lumburr'
+    "folder": 'lumburr',
+    "version_id": 1
   },
   {
     "id": 29,
@@ -346,7 +373,8 @@ const HEROES = [
     'roles': ['finisher', 'life steal'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'maloch'
+    "folder": 'maloch',
+    "version_id": 1
   },
   {
     "id": 30,
@@ -358,7 +386,8 @@ const HEROES = [
     'roles': ['mobility', 'initiator', 'finisher'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'max'
+    "folder": 'max',
+    "version_id": 1
   },
   {
     "id": 31,
@@ -370,7 +399,8 @@ const HEROES = [
     'roles': ['harass', 'healer', 'life steal'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'mganga'
+    "folder": 'mganga',
+    "version_id": 1
   },
   {
     "id": 32,
@@ -382,7 +412,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'mina'
+    "folder": 'mina',
+    "version_id": 1
   },
   {
     "id": 33,
@@ -394,7 +425,8 @@ const HEROES = [
     'roles': ['mobility', 'jungle'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'moren'
+    "folder": 'moren',
+    "version_id": 1
   },
   {
     "id": 34,
@@ -406,7 +438,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'ss',
     'tier_index': 1,
-    "folder": 'murad'
+    "folder": 'murad',
+    "version_id": 1
   },
   {
     "id": 35,
@@ -418,7 +451,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'nakroth'
+    "folder": 'nakroth',
+    "version_id": 1
   },
   {
     "id": 36,
@@ -430,7 +464,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'natalya'
+    "folder": 'natalya',
+    "version_id": 1
   },
   {
     "id": 37,
@@ -442,7 +477,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'd',
     'tier_index': 6,
-    "folder": 'omega'
+    "folder": 'omega',
+    "version_id": 1
   },
   {
     "id": 38,
@@ -454,7 +490,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'omen'
+    "folder": 'omen',
+    "version_id": 1
   },
   {
     "id": 39,
@@ -466,7 +503,8 @@ const HEROES = [
     'roles': ['control', 'mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'ormarr'
+    "folder": 'ormarr',
+    "version_id": 1
   },
   {
     "id": 40,
@@ -478,7 +516,8 @@ const HEROES = [
     'roles': ['buffs'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'peura'
+    "folder": 'peura',
+    "version_id": 1
   },
   {
     "id": 41,
@@ -490,7 +529,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'preyta'
+    "folder": 'preyta',
+    "version_id": 1
   },
   {
     "id": 42,
@@ -502,7 +542,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'raz'
+    "folder": 'raz',
+    "version_id": 1
   },
   {
     "id": 43,
@@ -514,7 +555,8 @@ const HEROES = [
     'roles': ['harass', 'finisher'],
     'tier': 'ss',
     'tier_index': 1,
-    "folder": 'ryoma'
+    "folder": 'ryoma',
+    "version_id": 1
   },
   {
     "id": 44,
@@ -526,7 +568,8 @@ const HEROES = [
     'roles': ['mobility', 'control'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'skud'
+    "folder": 'skud',
+    "version_id": 1
   },
   {
     "id": 45,
@@ -538,7 +581,8 @@ const HEROES = [
     'roles': ['mobility', 'initiator'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'slimz'
+    "folder": 'slimz',
+    "version_id": 1
   },
   {
     "id": 46,
@@ -550,7 +594,8 @@ const HEROES = [
     'roles': ['mobility', 'initiator'],
     'tier': 'ss',
     'tier_index': 1,
-    "folder": 'superman'
+    "folder": 'superman',
+    "version_id": 1
   },
   {
     "id": 47,
@@ -562,7 +607,8 @@ const HEROES = [
     'roles': ['mobility', 'healer', 'life steal'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'taara'
+    "folder": 'taara',
+    "version_id": 1
   },
   {
     "id": 48,
@@ -574,7 +620,8 @@ const HEROES = [
     'roles': ['initiator', 'mobility'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'teemee'
+    "folder": 'teemee',
+    "version_id": 1
   },
   {
     "id": 49,
@@ -586,7 +633,8 @@ const HEROES = [
     'roles': ['finisher'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'telannas'
+    "folder": 'telannas',
+    "version_id": 1
   },
   {
     "id": 50,
@@ -598,7 +646,8 @@ const HEROES = [
     'roles': ['control', 'initiator'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'thane'
+    "folder": 'thane',
+    "version_id": 1
   },
   {
     "id": 51,
@@ -610,7 +659,8 @@ const HEROES = [
     'roles': ['mobility', 'initiator'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'flash'
+    "folder": 'flash',
+    "version_id": 1
   },
   {
     "id": 52,
@@ -622,7 +672,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'joker'
+    "folder": 'joker',
+    "version_id": 1
   },
   {
     "id": 53,
@@ -634,7 +685,8 @@ const HEROES = [
     'roles': ['control', 'initiator'],
     'tier': 'd',
     'tier_index': 6,
-    "folder": 'toro'
+    "folder": 'toro',
+    "version_id": 1
   },
   {
     "id": 54,
@@ -646,7 +698,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'd',
     'tier_index': 6,
-    "folder": 'valhein'
+    "folder": 'valhein',
+    "version_id": 1
   },
   {
     "id": 55,
@@ -658,7 +711,8 @@ const HEROES = [
     'roles': ['initiator'],
     'tier': 'd',
     'tier_index': 6,
-    "folder": 'veera'
+    "folder": 'veera',
+    "version_id": 1
   },
   {
     "id": 56,
@@ -670,7 +724,8 @@ const HEROES = [
     'roles': ['mobility', 'finisher'],
     'tier': 'ss',
     'tier_index': 1,
-    "folder": 'violet'
+    "folder": 'violet',
+    "version_id": 1
   },
   {
     "id": 57,
@@ -682,7 +737,8 @@ const HEROES = [
     'roles': [],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'wisp'
+    "folder": 'wisp',
+    "version_id": 1
   },
   {
     "id": 58,
@@ -694,7 +750,8 @@ const HEROES = [
     'roles': ['control'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'wonderwoman'
+    "folder": 'wonderwoman',
+    "version_id": 1
   },
   {
     "id": 59,
@@ -706,7 +763,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'wukong'
+    "folder": 'wukong',
+    "version_id": 1
   },
   {
     "id": 60,
@@ -718,7 +776,8 @@ const HEROES = [
     'roles': ['control', 'healer'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'xeniel'
+    "folder": 'xeniel',
+    "version_id": 1
   },
   {
     "id": 61,
@@ -730,7 +789,8 @@ const HEROES = [
     'roles': ['harass'],
     'tier': 'b',
     'tier_index': 4,
-    "folder": 'yorn'
+    "folder": 'yorn',
+    "version_id": 1
   },
   {
     "id": 62,
@@ -742,7 +802,8 @@ const HEROES = [
     'roles': ['finisher'],
     'tier': 'c',
     'tier_index': 5,
-    "folder": 'zanis'
+    "folder": 'zanis',
+    "version_id": 1
   },
   {
     "id": 63,
@@ -754,7 +815,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'zephys'
+    "folder": 'zephys',
+    "version_id": 1
   },
   {
     "id": 64,
@@ -766,7 +828,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'zill'
+    "folder": 'zill',
+    "version_id": 1
   },
   {
     "id": 65,
@@ -778,7 +841,8 @@ const HEROES = [
     'roles': ['mobility'],
     'tier': 'a',
     'tier_index': 3,
-    "folder": 'zuka'
+    "folder": 'zuka',
+    "version_id": 1
   },
   {
     "id": 66,
@@ -790,7 +854,8 @@ const HEROES = [
     'roles': ['mobility', 'finisher'],
     'tier': 'b',
     'tier_index': 3,
-    "folder": 'rourke'
+    "folder": 'rourke',
+    "version_id": 1
   },
   {
     "id": 67,
@@ -802,7 +867,8 @@ const HEROES = [
     'roles': ['life steal', 'initiator'],
     'tier': 's',
     'tier_index': 2,
-    "folder": 'arum'
+    "folder": 'arum',
+    "version_id": 2
   },
   {
     "id": 68,
@@ -814,7 +880,8 @@ const HEROES = [
     'roles': ['life steal'],
     'tier': 'a',
     'tier_index': 2,
-    "folder": 'marja'
+    "folder": 'marja',
+    "version_id": 3
   },
 ]
 

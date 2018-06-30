@@ -14,6 +14,7 @@ import User from '../User';
 import Hero from './Hero';
 import Build from './Build';
 import Item from './Item';
+import Player from './Player'
 
 // Item
 Version.hasMany(Item, {
@@ -40,6 +41,15 @@ Version.hasMany(Build, {
   onDelete: 'cascade',
 })
 
+
+// Player
+User.hasOne(Player, {
+  foreignKey: 'user_id',
+  as: 'player',
+  onUpdate: 'cascade',
+  onDelete: 'cascade',
+})
+
 function sync(...args) {
   return sequelize.sync(...args);
 }
@@ -50,5 +60,6 @@ export {
   GameMode,
   Hero,
   Item,
-  Version
+  Version,
+  Player
 };

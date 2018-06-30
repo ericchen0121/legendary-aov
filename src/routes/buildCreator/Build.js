@@ -92,7 +92,6 @@ class BuildViewer extends React.Component {
       if (hero) {
         const hero_obj = find_hero_by_name(hero);
         this.props.actions.setHeroId(hero_obj.id);
-        console.log('hero', hero_obj)
       } else {
         // redirect to ALL heroes, change url in router...
       }

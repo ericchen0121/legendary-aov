@@ -38,7 +38,9 @@ class BuildNotesViewer extends React.Component {
   state = {
     expanded: null,
   }
+  componentWillMount() {
 
+  }
 
   handleChange = panel => (event, expanded) => {
     this.setState({
@@ -49,16 +51,20 @@ class BuildNotesViewer extends React.Component {
   remove_underscore = (string) => string.replace(/_/g, ' ')
 
   render() {
+
     const { classes, actions, build } = this.props
     const { expanded } = this.state
 
     let panels = ['summary', 'items', 'arcana', 'matchups', 'combos', 'video_url', 'url']
+
     let notes
     if (build.notes) {
       notes = JSON.parse(build.notes)
     } else {
       return <div />
     }
+
+
 
     return (
       <div className={classes.root}>

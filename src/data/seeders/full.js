@@ -1,5 +1,5 @@
 'use strict';
-let CURRENT_VERSION = 2
+let CURRENT_VERSION = 3
 let DEFAULT_GAME_MODE = 1
 let DEFAULT_USER_ID = 1
 import HEROES from '../../routes/draft/AovHeroes'
@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt'
 let heroes = HEROES.map(h => {
   return {
     name: h.name,
-    version_id: CURRENT_VERSION
+    version_id: h.version_id
   }
 })
 
@@ -24,13 +24,18 @@ let game_modes = [
 
 let versions = [
   {
-    version_number: 1,
+    version_number: 13,
     version_date: '2018-04-12',
     server: 'NA'
   },
   {
-    version_number: 2,
+    version_number: 14,
     version_date: '2018-05-26',
+    server: 'NA'
+  },
+  {
+    version_number: 15,
+    version_date: '2018-06-25',
     server: 'NA'
   }
 ]
@@ -58,7 +63,7 @@ let builds =[
     hero_id: 1,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "abrownbag Jungle",
@@ -72,7 +77,7 @@ let builds =[
     hero_id: 1,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Tanky Magic",
@@ -86,7 +91,7 @@ let builds =[
     hero_id: 1,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Durable Assassin",
@@ -100,7 +105,7 @@ let builds =[
     hero_id: 25,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Straight Down Mid",
@@ -114,7 +119,7 @@ let builds =[
     hero_id: 25,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Zelph's Lil",
@@ -128,7 +133,7 @@ let builds =[
     hero_id: 25,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "ALG Rest",
@@ -142,7 +147,7 @@ let builds =[
     hero_id: 4,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "SMG Genji",
@@ -156,7 +161,7 @@ let builds =[
     hero_id: 4,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "SMG CK",
@@ -170,7 +175,7 @@ let builds =[
     hero_id: 4,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Tanky boi",
@@ -184,7 +189,7 @@ let builds =[
     hero_id: 1,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Slow OP",
@@ -198,7 +203,7 @@ let builds =[
     hero_id: 31,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Jungle",
@@ -212,7 +217,7 @@ let builds =[
     hero_id: 62,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "ZANE Nova Jungle",
@@ -226,7 +231,7 @@ let builds =[
     hero_id: 22,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "ZANE Jungle",
@@ -240,7 +245,7 @@ let builds =[
     hero_id: 63,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "ZANE Jungle",
@@ -254,7 +259,7 @@ let builds =[
     hero_id: 43,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "ZANE Jungle",
@@ -268,7 +273,7 @@ let builds =[
     hero_id: 56,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: ".__ Jungle",
@@ -282,7 +287,7 @@ let builds =[
     hero_id: 33,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: ".__ Jungler",
@@ -296,7 +301,7 @@ let builds =[
     hero_id: 52,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: ".__ DeathMatch",
@@ -310,7 +315,7 @@ let builds =[
     hero_id: 42,
     game_mode_id: 1,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   },
   {
     name: "Tulen Balanced Magic",
@@ -324,7 +329,7 @@ let builds =[
     hero_id: 1,
     game_mode_id: 2,
     user_id: 1,
-    version_id: 1
+    version_id: 2
   }
 ]
 
