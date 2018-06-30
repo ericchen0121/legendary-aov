@@ -56,7 +56,7 @@ const styles = theme => ({
     fontSize: 8,
     border: '1px solid red',
     borderRadius: 2,
-    padding: '4px 3px 1px 4px',
+    padding: '4px 3px 1px 3px',
     width: 27
   }
 })
@@ -125,13 +125,13 @@ class BuildViewerContainer extends React.Component {
                 border='gold'
               />
               <span className={s.build_name_container}>
-                <div>{ b.name }</div>
-                { video_url && <div className={classes.video_label}>VIDEO</div>}
-              </span>
-              <span className={s.talent_container}>
-                <span className={s.talent_sub_container}>
-                  {talent_html}
-                </span>
+                <div>
+                  <span>{ b.name } </span>
+                  { video_url && <span className={classes.video_label}>VIDEO</span>}
+                </div>
+                <div>
+                  <span>{talent_html}</span>
+                </div>
               </span>
             </div>
           </Grid>
