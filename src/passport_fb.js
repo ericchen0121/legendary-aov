@@ -15,7 +15,7 @@
 
 import passport_fb from 'passport';
 import { Strategy as FacebookStrategy } from 'passport-facebook';
-import { User, UserLogin, UserClaim, UserProfile } from './data/models';
+import { User, UserLogin, UserProfile } from './data/models';
 import config from './config';
 
 /**
@@ -69,7 +69,6 @@ passport_fb.use(
               {
                 include: [
                   { model: UserLogin, as: 'logins' },
-                  { model: UserClaim, as: 'claims' },
                   { model: UserProfile, as: 'profile' },
                 ],
               },
@@ -121,7 +120,6 @@ passport_fb.use(
                 {
                   include: [
                     { model: UserLogin, as: 'logins' },
-                    { model: UserClaim, as: 'claims' },
                     { model: UserProfile, as: 'profile' },
                   ],
                 },

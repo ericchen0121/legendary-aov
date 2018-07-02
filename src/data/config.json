@@ -4,7 +4,8 @@
     "password": "Ch3n3r1c",
     "database": "legendaryaov",
     "host": "legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": true
   },
   "test": {
     "username": "ericchen0121",

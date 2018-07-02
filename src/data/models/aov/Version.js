@@ -10,7 +10,7 @@ const Version = Model.define(
       primaryKey: true,
     },
     version_number: {
-      type: DataType.STRING(255),
+      type: DataType.INTEGER,
     },
     version_date: {
       type: DataType.DATEONLY,

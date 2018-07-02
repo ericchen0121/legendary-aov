@@ -1,8 +1,8 @@
 import DataType from 'sequelize';
 import Model from '../../sequelize';
 
-const Player = Model.define(
-  'Player',
+const Team = Model.define(
+  'Team',
   {
     id: {
       type: DataType.INTEGER,
@@ -13,31 +13,25 @@ const Player = Model.define(
       type: DataType.STRING,
       allowNull: false
     },
-    real_name: {
-      type: DataType.STRING
+    alt_name: {
+      type: DataType.STRING,
     },
-    role: {
+    url: {
       type: DataType.STRING,
     },
     twitter: {
       type: DataType.STRING,
     },
-    facebook: {
+    country: {
       type: DataType.STRING,
     },
-    youtube: {
+    region: {
       type: DataType.STRING,
-    },
-    instagram: {
-      type: DataType.STRING,
-    },
-    twitch: {
-      type: DataType.STRING,
-    },
+    }
   },
   {
     underscored: true
   }
 );
 
-export default Player;
+export default Team;

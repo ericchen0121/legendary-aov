@@ -1,5 +1,3 @@
-import {User} from '../models/index'
-
 module.exports = function(sequelize, DataTypes) {
   var Player = sequelize.define(
     'Player',
@@ -24,16 +22,5 @@ module.exports = function(sequelize, DataTypes) {
     }
   )
 
-
-  // associations can be defined here
-  Player.associate = function (models) {
-    User.hasOne(Player, {
-      foreignKey: 'user_id',
-      as: 'player',
-      onUpdate: 'cascade',
-      onDelete: 'cascade',
-    })
-
-  };
   return Player;
 };

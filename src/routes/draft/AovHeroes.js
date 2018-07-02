@@ -10,7 +10,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'tulen',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 2,
@@ -23,7 +23,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'airi',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 3,
@@ -36,7 +36,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'aleister',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 4,
@@ -49,7 +49,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'alice',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 5,
@@ -62,7 +62,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'arduin',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 6,
@@ -75,7 +75,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'arthur',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 7,
@@ -88,7 +88,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'astrid',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 8,
@@ -101,7 +101,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'azzenka',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 9,
@@ -114,7 +114,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'batman',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 10,
@@ -127,7 +127,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'butterfly',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 11,
@@ -140,7 +140,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'chaugnar',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 12,
@@ -153,7 +153,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'cresht',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 13,
@@ -166,7 +166,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'diaochan',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 14,
@@ -179,7 +179,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'fennik',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 15,
@@ -192,7 +192,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'gildur',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 16,
@@ -205,7 +205,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'grakk',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 17,
@@ -218,7 +218,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'ignis',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 18,
@@ -231,7 +231,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'ilumia',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 19,
@@ -244,7 +244,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'jinnar',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 20,
@@ -257,7 +257,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'kahlii',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 21,
@@ -270,7 +270,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'kilgroth',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 22,
@@ -283,7 +283,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'kriknak',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 23,
@@ -296,7 +296,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'krixi',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 24,
@@ -309,7 +309,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'lauriel',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 25,
@@ -322,7 +322,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'liliana',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 26,
@@ -335,7 +335,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'lindis',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 27,
@@ -348,7 +348,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'lubu',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 28,
@@ -361,7 +361,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'lumburr',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 29,
@@ -374,7 +374,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'maloch',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 30,
@@ -387,7 +387,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'max',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 31,
@@ -400,7 +400,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'mganga',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 32,
@@ -413,7 +413,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'mina',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 33,
@@ -426,7 +426,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'moren',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 34,
@@ -439,7 +439,7 @@ const HEROES = [
     'tier': 'ss',
     'tier_index': 1,
     "folder": 'murad',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 35,
@@ -452,7 +452,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'nakroth',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 36,
@@ -465,7 +465,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'natalya',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 37,
@@ -478,7 +478,7 @@ const HEROES = [
     'tier': 'd',
     'tier_index': 6,
     "folder": 'omega',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 38,
@@ -491,7 +491,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'omen',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 39,
@@ -504,7 +504,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'ormarr',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 40,
@@ -517,7 +517,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'peura',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 41,
@@ -530,7 +530,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'preyta',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 42,
@@ -543,7 +543,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'raz',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 43,
@@ -556,7 +556,7 @@ const HEROES = [
     'tier': 'ss',
     'tier_index': 1,
     "folder": 'ryoma',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 44,
@@ -569,7 +569,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'skud',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 45,
@@ -582,7 +582,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'slimz',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 46,
@@ -595,7 +595,7 @@ const HEROES = [
     'tier': 'ss',
     'tier_index': 1,
     "folder": 'superman',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 47,
@@ -608,7 +608,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'taara',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 48,
@@ -621,7 +621,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'teemee',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 49,
@@ -634,7 +634,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'telannas',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 50,
@@ -647,7 +647,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'thane',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 51,
@@ -660,7 +660,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'flash',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 52,
@@ -673,7 +673,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'joker',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 53,
@@ -686,7 +686,7 @@ const HEROES = [
     'tier': 'd',
     'tier_index': 6,
     "folder": 'toro',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 54,
@@ -699,7 +699,7 @@ const HEROES = [
     'tier': 'd',
     'tier_index': 6,
     "folder": 'valhein',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 55,
@@ -712,7 +712,7 @@ const HEROES = [
     'tier': 'd',
     'tier_index': 6,
     "folder": 'veera',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 56,
@@ -725,7 +725,7 @@ const HEROES = [
     'tier': 'ss',
     'tier_index': 1,
     "folder": 'violet',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 57,
@@ -738,7 +738,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'wisp',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 58,
@@ -751,7 +751,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'wonderwoman',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 59,
@@ -764,7 +764,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'wukong',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 60,
@@ -777,7 +777,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'xeniel',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 61,
@@ -790,7 +790,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 4,
     "folder": 'yorn',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 62,
@@ -803,7 +803,7 @@ const HEROES = [
     'tier': 'c',
     'tier_index': 5,
     "folder": 'zanis',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 63,
@@ -816,7 +816,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'zephys',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 64,
@@ -829,7 +829,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'zill',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 65,
@@ -842,7 +842,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 3,
     "folder": 'zuka',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 66,
@@ -855,7 +855,7 @@ const HEROES = [
     'tier': 'b',
     'tier_index': 3,
     "folder": 'rourke',
-    "version_id": 1
+    "version_number": 13
   },
   {
     "id": 67,
@@ -868,7 +868,7 @@ const HEROES = [
     'tier': 's',
     'tier_index': 2,
     "folder": 'arum',
-    "version_id": 2
+    "version_number": 14
   },
   {
     "id": 68,
@@ -881,7 +881,7 @@ const HEROES = [
     'tier': 'a',
     'tier_index': 2,
     "folder": 'marja',
-    "version_id": 3
+    "version_number": 15
   },
 ]
 

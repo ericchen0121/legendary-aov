@@ -10,20 +10,12 @@
 import sequelize from '../sequelize';
 import User from './User';
 import UserLogin from './UserLogin';
-import UserClaim from './UserClaim';
 import UserProfile from './UserProfile';
-import { Hero, Build, Item, GameMode, Version, Player } from './aov'
+import { Hero, Build, Item, GameMode, Version, Player, Team } from './aov'
 
 User.hasMany(UserLogin, {
   foreignKey: 'user_id',
   as: 'logins',
-  onUpdate: 'cascade',
-  onDelete: 'cascade',
-});
-
-User.hasMany(UserClaim, {
-  foreignKey: 'user_id',
-  as: 'claims',
   onUpdate: 'cascade',
   onDelete: 'cascade',
 });
@@ -37,12 +29,12 @@ User.hasOne(UserProfile, {
 
 function sync(...args) {
   return sequelize.sync({
-    alter: true,
+    // alter: true,
     ...args
   });
 }
 
 export default { sync };
-export { User, UserLogin, UserClaim, UserProfile, Hero, Build, Item, GameMode, Version, Player }
-// export { User, UserLogin, UserClaim, UserProfile, Build, GameMode, Hero, Item, Version };
+export { User, UserLogin, UserProfile, Hero, Build, Item, GameMode, Version, Player, Team }
+// export { User, UserLogin, UserProfile, Build, GameMode, Hero, Item, Version };
 // export { Build, GameMode, Hero, Item, Version };

@@ -15,7 +15,7 @@
 
 import passport from 'passport';
 import { BasicStrategy } from 'passport-http';
-import { User, UserLogin, UserClaim, UserProfile } from './data/models';
+import { User, UserLogin, UserProfile } from './data/models';
 import bcrypt from 'bcrypt'
 /**
  * Sign in with UN/PW
