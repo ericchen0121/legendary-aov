@@ -93,6 +93,10 @@ const routes = {
       path: '/contact',
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
+    {
+      path: '/players',
+      load: () => import(/* webpackChunkName: 'buildcreator' */ './players'),
+    },
 
     // Wildcard routes, e.g. { path: '(.*)', ... } (must go last)
     {
