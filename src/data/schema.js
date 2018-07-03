@@ -23,11 +23,13 @@ import hero from './queries/hero';
 import item from './queries/item';
 import items from './queries/items';
 import version from './queries/version';
+import players from './queries/players'
 
 import addBuild from './queries/addBuild';
 import addHero from './queries/addHero';
 import addUser from './queries/addUser';
 import loginUser from './queries/loginUser'
+
 
 const schema = new Schema({
   query: new ObjectType({
@@ -42,7 +44,8 @@ const schema = new Schema({
       item,
       items,
       version,
-      myBuilds
+      myBuilds,
+      players
     },
   }),
   mutation: new ObjectType({
