@@ -56,7 +56,8 @@ let TEAMS = [
     region: 'SEA'
   },
   {
-    name: 'SMG',
+    name: 'Still Moving Under Gunfire',
+    alt_name: 'SMG'
     country: 'Taiwan',
     region: 'SEA'
   },

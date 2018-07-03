@@ -1,6 +1,9 @@
 // SK GAMING: http://www.sk-gaming.com/content/1870532-sk-gaming-enters-arena-of-valor
 
 let PLAYERS = [
+  //
+  // Flipsid3
+  //
   {
     name: 'alwaysgr33n',
     role: 'support',
@@ -45,6 +48,9 @@ let PLAYERS = [
     twitch: 'cheeeeeeeesy',
     team_id: 1
   },
+  //
+  // Allegiance ALG
+  //
   {
     name: 'rocker',
     twitter: 'AovRocker',
@@ -77,6 +83,9 @@ let PLAYERS = [
     twitter: 'ImtheKO1',
     team_id: 2
   },
+  //
+  // Immortals IMT
+  //
   {
     name: 'Dave',
     real_name: "David Mao",
@@ -112,6 +121,9 @@ let PLAYERS = [
     name: 'Neo',
     team_id: 3
   },
+  //
+  // Dino Riders
+  //
   {
     name: 'CL\'z',
     twitter: 'drCLz',
@@ -139,6 +151,9 @@ let PLAYERS = [
     name: 'Shozen',
     team_id: 4,
   },
+  //
+  // Nova
+  //
   {
     name: 'iFlekzz',
     team_id: 5,
@@ -173,6 +188,9 @@ let PLAYERS = [
     twitter: 'roksen09',
     email: 'vlat618@gmail.com'
   },
+  //
+  // SK Gaming
+  //
   {
     name: 'EDU',
     real_name: "Okan Hapakaz",
@@ -210,6 +228,9 @@ let PLAYERS = [
     facebook: 'PichMoba',
     youtube: 'UC5cS6OGrmpWkYKp-nLO8cHw'
   },
+  //
+  // For the Dream
+  //
   {
     name: 'shurko',
     role: 'midlane',
@@ -243,6 +264,9 @@ let PLAYERS = [
     youtube: 'UCbg0u5-U4FF8sXCVG_xJ47w',
     team_id: 7,
   },
+  //
+  // Team Royal
+  //
   {
     name: 'Bobbykart',
     team_id: 8,
@@ -268,6 +292,8 @@ let PLAYERS = [
     twitter: 'AoV_V8',
     team_id: 8,
   },
+  // Vitality
+  //
   {
     name: 'Flow',
     real_name: 'Florian Frisch',
@@ -309,6 +335,10 @@ let PLAYERS = [
     twitter: 'REDemption_Kh',
     team_id: 9
   },
+  //
+  // JT
+  //
+  // https://tw.esports.yahoo.com/realm-of-valor/teams/still-moving-under-gunfire-1042/matches/still-moving-under-gunfire-vs-j-team-5779/
   {
     name: 'Yuzon',
     team_id: 10,
@@ -323,6 +353,14 @@ let PLAYERS = [
     team_id: 10,
   },
   {
+    name: 'Star',
+    team_id: 10,
+  },
+  {
+    name: 'Benny',
+    team_id: 10,
+  },
+  {
     name: 'Chawan',
     team_id: 10,
   },
@@ -330,16 +368,22 @@ let PLAYERS = [
     name: 'Tuna',
     team_id: 10,
   },
+  //
+  // SMG
+  // https://tw.esports.yahoo.com/realm-of-valor/videos
   {
     name: 'Liang',
+    real_name: 'Liang-Chih Chen',
     team_id: 11,
   },
   {
     name: 'Chichi',
-    team_id: 11,
+    real_name: 'Chun-Chi li',
+    team_id: 11
   },
   {
     name: 'Hanzo',
+    real_name: 'Cheng-Tsai Huang',
     team_id: 11,
     facebook: 'SMGHanzo1205',
     garena: 'smghanzo',
@@ -347,14 +391,21 @@ let PLAYERS = [
   },
   {
     name: 'Sirenia',
-    team_id: 11,
+    real_name: 'Wei-Chia Hung'
+,    team_id: 11,
   },
   {
     name: 'Genji',
+    real_name: 'Chih-Lung Cheng',
     garena: 'smggenji',
     youtube: 'UCIp9jUV47yfBFmrEsS69E-w',
     team_id: 11,
     role: 'jungle',
+  },
+  {
+    name: 'Wayyn',
+    real_name: 'Sung-Lin Hsieh',
+    team_id: 11,
   },
 ]
 

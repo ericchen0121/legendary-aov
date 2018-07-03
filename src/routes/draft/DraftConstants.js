@@ -26,16 +26,21 @@ export const ARMORY_FILTERS = {
 };
 
 export const VIDEO_SEARCH_TERMS = [
+  'gameplay highlight',
+  'gameplay',
   'hero spotlight',
   'road to mastery',
   'guide',
-  'gameplay',
   'build',
+  'JT taiwan',
+  'SMG',
+  'IMT Immortals',
+  'ALG',
+  'shurko',
   'abrownbag',
   'vex190',
   'darkbreaker',
-  'shurko',
-  'SMG',
+  'hanzo',
   'ass dave',
   'sunbros',
   'iflekzz',
@@ -44,11 +49,8 @@ export const VIDEO_SEARCH_TERMS = [
   'pich',
   'rest mobile gaming',
   'be chanh',
-  'IMT Immortals',
   'kzfox',
-  'ALG',
   'OP',
-  'JT taiwan',
   'IMT Bobo',
   'NTG apok',
   'franjosetv',
@@ -106,4 +108,4 @@ export const AOV_CHANNELS = [
 export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS';
 export const DEFAULT_IMAGE_URL =
   'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png';
-export const DEFAULT_VIDEO_SEARCH_TERM = 'arena of valor';
+export const DEFAULT_VIDEO_SEARCH_TERM = 'arena of valor gameplay';

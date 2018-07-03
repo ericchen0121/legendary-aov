@@ -69,9 +69,10 @@ class BuildNotesViewer extends React.Component {
     return (
       <div className={classes.root}>
        { panels.map(p => {
-          let content
+          let content, title
 
           if (p === 'video_url') {
+            title = 'Video'
             content = (
               <ReactPlayer
                 ref={this.ref}
@@ -83,9 +84,11 @@ class BuildNotesViewer extends React.Component {
             )
           }
           else if (p === 'url') {
+            title = 'Website'
             content = <a href={notes[p]} target='_blank'>{notes[p]}</a>
           }
           else if(notes[p] !== '') { // show non-empty fields
+            title = p
             content = notes[p]
           }
 
@@ -94,7 +97,7 @@ class BuildNotesViewer extends React.Component {
               <ExpansionPanel expanded={expanded === p} onChange={this.handleChange(p)}>
                 <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
                   <Typography className={classes.heading}>
-                   {this.remove_underscore(p).toUpperCase()}
+                   { this.remove_underscore(title).toUpperCase() }
                  </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
