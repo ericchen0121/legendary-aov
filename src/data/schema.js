@@ -24,6 +24,7 @@ import item from './queries/item';
 import items from './queries/items';
 import version from './queries/version';
 import players from './queries/players'
+import teams from './queries/teams'
 
 import addBuild from './queries/addBuild';
 import addHero from './queries/addHero';
@@ -45,7 +46,8 @@ const schema = new Schema({
       items,
       version,
       myBuilds,
-      players
+      players,
+      teams
     },
   }),
   mutation: new ObjectType({
