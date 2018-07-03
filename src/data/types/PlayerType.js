@@ -19,6 +19,7 @@ const PlayerType = new ObjectType({
     youtube: { type: StringType },
     instagram: { type: StringType },
     twitch: { type: StringType },
+    garena: { type: StringType},
     team: {
       type: TeamType,
       resolve: (parent, args) => {

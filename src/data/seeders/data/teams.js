@@ -1,6 +1,6 @@
 let TEAMS = [
   {
-    name: 'Flipsid3',
+    name: 'Flipsid3 Tactics',
     alt_name: 'Flipsid3',
     country: 'USA',
     region: 'NA'
@@ -8,6 +8,7 @@ let TEAMS = [
   {
     name: 'Allegiance',
     alt_name: 'ALG',
+    twitter: 'TeamAllegiance',
     country: 'USA',
     region: 'NA'
   },
@@ -24,14 +25,16 @@ let TEAMS = [
     region: 'NA'
   },
   {
-    name: 'NOVA eSports',
-    alt_name: 'NOVA',
+    name: 'Nova eSports',
+    alt_name: 'Nova',
+    twitter: 'NovaEsportsTeam',
     region: 'EU'
   },
   {
     name: 'SK Gaming',
     alt_name: "SK",
-    region: 'EU'
+    region: 'EU',
+    url: 'sk-gaming.com'
   },
   {
     name: 'For the Dream',
@@ -43,6 +46,7 @@ let TEAMS = [
   },
   {
     name: 'Vitality',
+    twitter: 'Team_Vitality',
     region: 'EU'
   },
   {

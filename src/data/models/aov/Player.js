@@ -34,6 +34,15 @@ const Player = Model.define(
     twitch: {
       type: DataType.STRING,
     },
+    email: {
+      type: DataType.STRING,
+    },
+    discord: {
+      type: DataType.STRING,
+    },
+    garena: {
+      type: DataType.STRING,
+    }
   },
   {
     underscored: true

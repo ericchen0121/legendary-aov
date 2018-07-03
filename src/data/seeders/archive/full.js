@@ -75,8 +75,7 @@ module.exports = {
 
     // TEAMS
     //
-    let teams = TEAMS
-    await queryInterface.bulkInsert('Team', teams, {})
+    await queryInterface.bulkInsert('Team', TEAMS, {})
 
     // PLAYERS
     await queryInterface.bulkInsert('Player', PLAYERS, {})
@@ -89,6 +88,7 @@ module.exports = {
     queryInterface.bulkDelete('Version', VERSIONS, {});
     queryInterface.bulkDelete('User', USERS, {});
     queryInterface.bulkDelete('Player', PLAYERS, {});
+    queryInterface.bulkDelete('Team', TEAMS, {});
   }
 
 };

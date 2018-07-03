@@ -3,48 +3,68 @@
 let PLAYERS = [
   {
     name: 'alwaysgr33n',
+    role: 'support',
     real_name: "Drew Miller",
+    twitter: 'alwaysgr33n',
+    email: 'always.gr33n.gaming@gmail.com',
     team_id: 1
   },
   {
     name: 'dualspirals',
     real_name: "Martin Chaney",
+    role: 'midlane',
+    twitch: 'dualspirals',
+    twitter: 'dualspirals',
+    email: 'dualspiralsf@gmail.com',
     team_id: 1
   },
   {
     name: 'vaor',
     real_name: "Arick Jacobsen",
+    twitter: 'AoV_Vaor',
     team_id: 1
   },
   {
     name: 'Zelph',
     real_name: "Alexi Wolinski",
+    email: 'thezelphtwitch@gmail.com',
+    twitch: 'thezelph',
     team_id: 1
   },
   {
     name: 'bruticus',
+    role: 'sidelaner',
     real_name: "Kaden Smith",
+    twitter: 'F3Bruticus',
     team_id: 1
   },
   {
     name: 'Cheesy',
     real_name: "Joe Barrett",
+    twitter: 'CheeeeeeeesyGG',
+    twitch: 'cheeeeeeeesy',
     team_id: 1
   },
   {
     name: 'rocker',
+    twitter: 'AovRocker',
     team_id: 2
   },
   {
     name: 'sleepy',
+    twitter: 'Sleepy1105',
     team_id: 2
   },
   {
     name: 'mts',
+    twitter: 'mtsamazing',
+    role: 'toplane',
     team_id: 2
   },
   {
     name: 'rest',
+    twitter: 'RestAOV',
+    twitch: 'RestAOV',
     team_id: 2
   },
   {
@@ -53,11 +73,15 @@ let PLAYERS = [
   },
   {
     name: 'ko',
+    role: 'toplane',
+    twitter: 'ImtheKO1',
     team_id: 2
   },
   {
     name: 'Dave',
     real_name: "David Mao",
+    twitter: 'Assassin_Dave',
+    youtube: 'UCSKlX7a2woYDF22KDAj4m8Q',
     team_id: 3
   },
   {
@@ -66,10 +90,14 @@ let PLAYERS = [
   },
   {
     name: 'KzFox',
+    twitter: 'KevinzFox',
     team_id: 3
   },
   {
     name: '80sHero',
+    role: 'midlane',
+    twitter: '80sHero_',
+    twitch: '80sHero',
     team_id: 3
   },
   {
@@ -85,11 +113,18 @@ let PLAYERS = [
     team_id: 3
   },
   {
+    name: 'CL\'z',
+    twitter: 'drCLz',
+    team_id: 4,
+  },
+  {
     name: 'ZK',
     team_id: 4,
   },
   {
     name: 'YikeZ',
+    twitter: 'DrYikeZ',
+    email: 'AovAmir@icloud.com',
     team_id: 4,
   },
   {
@@ -113,7 +148,8 @@ let PLAYERS = [
   {
     name: 'Darkbreaker',
     team_id: 5,
-    twitter: 'HieuNguyen995'
+    twitter: 'HieuNguyen995',
+    youtube: 'UCb-1HjL0QKvyijvsqEQIaGg'
   },
   {
     name: 'y01',
@@ -129,6 +165,13 @@ let PLAYERS = [
     name: 'Crayen',
     team_id: 5,
     twitter: '_crayen'
+  },
+  {
+    name: 'Poseidon',
+    real_name: 'Vladyslav Maksymchuk',
+    team_id: 5,
+    twitter: 'roksen09',
+    email: 'vlat618@gmail.com'
   },
   {
     name: 'EDU',
@@ -169,12 +212,16 @@ let PLAYERS = [
   },
   {
     name: 'shurko',
+    role: 'midlane',
     team_id: 7,
     twitter: 'shurkotv',
-    twitch: 'shurkotv'
+    twitch: 'shurkotv',
+    youtube: 'UCJCvhnTVGhTUFCHw_iu9XkQ'
   },
   {
     name: 'Arena of Violet',
+    role: 'jungler',
+    twitter: 'ArenaofViolet',
     team_id: 7,
   },
   {
@@ -182,11 +229,18 @@ let PLAYERS = [
     team_id: 7,
   },
   {
-    name: 'sinjo',
+    name: 'simjo',
+    twitter: 'SimjoYt',
+    twitch: 'simjotv',
     team_id: 7,
   },
   {
     name: 'Rezz',
+    role: 'solo lane',
+    twitter: 'TheRealRezz',
+    facebook: 'RezzGaming',
+    twitch: 'rezzlove',
+    youtube: 'UCbg0u5-U4FF8sXCVG_xJ47w',
     team_id: 7,
   },
   {
@@ -199,18 +253,25 @@ let PLAYERS = [
   },
   {
     name: 'Lee',
+    role: 'jungler',
+    youtube: 'UC78sG8xRRiYDIBBbj1Y9nYw',
+    twitter: 'AovLee',
     team_id: 8,
   },
   {
     name: 'Memorized',
+    twitter: 'AoV_V8',
     team_id: 8,
   },
   {
     name: 'V8',
+    twitter: 'AoV_V8',
     team_id: 8,
   },
   {
     name: 'Flow',
+    real_name: 'Florian Frisch',
+    twitter: 'Vitality_Flow',
     team_id: 9
   },
   {
@@ -219,6 +280,7 @@ let PLAYERS = [
   },
   {
     name: 'Suitaro',
+    twitter: 'VitalitySuitaro',
     team_id: 9
   },
   {
@@ -227,6 +289,24 @@ let PLAYERS = [
   },
   {
     name: 'Azure',
+    role: 'support',
+    twitter: 'Vitality_Azure',
+    youtube: 'UC2f_wAanlOibzPUT-i5R8xw',
+    team_id: 9
+  },
+  {
+    name: 'Moon',
+    team_id: 9
+  },
+  {
+    name: 'King',
+    twitter: 'KingYeXiu',
+    team_id: 9
+  },
+  {
+    name: 'Redemption',
+    role: 'jungler',
+    twitter: 'REDemption_Kh',
     team_id: 9
   },
   {
@@ -261,6 +341,8 @@ let PLAYERS = [
   {
     name: 'Hanzo',
     team_id: 11,
+    facebook: 'SMGHanzo1205',
+    garena: 'smghanzo',
     role: 'mid',
   },
   {
@@ -269,6 +351,8 @@ let PLAYERS = [
   },
   {
     name: 'Genji',
+    garena: 'smggenji',
+    youtube: 'UCIp9jUV47yfBFmrEsS69E-w',
     team_id: 11,
     role: 'jungle',
   },

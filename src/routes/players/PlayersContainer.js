@@ -56,17 +56,7 @@ class PlayersContainer extends React.Component {
   render() {
     const { classes, context } = this.props
 
-    // <Grid container spacing={24} zeroMinWidth className={classes.container}>
-    //   <Grid item xs={2}>
-    //
-    //   </Grid>
-    //   <Grid item xs={7}>
-    //
-    //   </Grid>
-    //   <Grid item xs={3}>
-    //
-    //   </Grid>
-    // </Grid>
+
     return (
       <Query
         query={ALL_PLAYERS}
@@ -77,16 +67,29 @@ class PlayersContainer extends React.Component {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
 
-          console.log('data', data)
           let players
           if (data.players && data.players.length > 0) {
-            return data.players.map(p => {
-              return <div>{p.name}</div>
+            players = data.players.map(p => {
+              return <div>{p.name} {p.team.name}</div>
             })
           }
           else {
             return <div>Finding AOV Players...</div>
           }
+
+          return (
+            <Grid container spacing={24} zeroMinWidth className={classes.container}>
+              <Grid item xs={2}>
+
+              </Grid>
+              <Grid item xs={7}>
+                {players}
+              </Grid>
+              <Grid item xs={3}>
+
+              </Grid>
+            </Grid>
+          )
 
         }}
       </Query>

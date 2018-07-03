@@ -1355,6 +1355,25 @@ export const ITEMS = [
       type: ['exit movement speed']
     }]
   },
+  {
+    id: 53,
+    name: "Spoopy Mask",
+    type: 'magic',
+    tier: 2,
+    cost: 960,
+    folder: 'spoopymask',
+    effects: [
+      {
+        type: 'ability power',
+        power: 100,
+      },
+      {
+        type: 'magic pierce',
+        power: 75,
+      },
+    ],
+    passives: []
+  },
 ]
 
 export const TALENTS = [
