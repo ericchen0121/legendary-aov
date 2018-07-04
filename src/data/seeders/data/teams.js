@@ -7,7 +7,8 @@ let TEAMS = [
     name: 'Flipsid3 Tactics',
     alt_name: 'Flipsid3',
     country: 'USA',
-    region: 'NA'
+    region: 'NA',
+    server: 'NA'
   },
   {
     name: 'Allegiance',
@@ -15,7 +16,8 @@ let TEAMS = [
     twitter: 'TeamAllegiance',
     country: 'USA',
     region: 'NA',
-    email: 'info@triggerfish.gg'
+    email: 'info@triggerfish.gg',
+    server: 'NA'
   },
   // IMT
   // https://www.immortals.gg/teams/arena-of-valor/
@@ -23,39 +25,49 @@ let TEAMS = [
     name: 'Immortals',
     alt_name: 'IMT',
     country: 'USA',
-    region: 'NA'
+    region: 'NA',
+    server: 'NA'
   },
   {
     name: 'Dino Riders',
-    alt_name: 'DR',
+    alt_name: 'Dino Riders',
     country: 'USA',
-    region: 'NA'
+    region: 'NA',
+    server: 'NA'
   },
   {
     name: 'Nova eSports',
     alt_name: 'Nova',
     twitter: 'NovaEsportsTeam',
-    region: 'EU'
+    region: 'EU',
+    server: 'EU'
   },
   {
     name: 'SK Gaming',
     alt_name: "SK",
     region: 'EU',
-    url: 'sk-gaming.com'
+    url: 'sk-gaming.com',
+    server: 'EU'
   },
   {
     name: 'For the Dream',
-    region: 'EU'
+    alt_name: 'For the Dream',
+    region: 'EU',
+    server: 'EU'
   },
   {
     name: 'Team Royal',
-    twitter: 'Team_RoyaL_AOV'
-    region: 'EU'
+    alt_name: 'Team Royal',
+    twitter: 'Team_RoyaL_AOV',
+    region: 'EU',
+    server: 'EU'
   },
   {
     name: 'Vitality',
+    name: 'Vitality',
     twitter: 'Team_Vitality',
-    region: 'EU'
+    region: 'EU',
+    server: 'EU'
   },
   {
     name: 'J Team',
@@ -65,9 +77,10 @@ let TEAMS = [
   },
   {
     name: 'Still Moving Under Gunfire',
-    alt_name: 'SMG'
+    alt_name: 'SMG',
     country: 'Taiwan',
-    region: 'SEA'
+    region: 'SEA',
+    server: 'Taiwan'
   },
 ]
 

@@ -5,7 +5,7 @@ import s from './Player.scss';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
-
+import PlayerCard from './PlayerCard'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -14,12 +14,10 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { ALL_PLAYERS } from '../../data/gql_queries/players'
 
-import TEAM_FOLDERS from './constants'
-
 const styles = theme => ({
   root: theme.mixins.gutters({
-    paddingTop: 16,
-    paddingBottom: 16,
+    paddingTop: 12,
+    paddingBottom: 12,
     marginTop: theme.spacing.unit * 2,
   }),
   team_logo: {
@@ -57,16 +55,12 @@ class PlayersContainer extends React.Component {
           let players
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
-
-              let team_folder = TEAM_FOLDERS.find(t => t.name === p.team.name)['folder']
-              let logo
-
               return (
-                <div>
-                  {p.name} <span className={classes.team}>{p.team.alt_name}</span>
-                  <img className={classes.player} src= {`/aov/players/${p.name}.png`} />
-                  <img className={classes.team_logo} src={`/aov/teams/${team_folder}/logo.png`} />
-                </div>
+                <Grid item xs={3}>
+                  <PlayerCard
+                    player={p}
+                  />
+                </Grid>
               )
             })
           }
@@ -75,14 +69,16 @@ class PlayersContainer extends React.Component {
           }
 
           return (
-            <Grid container spacing={24} zeroMinWidth className={classes.container}>
+            <Grid container spacing={12} zeroMinWidth className={classes.container}>
               <Grid item xs={2}>
 
               </Grid>
-              <Grid item xs={7}>
-                {players}
+              <Grid item xs={8}>
+                <Grid container spacing={12}>
+                  {players}
+                </Grid>
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
 
               </Grid>
             </Grid>

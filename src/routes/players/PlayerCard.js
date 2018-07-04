@@ -1,6 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
-import s from './Build.scss'
+import s from './Player.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
@@ -9,19 +9,20 @@ import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import { ITEMS } from '../Items'
+import fileExists from 'file-exists'
+import path from 'path'
+
+import TEAM_FOLDERS, { DEFAULT_IMAGE_URL } from './constants'
+
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import BuildItemImage from './BuildItemImage'
-import { to_uppercase_first } from '../utilities'
+
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
-    maxWidth: '90%',
-    marginLeft: 10,
-    marginTop: 35
+    marginRight: 10,
+    marginBottom: 35
   },
   bullet: {
     display: 'inline-block',
@@ -29,74 +30,80 @@ const styles = theme => ({
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 18,
-  },
-  item_type: {
-    marginRight: 15,
-    fontSize: 11
+    fontSize: 15,
+    fontFamily: "'Josefin Sans', sans-serif"
   },
   divider: {
     marginTop: 5,
     marginBottom: 5
   },
   type_container: {
-    marginLeft: 20
+    marginLeft: 10
+  },
+  team_logo: {
+    width: 25,
+    height: 25,
+    borderRadius: 3
+  },
+  player: {
+    width: 65,
+    height: 65,
+    borderRadius: 3,
+    marginBottom: 6
+  },
+  team: {
+    fontSize: 11
   }
 });
 
 class PlayerCard extends React.Component {
-  sortAlpha = items => {
-    return items.sort((a, b) => a.type.localeCompare(b.type))
+
+  try_require = (path) => {
+    try {
+     require(`../../../public/${path}`)
+     return path
+    } catch (err) {
+     return DEFAULT_IMAGE_URL
+    }
   }
 
   render() {
-    const { classes, build_creator } = this.props
+    const { classes, player } = this.props
 
-    let item = ITEMS.find(i => i.id === (build_creator.hovered_item || build_creator.selected_item))
-
-    let team_folder = TEAM_FOLDERS.find(t => t.name === p.team.name)['folder']
+    let team_folder = TEAM_FOLDERS.find(t => t.name === player.team.name)['folder']
     let logo
 
-    return (
-      <div>
+    let rel_path = `aov/players/${player.name.toLowerCase()}.png`
+    let img_path = this.try_require(rel_path)
 
-
-
-      </div>
-    )
-
-    let item_card = (
-      item && (
+    let player_card = (
+      player && (
         <div>
           <div className={cx(s.wrapper, s.text_align_left)}>
-            <img className={classes.player} src= {`/aov/players/${p.name}.png`} />
+            <img className={classes.player} src={img_path} />
             <div className={classes.type_container}>
               <Typography variant="headline" component="h3" className={classes.title}>
-                <span>{p.name}</span>
+                <span>{player.name}</span>
+                <span>{player.real_name}</span>
               </Typography>
               <Typography color="textSecondary">
                 <img className={classes.team_logo} src={`/aov/teams/${team_folder}/logo.png`} />
-                <span className={classes.team}>{p.team.alt_name}</span>
+                <span className={classes.team}>{player.team.alt_name || player.team.name}</span>
               </Typography>
             </div>
           </div>
           <div className={s.item_effects_container}>
-            { item_effects }
-          </div>
-          <div>
-            { item_passives }
+            { player.role }
           </div>
         </div>
     ))
 
-    // <Typography className={classes.title} color="textSecondary">
-    // </Typography>
     return (
       <div>
         <Card className={classes.card}>
           <CardContent>
 
-            { item_card }
+            { player_card }
 
           </CardContent>
         </Card>

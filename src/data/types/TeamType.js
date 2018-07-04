@@ -15,8 +15,16 @@ const TeamType = new ObjectType({
     alt_name: { type: StringType },
     url: { type: StringType },
     twitter: { type: StringType },
+    facebook: { type: StringType },
+    youtube: { type: StringType },
+    instagram: { type: StringType },
+    twitch: { type: StringType },
+    email: { type: StringType },
+    discord: { type: StringType },
+    garena: { type: StringType},
     country: { type: StringType },
     region: { type: StringType },
+    server: { type: StringType },
     players: {
       type: ListType(PlayerType),
       resolve: (parent, args) => {

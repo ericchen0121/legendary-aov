@@ -46,3 +46,6 @@ let TEAM_FOLDERS = [
 ]
 
 export default TEAM_FOLDERS
+
+export const DEFAULT_IMAGE_URL =
+  'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png';
