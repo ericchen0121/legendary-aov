@@ -387,7 +387,7 @@ let PLAYERS = [
     team_id: 11,
     facebook: 'SMGHanzo1205',
     garena: 'smghanzo',
-    role: 'mid',
+    role: 'midlane',
   },
   {
     name: 'Sirenia',
@@ -400,7 +400,7 @@ let PLAYERS = [
     garena: 'smggenji',
     youtube: 'UCIp9jUV47yfBFmrEsS69E-w',
     team_id: 11,
-    role: 'jungle',
+    role: 'jungler',
   },
   {
     name: 'Wayyn',

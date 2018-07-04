@@ -23,7 +23,15 @@ export const ALL_PLAYERS = gql`
   query all_players {
     players {
       name
+      real_name
+      role
+      twitter
+      youtube
+      instagram
+      twitch
+      garena
       team_id
+      facebook
       team {
         name
         alt_name

@@ -71,7 +71,6 @@ class PlayersContainer extends React.Component {
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
               <Grid item xs={2}>
-
               </Grid>
               <Grid item xs={8}>
                 <Grid container spacing={12}>
