@@ -14,6 +14,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { ALL_PLAYERS } from '../../data/gql_queries/players'
 
+import TEAM_FOLDERS from './constants'
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -21,40 +22,26 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 2,
   }),
-  ep: {
-    padding: 0
+  team_logo: {
+    width: 25,
+    height: 25,
+    borderRadius: 3
   },
-  eps: {
-    padding: 0,
+  player: {
+    width: 55,
+    height: 55,
+    borderRadius: 3
   },
-  epd: {
-    display: 'inline',
-    paddingRight: 32,
-    marginRight: 32
-  },
-  divider: {
-    margin: '0 33%'
-  },
-  divider: {
-    width: '70%',
-    marginTop: 20,
-    marginBottom: 10
-  },
-  container: {
-    minHeight: 800
-  },
-  item_effects_container: {
-    textAlign: 'center',
-    padding: 15,
-    margin: '25px 25px 0px 10px',
-    boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)'
-  },
+  team: {
+    fontSize: 11
+  }
 })
 
 class PlayersContainer extends React.Component {
 
   render() {
     const { classes, context } = this.props
+
 
 
     return (
@@ -70,7 +57,17 @@ class PlayersContainer extends React.Component {
           let players
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
-              return <div>{p.name} {p.team.name}</div>
+
+              let team_folder = TEAM_FOLDERS.find(t => t.name === p.team.name)['folder']
+              let logo
+
+              return (
+                <div>
+                  {p.name} <span className={classes.team}>{p.team.alt_name}</span>
+                  <img className={classes.player} src= {`/aov/players/${p.name}.png`} />
+                  <img className={classes.team_logo} src={`/aov/teams/${team_folder}/logo.png`} />
+                </div>
+              )
             })
           }
           else {

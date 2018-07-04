@@ -26,7 +26,7 @@ class Header extends React.Component {
           <Navigation />
           <div className={s.brand_container}>
             <Link className={s.brand} to="/">
-              <span className={s.brandTxt}>LEGENDARY</span>
+              <span className={s.brandTxt}>LEGENDARY AOV</span>
             </Link>
             <img className={s.logo} src="/aov/logo/aov-logo-white-small.png" />
           </div>

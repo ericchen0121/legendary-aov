@@ -1,3 +1,7 @@
+// Resources
+// https://play.eslgaming.com/team/12203783/
+//
+
 let TEAMS = [
   {
     name: 'Flipsid3 Tactics',
@@ -10,8 +14,11 @@ let TEAMS = [
     alt_name: 'ALG',
     twitter: 'TeamAllegiance',
     country: 'USA',
-    region: 'NA'
+    region: 'NA',
+    email: 'info@triggerfish.gg'
   },
+  // IMT
+  // https://www.immortals.gg/teams/arena-of-valor/
   {
     name: 'Immortals',
     alt_name: 'IMT',
@@ -42,6 +49,7 @@ let TEAMS = [
   },
   {
     name: 'Team Royal',
+    twitter: 'Team_RoyaL_AOV'
     region: 'EU'
   },
   {
