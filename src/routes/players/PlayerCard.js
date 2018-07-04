@@ -12,12 +12,11 @@ import Divider from 'material-ui/Divider';
 import fileExists from 'file-exists'
 import path from 'path'
 
-import TEAM_FOLDERS, { DEFAULT_IMAGE_URL } from './constants'
+import TEAM_FOLDERS from './constants'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 
 const styles = theme => ({
   card: {
@@ -61,20 +60,29 @@ class PlayerCard extends React.Component {
   try_require = (path) => {
     try {
      require(`../../../public/${path}`)
-     return path
+     return true
     } catch (err) {
-     return DEFAULT_IMAGE_URL
+     return false
     }
+  }
+
+  get_player_img_path = (player) => {
+    return `aov/players/${player}.png`
   }
 
   render() {
     const { classes, player } = this.props
-
-    let team_folder = TEAM_FOLDERS.find(t => t.name === player.team.name)['folder']
     let logo
+    let team_folder = TEAM_FOLDERS.find(t => t.name === player.team.name)['folder']
 
-    let rel_path = `aov/players/${player.name.toLowerCase()}.png`
-    let img_path = this.try_require(rel_path)
+    // Image Path, or Default if it doesn't exist
+    //
+    let name = player.name.toLowerCase()
+    let img_path = this.get_player_img_path(name)
+
+    if (!this.try_require(img_path)) {
+      img_path = this.get_player_img_path('default')
+    }
 
     let player_card = (
       player && (
