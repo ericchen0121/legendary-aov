@@ -1,3 +1,6 @@
+export const FETCH_TWEETS = 'FETCH_TWEETS'
+
+
 let TEAM_FOLDERS = [
   {
     name: 'Flipsid3 Tactics',

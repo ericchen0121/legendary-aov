@@ -12,6 +12,7 @@ import Divider from 'material-ui/Divider';
 import PlayerCardSocial from './PlayerCardSocial'
 import TEAM_FOLDERS from './constants'
 
+import SocialCard from './SocialCard'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -146,6 +147,7 @@ class PlayerCard extends React.Component {
 
           </CardContent>
         </Card>
+        <SocialCard />
       </div>
     )
   }

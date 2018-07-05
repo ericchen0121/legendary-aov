@@ -62,9 +62,12 @@ module.exports = {
 
     // https://apps.twitter.com/
     twitter: {
-      key: process.env.TWITTER_CONSUMER_KEY || 'tweet',
-      secret:
+      consumer_key: process.env.TWITTER_CONSUMER_KEY || 'tweet',
+      consumer_secret:
         process.env.TWITTER_CONSUMER_SECRET || 'tweet',
+      access_token: process.env.TWITTER_ACCESS_TOKEN,
+      access_token_secret: 	process.env.TWITTER_ACCESS_TOKEN_SECRET,
+      // app_only_auth: true
     },
   },
 };

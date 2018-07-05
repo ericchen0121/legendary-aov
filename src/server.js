@@ -31,6 +31,7 @@ import models from './data/models';
 import schema from './data/schema';
 import config from './config';
 
+
 // Mui theme provider
 import { renderToString } from 'react-dom/server'
 import { SheetsRegistry } from 'react-jss/lib/jss';
@@ -51,6 +52,23 @@ import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unr
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
 
+// Twitter config
+import Twit from 'twit'
+var T = new Twit(config.auth.twitter)
+
+// T.get('search/tweets', { q: 'arena of valor since:2011-07-11', count: 100 }, function(err, data, response) {
+//   console.log(data)
+// })
+var stream = T.stream('statuses/filter', { track: 'arena of valor' })
+stream.on('message', function (msg) {
+  console.log(msg)
+})
+
+stream.on('tweet', function (tweet) {
+  console.log(tweet)
+})
+
+console.log(T)
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
