@@ -1356,6 +1356,30 @@ export const ITEMS = [
     }]
   },
   {
+    id: 54,
+    name: "Curse of Death",
+    type: 'attack',
+    tier: 2,
+    cost: 1800,
+    folder: 'curseofdeath',
+    effects: [
+      {
+        type: 'attack damage',
+        power: 100,
+      },
+      {
+        type: 'life steal',
+        power: .1,
+      },
+    ],
+    passives: [{
+      name: "Soul Prison",
+      unique: true,
+      description: "On dealing damage, reduces target's HP regeneration by 50% for 1.5 seconds. If this is triggered by normal attacks, the duration is extended to 3 seconds.",
+      type: ['reduce HP regen']
+    }]
+  },
+  {
     id: 53,
     name: "Spoopy Mask",
     type: 'magic',

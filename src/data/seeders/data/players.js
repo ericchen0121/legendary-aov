@@ -69,6 +69,7 @@ let PLAYERS = [
   },
   {
     name: 'rest',
+    real_name: 'Tanner Scadden',
     twitter: 'RestAOV',
     twitch: 'RestAOV',
     team_id: 2

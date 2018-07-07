@@ -26,6 +26,7 @@ export const ARMORY_FILTERS = {
 };
 
 export const VIDEO_SEARCH_TERMS = [
+  'world cup',
   'gameplay highlight',
   'gameplay',
   'hero spotlight',

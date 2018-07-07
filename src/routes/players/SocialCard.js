@@ -10,7 +10,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 
-import TEAM_FOLDERS from './constants'
+import { Timeline } from 'react-twitter-widgets'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -25,12 +25,23 @@ class SocialCard extends React.Component {
   }
 
   render() {
-    const { classes, player } = this.props
+    const { classes, screen_name } = this.props
 
     return (
       <div>
         <Card className={classes.card}>
           <CardContent>
+            <Timeline
+              dataSource={{
+                sourceType: 'list',
+                ownerScreenName: "legendaryinc100",
+                slug: "arena-of-valor"
+              }}
+              options={{
+                username: screen_name,
+                height: '800',
+              }}
+            />
           </CardContent>
         </Card>
       </div>

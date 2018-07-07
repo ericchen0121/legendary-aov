@@ -54,21 +54,21 @@ import { setRuntimeVariable } from './actions/runtime';
 
 // Twitter config
 import Twit from 'twit'
+import twitHandleStream from './twitStreamHandler'
 var T = new Twit(config.auth.twitter)
 
 // T.get('search/tweets', { q: 'arena of valor since:2011-07-11', count: 100 }, function(err, data, response) {
 //   console.log(data)
 // })
-var stream = T.stream('statuses/filter', { track: 'arena of valor' })
-stream.on('message', function (msg) {
-  console.log(msg)
-})
+// var aov_stream = T.stream('statuses/filter', { track: 'arena of valor, aov, valor series, twitchcon' })
+// aov_stream.on('tweet', (data) => { twitHandleStream(data)})
 
-stream.on('tweet', function (tweet) {
-  console.log(tweet)
-})
+// var T1 = new Twit(config.auth.twitter)
+var user_stream  = T.stream('user', {screen_name: 'CNN'})
+user_stream.on('tweet', (data) => { twitHandleStream(data)})
 
-console.log(T)
+var eric_stream = T.stream('user', {screen_name: 'ericchen0121'})
+eric_stream.on('tweet', (data) => { twitHandleStream(data)})
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -313,6 +313,7 @@ if (!module.hot) {
     });
   });
 }
+
 
 //
 // Hot Module Replacement

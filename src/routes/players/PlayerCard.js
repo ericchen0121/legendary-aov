@@ -12,7 +12,6 @@ import Divider from 'material-ui/Divider';
 import PlayerCardSocial from './PlayerCardSocial'
 import TEAM_FOLDERS from './constants'
 
-import SocialCard from './SocialCard'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,7 +21,10 @@ const SOCIAL = ['twitch', 'youtube', 'garena', 'instagram', 'twitter', 'facebook
 const styles = theme => ({
   card: {
     marginRight: 10,
-    marginBottom: 35
+    marginBottom: 25,
+  },
+  cardContent: {
+    paddingBottom: '15px !important'
   },
   bullet: {
     display: 'inline-block',
@@ -40,9 +42,10 @@ const styles = theme => ({
   type_container: {
   },
   team_logo: {
-    width: 25,
-    height: 25,
-    borderRadius: 3
+    width: 20,
+    height: 20,
+    borderRadius: 3,
+    marginRight: 5
   },
   player: {
     width: 65,
@@ -90,16 +93,42 @@ class PlayerCard extends React.Component {
     if (player.role) { role = player.role.toUpperCase() }
     else { role = player.role }
 
+    let social_links = SOCIAL.map(s => {
+      if (player && player[s]) {
+        return (
+          <PlayerCardSocial
+            type = {s}
+            link = {player[s]}
+          />
+        )
+      }
+      return
+    })
+
     let player_card = (
       player && (
         <div>
           <div className={cx(s.wrapper, s.text_align_left)}>
-            <img className={classes.player} src={img_path} />
             <div className={classes.type_container}>
               <Grid container spacing={12} zeroMinWidth className={classes.container}>
-                <Grid item xs={8}>
+                <Grid item xs={12}>
+                  <Grid container spacing={12} zeroMinWidth className={classes.container}>
+                    <Grid item xs={9}>
+                      <img className={classes.player} src={img_path} />
+                    </Grid>
+                    <Grid item xs={3}>
+                      <div>
+                        { social_links }
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12}>
                   <Typography variant="headline" component="h3" className={classes.title}>
                     <span>{player.name}</span>
+                  </Typography>
+                  <Typography color="textSecondary">
+                    <span className={classes.team}>{ role }</span>
                   </Typography>
                   <Typography color="textSecondary">
                     <span className={classes.real_name}>{player.real_name}</span>
@@ -110,27 +139,6 @@ class PlayerCard extends React.Component {
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
-                  <div>
-                    <Typography color="textSecondary">
-                      <span className={classes.team}>{ role }</span>
-                    </Typography>
-                  </div>
-                  <div>
-                    {
-                      SOCIAL.map(s => {
-                        if (player[s]) {
-                          console.log(s, player[s])
-                          return (
-                            <PlayerCardSocial
-                              type = {s}
-                              link = {player[s]}
-                            />
-                          )
-                        }
-                        return
-                      })
-                    }
-                  </div>
                 </Grid>
               </Grid>
             </div>
@@ -141,13 +149,10 @@ class PlayerCard extends React.Component {
     return (
       <div>
         <Card className={classes.card}>
-          <CardContent>
-
+          <CardContent className={classes.cardContent}>
             { player_card }
-
           </CardContent>
         </Card>
-        <SocialCard />
       </div>
     )
   }

@@ -6,6 +6,8 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 import PlayerCard from './PlayerCard'
+import SocialCard from './SocialCard'
+
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -15,6 +17,9 @@ import gql from "graphql-tag";
 import { ALL_PLAYERS } from '../../data/gql_queries/players'
 
 const styles = theme => ({
+  container: {
+    paddingTop: 30
+  },
   root: theme.mixins.gutters({
     paddingTop: 12,
     paddingBottom: 12,
@@ -52,11 +57,11 @@ class PlayersContainer extends React.Component {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
 
-          let players
+          let players, tweets
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
               return (
-                <Grid item xs={3}>
+                <Grid item xs={6}>
                   <PlayerCard
                     player={p}
                   />
@@ -68,18 +73,22 @@ class PlayersContainer extends React.Component {
             return <div>Finding AOV Players...</div>
           }
 
+
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
-              <Grid item xs={2}>
+              <Grid item xs={1}>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={3}>
                 <Grid container spacing={12}>
                   {players}
                 </Grid>
               </Grid>
-              <Grid item xs={2}>
-
+              <Grid item xs={4}>
+                <SocialCard
+                  screen_name='legendaryinc100'
+                />
               </Grid>
+
             </Grid>
           )
 
