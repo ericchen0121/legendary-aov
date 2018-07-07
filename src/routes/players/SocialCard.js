@@ -17,6 +17,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const styles = theme => ({
+  card: {
+    marginRight: 10
+  }
 });
 
 class SocialCard extends React.Component {
@@ -25,23 +28,44 @@ class SocialCard extends React.Component {
   }
 
   render() {
-    const { classes, screen_name } = this.props
+    const { classes, screen_name, list_name, type } = this.props
+
+    let feed
+    if (type==='list') {
+      feed = (
+        <Timeline
+          dataSource={{
+            sourceType: 'list',
+            ownerScreenName: screen_name,
+            slug: list_name
+          }}
+          options={{
+            username: screen_name,
+            height: '1600',
+          }}
+        />
+      )
+    }
+    else if (type==='profile') {
+      feed = (
+        <Timeline
+          dataSource={{
+            sourceType: 'profile',
+            screenName: screen_name
+          }}
+          options={{
+            username: screen_name,
+            height: '1600',
+          }}
+        />
+      )
+    }
 
     return (
       <div>
         <Card className={classes.card}>
           <CardContent>
-            <Timeline
-              dataSource={{
-                sourceType: 'list',
-                ownerScreenName: "legendaryinc100",
-                slug: "arena-of-valor"
-              }}
-              options={{
-                username: screen_name,
-                height: '800',
-              }}
-            />
+            {feed}
           </CardContent>
         </Card>
       </div>

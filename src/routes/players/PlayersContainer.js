@@ -37,15 +37,21 @@ const styles = theme => ({
   },
   team: {
     fontSize: 11
+  },
+  spacing: {
+    marginRight:5
   }
 })
 
 class PlayersContainer extends React.Component {
+  state = {
+    selected_user: null,
+    selected_twitter: null
+  }
 
   render() {
-    const { classes, context } = this.props
-
-
+    const { classes, context, } = this.props
+    let { selected_user, selected_twitter } = this.state
 
     return (
       <Query
@@ -53,17 +59,37 @@ class PlayersContainer extends React.Component {
       >
         {( { loading, error, data } ) => {
           if (error) {
-            console.log(error)
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
+          }
+
+          let select_user = (user) => {
+            // reset on click twice
+            console.log(user, selected_user )
+            if (selected_user === user) {
+              console.log('true its equal')
+              this.setState({
+                selected_user: null,
+                selected_twitter: null
+              }, () => {console.log(this.state)})
+            }
+            else {
+              // set user and twitter handle
+              let twitter_name = data.players.find(p => p.name === user).twitter
+              this.setState({
+                selected_user: user,
+                selected_twitter: twitter_name
+              })
+            }
           }
 
           let players, tweets
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
               return (
-                <Grid item xs={6}>
+                <Grid item xs={6} onClick={() => select_user(p.name)}>
                   <PlayerCard
                     player={p}
+                    selected={p.name === selected_user}
                   />
                 </Grid>
               )
@@ -85,10 +111,20 @@ class PlayersContainer extends React.Component {
               </Grid>
               <Grid item xs={4}>
                 <SocialCard
+                  type='list'
                   screen_name='legendaryinc100'
+                  list_name='arena-of-valor'
                 />
               </Grid>
-
+              <Grid item xs={4}>
+                {
+                  this.state.selected_twitter &&
+                  <SocialCard
+                    type='profile'
+                    screen_name={this.state.selected_twitter}
+                  />
+                }
+              </Grid>
             </Grid>
           )
 

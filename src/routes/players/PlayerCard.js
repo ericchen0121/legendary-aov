@@ -22,6 +22,7 @@ const styles = theme => ({
   card: {
     marginRight: 10,
     marginBottom: 25,
+    cursor: 'pointer'
   },
   cardContent: {
     paddingBottom: '15px !important'
@@ -58,6 +59,9 @@ const styles = theme => ({
   },
   real_name: {
     fontSize: 9
+  },
+  selected_card: {
+    background: 'yellow'
   }
 });
 
@@ -77,7 +81,7 @@ class PlayerCard extends React.Component {
   }
 
   render() {
-    const { classes, player } = this.props
+    const { classes, player, selected } = this.props
     let logo, role
     let team_folder = TEAM_FOLDERS.find(t => t.name === player.team.name)['folder']
 
@@ -104,6 +108,11 @@ class PlayerCard extends React.Component {
       }
       return
     })
+
+    let selected_card_style
+    if (selected) {
+      selected_card_style = classes.selected_card
+    }
 
     let player_card = (
       player && (
@@ -148,7 +157,7 @@ class PlayerCard extends React.Component {
 
     return (
       <div>
-        <Card className={classes.card}>
+        <Card className={cx(classes.card, selected_card_style)}>
           <CardContent className={classes.cardContent}>
             { player_card }
           </CardContent>
