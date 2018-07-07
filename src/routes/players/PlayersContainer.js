@@ -7,6 +7,7 @@ import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
 import PlayerCard from './PlayerCard'
 import SocialCard from './SocialCard'
+import Twitch from './Twitch'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -62,9 +63,9 @@ class PlayersContainer extends React.Component {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
 
+          // Functions
           let select_user = (user) => {
-            // reset on click twice
-            console.log(user, selected_user )
+            // if already selected, reset
             if (selected_user === user) {
               console.log('true its equal')
               this.setState({
@@ -72,8 +73,8 @@ class PlayersContainer extends React.Component {
                 selected_twitter: null
               }, () => {console.log(this.state)})
             }
+            // else set user and twitter handle
             else {
-              // set user and twitter handle
               let twitter_name = data.players.find(p => p.name === user).twitter
               this.setState({
                 selected_user: user,
@@ -82,6 +83,7 @@ class PlayersContainer extends React.Component {
             }
           }
 
+          // Components
           let players, tweets
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
@@ -99,6 +101,14 @@ class PlayersContainer extends React.Component {
             return <div>Finding AOV Players...</div>
           }
 
+          // INSIDE THE grid 4
+          // {
+          //   this.state.selected_twitter &&
+          //   <SocialCard
+          //     type='profile'
+          //     screen_name={this.state.selected_twitter}
+          //   />
+          // }
 
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
@@ -117,13 +127,9 @@ class PlayersContainer extends React.Component {
                 />
               </Grid>
               <Grid item xs={4}>
-                {
-                  this.state.selected_twitter &&
-                  <SocialCard
-                    type='profile'
-                    screen_name={this.state.selected_twitter}
-                  />
-                }
+                <Twitch
+                  channel='abrownbag'
+                />
               </Grid>
             </Grid>
           )
