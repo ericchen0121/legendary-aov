@@ -46,19 +46,20 @@ const styles = theme => ({
 
 class PlayersContainer extends React.Component {
   state = {
-    selected_user: null,
-    selected_twitter: null
+    selected_user: null
   }
 
   render() {
     const { classes, context, } = this.props
-    let { selected_user, selected_twitter } = this.state
+    let { selected_user } = this.state
 
     return (
       <Query
         query={ALL_PLAYERS}
       >
         {( { loading, error, data } ) => {
+          console.log(data)
+
           if (error) {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
@@ -66,20 +67,14 @@ class PlayersContainer extends React.Component {
           // Functions
           let select_user = (user) => {
             // if already selected, reset
-            if (selected_user === user) {
-              console.log('true its equal')
+            if (selected_user && selected_user.name === user.name) {
               this.setState({
-                selected_user: null,
-                selected_twitter: null
+                selected_user: null
               }, () => {console.log(this.state)})
             }
             // else set user and twitter handle
             else {
-              let twitter_name = data.players.find(p => p.name === user).twitter
-              this.setState({
-                selected_user: user,
-                selected_twitter: twitter_name
-              })
+              this.setState({ selected_user: user })
             }
           }
 
@@ -88,10 +83,10 @@ class PlayersContainer extends React.Component {
           if (data.players && data.players.length > 0) {
             players = data.players.map(p => {
               return (
-                <Grid item xs={6} onClick={() => select_user(p.name)}>
+                <Grid item xs={6} onClick={() => select_user(p)}>
                   <PlayerCard
                     player={p}
-                    selected={p.name === selected_user}
+                    selected={selected_user ? (p.name === selected_user.name) : false}
                   />
                 </Grid>
               )
@@ -102,13 +97,34 @@ class PlayersContainer extends React.Component {
           }
 
           // INSIDE THE grid 4
-          // {
-          //   this.state.selected_twitter &&
-          //   <SocialCard
-          //     type='profile'
-          //     screen_name={this.state.selected_twitter}
-          //   />
-          // }
+          let twitter_feed
+          if (selected_user && selected_user.twitter) {
+            twitter_feed = (
+              <SocialCard
+                type='profile'
+                screen_name={selected_user.twitter}
+              />
+            )
+          } else {
+            twitter_feed = (
+              <SocialCard
+                type='list'
+                screen_name='legendaryinc100'
+                list_name='arena-of-valor'
+              />
+            )
+          }
+
+          let twitch_feed
+          if (selected_user && selected_user.twitch) {
+            twitch_feed = (
+              <Twitch
+                channel={selected_user.twitch}
+              />
+            )
+          } else {
+            twitch_feed = <div />
+          }
 
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
@@ -120,16 +136,10 @@ class PlayersContainer extends React.Component {
                 </Grid>
               </Grid>
               <Grid item xs={4}>
-                <SocialCard
-                  type='list'
-                  screen_name='legendaryinc100'
-                  list_name='arena-of-valor'
-                />
+                {twitter_feed}
               </Grid>
               <Grid item xs={4}>
-                <Twitch
-                  channel='abrownbag'
-                />
+                { twitch_feed }
               </Grid>
             </Grid>
           )
