@@ -88,7 +88,9 @@ class PlayersContainer extends React.Component {
 
           let clear_user = () => {
             this.setState({
-              selected_user: null
+              name: null,
+              twitter: null,
+              twitch: null
             })
           }
 
