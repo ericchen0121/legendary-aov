@@ -25,11 +25,10 @@ class Twitch extends React.Component {
   }
 
   render() {
-
     return (
         <div>
-        Twitch {this.props.channel} {this.props.width} {this.props.height}
-        <div id={this.props.targetID}>test</div>
+          Twitch {this.props.channel} {this.props.width} {this.props.height}
+        <div id={this.props.targetID}></div>
       </div>
     )
   }

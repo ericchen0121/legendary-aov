@@ -46,12 +46,14 @@ const styles = theme => ({
 
 class PlayersContainer extends React.Component {
   state = {
-    selected_user: null
+    name: null,
+    twitter: null,
+    twitch: null
   }
 
   render() {
-    const { classes, context, } = this.props
-    let { selected_user } = this.state
+    const { classes, context } = this.props
+    let { name, twitter, twitch } = this.state
 
     return (
       <Query
@@ -67,15 +69,27 @@ class PlayersContainer extends React.Component {
           // Functions
           let select_user = (user) => {
             // if already selected, reset
-            if (selected_user && selected_user.name === user.name) {
-              this.setState({
-                selected_user: null
-              }, () => {console.log(this.state)})
+            if (name === user.name) {
+              clear_user()
             }
             // else set user and twitter handle
             else {
-              this.setState({ selected_user: user })
+              set_user(user)
             }
+          }
+
+          let set_user = (user) => {
+            this.setState({
+              name: user.name,
+              twitter: user.twitter,
+              twitch: user.twitch
+            }, () => console.log(this.state))
+          }
+
+          let clear_user = () => {
+            this.setState({
+              selected_user: null
+            })
           }
 
           // Components
@@ -86,7 +100,7 @@ class PlayersContainer extends React.Component {
                 <Grid item xs={6} onClick={() => select_user(p)}>
                   <PlayerCard
                     player={p}
-                    selected={selected_user ? (p.name === selected_user.name) : false}
+                    selected={ p.name === name}
                   />
                 </Grid>
               )
@@ -98,11 +112,11 @@ class PlayersContainer extends React.Component {
 
           // INSIDE THE grid 4
           let twitter_feed
-          if (selected_user && selected_user.twitter) {
+          if (twitter) {
             twitter_feed = (
               <SocialCard
                 type='profile'
-                screen_name={selected_user.twitter}
+                screen_name={twitter}
               />
             )
           } else {
@@ -116,10 +130,10 @@ class PlayersContainer extends React.Component {
           }
 
           let twitch_feed
-          if (selected_user && selected_user.twitch) {
+          if (twitch) {
             twitch_feed = (
               <Twitch
-                channel={selected_user.twitch}
+                channel={twitch}
               />
             )
           } else {
