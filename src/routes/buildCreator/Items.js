@@ -1398,6 +1398,34 @@ export const ITEMS = [
     ],
     passives: []
   },
+  {
+    id: 55,
+    name: "Rock Shield",
+    type: 'defense',
+    tier: 3,
+    cost: 1980,
+    folder: 'rockshield',
+    effects: [
+      {
+        type: 'armor',
+        power: 150,
+      },
+      {
+        type: 'magic defense',
+        power: 150,
+      },
+      {
+        type: 'max hp',
+        power: 800,
+      },
+    ],
+    passives: [{
+      name: "Rock Shield",
+      unique: true,
+      description: "3 seconds after activation, the wearer gains a shield with 30% of the damage taken in those 3 seconds (+10% of max HP) for 3 seconds. The player's damage dealt is reduced by 70% for 3 seconds after gaining the shield. 75-second cooldown.",
+      type: ['shield']
+    }]
+  },
 ]
 
 export const TALENTS = [

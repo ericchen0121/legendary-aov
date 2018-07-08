@@ -15,7 +15,7 @@ import config from '../config';
 /* eslint-disable react/no-danger */
 
 class Html extends React.Component {
-  
+
   static propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
@@ -58,13 +58,6 @@ class Html extends React.Component {
               dangerouslySetInnerHTML={{ __html: style.cssText }}
             />
           ))}
-        </head>
-        <body>
-          <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
-          <script
-            dangerouslySetInnerHTML={{ __html: `window.App=${serialize(app)}` }}
-          />
-          {scripts.map(script => <script key={script} src={script} />)}
           {config.analytics.googleTrackingId && (
             <script
               dangerouslySetInnerHTML={{
@@ -83,6 +76,13 @@ class Html extends React.Component {
               defer
             />
           )}
+        </head>
+        <body>
+          <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+          <script
+            dangerouslySetInnerHTML={{ __html: `window.App=${serialize(app)}` }}
+          />
+          {scripts.map(script => <script key={script} src={script} />)}
         </body>
       </html>
     );

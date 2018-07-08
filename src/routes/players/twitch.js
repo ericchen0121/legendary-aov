@@ -1,4 +1,6 @@
 import React from 'react'
+import s from './Player.scss'
+import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 
 // API docs
 // https://dev.twitch.tv/docs/embed/video-and-clips/
@@ -31,7 +33,7 @@ class Twitch extends React.Component {
   render() {
     return (
         <div>
-          Twitch {this.props.channel} {this.props.width} {this.props.height}
+          <div className={s.hide}>{this.props.channel} {this.props.width} {this.props.height}</div>
         <div id={this.props.targetID}></div>
       </div>
     )
@@ -43,4 +45,4 @@ Twitch.defaultProps = {
   width: '95%',
 }
 
-export default Twitch
+export default withStyles2(s)(Twitch)

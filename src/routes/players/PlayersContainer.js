@@ -51,6 +51,10 @@ class PlayersContainer extends React.Component {
     twitch: null
   }
 
+  componentWillRender() {
+    
+  }
+
   render() {
     const { classes, context } = this.props
     let { name, twitter, twitch } = this.state
@@ -60,7 +64,6 @@ class PlayersContainer extends React.Component {
         query={ALL_PLAYERS}
       >
         {( { loading, error, data } ) => {
-          console.log(data)
 
           if (error) {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
@@ -102,7 +105,7 @@ class PlayersContainer extends React.Component {
                 <Grid item xs={6} onClick={() => select_user(p)}>
                   <PlayerCard
                     player={p}
-                    selected={ p.name === name}
+                    selected={ p.name === name }
                   />
                 </Grid>
               )
