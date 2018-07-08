@@ -9783,7 +9783,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@2, request@^2.68.0, request@^2.74.0, request@^2.85.0:
+request@2, request@^2.68.0, request@^2.74.0, request@^2.79.0, request@^2.85.0:
   version "2.87.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
   dependencies:
@@ -11231,6 +11231,13 @@ twit@^2.2.11:
     bluebird "^3.1.5"
     mime "^1.3.4"
     request "^2.68.0"
+
+twitch-api-v5@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/twitch-api-v5/-/twitch-api-v5-2.0.4.tgz#b9ff6d64d30c925b118be677d8f0514ad9f8ebac"
+  dependencies:
+    querystring "^0.2.0"
+    request "^2.79.0"
 
 type-check@~0.3.2:
   version "0.3.2"

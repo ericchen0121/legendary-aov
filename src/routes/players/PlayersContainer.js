@@ -83,7 +83,7 @@ class PlayersContainer extends React.Component {
               name: user.name,
               twitter: user.twitter,
               twitch: user.twitch
-            }, () => console.log(this.state))
+            })
           }
 
           let clear_user = () => {

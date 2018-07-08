@@ -66,8 +66,11 @@ module.exports = {
       consumer_secret:
         process.env.TWITTER_CONSUMER_SECRET || 'tweet',
       access_token: process.env.TWITTER_ACCESS_TOKEN,
-      access_token_secret: 	process.env.TWITTER_ACCESS_TOKEN_SECRET, 
+      access_token_secret: 	process.env.TWITTER_ACCESS_TOKEN_SECRET,
       // app_only_auth: true
     },
+    twitch: {
+      client_id: process.env.TWITCH_CLIENT_ID
+    }
   },
 };

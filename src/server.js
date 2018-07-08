@@ -31,7 +31,6 @@ import models from './data/models';
 import schema from './data/schema';
 import config from './config';
 
-
 // Mui theme provider
 import { renderToString } from 'react-dom/server'
 import { SheetsRegistry } from 'react-jss/lib/jss';
@@ -52,29 +51,47 @@ import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unr
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
 
-// Twitter config
-import Twit from 'twit'
-import twitHandleStream from './twitStreamHandler'
-var T = new Twit(config.auth.twitter)
+// // Twitter config
+// import Twit from 'twit'
+// import twitHandleStream from './twitStreamHandler'
+// var T = new Twit(config.auth.twitter)
+// 
+// var user_stream  = T.stream('user', {screen_name: 'CNN'})
+// user_stream.on('tweet', (data) => { twitHandleStream(data)})
+//
+// var eric_stream = T.stream('user', {screen_name: 'ericchen0121'})
+// eric_stream.on('tweet', (data) => { twitHandleStream(data)})
+//
+// process.on('unhandledRejection', (reason, p) => {
+//   console.error('Unhandled Rejection at:', p, 'reason:', reason);
+//   // send entire app down. Process manager will restart it
+//   process.exit(1);
+// });
 
-// T.get('search/tweets', { q: 'arena of valor since:2011-07-11', count: 100 }, function(err, data, response) {
-//   console.log(data)
-// })
-// var aov_stream = T.stream('statuses/filter', { track: 'arena of valor, aov, valor series, twitchcon' })
-// aov_stream.on('tweet', (data) => { twitHandleStream(data)})
 
-// var T1 = new Twit(config.auth.twitter)
-var user_stream  = T.stream('user', {screen_name: 'CNN'})
-user_stream.on('tweet', (data) => { twitHandleStream(data)})
-
-var eric_stream = T.stream('user', {screen_name: 'ericchen0121'})
-eric_stream.on('tweet', (data) => { twitHandleStream(data)})
-
-process.on('unhandledRejection', (reason, p) => {
-  console.error('Unhandled Rejection at:', p, 'reason:', reason);
-  // send entire app down. Process manager will restart it
-  process.exit(1);
-});
+// // Twitch Config
+// import twitch from 'twitch-api-v5'
+// twitch.clientID = config.auth.twitch.client_id
+// console.log(twitch)
+// // twitch.users.usersByName({ logins: 'esc0121' }, (err, res) => {
+// // twitch.users.userByID({ userID: 133596784 }, (err, res) => {
+// // twitch.streams.channel({ channelID: 'priv8dancer' }, (err, res) => {
+// twitch.search.channels({query: 'arena of valor'}, (err, res) => {
+//     if(err) {
+//         console.log('TWITCH ERROR', err);
+//     } else {
+//         console.log('TWITCH', res);
+//         /* Example response
+//         {
+//             display_name: 'Twitch',
+//             _id: '12826',
+//             name: 'twitch',
+//             type: 'user',
+//             ...
+//         }
+//         */
+//     }
+// });
 
 //
 // Tell any CSS tooling (such as Material UI) to use all vendor prefixes if the

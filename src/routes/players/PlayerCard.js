@@ -20,6 +20,7 @@ const SOCIAL = ['twitch', 'youtube', 'garena', 'instagram', 'twitter', 'facebook
 
 const styles = theme => ({
   card: {
+    border: '3px solid transparent',
     marginRight: 10,
     marginBottom: 25,
     cursor: 'pointer'
@@ -61,7 +62,8 @@ const styles = theme => ({
     fontSize: 9
   },
   selected_card: {
-    background: 'yellow'
+    border: '3px solid gold',
+    background: 'rgba(255,215,0, .05)'
   }
 });
 

@@ -86,7 +86,7 @@ class Draft extends React.Component {
     top_level_filter_selected: DEFAULT_TOP_LEVEL_FILTER,
     lower_level_filter_selected: HERO_FILTERS[DEFAULT_TOP_LEVEL_FILTER][0],
     video_search_term: VIDEO_SEARCH_TERMS[0],
-    video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM + VIDEO_SEARCH_TERMS[0],
+    video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM,
     window_width: null,
     channel: null,
   };

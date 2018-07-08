@@ -1,5 +1,9 @@
 import React from 'react'
 
+// API docs
+// https://dev.twitch.tv/docs/embed/video-and-clips/
+
+
 // Adapted from
 // https://jsfiddle.net/tadachi/7jzfnw99/8/
 // https://stackoverflow.com/questions/48724108/using-twitch-embedded-video-with-reactjs
