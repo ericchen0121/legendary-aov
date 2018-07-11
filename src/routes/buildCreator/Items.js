@@ -1426,6 +1426,30 @@ export const ITEMS = [
       type: ['shield']
     }]
   },
+  {
+    id: 56,
+    name: "Odin's Will",
+    type: 'defense',
+    tier: 2,
+    cost: 1820,
+    folder: 'odinswill',
+    effects: [
+      {
+        type: 'attack damage',
+        power: 60,
+      },
+      {
+        type: 'max hp',
+        power: 1000,
+      },
+    ],
+    passives: [{
+      name: "Adrenaline",
+      description: 'Increases movement speed by 2% and deals 2% additional damage after taking damage. Stacks up to 5 times.',
+      type: ['movement+', 'attack damage'],
+      unique: true
+    }]
+  },
 ]
 
 export const TALENTS = [

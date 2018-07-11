@@ -14,14 +14,15 @@ const initialState = {
 const youtube_list = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_YOUTUBE_LIST_RESULTS:
-      let latest_playlist = action.data.items.sort((a,b) => {
-          return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
-      });
+      // let latest_playlist = action.data.items.sort((a,b) => {
+      //     return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
+      // });
 
       return {
         ...state,
         data: action.data.items,   // items is an Array of YT Video objects
-        selected_video: latest_playlist[0], // autoselect the first video
+        // selected_video: latest_playlist[0], // autoselect the first video
+        selected_video: action.data.items[0]
       }
     case SELECT_YOUTUBE_VIDEO:
       return {

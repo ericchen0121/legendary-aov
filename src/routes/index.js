@@ -38,7 +38,7 @@ const routes = {
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
-      path: '/build/me',
+      path: '/build/create',
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator/me'),
     },
     {

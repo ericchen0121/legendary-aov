@@ -16,7 +16,7 @@ const addUser = {
       username
     })
     .catch(sequelize.ValidationError,  err =>  {
-      console.log('SEQUELIZE ERROR!')
+      console.log('SEQUELIZE ERROR!', err)
       return false
     })
   }

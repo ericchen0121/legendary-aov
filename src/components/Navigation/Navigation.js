@@ -37,9 +37,11 @@ class Navigation extends React.Component {
 
   render() {
     let { user_login } = this.props
-    console.log( user_login )
     return (
       <div className={s.root} role="navigation">
+        <Link className={cx(s.link)} to="/players">
+          Players
+        </Link>
         <Link className={cx(s.link)} to="/video">
           Videos
         </Link>
@@ -47,7 +49,7 @@ class Navigation extends React.Component {
           Builds
         </Link>
         { user_login.is_logged_in &&
-          (<Link className={cx(s.link)} to="/build/me">
+          (<Link className={cx(s.link)} to="/build/create">
             My Builds
           </Link>)
         }

@@ -9,7 +9,7 @@ import UserType from '../types/UserType';
 const UserInputType = new GraphQLInputObjectType({
   name: 'UserInputType',
   type: UserType,
-  description: 'Input build payload',
+  description: 'Input User payload',
   fields: {
     email: { type: StringType },
     password: { type: StringType },

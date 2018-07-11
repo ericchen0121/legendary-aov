@@ -63,11 +63,11 @@ class Login extends React.Component {
   handleChangeEmail = (e) => {
     this.setState({
       email: e.target.value,
-    })
+    }, () => console.log(this.state))
   }
 
   handleChangeUsername = (e) => {
-    this.setState({username: e.target.value })
+    this.setState({username: e.target.value }, () => console.log(this.state))
   }
 
   handleChangePassword = (e) => {
@@ -79,11 +79,12 @@ class Login extends React.Component {
   handleRegisterUser = (data) => {
     let id, email, username
     if (data.addUser) {
+      console.log(data.addUser)
       id = data.addUser.id
       email = data.addUser.email
       username = data.addUser.username
 
-      this.props.actions.loginUser({
+      this.props.actions.registerUser({
         id,
         email,
         username
@@ -117,6 +118,7 @@ class Login extends React.Component {
   }
 
   _saveUserData = (id, email, username, is_logged_in) => {
+    console.log(id, email, username)
     let legendaryaov_user = JSON.stringify({
       id,
       email,
@@ -231,7 +233,7 @@ class Login extends React.Component {
         onCompleted={handleRegisterUser}
       >
         {(addUser, {loading, error, data}) => {
-          let container =(
+          let container = (
             <div className={s.root}>
               <div className={s.container}>
                 <h1 className={classes.title}>Register</h1>

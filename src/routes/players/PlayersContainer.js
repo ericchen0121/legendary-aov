@@ -52,13 +52,24 @@ class PlayersContainer extends React.Component {
   }
 
   componentWillRender() {
-    
+
   }
 
   render() {
     const { classes, context } = this.props
     let { name, twitter, twitch } = this.state
-
+    console.log(twitch)
+    let twitch_feed = null
+    if (twitch) {
+      twitch_feed = (
+        <Twitch
+          channel={twitch}
+        />
+      )
+      console.log(twitch_feed)
+    } else {
+      twitch_feed = <div />
+    }
     return (
       <Query
         query={ALL_PLAYERS}
@@ -71,14 +82,29 @@ class PlayersContainer extends React.Component {
 
           // Functions
           let select_user = (user) => {
+
             // if already selected, reset
             if (name === user.name) {
               clear_user()
             }
             // else set user and twitter handle
             else {
-              set_user(user)
+              clear_and_set_user(user)
             }
+          }
+
+          let clear_and_set_user = (user) => {
+            this.setState({
+              name: null,
+              twitter: null,
+              twitch: null,
+            }, () => {
+              this.setState({
+                name: user.name,
+                twitter: user.twitter,
+                twitch: user.twitch
+              })
+            })
           }
 
           let set_user = (user) => {
@@ -134,16 +160,7 @@ class PlayersContainer extends React.Component {
             )
           }
 
-          let twitch_feed
-          if (twitch) {
-            twitch_feed = (
-              <Twitch
-                channel={twitch}
-              />
-            )
-          } else {
-            twitch_feed = <div />
-          }
+
 
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
@@ -151,11 +168,11 @@ class PlayersContainer extends React.Component {
               </Grid>
               <Grid item xs={3}>
                 <Grid container spacing={12}>
-                  {players}
+                  { players }
                 </Grid>
               </Grid>
               <Grid item xs={4}>
-                {twitter_feed}
+                { twitter_feed }
               </Grid>
               <Grid item xs={4}>
                 { twitch_feed }

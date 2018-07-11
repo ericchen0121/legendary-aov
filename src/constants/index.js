@@ -31,8 +31,9 @@ export const MAIN_TITLE = 'Legendary AOV'
 
 export const ROUTE_CONSTANTS = {
   main_title: `${MAIN_TITLE}`,
-  hero_video_title: `${MAIN_TITLE} - Videos`,
-  featured_channel_title: `${MAIN_TITLE} - Channels`
+  hero_video_title: `Videos`,
+  featured_channel_title: `AOV Channels`,
+  players_title: `AOV Players`
 }
 
 
