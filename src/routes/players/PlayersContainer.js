@@ -58,7 +58,7 @@ class PlayersContainer extends React.Component {
   render() {
     const { classes, context } = this.props
     let { name, twitter, twitch } = this.state
-    console.log(twitch)
+
     let twitch_feed = null
     if (twitch) {
       twitch_feed = (
@@ -66,10 +66,10 @@ class PlayersContainer extends React.Component {
           channel={twitch}
         />
       )
-      console.log(twitch_feed)
     } else {
       twitch_feed = <div />
     }
+
     return (
       <Query
         query={ALL_PLAYERS}
@@ -77,7 +77,7 @@ class PlayersContainer extends React.Component {
         {( { loading, error, data } ) => {
 
           if (error) {
-            return <div className={classes.grid_container}>ERROR! Sorry!</div>
+            return <div className={classes.grid_container}>ERROR! Sorry! {error}</div>
           }
 
           // Functions
@@ -143,7 +143,8 @@ class PlayersContainer extends React.Component {
 
           // INSIDE THE grid 4
           let twitter_feed
-          if (twitter) {
+          // if twitter handle, window twitter is initialized
+          if (twitter && window.twttr && window.twttr.init) {
             twitter_feed = (
               <SocialCard
                 type='profile'

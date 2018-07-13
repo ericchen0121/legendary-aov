@@ -8,6 +8,14 @@
  */
   // ENV variable configuration on .env file in root
 
+  // env config
+  import dotenv from 'dotenv'
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('hellooooo')
+    dotenv.config()
+    console.log(process.env)
+  }
+  
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -42,9 +50,7 @@ import {
 } from 'material-ui/styles';
 import green from 'material-ui/colors'
 
-// env config
-// import dotenv from 'dotenv'
-// dotenv.config()
+
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
@@ -55,7 +61,7 @@ import { setRuntimeVariable } from './actions/runtime';
 // import Twit from 'twit'
 // import twitHandleStream from './twitStreamHandler'
 // var T = new Twit(config.auth.twitter)
-// 
+//
 // var user_stream  = T.stream('user', {screen_name: 'CNN'})
 // user_stream.on('tweet', (data) => { twitHandleStream(data)})
 //

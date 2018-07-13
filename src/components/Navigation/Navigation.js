@@ -49,7 +49,7 @@ class Navigation extends React.Component {
           Builds
         </Link>
         { user_login.is_logged_in &&
-          (<Link className={cx(s.link)} to="/build/create">
+          (<Link className={cx(s.link)} to="/build/me">
             My Builds
           </Link>)
         }
