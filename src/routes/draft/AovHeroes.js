@@ -873,7 +873,7 @@ const HEROES = [
   {
     "id": 68,
     "name": 'Marja',
-    'alt_names': [],
+    'alt_names': ['Marja'],
     "nickname": 'Ash Weaver',
     "classes": ['mage', 'tank'],
     'lanes': ['roam'],
@@ -886,7 +886,7 @@ const HEROES = [
   {
     "id": 69,
     "name": 'Baldum',
-    'alt_names': [],
+    'alt_names': ['Baldum'],
     "nickname": 'Monolith',
     "classes": ['tank'],
     'lanes': ['roam'],

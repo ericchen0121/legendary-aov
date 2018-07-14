@@ -16,7 +16,6 @@ class DraftPlaylist extends Component {
         return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
     })
 
-    console.log(list)
     const imgs = list.map(item => {
       const url = item.snippet.thumbnails.medium.url;
       const title = item.snippet.title;
