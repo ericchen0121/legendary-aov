@@ -883,6 +883,19 @@ const HEROES = [
     "folder": 'marja',
     "version_number": 15
   },
+  {
+    "id": 69,
+    "name": 'Baldum',
+    'alt_names': [],
+    "nickname": 'Monolith',
+    "classes": ['tank'],
+    'lanes': ['roam'],
+    'roles': ['control', 'initiator'],
+    'tier': 'a',
+    'tier_index': 2,
+    "folder": 'baldum',
+    "version_number": 15
+  },
 ]
 
 export default HEROES
