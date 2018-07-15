@@ -16,7 +16,7 @@ const initialState = {
 let sort_recent = (list) => {
   return list.sort((a,b) => {
     new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)
-  }
+  })
 }
 
 const youtube_list = (state = initialState, action) => {
