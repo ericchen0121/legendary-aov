@@ -13,18 +13,21 @@ const initialState = {
   current_video_index: 0
 }
 
+let sort_recent = (list) => {
+  return list.sort((a,b) => {
+    new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt)
+  }
+}
+
 const youtube_list = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_YOUTUBE_LIST_RESULTS:
-      // let latest_playlist = action.data.items.sort((a,b) => {
-      //     return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
-      // });
+      // let list = sort_recent(action.data.items)
 
       return {
         ...state,
         data: action.data.items,   // items is an Array of YT Video objects
-        // selected_video: latest_playlist[0], // autoselect the first video
-        selected_video: action.data.items[state.current_video_index]
+        selected_video: action.data.items[state.current_video_index] // autoselect first item
       }
     case SELECT_YOUTUBE_VIDEO:
       return {
@@ -44,7 +47,7 @@ const youtube_list = (state = initialState, action) => {
          current_video_index: state.current_video_index + 1
        }
       }
-      else { return state}
+      else { return state }
 
 
     default:
