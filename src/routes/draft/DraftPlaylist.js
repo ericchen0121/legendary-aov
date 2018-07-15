@@ -6,15 +6,20 @@ import cx from 'classnames';
 import Divider from 'material-ui/Divider';
 
 class DraftPlaylist extends Component {
+  sort_recent(list) {
+    return list.sort((a,b) => {
+        return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
+    })
+  }
+
   render() {
     const { youtube_list, utilities } = this.props;
     const { dark_mode_active } = utilities;
     const more_playlist_alert = 'SCROLL FOR MORE';
 
-    const list = youtube_list.data;
-    list.sort((a,b) => {
-        return new Date(b.snippet.publishedAt) - new Date(a.snippet.publishedAt);
-    })
+    let list = youtube_list.data;
+
+    // list = this.sort_recent(list)
 
     const imgs = list.map(item => {
       const url = item.snippet.thumbnails.medium.url;

@@ -3,12 +3,14 @@ import {
   FETCH_YOUTUBE_LIST_RESULTS,
   FETCH_YOUTUBE_LIST_ERROR,
   SELECT_YOUTUBE_VIDEO,
+  QUEUE_NEXT_VIDEO
 } from '../../constants';
 
 const initialState = {
   data: [],
   selected_video: null,
-  selected_hero: null
+  selected_hero: null,
+  current_video_index: 0
 }
 
 const youtube_list = (state = initialState, action) => {
@@ -22,7 +24,7 @@ const youtube_list = (state = initialState, action) => {
         ...state,
         data: action.data.items,   // items is an Array of YT Video objects
         // selected_video: latest_playlist[0], // autoselect the first video
-        selected_video: action.data.items[0]
+        selected_video: action.data.items[state.current_video_index]
       }
     case SELECT_YOUTUBE_VIDEO:
       return {
@@ -30,10 +32,21 @@ const youtube_list = (state = initialState, action) => {
         selected_video: action.data
       }
     case SELECT_HERO:
-    return {
-      ...state,
-      selected_hero: action.data
-    }
+      return {
+        ...state,
+        selected_hero: action.data
+      }
+    case QUEUE_NEXT_VIDEO:
+      if (state.data) {
+        return {
+         ...state,
+         selected_video: state.data[state.current_video_index + 1],
+         current_video_index: state.current_video_index + 1
+       }
+      }
+      else { return state}
+
+
     default:
       return state;
   }

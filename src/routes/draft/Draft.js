@@ -253,10 +253,8 @@ class Draft extends React.Component {
 
     if ( hero || video_search_term || channel_id) {
       // ie. www.../video/hero/chaugnar
-      console.log('hero is', hero)
       if (hero) {
         const hero_obj = this.getHeroObject(hero);
-        console.log(hero_obj)
         this.uiSelectHero(hero_obj.name);
         this.props.actions.selectHero(hero_obj);
       } else {

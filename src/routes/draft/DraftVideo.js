@@ -26,7 +26,8 @@ export const LeftArrow = () => <IconContainer icon={arrowCircleLeft} />;
 class DraftVideo extends React.Component {
   //  examples here: https://github.com/CookPete/react-player/blob/master/src/demo/App.js
   onEnded = () => {
-    this.restartVideo();
+    // this.restartVideo();
+    this.props.actions.queueNextVideo()
   };
 
   restartVideo = () => {
@@ -42,7 +43,7 @@ class DraftVideo extends React.Component {
     const { dark_mode_active } = utilities;
 
     // console.log(youtube_list)
-    
+
     let vid = null;
 
     let HEIGHT = `${VID_HEIGHT * VID_RATIO}px`;

@@ -150,7 +150,7 @@ class BuildCreator extends React.Component {
   }
 
   render() {
-    const { classes, build_creator, ...other } = this.props
+    const { classes, build_creator, user_login, ...other } = this.props
     const { current_build, is_notes_open } = build_creator
     const { is_saved, open } = this.state
 
@@ -160,6 +160,7 @@ class BuildCreator extends React.Component {
     let resetBuild = this.resetBuild.bind(this)
     let handleNotesOpen = this.handleNotesOpen.bind(this)
 
+    let user_id = user_login.id || current_build.user_id
     let build = {
       name: current_build.name,
       item_1: current_build[1],
@@ -171,7 +172,7 @@ class BuildCreator extends React.Component {
       talent_id: current_build.talent_id,
       hero_id: current_build.hero_id,
       game_mode_id: current_build.game_mode_id,
-      user_id: current_build.user_id,
+      user_id: user_id,
       version_id: current_build.version_id,
       item_1_alt: current_build.item_1_alt,
       item_2_alt: current_build.item_2_alt,

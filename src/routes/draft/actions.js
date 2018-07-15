@@ -11,6 +11,7 @@ import {
   FETCH_YOUTUBE_LIST_RESULTS,
   FETCH_YOUTUBE_LIST_ERROR,
   SELECT_YOUTUBE_VIDEO,
+  QUEUE_NEXT_VIDEO
 } from '../../constants';
 
 export const selectHero = (data) => {
@@ -42,4 +43,8 @@ export const fetchYoutubeListError = (data) => {
 
 export const selectYoutubeVideo = (data) => {
   return { type: SELECT_YOUTUBE_VIDEO, data }
+}
+
+export const queueNextVideo = (data) => {
+  return { type: QUEUE_NEXT_VIDEO, data }
 }

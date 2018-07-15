@@ -19,6 +19,8 @@ import {find_hero_by_id} from '../../draft/AovHeroes'
 const DEFAULT_HERO_ID = 1
 const DEFAULT_TALENT_ID = 1
 const DEFAULT_GAME_MODE_ID = 1
+const DEFAULT_USER_ID = 1
+const DEFAULT_VERSION_ID = 3
 
 const initialState = {
   item_filter: ITEM_CATEGORIES[0],
@@ -36,8 +38,8 @@ const initialState = {
     hero_id: DEFAULT_HERO_ID,
     talent_id: DEFAULT_TALENT_ID,
     game_mode_id: DEFAULT_GAME_MODE_ID,
-    user_id: 1,
-    version_id: 1,
+    user_id: DEFAULT_USER_ID,
+    version_id: DEFAULT_VERSION_ID,
     item_1_alt: [],
     item_2_alt: [],
     item_3_alt: [],
