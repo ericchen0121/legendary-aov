@@ -181,7 +181,8 @@ class BuildCreator extends React.Component {
       item_5_alt: current_build.item_5_alt,
       item_6_alt: current_build.item_6_alt,
       talent_alt: current_build.talent_alt,
-      notes: JSON.stringify(current_build.notes)
+      notes: JSON.stringify(current_build.notes),
+      arcana: current_build.arcana
     }
 
     let build_name = (

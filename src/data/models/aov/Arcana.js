@@ -6,7 +6,7 @@ const Arcana = Model.define(
   {
     id: {
       type: DataType.INTEGER,
-      autoIncrement: true,
+      primaryKey: true,
     },
     name: {
       type: DataType.STRING,

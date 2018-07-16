@@ -65,75 +65,70 @@ const ARCANA = [
     tier: 3,
     color: 'purple'
   },
+
   {
     id: 12,
-    name: ,
-    tier: 3,
-    color: 'purple'
-  },
-  {
-    id: 13,
     name: 'devour',
     tier: 3,
     color: 'purple'
   },
   {
-    id: 14,
+    id: 13,
     name: 'guerilla',
     tier: 3,
     color: 'purple'
   },
   {
-    id: 15,
+    id: 14,
     name: 'sap',
     tier: 3,
     color: 'purple'
   },
   {
-    id: 16,
+    id: 15,
     name: 'consume',
     tier: 3,
     color: 'green'
   },
   {
-    id: 17,
+    id: 16,
     name: 'flurry',
     tier: 3,
     color: 'green'
   },
   {
-    id: 18,
+    id: 17,
     name: 'focus',
     tier: 3,
     color: 'green'
   },
   {
-    id: 19,
+    id: 18,
     name: 'hex',
     tier: 3,
     color: 'green'
   },
   {
-    id: 20,
+    id: 19,
     name: 'skewer',
     tier: 3,
     color: 'green'
   },
   {
-    id: 21,
+    id: 20,
     name: 'valiance',
     tier: 3,
     color: 'green'
   },
   {
-    id: 22,
+    id: 21,
     name: 'onslaught',
     tier: 3,
     color: 'red'
   },
 ]
 
-const CLASS_ARCANA = [
+export const CLASS_ARCANA = [
   {
     class: 'mage',
     arcana: [
@@ -159,11 +154,11 @@ const CLASS_ARCANA = [
       count: 10
       },
       {
-        arcana_id: 13,
+        arcana_id: 12,
         count: 10
       },
       {
-        arcana_id: 17,
+        arcana_id: 16,
         count: 10
       }
     ]
@@ -172,15 +167,15 @@ const CLASS_ARCANA = [
     class: 'jungle',
     arcana: [
       {
-      arcana_id: 22,
+      arcana_id: 21,
       count: 10
       },
       {
-        arcana_id: 14,
+        arcana_id: 13,
         count: 10
       },
       {
-        arcana_id: 20,
+        arcana_id: 19,
         count: 10
       }
     ]
@@ -197,7 +192,7 @@ const CLASS_ARCANA = [
         count: 10
       },
       {
-        arcana_id: 21,
+        arcana_id: 20,
         count: 10
       }
     ]
@@ -214,7 +209,7 @@ const CLASS_ARCANA = [
         count: 10
       },
       {
-        arcana_id: 21,
+        arcana_id: 20,
         count: 10
       }
     ]
@@ -223,7 +218,7 @@ const CLASS_ARCANA = [
     class: 'warrior',
     arcana: [
       {
-      arcana_id: 22,
+      arcana_id: 21,
       count: 10
       },
       {
@@ -231,7 +226,7 @@ const CLASS_ARCANA = [
         count: 10
       },
       {
-        arcana_id: 20,
+        arcana_id: 19,
         count: 10
       }
     ]
@@ -244,16 +239,19 @@ const CLASS_ARCANA = [
       count: 10
       },
       {
-        arcana_id: 14,
+        arcana_id: 13,
         count: 10
       },
       {
-        arcana_id: 20,
+        arcana_id: 19,
         count: 10
       }
     ]
   },
 ]
 
+
 export default ARCANA
-export CLASS_ARCANA
+export function find_arcana_by_id(id) {
+  return ARCANA.find(a => a.id === id)
+}

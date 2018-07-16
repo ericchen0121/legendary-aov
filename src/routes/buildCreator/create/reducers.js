@@ -10,7 +10,12 @@ import {
   NAME_BUILD,
   RESET_BUILD,
   TOGGLE_ADD_NOTES_OPEN,
-  ADD_NOTES
+  ADD_NOTES,
+  SELECTED_ARCANA,
+  HOVERED_ARCANA,
+  CLEAR_HOVERED_ARCANA,
+  INSERT_ARCANA_TO_BUILD,
+  REMOVE_ARCANA_FROM_BUILD
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
@@ -26,6 +31,8 @@ const initialState = {
   item_filter: ITEM_CATEGORIES[0],
   selected_item: null,
   hovered_item: null,
+  selected_arcana: null,
+  hovered_arcana: null,
   is_notes_open: false,
   current_build: {
     name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
@@ -47,6 +54,23 @@ const initialState = {
     item_5_alt: [],
     item_6_alt: [],
     talent_alt: [],
+    arcana: [
+      {
+        id: null,
+        count: 10,
+        color: 'red'
+      },
+      {
+        id: null,
+        count: 10,
+        color: 'purple'
+      },
+      {
+        id: null,
+        count: 10,
+        color: 'green'
+      }
+    ],
     notes: {
       summary: '',
       arcana: '',
@@ -56,7 +80,7 @@ const initialState = {
       video_url: '',
       url: ''
     }
-  }
+  },
 }
 
 const build_creator = (state = initialState, action) => {
@@ -143,6 +167,32 @@ const build_creator = (state = initialState, action) => {
           }
         }
       }
+
+    case SELECTED_ARCANA:
+      return {
+        ...state,
+        selected_arcana: action.data
+      }
+
+    case HOVERED_ARCANA:
+      return {
+        ...state,
+        hovered_arcana: action.data
+      }
+    case CLEAR_HOVERED_ARCANA:
+      return {
+        ...state,
+        hovered_arcana: null
+      }
+    case INSERT_ARCANA_TO_BUILD:
+      return {
+        ...state,
+        current_build: {
+          ...state.current_build,
+          arcana: action.data // array of arcana objects [{ id: 5, count: 10}, ...]
+        }
+      }
+
     default:
       return state;
   }

@@ -12,7 +12,12 @@ import {
   NAME_BUILD,
   RESET_BUILD,
   TOGGLE_ADD_NOTES_OPEN,
-  ADD_NOTES
+  ADD_NOTES,
+  SELECTED_ARCANA,
+  HOVERED_ARCANA,
+  CLEAR_HOVERED_ARCANA,
+  INSERT_ARCANA_TO_BUILD,
+  REMOVE_ARCANA_FROM_BUILD,
 } from '../../../constants';
 
 export const selectItem = (data) => {
@@ -67,4 +72,24 @@ export const toggleAddNotesOpen = (data) => {
 
 export const addNotes = (data) => {
   return { type: ADD_NOTES, data}
+}
+
+export const selectArcana = (data) => {
+  return { type: SELECTED_ARCANA, data}
+}
+
+export const hoverArcana = (data) => {
+  return { type: HOVERED_ARCANA, data }
+}
+
+export const clearHoverArcana = (data) => {
+  return { type: CLEAR_HOVERED_ARCANA, data }
+}
+
+export const insertArcanaToBuild = (data) => {
+  return { type: INSERT_ARCANA_TO_BUILD, data }
+}
+
+export const removeArcanaFromBuild = (data) => {
+  return { type: REMOVE_ARCANA_FROM_BUILD, data }
 }
