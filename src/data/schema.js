@@ -25,6 +25,7 @@ import items from './queries/items';
 import version from './queries/version';
 import players from './queries/players'
 import teams from './queries/teams'
+import arcana from './queries/arcana'
 
 import addBuild from './queries/addBuild';
 import addHero from './queries/addHero';
