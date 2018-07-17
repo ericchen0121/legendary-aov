@@ -45,6 +45,9 @@ const styles = theme => ({
   },
   spacing: {
     marginRight: 10
+  },
+  leftAlign: {
+    textAlign: 'left'
   }
 })
 
@@ -151,7 +154,7 @@ class BuildNotesViewer extends React.Component {
                 <ExpansionPanelSummary expandIcon={<Icon icon={ic_expand_more}/>} >
                   <Typography className={classes.heading}>
                    {
-                     <div>
+                     <div className={classes.leftAlign}>
                        <span>{this.remove_underscore(title).toUpperCase()}</span>
                        <span>{ p === 'arcana' && arcana_html }</span>
                      </div>

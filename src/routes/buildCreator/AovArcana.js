@@ -74,7 +74,7 @@ const ARCANA = [
   },
   {
     id: 13,
-    name: 'guerilla',
+    name: 'guerrilla',
     tier: 3,
     color: 'purple'
   },
