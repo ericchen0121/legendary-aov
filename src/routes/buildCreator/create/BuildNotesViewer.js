@@ -38,6 +38,13 @@ const styles = theme => ({
   },
   details: {
     fontSize: 11
+  },
+  horizontal: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  spacing: {
+    marginRight: 10
   }
 })
 
@@ -63,28 +70,34 @@ class BuildNotesViewer extends React.Component {
 
     let arcana_html
     if (arcana_list) {
-      arcana_html  = arcana_list.map(a => {
-      let arcana = find_arcana_by_id(a)
-      return (
-        <div
-          key={arcana.id}
-          className={cx(s.item, s.item_container)}
-        >
-          <div>
-            <span
-              onMouseOver={() => actions.selectArcana(arcana.id)}
-            >
-              <BuildArcana
-                arcana={arcana}
-                size='small'
-                isEditing={false}
-                highlighted={true}
-              />
-            </span>
-          </div>
+      arcana_html = (
+        <div className={classes.horizontal}>
+          {
+            arcana_list.map(a => {
+              let arcana = find_arcana_by_id(a)
+              return (
+                <div
+                  key={arcana.id}
+                  className={cx(s.item, s.item_container, classes.spacing)}
+                >
+                  <div>
+                    <span
+                      onMouseOver={() => actions.selectArcana(arcana.id)}
+                    >
+                      <BuildArcana
+                        arcana={arcana}
+                        size='small'
+                        isEditing={false}
+                        highlighted={true}
+                      />
+                    </span>
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
       )
-      })
     }
 
     const { expanded } = this.state
