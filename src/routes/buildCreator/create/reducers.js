@@ -54,23 +54,7 @@ const initialState = {
     item_5_alt: [],
     item_6_alt: [],
     talent_alt: [],
-    arcana: [
-      {
-        id: null,
-        count: 10,
-        color: 'red'
-      },
-      {
-        id: null,
-        count: 10,
-        color: 'purple'
-      },
-      {
-        id: null,
-        count: 10,
-        color: 'green'
-      }
-    ],
+    arcana: [],
     notes: {
       summary: '',
       arcana: '',
@@ -185,13 +169,36 @@ const build_creator = (state = initialState, action) => {
         hovered_arcana: null
       }
     case INSERT_ARCANA_TO_BUILD:
+      let index = state.current_build.arcana.indexOf(action.data)
+      let arcana  // array of arcana ids
+      if (index > -1) { // already exists in list
+        arcana = state.current_build.arcana
+      }
+      else {
+        arcana = state.current_build.arcana.push(action.data)
+      }
+
       return {
         ...state,
         current_build: {
           ...state.current_build,
-          arcana: action.data // array of arcana objects [{ id: 5, count: 10}, ...]
+          arcana: arcana
         }
       }
+
+      case REMOVE_ARCANA_FROM_BUILD:
+        let remove_index = state.current_build.arcana.indexOf(action.data)
+        let arcana_list // array of arcana ids
+        if (remove_index > -1) {
+          arcana_list = state.current_build.arcana.splice(remove_index, 1)
+        }
+        return {
+          ...state,
+          current_build: {
+            ...state.current_build,
+            arcana: arcana_list
+          }
+        }
 
     default:
       return state;

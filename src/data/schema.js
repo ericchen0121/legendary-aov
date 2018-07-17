@@ -45,6 +45,7 @@ const schema = new Schema({
       hero,
       item,
       items,
+      arcana,
       version,
       myBuilds,
       players,

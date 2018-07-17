@@ -1,3 +1,9 @@
+// dump database
+pg_dump -h legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com -U ericchen0121 -f dump.sql legendaryaov
+//pw: (Ch...)
+
+// dump a single TABLE
+pg_dump -h legendaryaov.cil5tcqn0xfl.us-west-1.rds.amazonaws.com -U ericchen0121 -f dump_build.sql legendaryaov -t '"Build"'
 
 // restart id counter back to 1 on a table
 ALTER SEQUENCE "Hero_id_seq" RESTART 1;

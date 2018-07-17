@@ -6,7 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import BuildArcanaImage from './BuildArcanaImage'
 import Tooltip from 'material-ui/Tooltip';
 import Button from 'material-ui/Button';
-
+import { find_arcana_by_id } from '../AovArcana'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -18,26 +18,28 @@ const styles = theme => ({
       order: 2,
       marginRight: 30,
     },
+    none: {}
   },
 })
 
 class BuildArcana extends React.Component {
 
   render() {
-    const { arcana, highlighted, classes, actions } = this.props
-
-    // actions.insertArcanaToBuild(arcana.id)} -- NEED TO CHANGE HOW THIS FUNCTIONS... WANT to insert entire arcana array everytime there is a change
-    return (
-      <div onClick={() => actions.insertArcanaToBuild(arcana.id)}>
-        <div className={cx(classes.pointer, highlighted ? s.full_opacity : s.low_opacity)}>
-          <Tooltip title={arcana.name.toUpperCase()}>
-            <Button mini variant='fab'>
-              <BuildArcanaImage arcana={arcana} />
-            </Button>
-          </Tooltip>
+    const { arcana, highlighted, classes, actions, isEditing } = this.props
+    if (arcana) {
+      return (
+        <div onClick={isEditing ? (() => actions.insertArcanaToBuild(id)) : (() => {} )}>
+          <div className={cx(isEditing ? classes.pointer : classes.none, highlighted ? s.full_opacity : s.low_opacity)}>
+            <Tooltip title={arcana.name.toUpperCase()}>
+              <Button mini variant='fab'>
+                <BuildArcanaImage arcana={arcana} />
+              </Button>
+            </Tooltip>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+    else { return <div />}
   }
 }
 

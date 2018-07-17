@@ -81,8 +81,7 @@ class BuildViewer extends React.Component {
   }
 
   handleRouteParams = () => {
-    const params = this.props.params;
-    console.log('params is', params)
+    const params = this.props.params
 
     // Get params from Route
     let { build_id, hero, user_id } = params

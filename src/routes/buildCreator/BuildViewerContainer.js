@@ -17,9 +17,9 @@ import BuildHeroContainer from './create/BuildHeroContainer'
 import BuildItemsEffects from './BuildItemsEffects'
 import BuildNotesViewer from './create/BuildNotesViewer'
 
+
 import { find_talent_by_id, find_item_by_id } from './Items'
 import { find_hero_by_id } from '../draft/AovHeroes'
-import { find_arcana_by_id } from './AovArcana'
 import { to_uppercase_first } from './utilities'
 
 import * as Actions from './create/actions';
@@ -100,28 +100,6 @@ class BuildViewerContainer extends React.Component {
         </div>
       )
     })
-
-    // let arcana_list = build.arcana.map(a => {
-    //   let arcana = find_arcana_by_id(a)
-    //   return (
-    //     <div
-    //       key={i.id}
-    //       className={cx(s.item, s.item_container)}
-    //     >
-    //       <div>
-    //         <span
-    //           onMouseOver={() => actions.selectArcana(a.id)}
-    //         >
-    //           <BuildArcana
-    //             arcana={a}
-    //             size='small'
-    //           />
-    //         </span>
-    //       </div>
-    //     </div>
-    //   )
-    // })
-
 
     let talent = find_talent_by_id(b.talent_id)
     let talent_html = (

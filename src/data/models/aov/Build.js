@@ -62,6 +62,10 @@ const Build = Model.define(
     talent_id: {
       type: DataType.INTEGER
     },
+    arcana: {
+      type: DataType.ARRAY(DataType.INTEGER),
+      defaultValue: []
+    },
     hero_id: {
       type: DataType.INTEGER
     },

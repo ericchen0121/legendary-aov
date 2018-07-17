@@ -13,6 +13,7 @@ export const ADD_BUILD = gql`
         item_5
         item_6
         talent_id
+        arcana
         hero_id
         game_mode_id
         notes
@@ -31,6 +32,7 @@ export const ALL_BUILDS = gql`
       item_5
       item_6
       talent_id
+      arcana
       hero_id
       notes
     }
@@ -49,6 +51,7 @@ export const HERO_BUILDS = gql`
       item_5
       item_6
       talent_id
+      arcana
       hero_id
       notes
     }
@@ -67,6 +70,7 @@ export const MY_BUILDS = gql`
       item_5
       item_6
       talent_id
+      arcana
       hero_id
       user_id
       notes
