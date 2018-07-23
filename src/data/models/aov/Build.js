@@ -5,7 +5,6 @@ let CURRENT_VERSION = 2
 let DEFAULT_GAME_MODE = 1
 let DEFAULT_USER_ID = 1
 
-
 const Build = Model.define(
   'Build',
   {

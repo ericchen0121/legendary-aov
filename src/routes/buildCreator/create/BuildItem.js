@@ -22,7 +22,7 @@ const styles = theme => ({
 class BuildItem extends React.Component {
 
   render() {
-    const { classes, actions, item, ...other } = this.props
+    const { classes, actions, item, size, ...other } = this.props
 
     return (
       <div className={classes.pointer}>
@@ -30,6 +30,7 @@ class BuildItem extends React.Component {
           <Button size="small">
             <BuildItemImage
               item={item}
+              size={size}
               {...other}
             />
           </Button>

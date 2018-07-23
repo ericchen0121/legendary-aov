@@ -16,6 +16,9 @@ import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { animateScroll as scroll } from 'react-scroll'
+
+
 const SOCIAL = ['twitch', 'youtube', 'garena', 'instagram', 'twitter', 'facebook']
 
 const styles = theme => ({
@@ -119,41 +122,43 @@ class PlayerCard extends React.Component {
     let player_card = (
       player && (
         <div>
-          <div className={cx(s.wrapper, s.text_align_left)}>
-            <div className={classes.type_container}>
-              <Grid container spacing={12} zeroMinWidth className={classes.container}>
-                <Grid item xs={12}>
-                  <Grid container spacing={12} zeroMinWidth className={classes.container}>
-                    <Grid item xs={9}>
-                      <img className={classes.player} src={img_path} />
-                    </Grid>
-                    <Grid item xs={3}>
-                      <div>
-                        { social_links }
-                      </div>
+          <a onClick={scroll.scrollToTop}>
+            <div className={cx(s.wrapper, s.text_align_left)}>
+              <div className={classes.type_container}>
+                <Grid container spacing={12} zeroMinWidth className={classes.container}>
+                  <Grid item xs={12}>
+                    <Grid container spacing={12} zeroMinWidth className={classes.container}>
+                      <Grid item xs={9}>
+                        <img className={classes.player} src={img_path} />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <div>
+                          { social_links }
+                        </div>
+                      </Grid>
                     </Grid>
                   </Grid>
+                  <Grid item xs={12}>
+                    <Typography variant="headline" component="h3" className={classes.title}>
+                      <span>{player.name}</span>
+                    </Typography>
+                    <Typography color="textSecondary">
+                      <span className={classes.team}>{ role }</span>
+                    </Typography>
+                    <Typography color="textSecondary">
+                      <span className={classes.real_name}>{player.real_name}</span>
+                    </Typography>
+                    <Typography color="textSecondary">
+                      <img className={classes.team_logo} src={`/aov/teams/${team_folder}/logo.png`} />
+                      <span className={classes.team}>{player.team.alt_name || player.team.name}</span>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="headline" component="h3" className={classes.title}>
-                    <span>{player.name}</span>
-                  </Typography>
-                  <Typography color="textSecondary">
-                    <span className={classes.team}>{ role }</span>
-                  </Typography>
-                  <Typography color="textSecondary">
-                    <span className={classes.real_name}>{player.real_name}</span>
-                  </Typography>
-                  <Typography color="textSecondary">
-                    <img className={classes.team_logo} src={`/aov/teams/${team_folder}/logo.png`} />
-                    <span className={classes.team}>{player.team.alt_name || player.team.name}</span>
-                  </Typography>
-                </Grid>
-                <Grid item xs={4}>
-                </Grid>
-              </Grid>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
     ))
 

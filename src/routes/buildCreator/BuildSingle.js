@@ -4,7 +4,6 @@ import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
-import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';

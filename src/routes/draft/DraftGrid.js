@@ -7,6 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import DraftGridItem from './DraftGridItem';
+import {animateScroll as scroll } from 'react-scroll'
 
 const styles = theme => ({
   root: {
@@ -50,11 +51,11 @@ class DraftGrid extends React.Component {
     let list_grid = null
 
     list = order_hero.map(h => (
-      <DraftGridItem
-        hero={h}
-        {...this.props}
-        handleFetchYoutubeVideos={this.props.handleFetchYoutubeVideos}
-      />
+        <DraftGridItem
+          hero={h}
+          {...this.props}
+          handleFetchYoutubeVideos={this.props.handleFetchYoutubeVideos}
+        />
     ));
 
     if (is_mobile) {

@@ -22,6 +22,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
+      path: '/landing',
+      load: () => import(/* webpackChunkName: 'landing' */ './landing'),
+    },
+    {
       path: '/video',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },

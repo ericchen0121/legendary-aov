@@ -39,6 +39,25 @@ export const ALL_BUILDS = gql`
   }
 `
 
+export const LATEST_BUILDS = gql`
+  query latestBuilds{
+    latestBuilds {
+      id
+      name
+      item_1
+      item_2
+      item_3
+      item_4
+      item_5
+      item_6
+      talent_id
+      arcana
+      hero_id
+      notes
+    }
+  }
+`
+
 export const HERO_BUILDS = gql`
   query buildsByHero($hero_id: Int!){
     buildsByHero(hero_id: $hero_id ) {

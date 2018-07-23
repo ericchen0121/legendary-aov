@@ -18,6 +18,7 @@ import news from './queries/news';
 import build from './queries/build';
 import builds from './queries/builds';
 import myBuilds from './queries/myBuilds';
+import latestBuilds from './queries/latestBuilds';
 import buildsByHero from './queries/buildsByHero';
 import hero from './queries/hero';
 import item from './queries/item';
@@ -42,6 +43,7 @@ const schema = new Schema({
       build,
       builds,
       buildsByHero,
+      latestBuilds,
       hero,
       item,
       items,

@@ -8,7 +8,10 @@ class BuildItemImage extends React.Component {
     const { item, size, selected } = this.props
 
     let size_class
-    if (size === 'small') {
+    if (size === 'xsmall') {
+      size_class = s.item_xsmall
+    }
+    else if (size === 'small') {
       size_class = s.item_small
     }
     else if (size === 'medium') {
@@ -25,7 +28,7 @@ class BuildItemImage extends React.Component {
     if(selected) {
       selected_class = s.item_img_selected
     }
-    
+
     return (
       <span>
         { item &&

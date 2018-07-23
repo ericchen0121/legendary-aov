@@ -7,6 +7,7 @@ import { DEFAULT_IMAGE_URL } from './DraftConstants'
 import { ListItem } from 'material-ui/List';
 import Icon from 'react-icons-kit';
 import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutline';
+import {animateScroll as scroll } from 'react-scroll'
 
 class DraftListItem extends React.Component {
   static propTypes = {
@@ -74,13 +75,15 @@ class DraftListItem extends React.Component {
     )
 
     return (
-      <ListItem
-        key={name}
-        onClick={ handleItemClick }
-        className={s.hero_item_container}
-      >
-        {avatar} { name_container }
-      </ListItem>
+      <a onClick={scroll.scrollToTop} className={s.no_link} >
+        <ListItem
+          key={name}
+          onClick={ handleItemClick }
+          className={s.hero_item_container}
+        >
+          {avatar} { name_container }
+        </ListItem>
+      </a>
     );
   }
 }

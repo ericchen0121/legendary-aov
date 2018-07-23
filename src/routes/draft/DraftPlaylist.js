@@ -4,6 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Aov.css';
 import cx from 'classnames';
 import Divider from 'material-ui/Divider';
+import {animateScroll as scroll } from 'react-scroll'
 
 class DraftPlaylist extends Component {
   sort_recent(list) {
@@ -26,7 +27,7 @@ class DraftPlaylist extends Component {
       const title = item.snippet.title;
       const channel = item.snippet.channelTitle;
       return (
-        <div>
+        <a onClick={scroll.scrollToTop} className={s.no_link} >
           <div
             className={s.item_playlist}
             onClick={() => this.props.actions.selectYoutubeVideo(item)}
@@ -46,7 +47,7 @@ class DraftPlaylist extends Component {
             </div>
           </div>
           <Divider />
-        </div>
+        </a>
       );
     });
 

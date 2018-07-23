@@ -7,6 +7,7 @@ import { DEFAULT_IMAGE_URL } from './DraftConstants';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
 import { socialYoutubeOutline } from 'react-icons-kit/ionicons/socialYoutubeOutline';
+import {animateScroll as scroll } from 'react-scroll'
 
 class DraftGridItem extends React.Component {
   static propTypes = {
@@ -77,7 +78,7 @@ class DraftGridItem extends React.Component {
     }
 
     const name_container = (
-      <span className={s.flex_container}>
+      <span className={s.flex_container} >
         <div>
           <span className={s.name}>{name}</span> {nickname_container}
         </div>
@@ -101,9 +102,11 @@ class DraftGridItem extends React.Component {
     );
 
     return (
-      <GridListTile key={name} onClick={handleItemClick}>
-        <div className={s.cursor_pointer}>{avatar}</div>
-      </GridListTile>
+      <a onClick={scroll.scrollToTop} >
+        <GridListTile key={name} onClick={handleItemClick}>
+          <div className={s.cursor_pointer}>{avatar}</div>
+        </GridListTile>
+      </a>
     );
   }
 }

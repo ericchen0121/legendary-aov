@@ -17,9 +17,14 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { ALL_PLAYERS } from '../../data/gql_queries/players'
 
+const LEGENDARY_TWITTER = 'legendaryinc100'
+const DEFAULT_TWITTER_LIST = 'arena-of-valor'
+const DEFAULT_TWITCH = 'arenaofvalor'
 const styles = theme => ({
   container: {
-    paddingTop: 30
+    paddingTop: 30,
+    marginLeft: 10,
+    marginRight: 10
   },
   root: theme.mixins.gutters({
     paddingTop: 12,
@@ -47,12 +52,8 @@ const styles = theme => ({
 class PlayersContainer extends React.Component {
   state = {
     name: null,
-    twitter: null,
-    twitch: null
-  }
-
-  componentWillRender() {
-
+    twitter: LEGENDARY_TWITTER,
+    twitch: DEFAULT_TWITCH
   }
 
   render() {
@@ -96,7 +97,7 @@ class PlayersContainer extends React.Component {
           let clear_and_set_user = (user) => {
             this.setState({
               name: null,
-              twitter: null,
+              twitter: LEGENDARY_TWITTER,
               twitch: null,
             }, () => {
               this.setState({
@@ -118,7 +119,7 @@ class PlayersContainer extends React.Component {
           let clear_user = () => {
             this.setState({
               name: null,
-              twitter: null,
+              twitter: LEGENDARY_TWITTER,
               twitch: null
             })
           }
@@ -145,39 +146,53 @@ class PlayersContainer extends React.Component {
           let twitter_feed
           // if twitter handle, window twitter is initialized
           if (twitter && window.twttr && window.twttr.init) {
-            twitter_feed = (
-              <SocialCard
-                type='profile'
-                screen_name={twitter}
-              />
-            )
-          } else {
-            twitter_feed = (
-              <SocialCard
-                type='list'
-                screen_name='legendaryinc100'
-                list_name='arena-of-valor'
-              />
-            )
+            if (twitter != LEGENDARY_TWITTER) {
+              twitter_feed = (
+                <SocialCard
+                  type='profile'
+                  screen_name={twitter}
+                />
+              )
+            }
           }
 
+          let legendary_twitter_list = (
+            <SocialCard
+              type='list'
+              screen_name={LEGENDARY_TWITTER}
+              list_name={DEFAULT_TWITTER_LIST}
+            />
+          )
 
+          let legendary_twitter_profile = (
+            <SocialCard
+              type='profile'
+              screen_name={LEGENDARY_TWITTER}
+            />
+          )
 
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
-              <Grid item xs={1}>
-              </Grid>
               <Grid item xs={3}>
                 <Grid container spacing={12}>
                   { players }
                 </Grid>
               </Grid>
-              <Grid item xs={4}>
-                { twitter_feed }
-              </Grid>
-              <Grid item xs={4}>
-                { twitch_feed }
-              </Grid>
+              { twitch &&
+                <Grid item xs={6}>
+                  { twitch_feed }
+                </Grid>
+              }
+              { twitter !== LEGENDARY_TWITTER &&
+                <Grid item xs={3}>
+                  { twitter_feed }
+                </Grid>
+              }
+              { twitter === LEGENDARY_TWITTER &&
+                <Grid item xs={3}>
+                  { legendary_twitter_list }
+                </Grid>
+              }
             </Grid>
           )
 
