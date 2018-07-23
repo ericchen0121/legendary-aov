@@ -5,6 +5,7 @@ import s from './landing.scss';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
+import Link from '../../components/Link';
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
@@ -66,8 +67,15 @@ const styles = theme => ({
   loader_container: {
     marginTop: 30
   },
-  center: {
-    textAlign: 'center'
+  title_container: {
+    textAlign: 'center',
+    marginBottom: 15,
+  },
+  link: {
+    marginLeft: 15,
+    fontSize: 10,
+    color: 'green',
+    textDecoration: 'none'
   }
 })
 
@@ -160,7 +168,12 @@ class LatestBuildsContainer extends React.Component {
 
           return (
             <div>
-              <div className={classes.center}>Latest Builds</div>
+              <div className={classes.title_container}>
+                Latest Builds
+                <Link className={classes.link} to="/build">
+                  View all
+                </Link>
+              </div>
               <div>
                 {all_builds}
               </div>
