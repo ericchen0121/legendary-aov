@@ -26,6 +26,9 @@ const styles = theme => ({
     marginLeft: 10,
     marginRight: 10
   },
+  twitch_container: {
+    marginLeft: 10
+  },
   root: theme.mixins.gutters({
     paddingTop: 12,
     paddingBottom: 12,
@@ -46,6 +49,9 @@ const styles = theme => ({
   },
   spacing: {
     marginRight:5
+  },
+  twitter_list_container: {
+    marginLeft: -20
   }
 })
 
@@ -60,16 +66,6 @@ class PlayersContainer extends React.Component {
     const { classes, context } = this.props
     let { name, twitter, twitch } = this.state
 
-    let twitch_feed = null
-    if (twitch) {
-      twitch_feed = (
-        <Twitch
-          channel={twitch}
-        />
-      )
-    } else {
-      twitch_feed = <div />
-    }
 
     return (
       <Query
@@ -98,21 +94,22 @@ class PlayersContainer extends React.Component {
             this.setState({
               name: null,
               twitter: LEGENDARY_TWITTER,
-              twitch: null,
+              twitch: null
             }, () => {
               this.setState({
                 name: user.name,
                 twitter: user.twitter,
-                twitch: user.twitch
-              })
+                twitch: user.twitch ? user.twitch : DEFAULT_TWITCH
+              }, () => console.log(this.state))
             })
           }
 
           let set_user = (user) => {
+            let twitch = user.twitch ? user.twitch : DEFAULT_TWITCH
             this.setState({
               name: user.name,
               twitter: user.twitter,
-              twitch: user.twitch
+              twitch
             })
           }
 
@@ -171,6 +168,16 @@ class PlayersContainer extends React.Component {
             />
           )
 
+          let twitch_feed = <div />
+          if (twitch) {
+            console.log('channel', this.state.twitch)
+            twitch_feed = (
+              <Twitch
+                channel={this.state.twitch}
+              />
+            )
+          }
+
           return (
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
               <Grid item xs={3}>
@@ -179,17 +186,19 @@ class PlayersContainer extends React.Component {
                 </Grid>
               </Grid>
               { twitch &&
-                <Grid item xs={6}>
-                  { twitch_feed }
+                <Grid item xs={6} className={classes.twitch_container}>
+                  <Twitch
+                    channel={this.state.twitch}
+                  />
                 </Grid>
               }
               { twitter !== LEGENDARY_TWITTER &&
-                <Grid item xs={3}>
+                <Grid item xs={3} className={classes.twitter_list_container}>
                   { twitter_feed }
                 </Grid>
               }
               { twitter === LEGENDARY_TWITTER &&
-                <Grid item xs={3}>
+                <Grid item xs={3} className={classes.twitter_list_container}>
                   { legendary_twitter_list }
                 </Grid>
               }
