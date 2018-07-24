@@ -23,7 +23,8 @@ const DEFAULT_TWITTER_LIST = 'arena-of-valor'
 const DEFAULT_TWITCH = 'arenaofvalor'
 const styles = theme => ({
   container: {
-    paddingTop: 30
+    paddingTop: 30,
+    marginBottom: 30
   },
   root: theme.mixins.gutters({
     paddingTop: 12,
