@@ -1,6 +1,6 @@
 export const FETCH_TWEETS = 'FETCH_TWEETS'
-
-
+export const CHECK_LIVE_TWITCH_STATUS = 'CHECK_LIVE_TWITCH_STATUS'
+export const STORE_LIVE_TWITCH_STATUS = 'STORE_LIVE_TWITCH_STATUS'
 let TEAM_FOLDERS = [
   {
     name: 'Flipsid3 Tactics',

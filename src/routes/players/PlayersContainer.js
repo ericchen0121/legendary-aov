@@ -62,6 +62,12 @@ class PlayersContainer extends React.Component {
     twitch: DEFAULT_TWITCH
   }
 
+  componentWillMount() {
+    console.log('checking twich live status')
+    // this.props.actions.checkLiveTwitchStatus()
+    console.log('checked twich live status')
+  }
+
   render() {
     const { classes, context } = this.props
     let { name, twitter, twitch } = this.state
@@ -79,7 +85,6 @@ class PlayersContainer extends React.Component {
 
           // Functions
           let select_user = (user) => {
-
             // if already selected, reset
             if (name === user.name) {
               clear_user()
@@ -121,9 +126,18 @@ class PlayersContainer extends React.Component {
             })
           }
 
+
+
           // Components
           let players, tweets
           if (data.players && data.players.length > 0) {
+            // TWITCH USERS & STATUS
+            this.props.actions.checkLiveTwitchStatus(
+              data.players
+                .filter(p => p.twitch)
+                .map(p => p.twitch) // get players with a twitch user id
+            )
+
             players = data.players.map(p => {
               return (
                 <Grid item xs={6} onClick={() => select_user(p)}>
