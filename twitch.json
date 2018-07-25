@@ -1,1 +1,80 @@
-{"_total":2,"users":[{"display_name":"shurkotv","_id":"147255555","name":"shurkotv","type":"user","bio":null,"created_at":"2017-02-08T13:04:57.886346Z","updated_at":"2018-07-24T08:31:19.948495Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/da1160db-df29-4df5-b23b-2055b2192a03-profile_image-300x300.jpg"},{"display_name":"abrownbag","_id":"116271667","name":"abrownbag","type":"user","bio":"Fill me with groceries","created_at":"2016-02-19T02:20:50.244315Z","updated_at":"2018-07-24T23:31:50.279173Z","logo":"https://static-cdn.jtvnw.net/jtv_user_pictures/abrownbag-profile_image-892d532bc54202fb-300x300.jpeg"}]}%
+curl - H 'Accept: application/vnd.twitchtv.v5+json'\ -
+H 'Client-ID: o1h3rgmepbwfxxa19d9hzx02tuupdh'\ -
+
+X GET https: //api.twitch.tv/kraken/users?login=shurkotv,abrownbag
+
+  {
+    "_total": 2,
+    "users": [{
+      "display_name": "shurkotv",
+      "_id": "147255555",
+      "name": "shurkotv",
+      "type": "user",
+      "bio": null,
+      "created_at": "2017-02-08T13:04:57.886346Z",
+      "updated_at": "2018-07-24T08:31:19.948495Z",
+      "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/da1160db-df29-4df5-b23b-2055b2192a03-profile_image-300x300.jpg"
+    }, {
+      "display_name": "abrownbag",
+      "_id": "116271667",
+      "name": "abrownbag",
+      "type": "user",
+      "bio": "Fill me with groceries",
+      "created_at": "2016-02-19T02:20:50.244315Z",
+      "updated_at": "2018-07-24T23:31:50.279173Z",
+      "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/abrownbag-profile_image-892d532bc54202fb-300x300.jpeg"
+    }]
+  }
+
+
+GET 'https://api.twitch.tv/kraken/channels/147255555'
+
+{
+  "mature": false,
+  "status": "back from da holidays (mganga only Kapp)",
+  "broadcaster_language": "en",
+  "display_name": "shurkotv",
+  "game": "Arena of Valor",
+  "language": "en",
+  "_id": "147255555",
+  "name": "shurkotv",
+  "created_at": "2017-02-08T13:04:57Z",
+  "updated_at": "2018-07-24T22:31:07Z",
+  "partner": false,
+  "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/da1160db-df29-4df5-b23b-2055b2192a03-profile_image-300x300.jpg",
+  "video_banner": null,
+  "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/shurkotv-profile_banner-ce5ef619d4f6e188-480.",
+  "profile_banner_background_color": null,
+  "url": "https://www.twitch.tv/shurkotv",
+  "views": 32297,
+  "followers": 2390,
+  "broadcaster_type": "affiliate",
+  "description": "",
+  "private_video": false,
+  "privacy_options_enabled": false
+} %
+
+{
+  "mature": false,
+  "status": "Back from AWC! Practicing to become the best :D ",
+  "broadcaster_language": "en",
+  "display_name": "RestAOV",
+  "game": "Arena of Valor",
+  "language": "en",
+  "_id": "147141531",
+  "name": "restaov",
+  "created_at": "2017-02-06T23:50:02Z",
+  "updated_at": "2018-07-24T23:31:56Z",
+  "partner": true,
+  "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/23cfa390-a841-411f-bb18-c1d72d22f2ec-profile_image-300x300.jpg",
+  "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/ae8cdbd9-5e8c-4fe7-b4b6-8af544b78277-channel_offline_image-1920x1080.png",
+  "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/d0873fbd-3947-4619-bd17-ddc0811c0194-profile_banner-480.png",
+  "profile_banner_background_color": null,
+  "url": "https://www.twitch.tv/restaov",
+  "views": 8530,
+  "followers": 996,
+  "broadcaster_type": "partner",
+  "description": "",
+  "private_video": false,
+  "privacy_options_enabled": false
+} %

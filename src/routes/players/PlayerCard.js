@@ -86,7 +86,7 @@ class PlayerCard extends React.Component {
   }
 
   render() {
-    const { classes, player, selected } = this.props
+    const { classes, player, selected, is_twitch_live } = this.props
     let logo, role
     let team_folder = TEAM_FOLDERS.find(t => t.name === player.team.name)['folder']
 
@@ -108,6 +108,7 @@ class PlayerCard extends React.Component {
           <PlayerCardSocial
             type = {s}
             link = {player[s]}
+            is_twitch_live={is_twitch_live || false}
           />
         )
       }

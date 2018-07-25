@@ -1,7 +1,9 @@
 import React from 'react'
+
 import cx from 'classnames'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import s from './Build.scss';
+
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Divider from 'material-ui/Divider';
@@ -13,9 +15,19 @@ import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import BuildItemEffects from '../BuildItemsEffects'
 
+import { graphql, compose } from 'react-apollo'
+import {ID_QUERY} from '../../../data/gql_queries/builds'
+const build_query = graphql(ID_QUERY, {
+  options: (own_props) => ({ variables: { id: own_props.params.build_id } }),
+  props: ({ data: { loading, build } }) => ({
+    loading, build,
+  }),
+});
+
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -55,9 +67,25 @@ const styles = theme => ({
 
 class BuildCreatorContainer extends React.Component {
 
-  render() {
-    const { classes, context, build_creator } = this.props
+  componentDidMount() {
+    this.handleRouteParams()
+  }
 
+  handleRouteParams = () => {
+    const params = this.props.params
+    if (params && params.build_id) {
+      // ie. www.../build/edit/1234    build_id = 1234
+      // get build from db - apollo
+      // put this in the current_build thru the reducer (get it into the reducer)
+
+      }
+  }
+
+  render() {
+    const { classes, context, build_creator, build } = this.props
+    console.log(this.props, build)
+    // NEEDED FOR BUILDITEMEFFECTS
+    // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
       build_creator.current_build[1],
       build_creator.current_build[2],
@@ -100,8 +128,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withStyles2(s)(
-  withStyles(styles)(
-    connect(mapStateToProps, mapDispatchToProps)(BuildCreatorContainer)
-  )
-)
+export default compose(
+  build_query,
+  withStyles2(s),
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(BuildCreatorContainer)

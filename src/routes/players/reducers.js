@@ -10,8 +10,7 @@ const initialState = {
   live_twitch_users: []
 }
 
-const twitter = (state = initialState, action) => {
-  console.log(action)
+const players = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_TWEETS:
       return state
@@ -26,4 +25,4 @@ const twitter = (state = initialState, action) => {
   }
 }
 
-export default twitter;
+export default players;

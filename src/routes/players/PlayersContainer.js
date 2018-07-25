@@ -59,19 +59,13 @@ class PlayersContainer extends React.Component {
   state = {
     name: null,
     twitter: LEGENDARY_TWITTER,
-    twitch: DEFAULT_TWITCH
-  }
-
-  componentWillMount() {
-    console.log('checking twich live status')
-    // this.props.actions.checkLiveTwitchStatus()
-    console.log('checked twich live status')
+    twitch: DEFAULT_TWITCH,
+    checked_live_twitch: false
   }
 
   render() {
-    const { classes, context } = this.props
+    const { classes, context, players } = this.props
     let { name, twitter, twitch } = this.state
-
 
     return (
       <Query
@@ -105,7 +99,7 @@ class PlayersContainer extends React.Component {
                 name: user.name,
                 twitter: user.twitter,
                 twitch: user.twitch ? user.twitch : DEFAULT_TWITCH
-              }, () => console.log(this.state))
+              })
             })
           }
 
@@ -126,24 +120,29 @@ class PlayersContainer extends React.Component {
             })
           }
 
-
+          let check_twitch_status_of_users = (users) => {
+            if (!this.state.checked_live_twitch) {
+              this.props.actions.checkLiveTwitchStatus(users) // puts live user logins in redux store
+              this.setState({ checked_live_twitch: true})
+            }
+          }
 
           // Components
-          let players, tweets
+          let players_html, tweets
           if (data.players && data.players.length > 0) {
-            // TWITCH USERS & STATUS
-            this.props.actions.checkLiveTwitchStatus(
+            check_twitch_status_of_users(
               data.players
                 .filter(p => p.twitch)
-                .map(p => p.twitch) // get players with a twitch user id
+                .map(p => p.twitch) // get players with a twitch user id)
             )
 
-            players = data.players.map(p => {
+            players_html = data.players.map(p => {
               return (
                 <Grid item xs={6} onClick={() => select_user(p)}>
                   <PlayerCard
                     player={p}
                     selected={ p.name === name }
+                    is_twitch_live={ players.live_twitch_users.indexOf(p.twitch) > -1 } // if player's twitch name is in list, then true
                   />
                 </Grid>
               )
@@ -184,7 +183,6 @@ class PlayersContainer extends React.Component {
 
           let twitch_feed = <div />
           if (twitch) {
-            console.log('channel', this.state.twitch)
             twitch_feed = (
               <Twitch
                 channel={this.state.twitch}
@@ -196,7 +194,7 @@ class PlayersContainer extends React.Component {
             <Grid container spacing={12} zeroMinWidth className={classes.container}>
               <Grid item xs={3}>
                 <Grid container spacing={12}>
-                  { players }
+                  { players_html }
                 </Grid>
               </Grid>
               { twitch &&

@@ -5,7 +5,7 @@ import utilities from '../components/Utilities/reducers';
 import build_creator from '../routes/buildCreator/create/reducers';
 import build_viewer from '../routes/buildCreator/reducers'
 import user_login from '../routes/login/reducers'
-import twitter from '../routes/players/reducers'
+import players from '../routes/players/reducers'
 
 export default combineReducers({
   user_login,
@@ -14,5 +14,5 @@ export default combineReducers({
   utilities,
   build_creator,
   build_viewer,
-  twitter
+  players
 });

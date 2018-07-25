@@ -14,13 +14,15 @@ import Paper from 'material-ui/Paper'
 import BuildCreatorContainer from './BuildCreatorContainer';
 const title = 'Build Creator';
 
-function action() {
+function action(context, params) {
   return {
     chunks: ['buildcreator'],
     title,
     component: (
       <Layout>
-        <BuildCreatorContainer />
+        <BuildCreatorContainer
+          params={params}
+        />
       </Layout>
     ),
   };

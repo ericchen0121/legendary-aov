@@ -13,7 +13,14 @@ import {facebookSquare} from 'react-icons-kit/fa/facebookSquare'
 import {instagram} from 'react-icons-kit/fa/instagram'
 
 const styles = theme => ({
-
+  twitch_live: {
+    color: 'red',
+    fontSize: 11,
+    fontWeight: 'bold',
+    marginTop: -1,
+    marginLeft: 5,
+    position: 'absolute'
+  }
 });
 
 class PlayerCard extends React.Component {
@@ -23,7 +30,7 @@ class PlayerCard extends React.Component {
   }
 
   render() {
-    const { classes, type, link } = this.props
+    const { classes, type, link, is_twitch_live } = this.props
 
     let icon, social_link
     if (type === 'twitter') {
@@ -50,7 +57,10 @@ class PlayerCard extends React.Component {
       icon = this.create_icon(instagram)
     }
 
-    return <a href={social_link} target="_blank">{icon}</a>
+    return <span>
+      <a href={social_link} target="_blank">{icon}</a>
+      { type === 'twitch' && is_twitch_live && <span className={classes.twitch_live}>LIVE</span>}
+    </span>
   }
 }
 

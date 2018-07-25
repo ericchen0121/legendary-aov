@@ -96,3 +96,22 @@ export const MY_BUILDS = gql`
     }
   }
 `
+
+export const ID_QUERY = gql`
+  query buildById($id: Int!){
+    build(id: $id ) {
+      id
+      name
+      item_1
+      item_2
+      item_3
+      item_4
+      item_5
+      item_6
+      talent_id
+      arcana
+      hero_id
+      notes
+    }
+  }
+`
