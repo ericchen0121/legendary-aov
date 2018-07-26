@@ -15,11 +15,13 @@ import {
   HOVERED_ARCANA,
   CLEAR_HOVERED_ARCANA,
   INSERT_ARCANA_TO_BUILD,
-  REMOVE_ARCANA_FROM_BUILD
+  REMOVE_ARCANA_FROM_BUILD,
+  SET_EDIT_BUILD
 } from '../../../constants';
 
 import { ITEM_CATEGORIES } from '../Items'
 import {find_hero_by_id} from '../../draft/AovHeroes'
+import {convert_build} from './build_utilities'
 
 const DEFAULT_HERO_ID = 1
 const DEFAULT_TALENT_ID = 1
@@ -186,20 +188,27 @@ const build_creator = (state = initialState, action) => {
         }
       }
 
-      case REMOVE_ARCANA_FROM_BUILD:
-        let remove_index = state.current_build.arcana.indexOf(action.data)
-        let arcana_list // array of arcana ids
-        if (remove_index > -1) {
-          arcana_list = state.current_build.arcana.splice(remove_index, 1)
+    case REMOVE_ARCANA_FROM_BUILD:
+      let remove_index = state.current_build.arcana.indexOf(action.data)
+      let arcana_list // array of arcana ids
+      if (remove_index > -1) {
+        arcana_list = state.current_build.arcana.splice(remove_index, 1)
+      }
+      return {
+        ...state,
+        current_build: {
+          ...state.current_build,
+          arcana: arcana_list
         }
-        return {
-          ...state,
-          current_build: {
-            ...state.current_build,
-            arcana: arcana_list
-          }
-        }
+      }
 
+    case SET_EDIT_BUILD:
+      console.log('REDUCERRRRRR ACTION', convert_build(action.data) )
+
+      return {
+        ...state,
+        current_build: convert_build(action.data) || state.current_build
+      }
     default:
       return state;
   }

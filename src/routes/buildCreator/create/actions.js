@@ -18,6 +18,7 @@ import {
   CLEAR_HOVERED_ARCANA,
   INSERT_ARCANA_TO_BUILD,
   REMOVE_ARCANA_FROM_BUILD,
+  SET_EDIT_BUILD
 } from '../../../constants';
 
 export const selectItem = (data) => {
@@ -92,4 +93,8 @@ export const insertArcanaToBuild = (data) => {
 
 export const removeArcanaFromBuild = (data) => {
   return { type: REMOVE_ARCANA_FROM_BUILD, data }
+}
+
+export const setEditBuild = (data) => {
+  return { type: SET_EDIT_BUILD, data }
 }

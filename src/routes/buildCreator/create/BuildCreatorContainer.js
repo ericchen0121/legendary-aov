@@ -17,11 +17,15 @@ import BuildItemEffects from '../BuildItemsEffects'
 
 import { graphql, compose } from 'react-apollo'
 import {ID_QUERY} from '../../../data/gql_queries/builds'
+
+// .com/build/edit/:build_id
 const build_query = graphql(ID_QUERY, {
-  options: (own_props) => ({ variables: { id: own_props.params.build_id } }),
+  skip: (own_props) => !own_props.params.build_id, // skip if build_id param isn't present
+  options: (own_props) => ({ variables: { id: own_props.params.build_id } }), // search with build_id param from url
   props: ({ data: { loading, build } }) => ({
-    loading, build,
-  }),
+    loading,
+    build_from_params: build,
+  }), // put build object returned from db into this.props.build
 });
 
 import * as Actions from './actions';
@@ -67,23 +71,30 @@ const styles = theme => ({
 
 class BuildCreatorContainer extends React.Component {
 
-  componentDidMount() {
-    this.handleRouteParams()
+  constructor() {
+    super();
+    this.state = {
+      is_initial_edit_build_set: false
+    }
   }
 
-  handleRouteParams = () => {
-    const params = this.props.params
-    if (params && params.build_id) {
-      // ie. www.../build/edit/1234    build_id = 1234
-      // get build from db - apollo
-      // put this in the current_build thru the reducer (get it into the reducer)
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.build_from_params && !this.state.is_initial_edit_build_set) { //conditionally set edit build
+      this.setState({ is_initial_edit_build_set: true }) // flip flag so it doesn't loop the call to set_edit_build
+      this.set_edit_build()
+      return true
+    }
 
-      }
+    return false // if build but already set, don't update
+  }
+
+  set_edit_build = () => {
+    this.props.actions.setEditBuild(this.props.build_from_params)
   }
 
   render() {
-    const { classes, context, build_creator, build } = this.props
-    console.log(this.props, build)
+    const { classes, context, build_creator } = this.props
+    console.log(this.props)
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
