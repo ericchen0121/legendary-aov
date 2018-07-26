@@ -203,7 +203,7 @@ const build_creator = (state = initialState, action) => {
       }
 
     case SET_EDIT_BUILD:
-      console.log('REDUCERRRRRR ACTION', convert_build(action.data) )
+      console.log('CONVERT BUILD', convert_build(action.data) )
 
       return {
         ...state,

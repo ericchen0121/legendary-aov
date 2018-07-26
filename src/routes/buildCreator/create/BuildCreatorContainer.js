@@ -82,10 +82,10 @@ class BuildCreatorContainer extends React.Component {
     if(nextProps.build_from_params && !this.state.is_initial_edit_build_set) { //conditionally set edit build
       this.setState({ is_initial_edit_build_set: true }) // flip flag so it doesn't loop the call to set_edit_build
       this.set_edit_build()
-      return true
+      return true // update component
     }
 
-    return false // if build but already set, don't update
+    return false // else don't update component if build but already set
   }
 
   set_edit_build = () => {
