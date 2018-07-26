@@ -1,16 +1,10 @@
 import React from 'react'
-
-import { Mutation } from "react-apollo";
-
-import * as Actions from './actions';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
 import cx from 'classnames'
 import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 
+// MATERIAL UI
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
@@ -22,24 +16,36 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 import green from 'material-ui/colors/green';
 
+// Components
 import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
 import BuildNotesEditor from './BuildNotesEditor'
 import { ADD_BUILD, EDIT_BUILD } from '../../../data/gql_queries/builds'
 
+// ICONS
 import { Icon } from 'react-icons-kit'
 import { ic_send } from 'react-icons-kit/md/ic_send'
 import { ic_save } from 'react-icons-kit/md/ic_save'
 import { plus } from 'react-icons-kit/fa/plus'
 
+// UTILS
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
 
+// LIBS
+import history from '../../../history'
 import gql from "graphql-tag";
+import { Mutation } from "react-apollo";
 
+// CONSTANTS
 const EDIT_COLOR = '#00bfff'
 const CONTINUE_EDIT_COLOR = 'rgba(0,0,0,.2)'
+
+// REDUX
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -149,18 +155,21 @@ class BuildCreator extends React.Component {
     this.props.actions.resetBuild()
   }
 
+  resetSaveStatus = () => {
+    this.setState({ is_saved: false }, () => this.handleClose() ) // allows user to continue editing and save again
+  }
+
   render() {
     const { classes, build_creator, user_login, is_editing, ...other } = this.props
     const { current_build, is_notes_open } = build_creator
     const { is_saved, open } = this.state
-
-
 
     let handleSave = this.handleSave.bind(this)
     let handleOpen = this.handleOpen.bind(this)
     let handleSaveAndOpen = this.handleSaveAndOpen.bind(this)
     let resetBuild = this.resetBuild.bind(this)
     let handleNotesOpen = this.handleNotesOpen.bind(this)
+    let resetSaveStatus = this.resetSaveStatus.bind(this)
 
     let user_id = user_login.id || current_build.user_id
     let build = {
@@ -282,8 +291,35 @@ class BuildCreator extends React.Component {
             let button_text = 'SAVE'
             let is_build_complete = !Object.values(build).includes(null)
 
-            // incomplete, complete, complete and already saved
-            if (is_saved) {
+            // Different states for creating a build: incomplete, complete, complete and already saved
+            // Different states for editing a build: same (no need to save), and save
+            if (is_editing && is_saved) {
+              alert_text = (
+                <span>
+                  <span>Edit Saved!</span>
+                  <span className={classes.create_new} onClick={resetSaveStatus}>Continue Editing</span>
+                  <span className={classes.create_new} onClick={history.goBack}>Close</span>
+                </span>
+              )
+              save_button = (
+                <div onClick={handleOpen}>
+                  <Button
+                    variant="flat"
+                    color="primary"
+                    className={cx(classes.save_button_inactive, classes.save_button_position)}
+                  >
+                    EDITING...
+                    <Icon
+                      style={{color: CONTINUE_EDIT_COLOR}}
+                      icon={ic_save}
+                      size={19}
+                      className={classes.save}
+                    />
+                  </Button>
+                </div>
+              )
+            }
+            else if (is_saved) {
               alert_text = (<span><span>Saved</span><span className={classes.create_new} onClick={resetBuild}>Create New</span></span>)
               save_button = (
                 <div onClick={handleOpen}>
