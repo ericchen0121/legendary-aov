@@ -29,6 +29,7 @@ import teams from './queries/teams'
 import arcana from './queries/arcana'
 
 import addBuild from './queries/addBuild';
+import editBuild from './queries/editBuild';
 import addHero from './queries/addHero';
 import addUser from './queries/addUser';
 import loginUser from './queries/loginUser'
@@ -58,6 +59,7 @@ const schema = new Schema({
     name: 'Mutation',
     fields: {
       addBuild,
+      editBuild,
       addHero,
       addUser,
       loginUser

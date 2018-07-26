@@ -20,6 +20,26 @@ export const ADD_BUILD = gql`
     }
   }`
 
+export const EDIT_BUILD = gql`
+  mutation editBuild($input: BuildUpdateType!) {
+    editBuild(input: $input) {
+        id
+        name
+        user_id
+        item_1
+        item_2
+        item_3
+        item_4
+        item_5
+        item_6
+        talent_id
+        arcana
+        hero_id
+        game_mode_id
+        notes
+    }
+  }`
+
 export const ALL_BUILDS = gql`
   {
     builds {

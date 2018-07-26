@@ -26,12 +26,12 @@ import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
 import BuildNotesEditor from './BuildNotesEditor'
-import {ADD_BUILD} from '../../../data/gql_queries/builds'
+import { ADD_BUILD, EDIT_BUILD } from '../../../data/gql_queries/builds'
 
 import { Icon } from 'react-icons-kit'
-import {ic_send} from 'react-icons-kit/md/ic_send'
-import {ic_save} from 'react-icons-kit/md/ic_save'
-import {plus} from 'react-icons-kit/fa/plus'
+import { ic_send } from 'react-icons-kit/md/ic_send'
+import { ic_save } from 'react-icons-kit/md/ic_save'
+import { plus } from 'react-icons-kit/fa/plus'
 
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from '../Items'
 import HEROES from '../../draft/AovHeroes'
@@ -150,9 +150,11 @@ class BuildCreator extends React.Component {
   }
 
   render() {
-    const { classes, build_creator, user_login, ...other } = this.props
+    const { classes, build_creator, user_login, is_editing, ...other } = this.props
     const { current_build, is_notes_open } = build_creator
     const { is_saved, open } = this.state
+
+
 
     let handleSave = this.handleSave.bind(this)
     let handleOpen = this.handleOpen.bind(this)
@@ -183,6 +185,16 @@ class BuildCreator extends React.Component {
       talent_alt: current_build.talent_alt,
       notes: JSON.stringify(current_build.notes),
       arcana: current_build.arcana || []
+    }
+
+    let mutation_query
+    if (is_editing) {
+      mutation_query = EDIT_BUILD
+      build['id'] = current_build.id // add id to the build object (from db), if editing
+      console.log('THE BUILD TO EDIT IS', build)
+     }
+    else {
+      mutation_query = ADD_BUILD
     }
 
     let build_name = (
@@ -239,10 +251,10 @@ class BuildCreator extends React.Component {
 
     return (
         <Mutation
-          mutation={ADD_BUILD}
+          mutation={ mutation_query }
           variables={ {input: build} }
         >
-          {(addBuild, {data}) => {
+          {(query_name, {data}) => {
             let item_editor = (
               <div className={classes.item_editor_container}>
                 <Grid container spacing={24} >
@@ -319,7 +331,7 @@ class BuildCreator extends React.Component {
                     variant="flat"
                     color="primary"
                     className={cx(classes.save_button, classes.save_button_position)}
-                    onClick={addBuild}
+                    onClick={query_name}
                   >
                     SAVE
                     <Icon

@@ -246,8 +246,7 @@ class Draft extends React.Component {
 
   handleRouteParams = () => {
     const params = this.props.params;
-    // console.log('params is', params)
-
+    
     // Get params from Route
     const { hero, video_search_term, channel_id } = params;
 

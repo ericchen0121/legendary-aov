@@ -203,11 +203,9 @@ const build_creator = (state = initialState, action) => {
       }
 
     case SET_EDIT_BUILD:
-      console.log('CONVERT BUILD', convert_build(action.data) )
-
       return {
         ...state,
-        current_build: convert_build(action.data) || state.current_build
+        current_build: convert_build(action.data) || state.current_build // default to initial state
       }
     default:
       return state;

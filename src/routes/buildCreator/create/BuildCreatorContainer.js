@@ -74,13 +74,17 @@ class BuildCreatorContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      is_initial_edit_build_set: false
+      is_initial_edit_build_set: false,
+      is_editing: false
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     if(nextProps.build_from_params && !this.state.is_initial_edit_build_set) { //conditionally set edit build
-      this.setState({ is_initial_edit_build_set: true }) // flip flag so it doesn't loop the call to set_edit_build
+      this.setState({
+        is_initial_edit_build_set: true,
+        is_editing: true
+       }) // flip flag so it doesn't loop the call to set_edit_build
       this.set_edit_build()
       return true // update component
     }
@@ -94,7 +98,8 @@ class BuildCreatorContainer extends React.Component {
 
   render() {
     const { classes, context, build_creator } = this.props
-    console.log(this.props)
+    const { is_editing } = this.state
+
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
@@ -114,7 +119,9 @@ class BuildCreatorContainer extends React.Component {
           <BuildItemList />
         </Grid>
         <Grid item xs={7}>
-          <BuildCreator />
+          <BuildCreator
+            is_editing={is_editing}
+          />
           <BuildItemViewer />
         </Grid>
         <Grid item xs={3}>

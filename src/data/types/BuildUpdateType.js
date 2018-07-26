@@ -9,11 +9,12 @@ import {
 import GraphQLJSON from 'graphql-type-json'
 import BuildType from '../types/BuildType';
 
-const BuildInputType = new GraphQLInputObjectType({
-  name: 'BuildInputType',
+const BuildUpdateType = new GraphQLInputObjectType({
+  name: 'BuildUpdateType',
   type: BuildType,
-  description: 'Input build payload',
+  description: 'Update build payload',
   fields: {
+    id: { type: IntType},
     name: { type: StringType },
     item_1: { type: IntType },
     item_2: { type: IntType },
@@ -36,6 +37,6 @@ const BuildInputType = new GraphQLInputObjectType({
     version_id: { type: IntType },
     notes: { type: GraphQLJSON },
   },
-})
+});
 
-export default BuildInputType;
+export default BuildUpdateType;
