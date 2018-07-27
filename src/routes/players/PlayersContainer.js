@@ -97,7 +97,7 @@ class PlayersContainer extends React.Component {
             }, () => {
               this.setState({
                 name: user.name,
-                twitter: user.twitter,
+                twitter: user.twitter || LEGENDARY_TWITTER,
                 twitch: user.twitch ? user.twitch : DEFAULT_TWITCH
               })
             })
@@ -107,7 +107,7 @@ class PlayersContainer extends React.Component {
             let twitch = user.twitch ? user.twitch : DEFAULT_TWITCH
             this.setState({
               name: user.name,
-              twitter: user.twitter,
+              twitter: user.twitter || LEGENDARY_TWITTER,
               twitch
             })
           }

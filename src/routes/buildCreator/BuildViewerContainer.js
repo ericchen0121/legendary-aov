@@ -59,13 +59,22 @@ const styles = theme => ({
     borderRadius: 2,
     padding: '4px 3px 1px 3px',
     width: 27
+  },
+  edit_link: {
+    position: 'absolute',
+    right: 20,
+    top: 30,
+  },
+  link_style: {
+    fontSize: 10,
+    textDecoration: 'none'
   }
 })
 
 class BuildViewerContainer extends React.Component {
 
   render() {
-    const { classes, actions, build } = this.props
+    const { classes, actions, build, is_editing } = this.props
     let b = build
 
     let video_url = b.notes ? JSON.parse(build.notes).video_url : null
@@ -141,6 +150,11 @@ class BuildViewerContainer extends React.Component {
               <ExpansionPanelSummary className={classes.eps}>
                 <div className={s.wrapper}>
                   {item_list}
+                  { is_editing && (
+                    <span className={classes.edit_link}>
+                      <a className={classes.link_style} href={`/build/edit/${b.id}`} >EDIT</a>
+                    </span>
+                  )}
                 </div>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails className={classes.epd}>

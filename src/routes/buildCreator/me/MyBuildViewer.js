@@ -122,7 +122,7 @@ class MyBuildViewer extends React.Component {
             return <div>ERROR! Sorry!</div>
           }
 
-          if (!data.myBuilds ||filter_builds_by_hero_id(data.myBuilds, selected_hero_id).length === 0) {
+          if (!data.myBuilds || filter_builds_by_hero_id(data.myBuilds, selected_hero_id).length === 0) {
             return (
               <Grid container zeroMinWidth className={classes.grid_container}>
                 <Grid item xs={9}>
@@ -164,7 +164,7 @@ class MyBuildViewer extends React.Component {
                 <Grid container zeroMinWidth className={classes.grid_container}>
                   <Grid item xs={9}>
                     <div className={s.main_container}>
-                      { filter_builds_by_hero_id(data.myBuilds, selected_hero_id).map(b => <BuildViewerContainer build={b} /> ) }
+                      { filter_builds_by_hero_id(data.myBuilds, selected_hero_id).map(b => <BuildViewerContainer build={b} is_editing={true}/> ) }
                     </div>
                   </Grid>
                   <Grid item xs={3}>
