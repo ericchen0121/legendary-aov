@@ -196,11 +196,11 @@ class BuildCreator extends React.Component {
       arcana: current_build.arcana || []
     }
 
+    console.log('build IN CREATOR', build)
     let mutation_query
     if (is_editing) {
       mutation_query = EDIT_BUILD
       build['id'] = current_build.id // add id to the build object (from db), if editing
-      console.log('THE BUILD TO EDIT IS', build)
      }
     else {
       mutation_query = ADD_BUILD

@@ -71,8 +71,8 @@ const styles = theme => ({
 
 class BuildCreatorContainer extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       is_initial_edit_build_set: false,
       is_editing: false
@@ -80,6 +80,7 @@ class BuildCreatorContainer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    // RERENDER WHEN ITEM BUILD CHANGES
     if(nextProps.build_from_params && !this.state.is_initial_edit_build_set) { //conditionally set edit build
       this.setState({
         is_initial_edit_build_set: true,
@@ -87,6 +88,11 @@ class BuildCreatorContainer extends React.Component {
        }) // flip flag so it doesn't loop the call to set_edit_build
       this.set_edit_build()
       return true // update component
+    }
+
+    // RERENDER WHEN ITEM BUILD CHANGES
+    if (nextProps.build_creator != this.props.build_creator) {
+      return true
     }
 
     return false // else don't update component if build but already set
@@ -99,7 +105,8 @@ class BuildCreatorContainer extends React.Component {
   render() {
     const { classes, context, build_creator } = this.props
     const { is_editing } = this.state
-
+    console.log('BUILD CREATOR IN CONTAINER', build_creator)
+    console.log('PROPS IN CONTAINER', this.props)
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
@@ -110,7 +117,7 @@ class BuildCreatorContainer extends React.Component {
       build_creator.current_build[5],
       build_creator.current_build[6],
     ]
-
+    console.log('AND ITEMS', items)
     return (
       <Grid container spacing={24} zeroMinWidth className={classes.container}>
         <Grid item xs={2}>

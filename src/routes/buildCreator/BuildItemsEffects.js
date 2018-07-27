@@ -54,8 +54,8 @@ class BuildItemsEffects extends React.Component {
   }
 
   render() {
-    const { classes, items, style } = this.props
-
+    const { classes, items, style} = this.props
+    
     let type_class
     if (style === 'bold') {
       type_class = cx(s.item_effect_type, classes.bold)
