@@ -79,7 +79,6 @@ class Login extends React.Component {
   handleRegisterUser = (data) => {
     let id, email, username
     if (data.addUser) {
-      console.log(data.addUser)
       id = data.addUser.id
       email = data.addUser.email
       username = data.addUser.username
@@ -118,7 +117,6 @@ class Login extends React.Component {
   }
 
   _saveUserData = (id, email, username, is_logged_in) => {
-    console.log(id, email, username)
     let legendaryaov_user = JSON.stringify({
       id,
       email,

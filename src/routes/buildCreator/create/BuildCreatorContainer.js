@@ -105,8 +105,7 @@ class BuildCreatorContainer extends React.Component {
   render() {
     const { classes, context, build_creator } = this.props
     const { is_editing } = this.state
-    console.log('BUILD CREATOR IN CONTAINER', build_creator)
-    console.log('PROPS IN CONTAINER', this.props)
+
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
@@ -117,7 +116,7 @@ class BuildCreatorContainer extends React.Component {
       build_creator.current_build[5],
       build_creator.current_build[6],
     ]
-    console.log('AND ITEMS', items)
+    
     return (
       <Grid container spacing={24} zeroMinWidth className={classes.container}>
         <Grid item xs={2}>

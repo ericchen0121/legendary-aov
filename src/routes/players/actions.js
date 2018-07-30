@@ -37,7 +37,6 @@ export const checkLiveTwitchStatus = (users) => {
       })
       .then((res) => {
         if (res.data.data.length > 0) { live_users = res.data.data.map(s => users_objs.find(u => u.id === s.user_id).login ) }
-        console.log('found live twitch status')
         dispatch(storeLiveTwitchStatus(live_users))
       })
       .catch((error) => { console.log('error in fetching live twitch status')})

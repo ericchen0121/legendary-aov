@@ -196,7 +196,6 @@ class BuildCreator extends React.Component {
       arcana: current_build.arcana || []
     }
 
-    console.log('build IN CREATOR', build)
     let mutation_query
     if (is_editing) {
       mutation_query = EDIT_BUILD

@@ -11,11 +11,9 @@
   // env config
   import dotenv from 'dotenv'
   if (process.env.NODE_ENV !== 'production') {
-    console.log('hellooooo')
     dotenv.config()
-    console.log(process.env)
   }
-  
+
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
