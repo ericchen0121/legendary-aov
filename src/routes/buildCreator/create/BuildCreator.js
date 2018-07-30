@@ -21,6 +21,7 @@ import BuildItemEdit from './BuildItemEdit'
 import BuildItem from './BuildItem'
 import BuildTalent from './BuildTalent'
 import BuildNotesEditor from './BuildNotesEditor'
+import BuildArcanaEditor from './BuildArcanaEditor'
 import { ADD_BUILD, EDIT_BUILD } from '../../../data/gql_queries/builds'
 
 // ICONS
@@ -110,7 +111,20 @@ const styles = theme => ({
     position: 'relative',
     left: '57%',
     marginTop: -60
-  }
+  },
+  hide_text: {
+    marginLeft: 15,
+    fontSize: 10,
+    color: '#0074c2'
+  },
+  add_arcana_button_container: {
+    position: 'relative',
+    left: '57%',
+    marginTop: -85
+  },
+  add_arcana_button: {
+    marginRight: 7
+  },
 })
 
 class BuildCreator extends React.Component {
@@ -137,6 +151,10 @@ class BuildCreator extends React.Component {
     this.props.actions.toggleAddNotesOpen()
   }
 
+  handleArcanaOpen = () => {
+    this.props.actions.toggleAddArcanaOpen()
+  }
+
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -161,7 +179,7 @@ class BuildCreator extends React.Component {
 
   render() {
     const { classes, build_creator, user_login, is_editing, ...other } = this.props
-    const { current_build, is_notes_open } = build_creator
+    const { current_build, is_notes_open, is_arcana_open } = build_creator
     const { is_saved, open } = this.state
 
     let handleSave = this.handleSave.bind(this)
@@ -169,6 +187,7 @@ class BuildCreator extends React.Component {
     let handleSaveAndOpen = this.handleSaveAndOpen.bind(this)
     let resetBuild = this.resetBuild.bind(this)
     let handleNotesOpen = this.handleNotesOpen.bind(this)
+    let handleArcanaOpen = this.handleArcanaOpen.bind(this)
     let resetSaveStatus = this.resetSaveStatus.bind(this)
 
     let user_id = user_login.id || current_build.user_id
@@ -253,6 +272,27 @@ class BuildCreator extends React.Component {
           style={{color: 'green'}}
         />
           ADD NOTES
+          {is_notes_open && <span className={classes.hide_text}>HIDE</span>}
+        </Button>
+      </div>
+    )
+
+    let add_arcana_button = (
+      <div onClick={handleArcanaOpen}>
+        <Button
+          variant="flat"
+          color="primary"
+          className={classes.add_arcana_button_container}
+        >
+        <Icon
+          style={{color: CONTINUE_EDIT_COLOR}}
+          icon={plus}
+          size={14}
+          className={classes.add_arcana_button}
+          style={{color: 'green'}}
+        />
+          ARCANA
+          {is_arcana_open && <span className={classes.hide_text}>HIDE</span>}
         </Button>
       </div>
     )
@@ -385,9 +425,11 @@ class BuildCreator extends React.Component {
                 { item_editor }
                 { build_name }
                 { talent_selector }
+                { add_arcana_button }
                 { add_notes_button }
                 { save_button }
                 { is_notes_open  && <BuildNotesEditor />}
+                { is_arcana_open  && <BuildArcanaEditor />}
                 <Snackbar
                   className={classes.snackbar}
                   anchorOrigin={{

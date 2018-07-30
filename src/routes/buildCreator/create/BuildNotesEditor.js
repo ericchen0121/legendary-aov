@@ -21,6 +21,7 @@ const styles = theme => ({
       order: 2,
       marginRight: 30,
     },
+    marginBottom: 40
   },
   heading: {
     fontFamily: "'Josefin Sans', sans-serif"

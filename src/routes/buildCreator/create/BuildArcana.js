@@ -18,7 +18,14 @@ const styles = theme => ({
       order: 2,
       marginRight: 30,
     },
-    none: {}
+    none: {},
+  },
+  container: {
+    width: 60
+  },
+  name: {
+    fontSize: 9,
+    textAlign: 'center'
   },
 })
 
@@ -26,15 +33,22 @@ class BuildArcana extends React.Component {
 
   render() {
     const { arcana, highlighted, classes, actions, isEditing } = this.props
+
     if (arcana) {
       return (
-        <div onClick={isEditing ? (() => actions.insertArcanaToBuild(id)) : (() => {} )}>
+        <div
+          onClick={() => actions.insertArcanaToBuild(arcana.id)}
+          className={classes.container}
+        >
           <div className={cx(isEditing ? classes.pointer : classes.none, highlighted ? s.full_opacity : s.low_opacity)}>
-            <Tooltip title={arcana.name.toUpperCase()}>
+            <Tooltip placement="top" title={arcana.types.join(', ').toUpperCase()}>
               <Button mini variant='fab'>
                 <BuildArcanaImage arcana={arcana} />
               </Button>
             </Tooltip>
+          </div>
+          <div>
+            <span className={classes.name}>{ arcana.name.toUpperCase() }</span>
           </div>
         </div>
       )

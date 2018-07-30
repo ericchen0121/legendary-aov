@@ -11,11 +11,11 @@ import {
   RESET_BUILD,
   TOGGLE_ADD_NOTES_OPEN,
   ADD_NOTES,
+  TOGGLE_ADD_ARCANA_OPEN,
   SELECTED_ARCANA,
   HOVERED_ARCANA,
   CLEAR_HOVERED_ARCANA,
   INSERT_ARCANA_TO_BUILD,
-  REMOVE_ARCANA_FROM_BUILD,
   SET_EDIT_BUILD
 } from '../../../constants';
 
@@ -36,6 +36,7 @@ const initialState = {
   selected_arcana: null,
   hovered_arcana: null,
   is_notes_open: false,
+  is_arcana_open: false,
   current_build: {
     name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
     1: null,
@@ -154,6 +155,12 @@ const build_creator = (state = initialState, action) => {
         }
       }
 
+    case TOGGLE_ADD_ARCANA_OPEN:
+      return {
+        ...state,
+        is_arcana_open: !state.is_arcana_open
+      }
+
     case SELECTED_ARCANA:
       return {
         ...state,
@@ -171,34 +178,21 @@ const build_creator = (state = initialState, action) => {
         hovered_arcana: null
       }
     case INSERT_ARCANA_TO_BUILD:
-      let index = state.current_build.arcana.indexOf(action.data)
-      let arcana  // array of arcana ids
-      if (index > -1) { // already exists in list
-        arcana = state.current_build.arcana
+      let current_arcana = state.current_build.arcana
+
+      let arcana_index = current_arcana.indexOf(action.data)
+      if (arcana_index > -1) { // already exists in list
+        current_arcana.splice(arcana_index, 1)
       }
       else {
-        arcana = state.current_build.arcana.push(action.data)
+        current_arcana.push(action.data)
       }
 
       return {
         ...state,
         current_build: {
           ...state.current_build,
-          arcana: arcana
-        }
-      }
-
-    case REMOVE_ARCANA_FROM_BUILD:
-      let remove_index = state.current_build.arcana.indexOf(action.data)
-      let arcana_list // array of arcana ids
-      if (remove_index > -1) {
-        arcana_list = state.current_build.arcana.splice(remove_index, 1)
-      }
-      return {
-        ...state,
-        current_build: {
-          ...state.current_build,
-          arcana: arcana_list
+          arcana: current_arcana
         }
       }
 
