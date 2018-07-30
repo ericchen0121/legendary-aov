@@ -14,6 +14,7 @@ import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import BuildItemEffects from '../BuildItemsEffects'
+import BuildArcanaEffects from '../BuildArcanaEffects'
 
 import { graphql, compose } from 'react-apollo'
 import {ID_QUERY} from '../../../data/gql_queries/builds'
@@ -105,18 +106,20 @@ class BuildCreatorContainer extends React.Component {
   render() {
     const { classes, context, build_creator } = this.props
     const { is_editing } = this.state
+    let { current_build } = build_creator
+    let { arcana } = current_build
 
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
-      build_creator.current_build[1],
-      build_creator.current_build[2],
-      build_creator.current_build[3],
-      build_creator.current_build[4],
-      build_creator.current_build[5],
-      build_creator.current_build[6],
+      current_build[1],
+      current_build[2],
+      current_build[3],
+      current_build[4],
+      current_build[5],
+      current_build[6],
     ]
-    
+
     return (
       <Grid container spacing={24} zeroMinWidth className={classes.container}>
         <Grid item xs={2}>
@@ -136,6 +139,10 @@ class BuildCreatorContainer extends React.Component {
             <BuildItemEffects items={items} style={'bold'}/>
           </div>
           <BuildItemCard />
+          <div className={cx(classes.item_effects_container)}>
+            <div className={s.combined_effects_title}>{'All Arcana Effects'.toUpperCase()}</div>
+            <BuildArcanaEffects arcana={arcana} style={'bold'}/>
+          </div>
         </Grid>
       </Grid>
     )

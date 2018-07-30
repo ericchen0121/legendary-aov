@@ -143,7 +143,7 @@ const ARCANA = [
     types: ['attack', 'ability'],
     effects: [
       {
-        type: 'attack  damage',
+        type: 'attack damage',
         power: 1.6
       },
       {
@@ -372,8 +372,9 @@ const ARCANA = [
         power: 2.5
       },
       {
-        type: 'life steal %',
-        power: .05 // +0.5%
+        type: 'life steal',
+        power_type: 'percentage',
+        power: .5 // +0.5%
       }
     ]
   },
@@ -633,6 +634,15 @@ export const CLASS_ARCANA = [
   },
 ]
 
+export const ARCANA_PERCENTAGE_TYPES = [
+  'critical chance',
+  'attack speed',
+  'critical damage',
+  'movement speed',
+  'magic life steal',
+  'cooldown speed',
+  'life steal'
+]
 
 export default ARCANA
 export function find_arcana_by_id(id) {

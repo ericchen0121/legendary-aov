@@ -428,8 +428,8 @@ class BuildCreator extends React.Component {
                 { add_arcana_button }
                 { add_notes_button }
                 { save_button }
-                { is_notes_open  && <BuildNotesEditor />}
-                { is_arcana_open  && <BuildArcanaEditor />}
+                { is_notes_open && <BuildNotesEditor />}
+                { is_arcana_open && <BuildArcanaEditor />}
                 <Snackbar
                   className={classes.snackbar}
                   anchorOrigin={{
