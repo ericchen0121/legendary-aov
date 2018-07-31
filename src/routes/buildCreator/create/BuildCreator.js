@@ -215,7 +215,6 @@ class BuildCreator extends React.Component {
       arcana: current_build.arcana || []
     }
 
-    console.log(build.arcana)
     let mutation_query
     if (is_editing) {
       mutation_query = EDIT_BUILD
@@ -223,6 +222,9 @@ class BuildCreator extends React.Component {
      }
     else {
       mutation_query = ADD_BUILD
+
+      // // clear build
+      // this.props.actions.resetBuild()
     }
 
     let build_name = (
@@ -304,6 +306,8 @@ class BuildCreator extends React.Component {
           variables={ {input: build} }
         >
           {(query_name, {data}) => {
+
+
             let item_editor = (
               <div className={classes.item_editor_container}>
                 <Grid container spacing={24} >

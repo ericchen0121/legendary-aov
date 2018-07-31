@@ -37,6 +37,7 @@ const initialState = {
   hovered_arcana: null,
   is_notes_open: false,
   is_arcana_open: false,
+  is_editing_page: false,
   current_build: {
     name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
     1: null,
