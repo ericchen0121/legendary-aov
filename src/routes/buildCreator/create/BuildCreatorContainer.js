@@ -14,6 +14,7 @@ import BuildItemList from './BuildItemList'
 import BuildItemViewer from './BuildItemViewer'
 import BuildHeroContainer from './BuildHeroContainer'
 import BuildItemEffects from '../BuildItemsEffects'
+import BuildArcanaEffects from '../BuildArcanaEffects'
 
 import { graphql, compose } from 'react-apollo'
 import {ID_QUERY} from '../../../data/gql_queries/builds'
@@ -25,6 +26,7 @@ const build_query = graphql(ID_QUERY, {
   props: ({ data: { loading, build } }) => ({
     loading,
     build_from_params: build,
+    is_editing_page: true
   }), // put build object returned from db into this.props.build
 });
 
@@ -75,21 +77,27 @@ class BuildCreatorContainer extends React.Component {
     super(props);
     this.state = {
       is_initial_edit_build_set: false,
-      is_editing: false
+      is_editing: false,
+      has_started_new_build: false
     }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextState)
     // RERENDER WHEN ITEM BUILD CHANGES
-    if(nextProps.build_from_params && !this.state.is_initial_edit_build_set) { //conditionally set edit build
+    if(nextProps.build_from_params && !this.state.is_initial_edit_build_set && nextProps.is_editing_page) { //conditionally set edit build
       this.setState({
         is_initial_edit_build_set: true,
         is_editing: true
-       }) // flip flag so it doesn't loop the call to set_edit_build
-      this.set_edit_build()
+      }, () => this.set_edit_build()) // flip flag so it doesn't loop the call to set_edit_build
+
       return true // update component
     }
 
+    if(!nextProps.is_editing_page && !nextState.has_started_new_build) {
+      console.log('RESETTING BUILD ONCE')
+      this.setState({ has_started_new_build: true}, () => this.props.actions.resetBuild())
+    }
     // RERENDER WHEN ITEM BUILD CHANGES
     if (nextProps.build_creator != this.props.build_creator) {
       return true
@@ -103,18 +111,20 @@ class BuildCreatorContainer extends React.Component {
   }
 
   render() {
-    const { classes, context, build_creator } = this.props
+    const { classes, context, build_creator, is_editing_page } = this.props
     const { is_editing } = this.state
+    let { current_build } = build_creator
+    let { arcana } = current_build
 
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
-      build_creator.current_build[1],
-      build_creator.current_build[2],
-      build_creator.current_build[3],
-      build_creator.current_build[4],
-      build_creator.current_build[5],
-      build_creator.current_build[6],
+      current_build[1],
+      current_build[2],
+      current_build[3],
+      current_build[4],
+      current_build[5],
+      current_build[6],
     ]
     
     return (
@@ -136,6 +146,10 @@ class BuildCreatorContainer extends React.Component {
             <BuildItemEffects items={items} style={'bold'}/>
           </div>
           <BuildItemCard />
+          <div className={cx(classes.item_effects_container)}>
+            <div className={s.combined_effects_title}>{'All Avg Arcana Effects'.toUpperCase()}</div>
+            { arcana && <BuildArcanaEffects arcana={arcana} style={'bold'}/> }
+          </div>
         </Grid>
       </Grid>
     )

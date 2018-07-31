@@ -25,6 +25,7 @@ const addBuild = {
      game_mode_id: input.game_mode_id,
      version_id: input.version_id,
      notes: input.notes,
+     arcana: input.arcana
    }, {
      include: [
        { model: Hero },

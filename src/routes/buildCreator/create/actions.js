@@ -13,6 +13,7 @@ import {
   RESET_BUILD,
   TOGGLE_ADD_NOTES_OPEN,
   ADD_NOTES,
+  TOGGLE_ADD_ARCANA_OPEN,
   SELECTED_ARCANA,
   HOVERED_ARCANA,
   CLEAR_HOVERED_ARCANA,
@@ -69,6 +70,10 @@ export const resetBuild = (data) => {
 
 export const toggleAddNotesOpen = (data) => {
   return { type: TOGGLE_ADD_NOTES_OPEN, data }
+}
+
+export const toggleAddArcanaOpen = (data) => {
+  return { type: TOGGLE_ADD_ARCANA_OPEN, data }
 }
 
 export const addNotes = (data) => {

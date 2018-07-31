@@ -6,10 +6,11 @@ import { withStyles } from 'material-ui/styles';
 import BuildArcanaImage from './BuildArcanaImage'
 import Tooltip from 'material-ui/Tooltip';
 import Button from 'material-ui/Button';
-import { find_arcana_by_id } from '../AovArcana'
+import { find_arcana_by_id, get_avg_arcana_counts } from '../AovArcana'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 
 const styles = theme => ({
   root: {
@@ -21,39 +22,44 @@ const styles = theme => ({
     none: {},
   },
   container: {
-    width: 60
+    marginTop: 10,
+    flex: '1 1 60px'
   },
   name: {
     fontSize: 9,
     textAlign: 'center'
   },
+  red: {
+    color: 'red'
+  },
+  vertical_spacing: {
+    marginTop: -10
+  }
 })
 
-class BuildArcana extends React.Component {
+class BuildArcanaCountsContainer extends React.Component {
 
   render() {
-    const { arcana, highlighted, classes, actions, isEditing } = this.props
+    const { arcana, classes, actions } = this.props
 
     if (arcana) {
+      let count = Number.isInteger(arcana.avg_count) ? arcana.avg_count : arcana.avg_count.toFixed(1)
       return (
-        <div
-          onClick={() => actions.insertArcanaToBuild(arcana.id)}
-          className={classes.container}
-        >
-          <div className={cx(isEditing ? classes.pointer : classes.none, highlighted ? s.full_opacity : s.low_opacity)}>
-            <Tooltip placement="top" title={arcana.types.join(', ').toUpperCase()}>
-              <Button mini variant='fab'>
-                <BuildArcanaImage arcana={arcana} />
-              </Button>
-            </Tooltip>
+        <div className={classes.container} >
+          <div className={s.full_opacity}>
+            <BuildArcanaImage arcana={arcana} />
           </div>
           <div>
             <span className={classes.name}>{ arcana.name.toUpperCase() }</span>
+          </div>
+          <div className={classes.vertical_spacing}>
+            <span className={cx(classes.name, classes.red)}> x { count }</span>
           </div>
         </div>
       )
     }
     else { return <div />}
+
   }
 }
 
@@ -68,5 +74,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withStyles(styles)(
-  connect(mapStateToProps, mapDispatchToProps)(BuildArcana)
+  connect(mapStateToProps, mapDispatchToProps)(BuildArcanaCountsContainer)
 );
