@@ -80,10 +80,10 @@ class BuildArcanaEditor extends React.Component {
           { arcana_html(this.sortAlpha(ARCANA.filter(a => a.color === 'red'))) }
         </div>
         <div className={classes.container}>
-          { arcana_html(this.sortAlpha(ARCANA.filter(a => a.color === 'green'))) }
+          { arcana_html(this.sortAlpha(ARCANA.filter(a => a.color === 'purple'))) }
         </div>
         <div className={classes.container}>
-          { arcana_html(this.sortAlpha(ARCANA.filter(a => a.color === 'purple'))) }
+          { arcana_html(this.sortAlpha(ARCANA.filter(a => a.color === 'green'))) }
         </div>
       </div>
     )
