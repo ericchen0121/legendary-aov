@@ -8,7 +8,8 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 
-import { find_item_by_id } from './Items'
+import { find_item_by_id, ITEM_CAPS } from './Items'
+import { ARCANA_PERCENTAGE_TYPES } from './AovArcana'
 import { to_uppercase_first } from './utilities'
 
 const styles = theme => ({
@@ -44,7 +45,26 @@ const styles = theme => ({
   },
   bold: {
     fontWeight: 'bold'
-  }
+  },
+  cap_exceeded: {
+    color: 'red',
+    fontSize: 10,
+    fontStyle: 'bold',
+    border: '1px solid red',
+    borderRadius: 2,
+    padding: '2px 4px 3px 1px',
+    marginLeft: 5,
+  },
+  equal_cap: {
+    color: 'green',
+    fontSize: 10,
+    fontStyle: 'bold',
+    border: '1px solid green',
+    borderRadius: 2,
+    padding: '2px 4px 1px 1px',
+    marginLeft: 5,
+  },
+  none: {}
 })
 
 class BuildItemsEffects extends React.Component {
@@ -55,7 +75,7 @@ class BuildItemsEffects extends React.Component {
 
   render() {
     const { classes, items, style} = this.props
-    
+
     let type_class
     if (style === 'bold') {
       type_class = cx(s.item_effect_type, classes.bold)
@@ -91,8 +111,29 @@ class BuildItemsEffects extends React.Component {
       let all_effects_inner_html = this.sortAlpha(all_effects_counts).map((e, i) => {
         let power = e.power
         let percent, plus
+
+        // CAP CALCULATION
+        let cap_multiplier = ((ARCANA_PERCENTAGE_TYPES.indexOf(e.type) > -1) ? 100 : 1)
+        let cap = ITEM_CAPS[e.type]
+
+        let cap_class = classes.none
+        let cap_note = ''
+        let is_cap_exceeded = -1 // -1 NO, 0 EQUAL TO MAX, 1 YES EXCEEDS CAP
+        if (!cap){}
+        else if (power > cap) {
+          is_cap_exceeded = 1
+          cap_note = `${cap * cap_multiplier}${ cap_multiplier === 100 ? '%' : ''} max`.toUpperCase()
+          cap_class = classes.cap_exceeded
+        }
+        else if (power === cap) {
+          is_cap_exceeded = 0
+          cap_note = 'MAXED'
+          cap_class = classes.equal_cap
+        }
+
+
         // if power is really Percentages
-        if (power < 2) {
+        if (power <= 2) {
           power = Math.floor(power * 100)
           percent = '%'
           plus = '+'
@@ -103,7 +144,8 @@ class BuildItemsEffects extends React.Component {
 
         return (
           <div key={(e.type + i)}>
-            <span className={type_class}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
+            <span className={ type_class }>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{power}{percent}</span>
+            <span className={ cap_class} > {cap_note}</span>
             { divider }
           </div>
         )

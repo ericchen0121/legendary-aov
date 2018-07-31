@@ -676,7 +676,6 @@ export function get_avg_arcana_counts(current_arcana) {
     a['avg_count'] = avg_arcana_count_for_build
     all_arcana_avg_counts.push(a)
   }
-  console.log(all_arcana_avg_counts)
   return all_arcana_avg_counts
 }
 

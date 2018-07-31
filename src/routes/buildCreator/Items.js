@@ -1,6 +1,3 @@
-// From CBS.com NFL Draft page
-// copied table into TSV -> JSON converter
- //
 export const ITEMS = [
   {
     id: 1,
@@ -46,7 +43,7 @@ export const ITEMS = [
         power: 0.30,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: 0.1,
       },
     ],
@@ -126,7 +123,7 @@ export const ITEMS = [
         power: 100,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: 0.25,
       },
     ],
@@ -149,7 +146,7 @@ export const ITEMS = [
         power: 0.15,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: 0.1,
       },
       {
@@ -184,7 +181,7 @@ export const ITEMS = [
         power: 0.2,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power: 0.05,
       },
       {
@@ -234,18 +231,18 @@ export const ITEMS = [
         power: 0.30,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: 0.1,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power: 0.05,
       },
     ],
     passives: [{
       name: "Chain Lightning",
       description: ' Every 8 seconds, the next normal attack triggers a chain lightning that deals 150 (+20% attack damage) physical damage. Each normal attack also carries Life Steal and reduces cooldown by 1 second on hit.',
-      type: ['attack damage', 'life steal %', 'cooldown speed']
+      type: ['attack damage', 'life steal', 'cooldown speed']
     }]
   },
   {
@@ -265,7 +262,7 @@ export const ITEMS = [
         power: 0.20,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power:  0.05,
       },
     ],
@@ -398,7 +395,7 @@ export const ITEMS = [
     {
       name: "Magic Life Steal",
       description: '+25%',
-      type: ['magic life steal', 'life steal %']
+      type: ['magic life steal', 'life steal']
     },
     ]
   },
@@ -419,7 +416,7 @@ export const ITEMS = [
         power: 400,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power: 0.08,
       },
     ],
@@ -451,7 +448,7 @@ export const ITEMS = [
         power: 850,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power: 0.05,
       },
     ],
@@ -647,7 +644,7 @@ export const ITEMS = [
         power: 1100,
       },
       {
-        type: 'movement speed %',
+        type: 'movement speed',
         power: 0.05,
       },
     ],
@@ -1031,7 +1028,7 @@ export const ITEMS = [
         power: 0.2,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: 0.1,
       },
     ],
@@ -1178,7 +1175,7 @@ export const ITEMS = [
         power: .2,
       },
       {
-        type: 'life steal %',
+        type: 'life steal',
         power: .1,
       },
     ],
@@ -1186,7 +1183,7 @@ export const ITEMS = [
       {
         name: "Blood Thirst",
         description: 'Increases Life Steal by 90% fo 3 seconds. 60-second cooldown. Only usable by ranged heroes.',
-        type: ['life steal %']
+        type: ['life steal']
       },
     ]
   },
@@ -1203,7 +1200,7 @@ export const ITEMS = [
         power: 90,
       },
       {
-        type: 'magic life steal %',
+        type: 'magic life steal',
         power: .15,
       },
     ],
@@ -1515,13 +1512,34 @@ export const TALENTS = [
   },
 ]
 
-export const ITEM_CATEGORIES  = [
+export const ITEM_CATEGORIES = [
   'attack',
   'magic',
   'defense',
   'movement',
   'jungling'
 ]
+
+//
+export const ITEM_CAPS = {
+  'magic life steal': 1,
+  'life steal': 1,
+  'cooldown speed': .4,
+  'attack damage': null,
+  'max hp': null,
+  'max mp': null,
+  'attack speed': 2, //  200%
+  'critical chance': 1, // 100%
+  'armor pierce': null, // pierce is a unique effect! Enchanted Kicks magic pierce stacks, but Hecates and Spoopy don't
+  'magic pierce': null,
+  'movement speed': 800, // not %, but to 800 units/sec
+  'movement speed reduction %': 1, // 100% reduction cannot go below 120 units/sec (1/3 base)
+  'critical damage': null,
+  'ability power': null,
+  'armor': null,
+  'magic defense': null,
+  'resistance': .6 // according to SG (boots and max's liftoff)
+}
 
 export function find_item_by_id(id) {
   return ITEMS.find(i => i.id === id)
