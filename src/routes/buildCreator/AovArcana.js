@@ -644,7 +644,82 @@ export const ARCANA_PERCENTAGE_TYPES = [
   'life steal'
 ]
 
-export default ARCANA
+function get_arcana_count_by_key(list, key) { // returns { 'value': 1, 'value2': 2, 'value3': 2}
+  return list.reduce((prev, curr) => {
+    let count = prev.get(curr.color) || 0
+    prev.set(curr.color, count + 1)
+    return prev
+  }, new Map())
+}
+
+
 export function find_arcana_by_id(id) {
   return ARCANA.find(a => a.id === id)
 }
+
+export function get_avg_arcana_counts(current_arcana) {
+  let all_arcana = []
+  let all_arcana_avg_counts = []
+  for (let id of current_arcana) {
+    let arcana = find_arcana_by_id(id)
+    all_arcana.push(arcana)
+  }
+
+  // Calculate the total effects power of each arcana, given an assumption of AVG count over 10 arcana
+
+  let color_counts = get_arcana_count_by_key(all_arcana, 'color')
+  let get_count = (color) => color_counts.get(color)
+
+
+  for (let a of all_arcana) {
+    let avg_arcana_count_for_build = 10/get_count(a.color)
+    a['avg_count'] = avg_arcana_count_for_build
+    all_arcana_avg_counts.push(a)
+  }
+  console.log(all_arcana_avg_counts)
+  return all_arcana_avg_counts
+}
+
+export function get_all_arcana_effects(current_arcana) {
+  let all_effects = []
+  let all_arcana = []
+  for (let id of current_arcana) {
+    let arcana = find_arcana_by_id(id)
+    all_arcana.push(arcana)
+  }
+
+  // Calculate the total effects power of each arcana, given an assumption of AVG count over 10 arcana
+
+  let color_counts = get_arcana_count_by_key(all_arcana, 'color')
+  let get_count = (color) => color_counts.get(color)
+
+
+  for (let a of all_arcana) {
+    // 1. Calculates the avg number of a given color of arcana based on color
+    let avg_arcana_count_for_build = 10/get_count(a.color)
+
+    // 2. Multiples this count with the power
+    a.effects.map((e,i) => {
+      a.effects[i]['total_effect'] = avg_arcana_count_for_build * e.power
+    })
+
+    all_effects.push(...a.effects)
+  }
+
+  // Create a map of all unique effects, and the combined power
+  // Create Map, and reduce https://stackoverflow.com/questions/19233283/sum-javascript-object-propertya-values-with-same-object-propertyb-in-array-of-ob
+  let all_effects_map = all_effects.reduce((prev, curr) => {
+    let count = prev.get(curr.type) || 0;
+    prev.set(curr.type, curr.total_effect + count) // averages arcana count over number of colored arcana
+    return prev;
+  }, new Map());
+
+  // then, map your counts object back to an array
+  let all_effects_counts = [...all_effects_map].map(([type, power]) => {
+    return {type, power}
+  })
+
+  return all_effects_counts
+}
+
+export default ARCANA

@@ -8,7 +8,8 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
 
-import ARCANA, { find_arcana_by_id, ARCANA_PERCENTAGE_TYPES } from './AovArcana'
+import BuildArcanaCountsContainer from './create/BuildArcanaCountsContainer'
+import ARCANA, { find_arcana_by_id, ARCANA_PERCENTAGE_TYPES, get_all_arcana_effects, get_avg_arcana_counts} from './AovArcana'
 import { to_uppercase_first } from './utilities'
 
 const styles = theme => ({
@@ -44,6 +45,12 @@ const styles = theme => ({
   },
   bold: {
     fontWeight: 'bold'
+  },
+  image_container: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    textAlign: 'center',
+    marginBottom: 20
   }
 })
 
@@ -52,16 +59,6 @@ class BuildArcanaEffects extends React.Component {
   sortAlpha = arcana => {
     return arcana.sort((a, b) => a.type.localeCompare(b.type))
   }
-
-  get_arcana_count_by_key = (list, key) => { // returns { 'value': 1, 'value2': 2, 'value3': 2}
-    return list.reduce((prev, curr) => {
-      let count = prev.get(curr.color) || 0
-      prev.set(curr.color, count + 1)
-      return prev
-    }, new Map())
-  }
-
-
 
   render() {
     const { classes, arcana, style} = this.props
@@ -79,43 +76,7 @@ class BuildArcanaEffects extends React.Component {
       //
       // Gather all effects from all arcana in the build
 
-      let all_effects = []
-      let all_arcana = []
-      for (let id of current_arcana) {
-        let arcana = find_arcana_by_id(id)
-        all_arcana.push(arcana)
-      }
-
-      // Calculate the total effects power of each arcana, given an assumption of AVG count over 10 arcana
-
-      let color_counts = this.get_arcana_count_by_key(all_arcana, 'color')
-      let get_count = (color) => color_counts.get(color)
-
-
-      for (let a of all_arcana) {
-        // 1. Calculates the avg number of a given color of arcana based on color
-        let avg_arcana_count_for_build = 10/get_count(a.color)
-
-        // 2. Multiples this count with the power
-        a.effects.map((e,i) => {
-          a.effects[i]['total_effect'] = avg_arcana_count_for_build * e.power
-        })
-
-        all_effects.push(...a.effects)
-      }
-
-      // Create a map of all unique effects, and the combined power
-      // Create Map, and reduce https://stackoverflow.com/questions/19233283/sum-javascript-object-propertya-values-with-same-object-propertyb-in-array-of-ob
-      let all_effects_map = all_effects.reduce((prev, curr) => {
-        let count = prev.get(curr.type) || 0;
-        prev.set(curr.type, curr.total_effect + count) // averages arcana count over number of colored arcana
-        return prev;
-      }, new Map());
-
-      // then, map your counts object back to an array
-      let all_effects_counts = [...all_effects_map].map(([type, power]) => {
-        return {type, power}
-      })
+      let all_effects_counts = get_all_arcana_effects(current_arcana)
 
       let all_effects_inner_html = this.sortAlpha(all_effects_counts).map((e, i) => {
         let total_power = e.power //
@@ -126,14 +87,30 @@ class BuildArcanaEffects extends React.Component {
         if (i === all_effects_counts.length - 1) { divider = null }
 
         return (
-          <div key={(e.type + i)}>
-            <span className={type_class}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{total_power.toFixed(1)}{ (ARCANA_PERCENTAGE_TYPES.indexOf(e.type) > -1) && percent}</span>
-            { divider }
+          <div>
+            <div key={(e.type + i)}>
+              <span className={type_class}>{to_uppercase_first(e.type)}</span>: <span className={s.item_effect_power}>{plus}{total_power.toFixed(1)}{ (ARCANA_PERCENTAGE_TYPES.indexOf(e.type) > -1) && percent}</span>
+              { divider }
+            </div>
           </div>
         )
       })
+      //
 
-      return all_effects_inner_html
+      let all_arcana_counts_html = get_avg_arcana_counts(current_arcana).map(a => {
+        return <BuildArcanaCountsContainer arcana={a} />
+      })
+
+      return (
+        <div>
+          <div className={classes.image_container}>
+            {all_arcana_counts_html}
+          </div>
+          <div>
+            { all_effects_inner_html }
+          </div>
+        </div>
+      )
     }
 
     return <div />

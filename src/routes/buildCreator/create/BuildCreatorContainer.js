@@ -140,7 +140,7 @@ class BuildCreatorContainer extends React.Component {
           </div>
           <BuildItemCard />
           <div className={cx(classes.item_effects_container)}>
-            <div className={s.combined_effects_title}>{'All Arcana Effects'.toUpperCase()}</div>
+            <div className={s.combined_effects_title}>{'All Avg Arcana Effects'.toUpperCase()}</div>
             <BuildArcanaEffects arcana={arcana} style={'bold'}/>
           </div>
         </Grid>
