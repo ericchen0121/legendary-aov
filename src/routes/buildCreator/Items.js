@@ -22,6 +22,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: 'Shatter',
+      unique: true,
       description: 'Decreases target armor by 50 on hit for 5 seconds. Stacks up to 5 times.',
       type: ['strip']
     }],
@@ -49,6 +50,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Dragon's Breath",
+      unique: true,
       description: 'Normal attacks deal additional damage equal to 8% of target’s current HP.',
       type: ['attack damage']
     }]
@@ -63,23 +65,27 @@ export const ITEMS = [
     effects: [
       {
         type: 'attack damage',
-        power: 100,
-      },
-      {
-        type: 'critical chance',
-        power: 0.3,
+        power: 90,
       }
     ],
     passives: [
       {
         name: "Gift of the Swift",
-        description: "After dealing a critical hit, movement speed increases by 3 per hero's level. Lasts for 1.5 seconds (only effective when using a ranged hero).",
+        unique: true,
+        description: "Increases hero's movement speed by (3-45) for 1.5 seconds after landing a critical hit. Only usable by ranged heroes.",
         type: ['movement speed']
       },
       {
         name: 'Critical Chance',
-        description: '+30%',
+        unique: true,
+        description: '+25%',
         type: ['critical chance']
+      },
+      {
+        name: 'Critical Damage',
+        unique: true,
+        description: '+50%',
+        type: ['critical damage']
       }
      ]
   },
@@ -93,7 +99,7 @@ export const ITEMS = [
     effects: [
       {
         type: 'attack damage',
-        power: 70,
+        power: 75,
       },
       {
         type: 'cooldown speed',
@@ -101,12 +107,13 @@ export const ITEMS = [
       },
       {
         type: 'armor pierce',
-        power: 0.4,
+        power: 0.45,
       },
     ],
     passives: [{
       name: "Armor Pierce",
-      description: '+40%',
+      unique: true,
+      description: '+45%',
       type: ['armor pierce']
     }]
   },
@@ -160,6 +167,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Elemental Power",
+      unique: true,
       description: 'After using an ability, the next normal attack within 5 seconds deals 100% more physical damage. 2-second cooldown.',
       type: ['attack damage']
     }]
@@ -169,30 +177,27 @@ export const ITEMS = [
     name: "Slikk's Sting",
     type: 'attack',
     tier: 3,
-    cost: 2050,
+    cost: 2000,
     folder: 'slikkssting',
     effects: [
       {
         type: 'attack speed',
-        power: 0.30,
+        power: 0.35,
       },
       {
         type: 'critical chance',
-        power: 0.2,
+        power: 0.25,
       },
       {
         type: 'movement speed',
-        power: 0.05,
-      },
-      {
-        type: 'critical damage',
-        power: 0.5,
+        power: 0.07,
       },
     ],
     passives: [{
-      name: "Hurricane",
-      description: 'Increase critical damage by 50%.',
-      type: ['critical damage']
+      name: "Blessing of the Wind",
+      unique: false,
+      description: "Increases hero's resistance by 35% for 2 seconds.",
+      type: ['resistance']
     }]
   },
   {
@@ -210,6 +215,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Fenrir's Tooth",
+      unique: true,
       description: "Inreases all damage dealt by 30% when the target's HP is below 50%",
       type: ['attack damage']
     }]
@@ -241,6 +247,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Chain Lightning",
+      unique: true,
       description: ' Every 8 seconds, the next normal attack triggers a chain lightning that deals 150 (+20% attack damage) physical damage. Each normal attack also carries Life Steal and reduces cooldown by 1 second on hit.',
       type: ['attack damage', 'life steal', 'cooldown speed']
     }]
@@ -268,6 +275,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Flame Wrath",
+      unique: true,
       description: 'Normal attacks increase attack speed by 10% for 2 seconds. Stacks up to 5 times.',
       type: ['attack speed']
     }]
@@ -287,11 +295,13 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Windwalk",
+      unique: true,
       description: 'Increases movement speed by 10% after exiting battle.',
       type: ['exit movement speed']
     },
     {
       name: "Break",
+      unique: true,
       description: 'Increases armor pierce by 100 (+10 per level).',
       type: ['armor pierce']
     }]
@@ -311,6 +321,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Explosion",
+      unique: true,
       description: 'Ability hits trigger a small-area explosion that deals 50 (+50% ability power) magic damage. 5-second cooldown.',
       type: ['magic damage']
     }]
@@ -334,6 +345,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Warlock",
+      unique: true,
       description: 'Ability Power +35%',
       type: ['ability power']
     }]
@@ -348,7 +360,7 @@ export const ITEMS = [
     effects: [
       {
         type: 'ability power',
-        power: 110,
+        power: 140,
       },
       {
         type: 'cooldown speed',
@@ -357,11 +369,13 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Bide",
+      unique: true,
       description: 'Gains 12 ability power and 110 HP every 30 seconds. Stacks up to 10 times.',
       type: ['ability power']
     },
     {
       name: "From the Ashes",
+      unique: true,
       description: 'When the hero gains a level, 20% of HP and mana are restored over 3 seconds.',
       type: ['restore']
     }]
@@ -389,11 +403,13 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Life Shield",
+      unique: true,
       description: 'Gains a shield that absorbs 450(+50 per level)(+40% ability power) damage when HP falls below 40%. The shield lasts 4 seconds and has a 75-second cooldown.',
       type: ['shield']
     },
     {
       name: "Magic Life Steal",
+      unique: true,
       description: '+25%',
       type: ['magic life steal', 'life steal']
     },
@@ -422,11 +438,13 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Rapid Blade",
+      unique: true,
       description: 'Normal attack hits increase attack speed by 50% for 4 seconds. 10-second cooldown.',
       type: ['attack speed']
     },
     {
       name: "Twilight",
+      unique: true,
       description: 'Normal attacks gain additional magic damage equal to 20% of the hero’s ability power.',
       type: ['magic damage']
     }]
@@ -454,6 +472,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Chill",
+      unique: false,
       description: 'Abilities that deal damage will also reduce enemy movement speed by 20% for 2 seconds.',
       type: ['slow']
     }]
@@ -481,6 +500,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Torture",
+      unique: true,
       description: 'Deals magic damage equal to 4% of the target’s current HP (up to 80 against monsters). 1.2-second cooldown.',
       type: ['magic damage']
     }]
@@ -504,6 +524,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Elemental Power",
+      unique: true,
       description: 'After using an ability, the next normal attack deals additional magic damage equal to 30% of attack damage (+80% ability power). 2-second cooldown.',
       type: ['magic damage']
     }]
@@ -527,6 +548,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Protection",
+      unique: true,
       description: 'Reduces magic defense of enemies within 800 units by 75(+5 per level).',
       type: ['strip']
     }]
@@ -550,6 +572,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Enlightenment",
+      unique: true,
       description: 'Increases maximum HP by 1400',
       type: ['max hp']
     }]
@@ -573,6 +596,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Burn",
+      unique: true,
       description: 'Deals 100 (+4 per level) magic damage to nearby enemies (150 units) every second.',
       type: ['magic damage']
     }]
@@ -596,6 +620,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Spirit Bond",
+      unique: true,
       description: 'Reduces the attack speed of nearby enemies (200 units) by 30%',
       type: ['strip']
     }]
@@ -623,6 +648,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Spirit Bond",
+      unique: true,
       description: 'When taking damage, reduces the attacker’s attack speed by 30% and movement speed by 15% for 3 seconds.',
       type: ['strip', 'slow']
     }]
@@ -637,11 +663,11 @@ export const ITEMS = [
     effects: [
       {
         type: 'magic defense',
-        power: 180,
+        power: 240,
       },
       {
         type: 'max hp',
-        power: 1100,
+        power: 1200,
       },
       {
         type: 'movement speed',
@@ -650,6 +676,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Regenerate",
+      unique: true,
       description: 'When taking damage, restores 8% HP over 2 seconds. 10-second cooldown.',
       type: ['healing']
     }]
@@ -677,6 +704,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Blessed",
+      unique: true,
       description: 'Gains a shield that absorbs 300(+50 per level) magic damage every 18 seconds.',
       type: ['shield']
     }]
@@ -700,6 +728,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Bloody Battle",
+      unique: true,
       description: 'Restores 20% HP over 5 seconds after earning a kill or assist. 10-second cooldown.',
       type: ['healing']
     }]
@@ -727,6 +756,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Biting Cold",
+      unique: true,
       description: 'Normal attacks increase the wearer’s movement speed by 10% and reduce target’s movement speed by 25% for 2 seconds.',
       type: ['movement, slow']
     }]
@@ -746,7 +776,8 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Resurrect",
-      description: 'Revives wearer 3 seconds after death with 40% HP. 3-minute cooldown.',
+      unique: true,
+      description: 'Revives wearer 4 seconds after death with 3000 HP. 150-second cooldown.',
       type: ['revive']
     }]
   },
@@ -773,6 +804,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Elemental Power",
+      unique: true,
       description: 'After using an ability, the next normal attack reduces movement speed by 30% and deals 150 physical damage (20 additional damage for each level gained) to an area. 3-second cooldown.',
       type: ['slow', 'attack damage']
     }]
@@ -796,9 +828,16 @@ export const ITEMS = [
       },
     ],
     passives: [{
-      name: "Burn",
-      description: 'Deals 100 (+4 per level) magic damage to nearby enemies every second.',
-      type: ['magic damage']
+      name: "I'm Golden",
+      unique: true,
+      description: 'Increases healing taken by 20%.',
+      type: ['healing']
+    },
+    {
+      name: "Longevity",
+      unique: true,
+      description: 'Increases maximum HP by 10%',
+      type: ['max hp']
     }]
   },
   {
@@ -819,9 +858,16 @@ export const ITEMS = [
       },
     ],
     passives: [{
-      name: "",
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },
+    {
+      name: "Boots",
+      unique: true,
       description: 'Reduces attack damage taken by 15%',
-      type: ['reduce damage']
+      type: ['reduce damage', 'buff']
     }]
   },
   {
@@ -846,7 +892,14 @@ export const ITEMS = [
       },
     ],
     passives: [{
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },
+    {
       name: "Resistance",
+      unique: true,
       description: '+35%',
       type: ['reduce slows']
     }]
@@ -868,7 +921,12 @@ export const ITEMS = [
         power: 60,
       },
     ],
-    passives: []
+    passives: [{
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },]
   },
   {
     id: 35,
@@ -888,6 +946,12 @@ export const ITEMS = [
       },
     ],
     passives: [{
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },
+    {
       name: "Magic Pierce",
       description: '+75',
       power: 75,
@@ -910,7 +974,12 @@ export const ITEMS = [
         power: 60,
       },
     ],
-    passives: []
+    passives: [{
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },]
   },
   {
     id: 37,
@@ -931,16 +1000,19 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Curse Power",
+      unique: true,
       description: 'After using an ability, the next normal attack deals additional damage equal to 35% attack damage (+45% ability power). 2-second cooldown.',
       type: ['attack damage', 'ability power']
     },
     {
       name: "Hunter",
+      unique: true,
       description: 'Deals 30% extra damage to monsters and receives 30% more experience from killing monsters.',
       type: ['monster attack damage', 'monster experience']
     },
     {
       name: "Seek and Destroy",
+      unique: true,
       description: 'Gains 8 ability power and 30 maximum mana for every monster killed. Stacks up to 15 times.',
       type: ['ability power', 'mana regen']
     },
@@ -966,16 +1038,19 @@ export const ITEMS = [
     passives: [
       {
         name: "Flame Magic",
+        unique: true,
         description: 'Deals 90 (+5 per level) magic damage to nearby enemies every second.',
         type: ['magic damage']
       },
       {
         name: "Hunter",
+        unique: true,
         description: 'Deals 30% extra damage to monsters and receives 30% more experience from killing monsters.',
         type: ['monster attack damage', 'monster experience']
       },
       {
         name: "Wild",
+        unique: true,
         description: 'Increases maximum HP by 70 for every monster killed. Stacks up to 15 times.',
         type: ['monster max hp']
       },
@@ -1001,11 +1076,13 @@ export const ITEMS = [
     passives: [
       {
         name: "Hunter",
+        unique: true,
         description: 'Deals 30% extra damage to monsters and receives 30% more experience from killing monsters.',
         type: ['monster attack damage', 'monster experience']
       },
       {
         name: "Wild",
+        unique: true,
         description: 'Increases maximum HP by 70 for every monster killed. Stacks up to 15 times.',
         type: ['monster max hp']
       },
@@ -1035,16 +1112,19 @@ export const ITEMS = [
     passives: [
       {
         name: "Fire Storm",
+        unique: true,unique: true,
         description: 'Normal attacks place a mark on the target, dealing (18 + levelx0.5) magic damage each stack (ranged attacks deal 75% of the damage), up to 6 stacks.',
         type: ['magic damage']
       },
       {
         name: "Hunter",
+        unique: true,
         description: 'Deals 30% extra damage to monsters and receives 30% more experience from killing monsters.',
         type: ['monster attack damage', 'monster experience']
       },
       {
         name: "Wild",
+        unique: true,
         description: 'Increases maximum HP by 70 for every monster killed. Stacks up to 15 times.',
         type: ['monster max hp']
       },
@@ -1074,6 +1154,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Riposte",
+        unique: true,
         description: '15% of the physical damage taken is deflected to the enemy as magic damage (calulation is based on damage before damage reduction).',
         type: ['magic damage']
       },
@@ -1103,6 +1184,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Berserk",
+        unique: true,
         description: 'Increases attack damage by 40 and gains a shield for 8 seconds when HP is below 40%. 90-second cooldown.',
         type: ['attack damage', 'shield']
       },
@@ -1124,6 +1206,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Impervious",
+        unique: true,
         description: 'Immune to all effects for 1.5 seconds, but cannot move or use abilities. 90-second cooldown.',
         type: ['immunity']
       },
@@ -1153,6 +1236,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Magic Pierce",
+        unique: true,
         description: '+40%',
         type: ['magic pierce']
       },
@@ -1182,6 +1266,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Blood Thirst",
+        unique: true,
         description: 'Increases Life Steal by 90% fo 3 seconds. 60-second cooldown. Only usable by ranged heroes.',
         type: ['life steal']
       },
@@ -1207,6 +1292,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Magic Life Steal",
+        unique: true,
         description: '+15%',
         type: ['magic life steal']
       },
@@ -1232,6 +1318,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Soul Prison",
+        unique: true,
         description: "On dealing damage, reduces target’s HP regeneration by 50% for 1.5 seconds. If this is triggered by normal attacks, the duration is extended to 3 seconds.",
         type: ['reduces target HP regen']
       },
@@ -1261,6 +1348,7 @@ export const ITEMS = [
     passives: [
       {
         name: "Soaring Spirit",
+        unique: true,
         description: "Restores 20% mana after earning a kill or assist.",
         type: ['mana regen']
       },
@@ -1307,6 +1395,7 @@ export const ITEMS = [
     passives: [
       {
         name: "War Cry",
+        unique: true,
         description: "Increases damage dealt and damage reduction of nearby friendly units by 5% and 10%, respectively. [samurai gamers: Getting within 200 units of an ally will trigger War Cry for 2-3 seconds]",
         type: ['buff']
       },
@@ -1330,7 +1419,13 @@ export const ITEMS = [
       unique: true,
       description: 'Increases movement speed by 60 after exiting battle.',
       type: ['exit movement speed']
-    }]
+    },
+    {
+      name: "Movement Speed",
+      unique: true,
+      description: 'Movement Speed +60',
+      type: ['boots']
+    },]
   },
   {
     id: 52,
@@ -1393,7 +1488,12 @@ export const ITEMS = [
         power: 75,
       },
     ],
-    passives: []
+    passives: [{
+      name: "Magic Pierce",
+      unique: true,
+      description: "Magic Pierce +75%.",
+      type: ['magic pierce']
+    }]
   },
   {
     id: 55,
@@ -1442,6 +1542,7 @@ export const ITEMS = [
     ],
     passives: [{
       name: "Adrenaline",
+      unique: true,
       description: 'Increases movement speed by 2% and deals 2% additional damage after taking damage. Stacks up to 5 times.',
       type: ['movement+', 'attack damage'],
       unique: true

@@ -55,6 +55,16 @@ const styles = theme => ({
 })
 
 class BuildArcanaEffects extends React.Component {
+  // sorts arcana by color - uses incidental red/purple/green is alpha order ;)
+  compare = (a, b)  => {
+    let comparison = 0;
+    if (a.color < b.color) {
+      comparison = 1;
+    } else if (a.color > b.color) {
+      comparison = -1;
+    }
+    return comparison;
+  }
 
   sortAlpha = arcana => {
     return arcana.sort((a, b) => a.type.localeCompare(b.type))
@@ -97,7 +107,7 @@ class BuildArcanaEffects extends React.Component {
       })
       //
 
-      let all_arcana_counts_html = get_avg_arcana_counts(current_arcana).map(a => {
+      let all_arcana_counts_html = get_avg_arcana_counts(current_arcana).sort(this.compare).map(a => {
         return <BuildArcanaCountsContainer arcana={a} />
       })
 
