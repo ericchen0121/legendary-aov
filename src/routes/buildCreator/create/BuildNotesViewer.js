@@ -137,7 +137,7 @@ class BuildNotesViewer extends React.Component {
             title = 'Website'
             content = <a href={notes[p]} target='_blank'>{notes[p]}</a>
           }
-          else if (p === 'arcana' && (notes[p] || arcana_html)) {
+          else if (p === 'arcana' && (notes[p] !== ''|| (arcana_list && arcana_list.length > 0))) {
             title = 'Arcana'
             content = notes[p]
           }
