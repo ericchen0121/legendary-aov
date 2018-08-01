@@ -69,6 +69,11 @@ const styles = theme => ({
     margin: '25px 25px 0px 10px',
     boxShadow: '0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)'
   },
+  arcana_edit_link: {
+    color: 'blue',
+    fontSize: 9,
+    cursor: 'pointer'
+  }
 })
 
 class BuildCreatorContainer extends React.Component {
@@ -83,7 +88,6 @@ class BuildCreatorContainer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState)
     // RERENDER WHEN ITEM BUILD CHANGES
     if(nextProps.build_from_params && !this.state.is_initial_edit_build_set && nextProps.is_editing_page) { //conditionally set edit build
       this.setState({
@@ -95,7 +99,7 @@ class BuildCreatorContainer extends React.Component {
     }
 
     if(!nextProps.is_editing_page && !nextState.has_started_new_build) {
-      console.log('RESETTING BUILD ONCE')
+      //resetting build just once with flag
       this.setState({ has_started_new_build: true}, () => this.props.actions.resetBuild())
     }
     // RERENDER WHEN ITEM BUILD CHANGES
@@ -116,6 +120,7 @@ class BuildCreatorContainer extends React.Component {
     let { current_build } = build_creator
     let { arcana } = current_build
 
+    let toggleAddArcanaOpen = this.props.actions.toggleAddArcanaOpen.bind(this)
     // NEEDED FOR BUILDITEMEFFECTS
     // NOTE: CAN PROBABLY MOVE THE items prop from here and just use the redux store for BuilditemEffects
     let items = [
@@ -126,7 +131,7 @@ class BuildCreatorContainer extends React.Component {
       current_build[5],
       current_build[6],
     ]
-    
+
     return (
       <Grid container spacing={24} zeroMinWidth className={classes.container}>
         <Grid item xs={2}>
@@ -147,7 +152,13 @@ class BuildCreatorContainer extends React.Component {
           </div>
           <BuildItemCard />
           <div className={cx(classes.item_effects_container)}>
-            <div className={s.combined_effects_title}>{'All Avg Arcana Effects'.toUpperCase()}</div>
+            <div className={s.combined_effects_title}>
+              {'All Avg Arcana Effects'.toUpperCase()}
+            </div>
+            {
+              !build_creator.is_arcana_open  &&
+              <div className={classes.arcana_edit_link} onClick={() => toggleAddArcanaOpen()}>{build_creator.is_arcana_open ? 'HIDE' : 'EDIT'}</div>
+            }
             { arcana && <BuildArcanaEffects arcana={arcana} style={'bold'}/> }
           </div>
         </Grid>
