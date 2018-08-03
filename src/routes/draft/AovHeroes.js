@@ -896,6 +896,19 @@ const HEROES = [
     "folder": 'baldum',
     "version_number": 15
   },
+  {
+    "id": 70,
+    "name": 'Roxie',
+    'alt_names': ['Roxie', 'Roxi'],
+    "nickname": 'Adventurer',
+    "classes": ['tank', 'warrior'],
+    'lanes': ['roam'],
+    'roles': ['control'],
+    'tier': 'a',
+    'tier_index': 1,
+    "folder": 'roxie',
+    "version_number": 15
+  },
 ]
 
 export default HEROES

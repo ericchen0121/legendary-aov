@@ -26,9 +26,8 @@ export const ARMORY_FILTERS = {
 };
 
 export const VIDEO_SEARCH_TERMS = [
-  'world cup',
-  'gameplay highlight',
   'gameplay',
+  'gameplay highlight',
   'hero spotlight',
   'road to mastery',
   'guide',
@@ -56,6 +55,7 @@ export const VIDEO_SEARCH_TERMS = [
   'NTG apok',
   'franjosetv',
   'vods library',
+  'world cup',
   'arcana',
   'valor series',
   'zuchiha aov',
