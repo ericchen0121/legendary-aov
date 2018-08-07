@@ -42,6 +42,9 @@ class Navigation extends React.Component {
         <Link className={cx(s.link)} to="/players">
           Players
         </Link>
+        <Link className={cx(s.link)} to="/video/channel/abrownbag">
+          Channels
+        </Link>
         <Link className={cx(s.link)} to="/video">
           Videos
         </Link>
