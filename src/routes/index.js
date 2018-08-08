@@ -38,6 +38,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
     {
+      path: '/channels',
+      load: () => import(/* webpackChunkName: 'draft' */ './draft/channels/featured'),
+    },
+    {
       path: '/video/channel/:channel_id',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },

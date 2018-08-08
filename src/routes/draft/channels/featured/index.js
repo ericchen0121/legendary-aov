@@ -8,9 +8,9 @@
  */
 
 import React from 'react';
-import Layout from '../../../components/Layout';
-import FeaturedChannelContainer from './ChannelContainer';
-import { ROUTE_CONSTANTS } from '../../../constants'
+import Layout from '../../../../components/Layout';
+import FeaturedChannelContainer from './FeaturedChannelContainer';
+import { ROUTE_CONSTANTS } from '../../../../constants'
 const title = ROUTE_CONSTANTS.featured_channel_title
 
 function action(context, params) {
@@ -18,6 +18,9 @@ function action(context, params) {
     title,
     component: (
       <Layout>
+        // <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+        <link rel="stylesheet" href="./js/slick.css" /> // in public folder, with custom css
         <FeaturedChannelContainer
           params={params}
         />
