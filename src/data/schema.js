@@ -34,6 +34,8 @@ import addHero from './queries/addHero';
 import addUser from './queries/addUser';
 import loginUser from './queries/loginUser'
 
+import userHeroes from './queries/userHeroes'
+import addUserHero from './queries/addUserHero'
 
 const schema = new Schema({
   query: new ObjectType({
@@ -52,7 +54,8 @@ const schema = new Schema({
       version,
       myBuilds,
       players,
-      teams
+      teams,
+      userHeroes
     },
   }),
   mutation: new ObjectType({
@@ -62,7 +65,8 @@ const schema = new Schema({
       editBuild,
       addHero,
       addUser,
-      loginUser
+      loginUser,
+      addUserHero
     }
   })
 });
