@@ -8,11 +8,6 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import HeroFavoriteGridItem from './HeroFavoriteGridItem';
 
-import { Query } from "react-apollo";
-import { Mutation } from "react-apollo";
-import { USER_HEROES_BY_USER } from '../../data/gql_queries/userHeroes'
-import gql from "graphql-tag";
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -42,7 +37,7 @@ const styles = theme => ({
   },
 })
 
-class HeroFavoriteGrid extends React.Component {  
+class HeroFavoriteGrid extends React.Component {
   static propTypes = {
     order_hero: PropTypes.array.isRequired,
   };

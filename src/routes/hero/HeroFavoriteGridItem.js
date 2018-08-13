@@ -7,6 +7,11 @@ import { DEFAULT_IMAGE_URL } from '../draft/DraftConstants';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
 
+import { Query } from "react-apollo";
+import { Mutation } from "react-apollo";
+import { ADD_USER_HERO } from '../../data/gql_queries/userHeroes'
+import gql from "graphql-tag";
+
 class HeroFavoriteGridItem extends React.Component {
   static propTypes = {
     hero: PropTypes.object.isRequired,
@@ -19,10 +24,17 @@ class HeroFavoriteGridItem extends React.Component {
 
 
   render() {
-    const { hero, utilities } = this.props;
+    const { hero, utilities, user_login } = this.props;
     const { name, nickname, classes, lanes, roles, tier, folder } = hero;
     const { dark_mode_active } = utilities;
     const handleItemClick = this.handleItemClick.bind(this);
+
+    //
+    let new_user_hero_input = {
+      user_id: user_login.id || 1,
+      hero_id: hero.id,
+      type: 'favorite'
+    }
 
     const info_mapping = info_list =>
       info_list.map((info_item, i) => {
@@ -97,9 +109,17 @@ class HeroFavoriteGridItem extends React.Component {
     )
 
     return (
-      <GridListTile key={name} onClick={handleItemClick}>
-        <div className={s.cursor_pointer}>{avatar}</div>
-      </GridListTile>
+      <Mutation
+        mutation={ ADD_USER_HERO }
+        variables={ {input: new_user_hero_input } }
+      >
+        {(query_name, {data}) => {
+
+          return <GridListTile key={name} onClick={query_name}>
+            <div className={s.cursor_pointer}>{avatar}</div>
+          </GridListTile>
+        }}
+      </Mutation>
     )
   }
 }

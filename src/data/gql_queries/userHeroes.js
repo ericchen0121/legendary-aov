@@ -8,3 +8,13 @@ export const USER_HEROES_BY_USER = gql`
         type
     }
   }`
+
+
+export const ADD_USER_HERO = gql`
+  mutation addUserHero($input: UserHeroInputType!) {
+    addUserHero(input: $input) {
+        user_id
+        hero_id
+        type
+    }
+  }`
