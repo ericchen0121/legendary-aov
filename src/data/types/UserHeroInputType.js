@@ -3,19 +3,18 @@ import {
   GraphQLInputObjectType,
   GraphQLNonNull,
   GraphQLString as StringType,
-  GraphQLInteger as IntegerType,
+  GraphQLInt as IntType,
 } from 'graphql';
-import UserHeroType from '../types/UserType';
+import UserHeroType from '../types/UserHeroType';
 
 const UserHeroInputType = new GraphQLInputObjectType({
   name: 'UserHeroInputType',
   type: UserHeroType,
-  description: 'Input UserHero payload',
   fields: {
     user_id: { type: IntType },
     hero_id: { type: IntType },
     type: { type: StringType }
   },
-});
+})
 
 export default UserHeroInputType;
