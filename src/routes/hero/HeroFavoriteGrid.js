@@ -8,6 +8,16 @@ import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import HeroFavoriteGridItem from './HeroFavoriteGridItem';
 
+import { Query } from "react-apollo";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import { USER_HEROES_BY_USER } from '../../data/gql_queries/userHeroes'
+
+import * as Actions from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -39,29 +49,52 @@ const styles = theme => ({
 
 class HeroFavoriteGrid extends React.Component {
   static propTypes = {
-    order_hero: PropTypes.array.isRequired,
+    heroes: PropTypes.array.isRequired,
   };
 
   render() {
-    const { order_hero, classes, is_mobile, utilities } = this.props;
+    const { heroes, classes, is_mobile, utilities, user_login } = this.props;
 
-    let list = order_hero.map(h => (
-        <HeroFavoriteGridItem
-          hero={h}
-          {...this.props}
-        />
-    ));
+    return (
+      <Query
+        query={USER_HEROES_BY_USER}
+        variables={{ user_id: 1 }}
+      >
+        {({ loading, error, data }) => {
+          console.log('data', data)
+          let list = heroes.map(h => (
+              <HeroFavoriteGridItem
+                hero={h}
+                {...this.props}
+              />
+          ))
 
-    let list_grid = (
-      <div className={cx(classes.grid_container)}>
-        <GridList cellHeight={150} cols={1}>
-          {list}
-        </GridList>
-      </div>
+          let list_grid = (
+            <div className={cx(classes.grid_container)}>
+              <GridList cellHeight={150} cols={1}>
+                {list}
+              </GridList>
+            </div>
+          )
+
+          return list_grid
+        }}
+      </Query>
     )
-
-    return list_grid
   }
 }
 
-export default withStyles(styles)(HeroFavoriteGrid);
+
+function mapStateToProps(state) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch),
+  };
+}
+
+export default withStyles(styles)(
+  connect(mapStateToProps, mapDispatchToProps)(HeroFavoriteGrid)
+)

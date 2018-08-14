@@ -21,7 +21,7 @@ class HeroViewer extends React.Component {
     const { classes, context } = this.props
     let list_grid = (
       <HeroFavoriteGrid
-        order_hero={HEROES_ALPHA}
+        heroes={HEROES_ALPHA}
         {...this.props}
       />
     )
