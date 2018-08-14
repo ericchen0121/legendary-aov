@@ -6,6 +6,8 @@ import cx from 'classnames';
 import { DEFAULT_IMAGE_URL } from '../draft/DraftConstants';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Icon from 'react-icons-kit';
+import {heart} from 'react-icons-kit/fa/heart'
+import {heartO} from 'react-icons-kit/fa/heartO'
 
 import { Query } from "react-apollo";
 import { Mutation } from "react-apollo";
@@ -54,6 +56,17 @@ class HeroFavoriteGridItem extends React.Component {
     if (folder) {
       avatar = (
         <div className={s.avatar_grid_container}>
+          <Icon
+            icon={heart}
+            size={18}
+            style={{
+              position: 'absolute',
+              zIndex: 1,
+              top: '20px',
+              right: '10px',
+              color: 'white',
+            }}
+          />
           <img
             className={cx(s.avatar_small, s.avatar_grid)}
             src={`/aov/heroes/${folder}/hero.png`}
