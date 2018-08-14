@@ -6,6 +6,7 @@ import build_creator from '../routes/buildCreator/create/reducers';
 import build_viewer from '../routes/buildCreator/reducers'
 import user_login from '../routes/login/reducers'
 import players from '../routes/players/reducers'
+import heroes_page from '../routes/hero/reducers'
 
 export default combineReducers({
   user_login,
@@ -14,5 +15,6 @@ export default combineReducers({
   utilities,
   build_creator,
   build_viewer,
-  players
+  players,
+  heroes_page
 });

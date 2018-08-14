@@ -1,7 +1,7 @@
 import {
+  SELECT_LOCAL_FAVORITED_HEROES
+} from './constants';
 
-} from '../../constants';
-
-export const selectUserHero = (data) => {
-  return { type: SELECT_HERO, data }
+export const selectLocalFavoritedHeroes = (data) => {
+  return { type: SELECT_LOCAL_FAVORITED_HEROES, data }
 }

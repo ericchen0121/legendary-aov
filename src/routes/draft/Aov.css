@@ -84,6 +84,19 @@
   background-color: rgba(75,65,49,0.6)
 }
 
+.avatar_sub_text {
+  position: absolute;
+  top: 21%;
+  left: 53%;
+  transform: translate(-46%, -50%);
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 300;
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgba(0,0,0,0.85);
+  width: 85%;
+  background-color: rgba(255,223,0,0.9);
+}
 
 .hero_item_container {
   cursor: pointer;
@@ -466,10 +479,6 @@
     margin-top: 6px;
   }
 
-  .avatar_text {
-    font-size: 10px
-  }
-
   .select_player {
     margin: 25px 0 0 10%;
   }
@@ -481,3 +490,11 @@
  .no_link {
    color: black
  }
+
+.low_opacity {
+  opacity: .7
+}
+
+.full_opacity {
+  opacity: 1
+}

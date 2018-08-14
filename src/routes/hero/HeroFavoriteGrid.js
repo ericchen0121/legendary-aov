@@ -58,26 +58,34 @@ class HeroFavoriteGrid extends React.Component {
     return (
       <Query
         query={USER_HEROES_BY_USER}
-        variables={{ user_id: 1 }}
+        variables={{ user_id: 1 }} //NOTE: PLACEHOLDER
       >
         {({ loading, error, data }) => {
-          console.log('data', data)
-          let list = heroes.map(h => (
-              <HeroFavoriteGridItem
+
+          if (data) {
+            let list = heroes.map(h => {
+
+              let user_heroes = data.userHeroes || []
+              return <HeroFavoriteGridItem
                 hero={h}
+                favorite={ user_heroes.findIndex(uh => uh.hero_id === h.id) > -1 ? true : false}
                 {...this.props}
               />
-          ))
+            })
 
-          let list_grid = (
-            <div className={cx(classes.grid_container)}>
-              <GridList cellHeight={150} cols={1}>
-                {list}
-              </GridList>
-            </div>
-          )
+            let list_grid = (
+              <div className={cx(classes.grid_container)}>
+                <GridList cellHeight={150} cols={1}>
+                  {list}
+                </GridList>
+              </div>
+            )
 
-          return list_grid
+            return list_grid
+          }
+
+          return <div />
+
         }}
       </Query>
     )
