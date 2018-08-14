@@ -924,3 +924,10 @@ export function find_hero_by_name(name) {
     ) > -1,
   )[0] // get first object that matches the filter ;)
 }
+
+function sortResultsAlpha(heroes) {
+  heroes = heroes.sort((a, b) => a.name.localeCompare(b.name));
+  return heroes;
+}
+
+export const HEROES_ALPHA = sortResultsAlpha(HEROES)
