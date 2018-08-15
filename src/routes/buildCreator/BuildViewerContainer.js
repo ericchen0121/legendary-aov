@@ -66,7 +66,7 @@ const styles = theme => ({
   edit_link: {
     position: 'absolute',
     right: 20,
-    top: 30,
+    top: 10,
   },
   link_style: {
     fontSize: 10,
@@ -83,7 +83,9 @@ const styles = theme => ({
     marginTop: 10
   },
   expand_button: {
-    marginTop: 0
+    position: 'absolute',
+    right: 15,
+    top: 30,
   }
 })
 
@@ -195,7 +197,7 @@ class BuildViewerContainer extends React.Component {
                     </span>
                   )}
                   { is_hovered && (
-                    <span className={cx(classes.edit_link, classes.expand_button)}>
+                    <span className={classes.expand_button}>
                       { !is_expanded && <Icon icon={ic_expand_more} size={32} style={{color: '#00aaff'}}/>}
                       { is_expanded && <Icon icon={ic_expand_less} size={32} style={{color: '#00aaff'}}/>}
                     </span>
