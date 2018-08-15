@@ -14,6 +14,10 @@ import {
   GraphQLList as ListType,
 } from 'graphql';
 import GraphQLJSON from 'graphql-type-json'
+import UserType from './UserType'
+import User from '../models/User'
+import VersionType from './VersionType'
+import Version from '../models/aov/Version'
 
 const BuildType = new ObjectType({
   name: 'Build',
@@ -40,6 +44,26 @@ const BuildType = new ObjectType({
     game_mode_id: { type: IntType},
     version_id: { type: IntType },
     notes: { type: GraphQLJSON },
+    user: {
+      type: UserType,
+      resolve: (parent, args) => {
+        return User.findOne({
+          where: {
+            id: parent.dataValues.user_id
+          }
+        })
+      }
+    },
+    version: {
+      type: VersionType,
+      resolve: (parent, args) => {
+        return Version.findOne({
+          where: {
+            id: parent.dataValues.version_id
+          }
+        })
+      }
+    }
   })
 });
 

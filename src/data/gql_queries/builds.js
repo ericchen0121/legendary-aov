@@ -5,7 +5,6 @@ export const ADD_BUILD = gql`
     addBuild(input: $input) {
         id
         name
-        user_id
         item_1
         item_2
         item_3
@@ -25,7 +24,6 @@ export const EDIT_BUILD = gql`
     editBuild(input: $input) {
         id
         name
-        user_id
         item_1
         item_2
         item_3
@@ -55,6 +53,14 @@ export const ALL_BUILDS = gql`
       arcana
       hero_id
       notes
+      user {
+        id
+        email
+        username
+      }
+      version {
+        version_number
+      }
     }
   }
 `
@@ -74,6 +80,14 @@ export const LATEST_BUILDS = gql`
       arcana
       hero_id
       notes
+      user {
+        id
+        email
+        username
+      }
+      version {
+        version_number
+      }
     }
   }
 `
@@ -93,6 +107,14 @@ export const HERO_BUILDS = gql`
       arcana
       hero_id
       notes
+      user {
+        id
+        email
+        username
+      }
+      version {
+        version_number
+      }
     }
   }
 `
@@ -111,8 +133,15 @@ export const MY_BUILDS = gql`
       talent_id
       arcana
       hero_id
-      user_id
       notes
+      user {
+        id
+        email
+        username
+      }
+      version {
+        version_number
+      }
     }
   }
 `
@@ -132,6 +161,15 @@ export const ID_QUERY = gql`
       arcana
       hero_id
       notes
+      user_id
+      user {
+        id
+        email
+        username
+      }
+      version {
+        version_number
+      }
     }
   }
 `

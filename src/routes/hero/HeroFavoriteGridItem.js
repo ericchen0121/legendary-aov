@@ -91,7 +91,7 @@ class HeroFavoriteGridItem extends React.Component {
             className={cx(s.avatar_text)}
           >
             {' '}
-            {name.toUpperCase()}
+            <div className={s.sub_text}>{name.toUpperCase()}</div>
           </div>
           { favorited_hero &&
             <div className={cx(s.avatar_sub_text)}>

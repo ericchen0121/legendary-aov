@@ -79,7 +79,7 @@ class BuildViewer extends React.Component {
               let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
               let hero = find_hero_by_id(b.hero_id)
 
-              // Item List
+              // Item List RENDER
               let item_list = items.map(i => {
                 let item = find_item_by_id(i)
                 return (
@@ -101,6 +101,7 @@ class BuildViewer extends React.Component {
                 )
               })
 
+              // 
               let item_details = items.map(i => {
                 let item = find_item_by_id(i) // i is the item id
 

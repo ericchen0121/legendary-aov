@@ -68,6 +68,16 @@ const styles = theme => ({
   link_style: {
     fontSize: 10,
     textDecoration: 'none'
+  },
+  info_label_container: {
+    flexGrow: 1,
+    margin: '13px 20px 0 0',
+    fontSize: 9,
+    textAlign: 'right',
+    color: 'gray'
+  },
+  spacer: {
+    marginTop: 10
   }
 })
 
@@ -76,7 +86,7 @@ class BuildViewerContainer extends React.Component {
   render() {
     const { classes, actions, build, is_editing } = this.props
     let b = build
-
+    console.log(b)
     let video_url = b.notes ? JSON.parse(build.notes).video_url : null
 
     // Generate a container for each Build
@@ -143,6 +153,10 @@ class BuildViewerContainer extends React.Component {
                   <span>{talent_html}</span>
                 </div>
               </span>
+              <div className={cx(classes.info_label_container, s.item)}>
+                <span>{ b.user.username || b.user.id || ''}</span>
+                <div>Patch { b.version.version_number | '' }</div>
+              </div>
             </div>
           </Grid>
           <Grid item xs={9}>
