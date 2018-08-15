@@ -80,7 +80,7 @@ class BuildItemCard extends React.Component {
           if (i === item.passives.length - 1) { divider = null }
           return  (
             <div>
-              <span className={s.item_passive_title}>{p.name}</span> <span className={s.passive_title}>[ { p.unique ? 'Unique Passive' : ''} ]</span>: <span className={s.item_passive_desc}>{p.description}</span>
+              <span className={s.item_passive_title}>{p.name}</span> <span className={s.passive_title}>{ p.unique ? '[ Unique Passive ]' : ''}</span>: <span className={s.item_passive_desc}>{p.description}</span>
               { divider }
             </div>
           )
