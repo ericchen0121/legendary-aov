@@ -101,7 +101,7 @@ class BuildViewer extends React.Component {
                 )
               })
 
-              // 
+              //
               let item_details = items.map(i => {
                 let item = find_item_by_id(i) // i is the item id
 
@@ -133,7 +133,7 @@ class BuildViewer extends React.Component {
                       {effects}
                     </div>
                     <div className={s.item_passive_container}>
-                      <div className={s.passive_title}>Passive</div>
+                      <div className={s.passive_title}>Passives</div>
                       { item.passives.map((p, i) => {
 
                         let divider = <Divider />

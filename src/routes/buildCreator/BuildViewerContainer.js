@@ -96,7 +96,6 @@ class BuildViewerContainer extends React.Component {
   }
 
   toggle_hoverstate = () => {
-    console.log('hovered')
     this.setState({
       is_hovered: !this.state.is_hovered
     })
