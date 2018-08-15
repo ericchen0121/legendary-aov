@@ -179,7 +179,7 @@ const build_creator = (state = initialState, action) => {
         hovered_arcana: null
       }
     case INSERT_ARCANA_TO_BUILD:
-      let current_arcana = state.current_build.arcana
+      let current_arcana = state.current_build.arcana || []
 
       let arcana_index = current_arcana.indexOf(action.data)
       if (arcana_index > -1) { // already exists in list

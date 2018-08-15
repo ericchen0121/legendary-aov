@@ -55,7 +55,7 @@ class BuildArcanaEditor extends React.Component {
   render() {
     const { classes, actions, build_creator, ...other } = this.props
 
-    let arcana_list = build_creator.current_build.arcana // list of arcana ids
+    let arcana_list = build_creator.current_build.arcana || []// list of arcana ids
 
     // filter(a=> a.active)
 
