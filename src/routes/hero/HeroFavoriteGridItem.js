@@ -22,7 +22,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
-let styles = {}
+let styles = {
+
+}
 
 class HeroFavoriteGridItem extends React.Component {
   static propTypes = {
@@ -93,7 +95,7 @@ class HeroFavoriteGridItem extends React.Component {
           </div>
           { favorited_hero &&
             <div className={cx(s.avatar_sub_text)}>
-              FAVORITE
+              <div className={s.sub_text}><a href='/hero/me'>FAVORITES</a></div>
             </div>
           }
         </div>
@@ -109,50 +111,26 @@ class HeroFavoriteGridItem extends React.Component {
       )
     }
 
-    let nickname_container = null;
-    if (nickname) {
-      nickname_container = (
-        <span className={s.nickname}>{`/ The ${nickname}`}</span>
+    if (favorited_hero) {
+      return <GridListTile key={name}>
+        <div className={s.cursor_pointer}>{avatar}</div>
+      </GridListTile>
+    }
+    else {
+      return (
+        <Mutation
+          mutation={ ADD_USER_HERO }
+          variables={ {input: new_user_hero_input } }
+        >
+          {(query_name, {data}) => {
+
+            return <GridListTile key={name} onClick={query_name}>
+              <div className={s.cursor_pointer}>{avatar}</div>
+            </GridListTile>
+          }}
+        </Mutation>
       )
     }
-
-    const name_container = (
-      <span className={s.flex_container} >
-        <div>
-          <span className={s.name}>{name}</span> {nickname_container}
-        </div>
-        <div>
-          <span className={s.info_title}>Tier:</span>{' '}
-          <span className={s.info}>{tier.toUpperCase()}</span>
-        </div>
-        <div>
-          <span className={s.info_title}>Classes:</span>
-          {info_mapping(classes)}
-        </div>
-        <div>
-          <span className={s.info_title}>Lanes:</span>
-          {info_mapping(lanes)}
-        </div>
-        <div>
-          <span className={s.info_title}>Roles:</span>
-          {info_mapping(roles)}
-        </div>
-      </span>
-    )
-
-    return (
-      <Mutation
-        mutation={ ADD_USER_HERO }
-        variables={ {input: new_user_hero_input } }
-      >
-        {(query_name, {data}) => {
-
-          return <GridListTile key={name} onClick={query_name}>
-            <div className={s.cursor_pointer}>{avatar}</div>
-          </GridListTile>
-        }}
-      </Mutation>
-    )
   }
 }
 

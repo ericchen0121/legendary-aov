@@ -1545,7 +1545,30 @@ export const ITEMS = [
       unique: true,
       description: 'Increases movement speed by 2% and deals 2% additional damage after taking damage. Stacks up to 5 times.',
       type: ['movement+', 'attack damage'],
-      unique: true
+    }]
+  },
+  {
+    id: 57,
+    name: "Death Sickle",
+    type: 'attack',
+    tier: 2,
+    cost: 2000,
+    folder: 'deathsickle',
+    effects: [
+      {
+        type: 'attack damage',
+        power: 60,
+      },
+      {
+        type: 'cooldown speed',
+        power: .05
+      },
+    ],
+    passives: [{
+      name: "Divine Intervention",
+      unique: true,
+      description: 'Prevents damage from a potential killing blow, then increases movement speed by 20% for 1 second. 90-second cooldown.',
+      type: ['movement+', 'buff'],
     }]
   },
 ]
