@@ -17,6 +17,9 @@ import BuildHeroContainer from './create/BuildHeroContainer'
 import BuildItemsEffects from './BuildItemsEffects'
 import BuildNotesViewer from './create/BuildNotesViewer'
 
+import { Icon } from 'react-icons-kit'
+import {ic_expand_more} from 'react-icons-kit/md/ic_expand_more'
+import {ic_expand_less} from 'react-icons-kit/md/ic_expand_less'
 
 import { find_talent_by_id, find_item_by_id } from './Items'
 import { find_hero_by_id } from '../draft/AovHeroes'
@@ -78,17 +81,39 @@ const styles = theme => ({
   },
   spacer: {
     marginTop: 10
+  },
+  expand_button: {
+    marginTop: 0
   }
 })
 
 class BuildViewerContainer extends React.Component {
+  state = {
+    is_hovered: false,
+    is_expanded: false
+  }
+
+  toggle_hoverstate = () => {
+    console.log('hovered')
+    this.setState({
+      is_hovered: !this.state.is_hovered
+    })
+  }
+
+  set_expanded_state = (is_expanded) => {
+    this.setState({
+      is_expanded
+    })
+  }
 
   render() {
     const { classes, actions, build, is_editing } = this.props
+    const { is_hovered, is_expanded } = this.state
     let b = build
-    console.log(b)
-    let video_url = b.notes ? JSON.parse(build.notes).video_url : null
 
+    let video_url = b.notes ? JSON.parse(build.notes).video_url : null
+    let toggle_hoverstate = this.toggle_hoverstate.bind(this)
+    let set_expanded_state = this.set_expanded_state.bind(this)
     // Generate a container for each Build
     let items = [b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6]
 
@@ -135,8 +160,8 @@ class BuildViewerContainer extends React.Component {
     // For Each Build Container
     //
     return (
-      <div key={b.id} className={s.build_container}>
-        <Grid container>
+      <div key={b.id} className={s.build_container} >
+        <Grid container onMouseEnter={toggle_hoverstate} onMouseLeave={toggle_hoverstate}>
           <Grid item xs={3}>
             <div className={s.wrapper}>
               <BuildHeroImage
@@ -160,13 +185,19 @@ class BuildViewerContainer extends React.Component {
             </div>
           </Grid>
           <Grid item xs={9}>
-            <ExpansionPanel className={classes.ep}>
+            <ExpansionPanel className={classes.ep} onChange={(e, expanded) => set_expanded_state(expanded)}>
               <ExpansionPanelSummary className={classes.eps}>
                 <div className={s.wrapper}>
                   {item_list}
                   { is_editing && (
                     <span className={classes.edit_link}>
                       <a className={classes.link_style} href={`/build/edit/${b.id}`} >EDIT</a>
+                    </span>
+                  )}
+                  { is_hovered && (
+                    <span className={cx(classes.edit_link, classes.expand_button)}>
+                      { !is_expanded && <Icon icon={ic_expand_more} size={32} style={{color: '#00aaff'}}/>}
+                      { is_expanded && <Icon icon={ic_expand_less} size={32} style={{color: '#00aaff'}}/>}
                     </span>
                   )}
                 </div>
