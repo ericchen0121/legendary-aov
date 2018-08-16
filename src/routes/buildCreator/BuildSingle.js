@@ -9,7 +9,7 @@ import Paper from 'material-ui/Paper';
 import ExpansionPanel, {ExpansionPanelDetails, ExpansionPanelSummary} from 'material-ui/ExpansionPanel';
 import BuildHeroImage from './create/BuildHeroImage'
 import BuildItem from './create/BuildItem'
-
+import BuildSingleSkelton from './BuildSingleSkelton'
 import { ITEMS, TALENTS, find_talent_by_id, find_item_by_id } from './Items'
 import HEROES, { find_hero_by_id } from '../draft/AovHeroes'
 import CustomBuilds from './CustomBuilds'
@@ -250,8 +250,10 @@ class BuildViewer extends React.Component {
                 { all_builds }
               </div>
             )
-          } else {
-            return <div>Loading</div>
+          }
+          else {
+            console.log('no builds')
+            return <BuildSingleSkelton />
           }
         }}
       </Query>

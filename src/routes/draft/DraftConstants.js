@@ -107,6 +107,5 @@ export const AOV_CHANNELS = [
   },
 ];
 export const DEFAULT_TOP_LEVEL_FILTER = 'CLASS';
-export const DEFAULT_IMAGE_URL =
-  'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png';
+export const DEFAULT_IMAGE_URL = '/aov/heroes/default/hero.png'  // 'https://sportsfly.cbsistatic.com/bundles/sportsmediacss/images/player/headshot-default.png';
 export const DEFAULT_VIDEO_SEARCH_TERM = 'arena of valor';

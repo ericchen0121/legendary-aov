@@ -19,6 +19,7 @@ import BuildItemCard from './create/BuildItemCard'
 import BuildHeroContainer from './create/BuildHeroContainer'
 import BuildItemsEffects from './BuildItemsEffects'
 import BuildViewerContainer from './BuildViewerContainer'
+import BuildSingleSkeleton from './BuildSingleSkeleton'
 
 import { find_talent_by_id, find_item_by_id } from './Items'
 import { find_hero_by_id, find_hero_by_name } from '../draft/AovHeroes'
@@ -67,6 +68,9 @@ const styles = theme => ({
   no_underline_link: {
     textDecoration: 'none',
     color: '#00aaff'
+  },
+  full_height: {
+    height: 768
   }
 })
 
@@ -135,10 +139,9 @@ class BuildViewer extends React.Component {
       >
         {({ loading, error, data }) => {
           if (error) {
-            console.log(error)
-            return <div className={classes.grid_container}>ERROR! Sorry!</div>
+            return <div className={cx(classes.grid_container, classes.full_height)}>ERROR! Sorry!</div>
           }
-
+          console.log('buildsByHero', data.buildsByHero)
           return (
             <div>
               <Grid container zeroMinWidth>
@@ -156,7 +159,7 @@ class BuildViewer extends React.Component {
               <Grid container zeroMinWidth className={classes.grid_container}>
                 <Grid item xs={9}>
                   <div className={s.main_container}>
-                    { data.buildsByHero ? data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) : <div/>}
+                    { (data.buildsByHero && data.buildsByHero.length > 0) ? data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) : Array(7).fill().map((e,i)=>i+1).map(i => <BuildSingleSkeleton />) }
                   </div>
                 </Grid>
                 <Grid item xs={3}>
@@ -164,7 +167,7 @@ class BuildViewer extends React.Component {
                     <BuildHeroContainer
                       cover_image={true}
                     />
-                    <BuildItemCard />
+                    { data.buildsByHero ? <BuildItemCard /> : <div /> }
                   </div>
                 </Grid>
               </Grid>
