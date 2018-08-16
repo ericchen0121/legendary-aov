@@ -5,9 +5,11 @@ import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 
 class BuildHeroImage extends React.Component {
   render() {
-    const { hero, size, border } = this.props
+    const { hero, size, border, dropdown } = this.props
 
-    let img_class = s.hero_img_small
+    let img_class = s.hero_img_small  // default
+    let adjusted_class
+
     if (size === 'xs') {
       img_class = s.hero_img_xs
     }
@@ -17,9 +19,11 @@ class BuildHeroImage extends React.Component {
       border_class =s.border_gold
     }
 
+    adjusted_class = dropdown ? cx(img_class, s.adjust_top) : img_class
+
     return (
       <span>
-        { hero && <img className={cx(img_class, border_class)} src={`/aov/heroes/${hero.folder}/hero.png`} />}
+        { hero && <img className={cx(adjusted_class, border_class )} src={`/aov/heroes/${hero.folder}/hero.png`} />}
       </span>
     )
   }

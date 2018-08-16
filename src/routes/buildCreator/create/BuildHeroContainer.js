@@ -30,6 +30,9 @@ const styles = theme => ({
   root: {
     marginTop: 30
   },
+  img_position: {
+    top: 0
+  },
   pointer: {
     pointer: 'cursor'
   },
@@ -44,7 +47,7 @@ const styles = theme => ({
     marginLeft: 8
   },
   select_item_small: {
-    fontSize: 14,
+    fontSize: 17,
     fontFamily: "'Josefin Sans', sans-serif",
   },
   formControl: {
@@ -70,37 +73,41 @@ const styles = theme => ({
 class BuildHeroContainer extends React.Component {
 
   state = {
-    is_editing_hero: false,
+    is_select_open: false,
     hero_id: this.props.build_creator.current_build.hero_id || DEFAULT_HERO_ID
-  }
-
-  toggle_edit_hero = () => {
-    this.setState({is_editing_hero: !this.state.is_editing_hero})
   }
 
   handleChange = id => {
     this.setState({ hero_id: id });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  set_editing_hero = () => {
-    this.setState({is_editing_hero: true})
-  }
-
   update_build_with_hero = (e) => {
     this.props.actions.setHeroId(e.target.value)
     this.handleChange('hero_id')
-    this.toggle_edit_hero()
+    this.set_select_close()
+  }
+
+  set_select_open = () => {
+    console.log('opened')
+    this.setState({
+      is_select_open: true
+    })
+  }
+
+  set_select_close = () => {
+    console.log('closed')
+    this.setState({
+      is_select_open: false
+    })
   }
 
   render() {
     const {item, classes, actions, build_creator, is_build_viewer, cover_image } = this.props
+    const { is_select_open } = this.state
     const hero_id = build_creator.current_build.hero_id || this.state.hero_id
     let hero = find_hero_by_id(hero_id)
-    let toggle_edit_hero = this.toggle_edit_hero.bind(this)
+    let set_select_open = this.set_select_open.bind(this)
+    let set_select_close = this.set_select_open.bind(this)
 
     let cover_class = classes.show
     if (!cover_image) {
@@ -113,6 +120,7 @@ class BuildHeroContainer extends React.Component {
         <Select
           value={this.state.hero_id}
           className={classes.select_item_small}
+          onClick={set_select_open}
           onChange={this.update_build_with_hero}
           defaultValue={0}
         >
@@ -120,8 +128,8 @@ class BuildHeroContainer extends React.Component {
           {
             HEROES.map(h => {
               return (
-                <MenuItem value={h.id} className={classes.select_item}>
-                  <BuildHeroImage hero={find_hero_by_id(h.id)} />
+                <MenuItem value={h.id} className={classes.select_item} onClick={set_select_close}>
+                  <BuildHeroImage hero={find_hero_by_id(h.id)} dropdown={ is_select_open }/>
                   <span className={classes.name}>{h.name.toUpperCase()}</span>
                 </MenuItem>
             )
@@ -138,10 +146,10 @@ class BuildHeroContainer extends React.Component {
             <img
               className={s.avatar}
               src={hero && `/aov/heroes/${hero.folder}/hero.png` || DEFAULT_IMAGE_URL}
-              onClick={toggle_edit_hero}
+              onClick={set_select_open}
             />
           </span>
-          <span onClick={toggle_edit_hero}>
+          <span onClick={set_select_open}>
             <Tooltip title={SELECT_TEXT}>
               <IconButton className={classes.edit_icon} aria-label="Delete">
                 <Icon icon={edit} style={{color: EDIT_COLOR}} size={20}/>
@@ -149,7 +157,7 @@ class BuildHeroContainer extends React.Component {
             </Tooltip>
           </span>
         </div>
-        { (this.state.is_editing_hero || !cover_image) && dropdown  }
+        { (is_select_open || !cover_image) && dropdown  }
       </div>
     )
   }
