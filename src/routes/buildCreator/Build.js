@@ -139,72 +139,38 @@ class BuildViewer extends React.Component {
             return <div className={classes.grid_container}>ERROR! Sorry!</div>
           }
 
-          if (!data.buildsByHero || data.buildsByHero.length === 0) {
-            return (
+          return (
+            <div>
+              <Grid container zeroMinWidth>
+                <Grid item xs={10}>
+                  <div>
+                    {title}
+                  </div>
+                </Grid>
+                <Grid item xs={2}>
+                  <div className={s.cta}>
+                    {create_new_button}
+                  </div>
+                </Grid>
+              </Grid>
               <Grid container zeroMinWidth className={classes.grid_container}>
                 <Grid item xs={9}>
                   <div className={s.main_container}>
-                    {title}
-                    <div className={classes.center}>
-                      <div className={s.cta}>
-                        {create_new_button}
-                      </div>
-                    </div>
+                    { data.buildsByHero ? data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) : <div/>}
                   </div>
                 </Grid>
                 <Grid item xs={3}>
                   <div className={s.fixed}>
                     <BuildHeroContainer
-                      cover_image={false}
+                      cover_image={true}
                     />
+                    <BuildItemCard />
                   </div>
                 </Grid>
               </Grid>
-            )
-          }
+            </div>
+          )
 
-          if (data.buildsByHero) {
-            return (
-              <div>
-                <Grid container zeroMinWidth>
-                  <Grid item xs={10}>
-                    <div>
-                      {title}
-                    </div>
-                  </Grid>
-                  <Grid item xs={2}>
-                    <div className={s.cta}>
-                      {create_new_button}
-                    </div>
-                  </Grid>
-                </Grid>
-                <Grid container zeroMinWidth className={classes.grid_container}>
-                  <Grid item xs={9}>
-                    <div className={s.main_container}>
-                      { data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) }
-                    </div>
-                  </Grid>
-                  <Grid item xs={3}>
-                    <div className={s.fixed}>
-                      <BuildHeroContainer
-                        cover_image={false}
-                      />
-                      <BuildItemCard />
-                    </div>
-                  </Grid>
-                </Grid>
-              </div>
-            )
-          } else {
-            return (
-              <div className={s.loader_container}>
-                <RingLoader
-                  color={'#123abc'}
-                  loading={loading}
-                />
-              </div>
-            )
-          }
         }}
       </Query>
     )
