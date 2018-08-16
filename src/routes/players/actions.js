@@ -15,8 +15,6 @@ export const fetchTweets = (data) => {
 }
 
 // game_id: "498302" // twitch game id for AOV
-
-
 // `${TWITCH_API}streams?game_id=488552&type=live&first=20&language=en`
 
 
@@ -26,7 +24,6 @@ export const checkLiveTwitchStatus = (users) => {
   let stream_query = 'user_login=1rain&user_login=' + users.join('&user_login=')
   let live_users = []
 
-  console.log('checking live twitch status')
   return dispatch => {
     axios.get(`${TWITCH_API}users?${user_query}`)
       .then((res) => {

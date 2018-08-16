@@ -30,6 +30,7 @@ class SocialCard extends React.Component {
   render() {
     const { classes, screen_name, list_name, type } = this.props
 
+    console.log(type, list_name, type, screen_name)
     let feed
     if (type==='list') {
       feed = (

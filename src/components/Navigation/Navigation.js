@@ -38,7 +38,10 @@ class Navigation extends React.Component {
   render() {
     let { user_login } = this.props
     return (
-      <div className={s.root} role="navigation">
+      <div className={cx(s.root, s.nav_text)} role="navigation">
+        <Link className={cx(s.link)} to="/hero">
+          Heroes
+        </Link>
         <Link className={cx(s.link)} to="/players">
           Players
         </Link>
@@ -56,9 +59,6 @@ class Navigation extends React.Component {
             My Builds
           </Link>)
         }
-        <Link className={cx(s.link)} to="/build/create">
-          Create Build
-        </Link>
         <span className={s.spacer}> | </span>
         { !user_login.is_logged_in ?
           (<Link className={cx(s.link, s.highlight, s.signup)} to="/login">

@@ -141,7 +141,7 @@ class BuildViewer extends React.Component {
           if (error) {
             return <div className={cx(classes.grid_container, classes.full_height)}>ERROR! Sorry!</div>
           }
-          console.log('buildsByHero', data.buildsByHero)
+          
           return (
             <div>
               <Grid container zeroMinWidth>
