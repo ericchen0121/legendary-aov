@@ -189,7 +189,7 @@ export const ITEMS = [
         power: 0.25,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power: 0.07,
       },
     ],
@@ -241,7 +241,7 @@ export const ITEMS = [
         power: 0.1,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power: 0.05,
       },
     ],
@@ -269,7 +269,7 @@ export const ITEMS = [
         power: 0.20,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power:  0.05,
       },
     ],
@@ -432,7 +432,7 @@ export const ITEMS = [
         power: 400,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power: 0.08,
       },
     ],
@@ -466,7 +466,7 @@ export const ITEMS = [
         power: 850,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power: 0.05,
       },
     ],
@@ -670,7 +670,7 @@ export const ITEMS = [
         power: 1200,
       },
       {
-        type: 'movement speed',
+        type: 'movement speed %',
         power: 0.05,
       },
     ],
