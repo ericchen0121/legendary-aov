@@ -24,13 +24,12 @@ const styles = theme => ({
 
 class SocialCard extends React.Component {
   componentWillMount() {
-    this.props.actions.fetchTweets()
+    // this.props.actions.fetchTweets()
   }
 
   render() {
     const { classes, screen_name, list_name, type } = this.props
 
-    console.log(type, list_name, type, screen_name)
     let feed
     if (type==='list') {
       feed = (
@@ -39,10 +38,6 @@ class SocialCard extends React.Component {
             sourceType: 'list',
             ownerScreenName: screen_name,
             slug: list_name
-          }}
-          options={{
-            username: screen_name,
-            height: '1600',
           }}
         />
       )

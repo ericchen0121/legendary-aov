@@ -75,6 +75,10 @@ const routes = {
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
     },
     {
+      path: '/build/hero/:hero/me',
+      load: () => import(/* webpackChunkName: 'build' */ './buildCreator/me'),
+    },
+    {
       path: '/build/user/:user_id',
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator'),
     },

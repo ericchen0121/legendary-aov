@@ -21,7 +21,7 @@ import BuildItemsEffects from '../BuildItemsEffects'
 import BuildViewerContainer from '../BuildViewerContainer'
 
 import { find_talent_by_id, find_item_by_id } from '../Items'
-import { find_hero_by_id } from '../../draft/AovHeroes'
+import { find_hero_by_id, find_hero_by_name } from '../../draft/AovHeroes'
 import { to_uppercase_first } from '../utilities'
 
 import * as Actions from '../create/actions';
@@ -70,6 +70,30 @@ const styles = theme => ({
 })
 
 class MyBuildViewer extends React.Component {
+  componentDidMount() {
+    this.handleRouteParams(); // relies on window width, so using cb
+  }
+
+  handleRouteParams = () => {
+    const params = this.props.params
+    console.log('params', params)
+    // Get params from Route
+    let { hero, user_id } = params
+    //
+    if ( hero || user_id) {
+      // ie. www.../build/hero/chaugnar
+      if (hero) {
+        const hero_obj = find_hero_by_name(hero);
+        this.props.actions.setHeroId(hero_obj.id);
+      } else {
+        // redirect to ALL heroes, change url in router...
+      }
+
+      if (user_id) {
+
+      }
+    }
+  };
 
   sortAlpha = items => {
     return items.sort((a, b) => a.type.localeCompare(b.type))

@@ -12,13 +12,16 @@ import Layout from '../../../components/Layout';
 import MyBuildViewer from './MyBuildViewer';
 const title = 'My Builds';
 
-function action() {
+function action(context, params) {
   return {
     chunks: ['build'],
     title,
     component: (
       <Layout>
-        <MyBuildViewer title={title} />
+        <MyBuildViewer
+          title={title}
+          params={params}
+        />
       </Layout>
     ),
   };
