@@ -88,14 +88,12 @@ class BuildHeroContainer extends React.Component {
   }
 
   set_select_open = () => {
-    console.log('opened')
     this.setState({
       is_select_open: true
     })
   }
 
   set_select_close = () => {
-    console.log('closed')
     this.setState({
       is_select_open: false
     })

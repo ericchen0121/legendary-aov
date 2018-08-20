@@ -33,6 +33,7 @@ const routes = {
       path: '/video',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
     },
+
     {
       path: '/video/hero/:hero',
       load: () => import(/* webpackChunkName: 'draft' */ './draft'),
@@ -52,6 +53,11 @@ const routes = {
     {
       path: '/build/edit/:build_id',
       load: () => import(/* webpackChunkName: 'buildcreator' */ './buildCreator/create'),
+    },
+    {
+      path: '/build/all',
+      load: () => import(/* webpackChunkName: 'build' */ './buildCreator/all'),
+
     },
     {
       path: '/build/me',

@@ -33,7 +33,7 @@ import editBuild from './queries/editBuild';
 import addHero from './queries/addHero';
 import addUser from './queries/addUser';
 import loginUser from './queries/loginUser'
-
+import buildCount from './queries/buildCount'
 import userHeroes from './queries/userHeroes'
 import addUserHero from './queries/addUserHero'
 
@@ -55,7 +55,8 @@ const schema = new Schema({
       myBuilds,
       players,
       teams,
-      userHeroes
+      userHeroes,
+      buildCount
     },
   }),
   mutation: new ObjectType({
