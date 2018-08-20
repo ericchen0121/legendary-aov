@@ -60,6 +60,10 @@ const routes = {
 
     },
     {
+      path: '/build/analytics/:hero',
+      load: () => import(/* webpackChunkName: 'buildcreator' */ './buildCreator/analytics'),
+    },
+    {
       path: '/build/me',
       load: () => import(/* webpackChunkName: 'build' */ './buildCreator/me'),
     },
