@@ -2,33 +2,65 @@ import {ITEMS} from '../Items'
 
 export default function analyze_builds(builds) {
   if(builds) {
-    let build_count = builds.length || 0
+    let count = builds.length || 0
     let item_counts = ITEMS
 
+    // just a bucket of all items
     let all_items = []
     for(let b of builds){
       all_items.push(b.item_1, b.item_2, b.item_3, b.item_4, b.item_5, b.item_6)
     }
 
-    console.log('all', all_items)
-
+    // get counts in this format -- { item_id: count, ...}
     let all_item_counts = all_items.reduce(
-      (totals, i) => ({ ...totals, [i]: (totals[i] || 0 ) + 1}),
+      (totals, i) => ({ ...totals, [i]: (totals[i] || 0 ) + 1 }),
       {}
     )
 
-    console.log(all_item_counts)
-    //most chosen magic, ,defense, boots
+    let all_type_counts = all_items.reduce(
+        (totals, i) => {
+          let item = ITEMS.find(item => item.id === i)
+          return {
+            ...totals,
+            [item.type]: (totals[item.type] || 0) + 1
+          }
+        },
+        {}
+    )
+
+    // get format items into:
     // {
     //   magic: {
     //     1: 10,
     //     2: 4,
     //     3: 10,
     //     41: 0
-    //   }
+    //   },
+    //   defense: {...},
+    //   movement: {...},
+    //   ...
     // }
-    // avg count of types of items (2 defense, 1 magic, etc.)
-    return builds
+    let all_type_item_counts = all_items.reduce(
+        (totals, i) => {
+          let item = ITEMS.find(item => item.id === i)
+          return {
+            ...totals,
+            [item.type]: {
+              ...totals[item.type],
+              [item.id]: ( (totals[item.type] && totals[item.type][item.id]) ? totals[item.type][item.id] : 0 ) + 1
+            }
+          }
+        },
+        {}
+    )
+
+    return {
+      count: builds.length,
+      builds: builds,
+      item_counts: all_item_counts,
+      type_counts: all_type_counts,
+      type_item_counts: all_type_item_counts,
+    }
   }
 
   return {}
