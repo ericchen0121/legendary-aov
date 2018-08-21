@@ -19,8 +19,9 @@ import BuildItemCard from '../create/BuildItemCard'
 import BuildHeroContainer from '../create/BuildHeroContainer'
 import BuildItemsEffects from '../BuildItemsEffects'
 import analyze_builds from './processBuilds'
+import ItemAnalyticsCard from './ItemAnalyticsCard'
 
-import { find_talent_by_id, find_item_by_id } from '../Items'
+import { find_talent_by_id, find_item_by_id, ITEMS } from '../Items'
 import { find_hero_by_id, find_hero_by_name } from '../../draft/AovHeroes'
 import { to_uppercase_first } from '../utilities'
 
@@ -121,34 +122,52 @@ class BuildViewer extends React.Component {
           if (error) {
             return <div className={cx(classes.grid_container, classes.full_height)}>ERROR! Sorry!</div>
           }
-          
-          console.log('data',data.buildsByHero)
 
-          console.log('analyzed builds', analyze_builds(data.buildsByHero))
+          let analysis = analyze_builds(data.buildsByHero)
+          console.log(analysis)
+          let type_item_counts = analysis.type_item_counts
+          if (type_item_counts) {
+            return (
+              <div>
+                <div>
+                  {title}
+                </div>
+                <Grid container zeroMinWidth>
+                  <Grid item xs={1} />
+                  <Grid item xs={10}>
+                    <Grid container zeroMinWidth>
+                      <Grid item xs={1} />
+                      {
+                        Object.keys(type_item_counts).map((type, type_index) => {
+                          return Object.keys(type_item_counts[type])
+                            .sort((a, b) => type_item_counts[type][b] - type_item_counts[type][a])
+                            .map((id, item_index) => {
+                              return (
+                                <ItemAnalyticsCard
+                                  key={id}
+                                  item_id={Number(id)}
+                                  total_build_count={analysis.count}
+                                  item_count={type_item_counts[type][id]}
+                                />
+                              )
+                          })
+                        })
+                      }
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={1} />
+                </Grid>
+                <Grid container zeroMinWidth className={classes.grid_container}>
+                  <Grid item xs={9}>
 
-          return (
-            <div>
-              <Grid container zeroMinWidth>
-                <Grid item xs={10}>
-                  <div>
-                    {title}
-                  </div>
+                  </Grid>
+                  <Grid item xs={3}>
+                  </Grid>
                 </Grid>
-                <Grid item xs={2}>
-                  <div className={s.cta}>
-                  </div>
-                </Grid>
-              </Grid>
-              <Grid container zeroMinWidth className={classes.grid_container}>
-                <Grid item xs={9}>
-
-                </Grid>
-                <Grid item xs={3}>
-                </Grid>
-              </Grid>
-            </div>
-          )
-
+              </div>
+            )
+          }
+          return <div />
         }}
       </Query>
     )

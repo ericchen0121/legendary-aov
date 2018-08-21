@@ -17,6 +17,7 @@ export default function analyze_builds(builds) {
       {}
     )
 
+    // get counts in this format -- { type: count, ...}
     let all_type_counts = all_items.reduce(
         (totals, i) => {
           let item = ITEMS.find(item => item.id === i)
@@ -63,5 +64,11 @@ export default function analyze_builds(builds) {
     }
   }
 
-  return {}
+  return {
+    count: null,
+    builds: null,
+    item_counts: null,
+    type_counts: null,
+    type_item_counts: null,
+  }
 }
