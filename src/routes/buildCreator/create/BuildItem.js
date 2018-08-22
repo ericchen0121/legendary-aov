@@ -22,11 +22,12 @@ const styles = theme => ({
 class BuildItem extends React.Component {
 
   render() {
-    const { classes, actions, item, size, ...other } = this.props
+    const { classes, actions, item, size, tooltip_placement, ...other } = this.props
 
+    let placement = tooltip_placement || 'bottom'
     return (
       <div className={classes.pointer}>
-        <Tooltip title={item.name.toUpperCase()}>
+        <Tooltip title={item.name.toUpperCase()} placement={placement}>
           <Button size="small">
             <BuildItemImage
               item={item}

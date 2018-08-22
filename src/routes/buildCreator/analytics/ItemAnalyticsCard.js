@@ -16,15 +16,14 @@ import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import BuildItemImage from '../create/BuildItemImage'
+import BuildItem from '../create/BuildItem'
 import { to_uppercase_first } from '../utilities'
 
 const styles = theme => ({
   card: {
-    minWidth: 150,
     maxWidth: '90%',
     marginLeft: 10,
-    marginTop: 20
+    marginBottom: 20
   },
   bullet: {
     display: 'inline-block',
@@ -42,8 +41,16 @@ const styles = theme => ({
     marginTop: 5,
     marginBottom: 5
   },
-  type_container: {
-    marginLeft: 20
+  secondary_text: {
+    fontSize: 12,
+    color: 'gray'
+  },
+  percentage: {
+    fontSize: 16,
+    fontWeight: 600
+  },
+  bold: {
+    fontWeight: 600
   }
 });
 
@@ -53,17 +60,15 @@ class ItemAnalyticsCard extends React.Component {
     const { classes, item_id, item_count, total_build_count } = this.props
 
     let item = find_item_by_id(item_id)
-    console.log(item_id, item)
+
     let item_card = (
       item && (
         <div>
           <div className={cx(s.wrapper, s.text_align_left)}>
-            <BuildItemImage item={item} />
-            <div className={classes.type_container}>
-              <Typography variant="headline" component="h3" className={classes.title}>
-                <span>{item.name}</span>
-              </Typography>
-              <div>{ ((item_count/total_build_count)*100).toFixed(1)}%</div>
+            <BuildItem item={item} size='small' tooltip_placement='top'/>
+            <div>
+              <div className={classes.percentage}>{ ((item_count/total_build_count)*100).toFixed(0)}%</div>
+              <div className={classes.secondary_text}><span className={classes.bold}>{ item_count }</span>/<span className={classes.bold}>{total_build_count}</span> builds</div>
             </div>
           </div>
 

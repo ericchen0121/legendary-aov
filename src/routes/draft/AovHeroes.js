@@ -808,7 +808,7 @@ const HEROES = [
   {
     "id": 63,
     "name": 'Zephys',
-    'alt_names': ['Zephys', 'zephis'],
+    'alt_names': ['zephys', 'zephis'],
     "nickname": 'Doomspear',
     "classes": ['warrior', 'assassin'],
     'lanes': ['jungle', 'roam'],
@@ -847,7 +847,7 @@ const HEROES = [
   {
     "id": 66,
     "name": 'Rourke',
-    'alt_names': ['rorke'],
+    'alt_names': ['rorke', 'rourke'],
     "nickname": 'The Captain',
     "classes": ['warrior', 'marksman'],
     'lanes': ['solo', 'dragon'],

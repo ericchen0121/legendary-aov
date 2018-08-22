@@ -71,6 +71,16 @@ const styles = theme => ({
   },
   full_height: {
     height: 768
+  },
+  secondary_text: {
+    fontSize: 14,
+    color: 'gray'
+  },
+  bold: {
+    fontWeight: 600
+  },
+  no_style: {
+    textDecoration: 'none'
   }
 })
 
@@ -107,11 +117,7 @@ class BuildViewer extends React.Component {
     let selected_hero_id = build_analytics.hero_id
     let hero = find_hero_by_id(selected_hero_id)
     let hero_name = hero ? hero.name : ''
-    let title = (
-      <div className={s.title}>
-        <h2>{`${hero_name} Build Analytics`}</h2>
-      </div>
-    )
+
 
     return (
       <Query
@@ -126,6 +132,16 @@ class BuildViewer extends React.Component {
           let analysis = analyze_builds(data.buildsByHero)
           console.log(analysis)
           let type_item_counts = analysis.type_item_counts
+
+          let title = (
+            <div className={s.title}>
+              <h2>
+                {`${hero_name} Build Analytics`}
+                <a href={`/build/hero/${hero_name}`} className={classes.no_style}><span className={cx(classes.secondary_text, classes.bold)}> of {analysis.count} Builds</span></a>
+              </h2>
+            </div>
+          )
+
           if (type_item_counts) {
             return (
               <div>
@@ -156,13 +172,6 @@ class BuildViewer extends React.Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={1} />
-                </Grid>
-                <Grid container zeroMinWidth className={classes.grid_container}>
-                  <Grid item xs={9}>
-
-                  </Grid>
-                  <Grid item xs={3}>
-                  </Grid>
                 </Grid>
               </div>
             )
