@@ -71,6 +71,21 @@ const styles = theme => ({
   },
   full_height: {
     height: 768
+  },
+  secondary_size: {
+    marginLeft: 10,
+    fontSize: 13,
+  },
+  no_style: {
+    textDecoration: 'none',
+    color: 'rgb(0,0,0, .8)'
+  },
+  new_cta: {
+    color: 'red',
+    fontSize: 9,
+    borderRadius: 2,
+    padding: 3,
+    border: '1px solid red'
   }
 })
 
@@ -123,7 +138,12 @@ class BuildViewer extends React.Component {
 
     let title = (
       <div className={s.title}>
-        <h2>{`All ${hero.name} Builds`}</h2>
+        <h2>
+          {`All ${hero.name} Builds`}
+          <span className={cx(classes.secondary_size, classes.gray)}>
+            <a className={classes.no_style} href={`/build/analytics/${find_hero_by_id(selected_hero_id).name}`}>View Build Analytics    <span className={classes.new_cta}>NEW!</span></a>
+          </span>
+        </h2>
       </div>
     )
 
@@ -141,13 +161,13 @@ class BuildViewer extends React.Component {
           if (error) {
             return <div className={cx(classes.grid_container, classes.full_height)}>ERROR! Sorry!</div>
           }
-          console.log('data',data.buildsByHero)
+
           return (
             <div>
               <Grid container zeroMinWidth>
                 <Grid item xs={10}>
                   <div>
-                    {title}
+                    <span>{title}</span>
                   </div>
                 </Grid>
                 <Grid item xs={2}>
