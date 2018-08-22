@@ -67,7 +67,7 @@ class ItemAnalyticsCard extends React.Component {
           <div className={cx(s.wrapper, s.text_align_left)}>
             <BuildItem item={item} size='small' tooltip_placement='top'/>
             <div>
-              <div className={classes.percentage}>{ ((item_count/total_build_count)*100).toFixed(0)}%</div>
+              <div className={classes.percentage}>{ ((item_count/total_build_count)*100).toFixed(0) }%</div>
               <div className={classes.secondary_text}><span className={classes.bold}>{ item_count }</span>/<span className={classes.bold}>{total_build_count}</span> builds</div>
             </div>
           </div>

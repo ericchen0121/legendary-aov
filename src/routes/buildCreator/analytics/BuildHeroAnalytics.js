@@ -7,6 +7,7 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
+import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import ExpansionPanel, { ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui/ExpansionPanel';
 import Button from 'material-ui/Button'
@@ -41,6 +42,12 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 2,
   }),
+  card: {
+    minWidth: 100,
+    maxWidth: '90%',
+    marginLeft: 10,
+    marginBottom: 20
+  },
   ep: {
     padding: 0,
     width: '100%'
@@ -72,15 +79,26 @@ const styles = theme => ({
   full_height: {
     height: 768
   },
-  secondary_text: {
-    fontSize: 14,
+  secondary_size: {
+    fontSize: 10,
+  },
+  gray: {
     color: 'gray'
   },
-  bold: {
+  darkgray: {
+    color: 'rgba(0,0,0,.6)'
+  },
+  emphasis_size: {
+    fontSize: 17,
+  },
+  emphasis: {
     fontWeight: 600
   },
   no_style: {
     textDecoration: 'none'
+  },
+  marginSpacing: {
+    marginBottom: 10
   }
 })
 
@@ -137,12 +155,21 @@ class BuildViewer extends React.Component {
             <div className={s.title}>
               <h2>
                 {`${hero_name} Build Analytics`}
-                <a href={`/build/hero/${hero_name}`} className={classes.no_style}><span className={cx(classes.secondary_text, classes.bold)}> of {analysis.count} Builds</span></a>
+                <a href={`/build/hero/${hero_name}`} className={classes.no_style}><span className={cx(classes.secondary_size, classes.emphasis, classes.gray)}> of {analysis.count} Builds</span></a>
               </h2>
             </div>
           )
 
           if (type_item_counts) {
+
+            let type_sums = {}
+            for (let type in type_item_counts) {
+              type_sums[type] = 0
+              for (let item in type_item_counts[type]) {
+                type_sums[type] += type_item_counts[type][item]
+              }
+            }
+
             return (
               <div>
                 <div>
@@ -152,14 +179,27 @@ class BuildViewer extends React.Component {
                   <Grid item xs={1} />
                   <Grid item xs={10}>
                     <Grid container zeroMinWidth>
-                      <Grid item xs={1} />
-                      <Grid item xs={10} >
+                      <Grid item xs={11} >
                       {
                         Object.keys(type_item_counts)
                           .sort((a, b) => a.localeCompare(b)) // sort types alphabetically
                           .map((type, type_index) => {
+                            let avg_count = type_sums[type] / analysis.count
+                            let avg_count_display = (avg_count != parseInt(avg_count)) ? avg_count.toFixed(1) : avg_count
                             return (
                               <Grid container zeroMinWidth>
+                                <Card className={classes.card}>
+                                  <CardContent>
+                                    <div className={classes.marginSpacing}>{ to_uppercase_first(type) }</div>
+                                    <div>
+                                      <span className={cx(classes.emphasis, classes.emphasis_size, classes.darkgray)}> { avg_count_display }</span>
+                                    </div>
+                                    <div className={cx(classes.secondary_size, classes.gray)}>
+                                      <div>Average {to_uppercase_first(type)}</div>
+                                      <div>Items / Build</div>
+                                    </div>
+                                  </CardContent>
+                                </Card>
                               {
                                 Object.keys(type_item_counts[type])
                                   .sort((a, b) => type_item_counts[type][b] - type_item_counts[type][a])

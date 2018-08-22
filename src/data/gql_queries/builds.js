@@ -173,3 +173,8 @@ export const ID_QUERY = gql`
     }
   }
 `
+export const DELETE_BUILD = gql`
+  mutation deleteBuild($id: Int!) {
+    deleteBuild(id: $id)
+  }
+`

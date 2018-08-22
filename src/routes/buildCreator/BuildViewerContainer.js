@@ -25,6 +25,11 @@ import { find_talent_by_id, find_item_by_id } from './Items'
 import { find_hero_by_id } from '../draft/AovHeroes'
 import { to_uppercase_first } from './utilities'
 
+import { Query } from "react-apollo";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+import { DELETE_BUILD } from '../../data/gql_queries/builds'
+
 import * as Actions from './create/actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -84,8 +89,12 @@ const styles = theme => ({
   },
   expand_button: {
     position: 'absolute',
-    right: 15,
-    top: 30,
+    right: 20,
+    top: 55,
+  },
+  delete: {
+    marginTop: 10,
+    color: 'red'
   }
 })
 
@@ -193,6 +202,17 @@ class BuildViewerContainer extends React.Component {
                   { is_editing && (
                     <span className={classes.edit_link}>
                       <a className={classes.link_style} href={`/build/edit/${b.id}`} >EDIT</a>
+                      <div className={classes.link_style}>
+                        <Mutation
+                          mutation={DELETE_BUILD}
+                          variables={ {id: b.id} }
+                        >
+                          {(query_name, {data}) => {
+
+                            return <div className={classes.delete} onClick={query_name}>DELETE</div>
+                          }}
+                        </Mutation>
+                      </div>
                     </span>
                   )}
                   { is_hovered && (

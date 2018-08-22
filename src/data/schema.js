@@ -30,6 +30,7 @@ import arcana from './queries/arcana'
 
 import addBuild from './queries/addBuild';
 import editBuild from './queries/editBuild';
+import deleteBuild from './queries/deleteBuild'
 import addHero from './queries/addHero';
 import addUser from './queries/addUser';
 import loginUser from './queries/loginUser'
@@ -64,10 +65,11 @@ const schema = new Schema({
     fields: {
       addBuild,
       editBuild,
+      deleteBuild,
       addHero,
       addUser,
       loginUser,
-      addUserHero
+      addUserHero,   
     }
   })
 });
