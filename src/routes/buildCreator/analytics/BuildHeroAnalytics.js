@@ -153,22 +153,32 @@ class BuildViewer extends React.Component {
                   <Grid item xs={10}>
                     <Grid container zeroMinWidth>
                       <Grid item xs={1} />
+                      <Grid item xs={10} >
                       {
-                        Object.keys(type_item_counts).map((type, type_index) => {
-                          return Object.keys(type_item_counts[type])
-                            .sort((a, b) => type_item_counts[type][b] - type_item_counts[type][a])
-                            .map((id, item_index) => {
-                              return (
-                                <ItemAnalyticsCard
-                                  key={id}
-                                  item_id={Number(id)}
-                                  total_build_count={analysis.count}
-                                  item_count={type_item_counts[type][id]}
-                                />
-                              )
+                        Object.keys(type_item_counts)
+                          .sort((a, b) => a.localeCompare(b)) // sort types alphabetically
+                          .map((type, type_index) => {
+                            return (
+                              <Grid container zeroMinWidth>
+                              {
+                                Object.keys(type_item_counts[type])
+                                  .sort((a, b) => type_item_counts[type][b] - type_item_counts[type][a])
+                                  .map((id, item_index) => {
+                                    return (
+                                      <ItemAnalyticsCard
+                                        key={id}
+                                        item_id={Number(id)}
+                                        total_build_count={analysis.count}
+                                        item_count={type_item_counts[type][id]}
+                                      />
+                                    )
+                                })
+                              }
+                              </Grid>
+                            )
                           })
-                        })
                       }
+                      </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={1} />
