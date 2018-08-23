@@ -135,7 +135,13 @@ const build_creator = (state = initialState, action) => {
         }
       }
     case RESET_BUILD:
-      return initialState
+      return {
+        ...initialState,
+        current_build: {
+          ...initialState.current_build,
+          arcana: []
+        }
+      }
 
     case TOGGLE_ADD_NOTES_OPEN:
       return {
