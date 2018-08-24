@@ -58,6 +58,7 @@ class BuildItemViewer extends React.Component {
     }
     let tier_3_items = filter_items(item_filter, 3)
     let tier_2_items = filter_items(item_filter, 2)
+    let tier_1_items = filter_items(item_filter, 1)
 
     return (
       <div>
@@ -83,6 +84,17 @@ class BuildItemViewer extends React.Component {
             { filter_items_list(tier_2_items) }
           </Grid>
         </div>
+        {tier_1_items.length > 0 &&
+          <div>
+            <div>
+              <h3>Tier 1</h3>
+              <Divider />
+            </div>
+            <Grid container spacing={24}>
+              { filter_items_list(tier_1_items) }
+            </Grid>
+          </div>
+      }
       </div>
     )
   }

@@ -1571,7 +1571,347 @@ export const ITEMS = [
       type: ['movement+', 'buff'],
     }]
   },
+  {
+    id: 58,
+    name: "Wind Stone",
+    type: 'support',
+    tier: 1,
+    cost: 800,
+    folder: 'windstone',
+    effects: [
+      {
+        type: 'movement speed %',
+        power: .05,
+      },
+      {
+        type: 'mana / sec',
+        power: 8
+      },
+    ],
+    passives: [{
+      name: "Wage",
+      unique: true,
+      description: 'Gain 5 gold and experience every 3 seconds if your gold or experience is the lowest on the team.',
+      type: ['farm'],
+    }]
+  },
+  {
+    id: 59,
+    name: "Water Stone",
+    type: 'support',
+    tier: 1,
+    cost: 800,
+    folder: 'waterstone',
+    effects: [
+      {
+        type: 'HP / sec',
+        power: 20,
+      },
+      {
+        type: 'mana / sec',
+        power: 10
+      },
+    ],
+    passives: [{
+      name: "Devotion",
+      unique: true,
+      description: ' Gain a stack of Dedication Buff every 30 seconds. Stacks up to 2 times. If a unit dies within 800 units, consume a stack of Dedication Buff to grant the nearest ally 15 extra gold and 40 experience.',
+      type: ['buff'],
+    }]
+  },
+  {
+    id: 60,
+    name: "Windrider Talisman",
+    type: 'support',
+    tier: 2,
+    cost: 2000,
+    folder: 'windridertalisman',
+    effects: [
+      {
+        type: 'armor',
+        power: 175,
+      },
+      {
+        type: 'hp / sec',
+        power: 40
+      },
+      {
+        type: 'mana / sec',
+        power: 15
+      },
+      {
+        type: 'Movement Speed %',
+        power: .05
+      },
+    ],
+    passives: [{
+      name: "Wage",
+      unique: true,
+      description: 'Gain 5 gold and experience every 3 seconds if your gold or experience is the lowest on the team.',
+      type: ['farm'],
+      },
+      {
+      name: "Distinction",
+      unique: true,
+      description: 'Gain 30% more gold and experience after a kill or assist',
+      type: ['farm'],
+    }]
+  },
+  {
+    id: 61,
+    name: "Ring of Gale",
+    type: 'support',
+    tier: 2,
+    cost: 2000,
+    folder: 'ringofgale',
+    effects: [
+      {
+        type: 'ability power',
+        power: 60,
+      },
+      {
+        type: 'Movement Speed %',
+        power: .05
+      },
+      {
+        type: 'mana / sec',
+        power: 20
+      },
+    ],
+    passives: [{
+      name: "Wage",
+      unique: true,
+      description: 'Gain 5 gold and experience every 3 seconds if your gold or experience is the lowest on the team.',
+      type: ['farm'],
+      },
+      {
+      name: "Distinction",
+      unique: true,
+      description: 'Gain 30% more gold and experience after a kill or assist',
+      type: ['farm'],
+    }]
+  },
+  {
+    id: 62,
+    name: "Crystal Talisman",
+    type: 'support',
+    tier: 2,
+    cost: 2000,
+    folder: 'crystaltalisman',
+    effects: [
+      {
+        type: 'armor',
+        power: 120,
+      },
+    ],
+    passives: [{
+      name: "Devotion",
+      unique: true,
+      description: 'Gain a stack of Dedication Buff every 30 seconds. Stacks up to 2 times. If a unit dies within 800 units, consume a stack of Dedication Buff to grant the nearest ally 15 extra gold and 40 experience.',
+      type: ['farm'],
+      },
+      {
+      name: "Tidal Force",
+      unique: true,
+      description: 'ou and nearby friendly heroes (within 600 units) receive 20 (+1 per level) HP and 10 (+1 per 2 levels) mana per second.',
+      type: ['buff'],
+    }]
+  },
+  {
+    id: 63,
+    name: "Stream Bracers",
+    type: 'support',
+    tier: 2,
+    cost: 2000,
+    folder: 'streambracers',
+    effects: [
+      {
+        type: 'cooldown speed',
+        power: .1,
+      },
+    ],
+    passives: [{
+      name: "Devotion",
+      unique: true,
+      description: 'Gain a stack of Dedication Buff every 30 seconds. Stacks up to 2 times. If a unit dies within 800 units, consume a stack of Dedication Buff to grant the nearest ally 15 extra gold and 40 experience.',
+      type: ['farm'],
+      },
+      {
+      name: "Tidal Force",
+      unique: true,
+      description: 'You and nearby friendly heroes (within 600 units) receive 20 (+1 per level) HP and 10 (+1 per 2 levels) mana per second.',
+      type: ['buff'],
+    }]
+  },
+  {
+    id: 64,
+    name: "Essence of the Wind",
+    type: 'support',
+    tier: 3,
+    cost: 2000,
+    folder: 'essenceofthewind',
+    effects: [
+      {
+        type: 'armor',
+        power: 250,
+      },
+      {
+        type: 'health',
+        power: 600
+      },
+      {
+        type: 'movement speed %',
+        power: .05
+      },
+      {
+        type: 'hp / sec',
+        power: 40
+      },
+      {
+        type: 'mana / sec',
+        power: 15
+      },
+    ],
+    passives: [{
+        name: "Wage",
+        unique: true,
+        description: 'Gain 5 gold and experience every 3 seconds if your gold or experience is the lowest on the team.',
+        type: ['farm'],
+      },
+      {
+        name: "Distinction",
+        unique: true,
+        description: 'Gain 30% more gold and experience after a kill or assist',
+        type: ['farm'],
+      },
+      {
+        name: "Wind Shield (active)",
+        unique: true,
+        description: 'Provide nearby hero with the lowest HP a (800 + Hero Level x 80) point shield and 30% movement speed boost for 3 seconds. 45 second cooldown',
+        type: ['buff'],
+      },
+    ]
+  },
+  {
+    id: 65,
+    name: "Ring of the Fiend",
+    type: 'support',
+    tier: 3,
+    cost: 2000,
+    folder: 'ringofthefiend',
+    effects: [
+      {
+        type: 'ability power',
+        power: 90,
+      },
+      {
+        type: 'cooldown speed',
+        power: .15
+      },
+      {
+        type: 'movement speed %',
+        power: .05
+      },
+      {
+        type: 'mana / sec',
+        power: 30
+      },
+    ],
+    passives: [{
+      name: "Wage",
+      unique: true,
+      description: 'Gain 5 gold and experience every 3 seconds if your gold or experience is the lowest on the team.',
+      type: ['farm'],
+      },
+      {
+        name: "Distinction",
+        unique: true,
+        description: 'Gain 30% more gold and experience after a kill or assist',
+        type: ['farm'],
+      },
+      {
+        name: "Eye of the Fiend (active)",
+        unique: true,
+        description: 'Gain vision of the nearest enemy for 4 seconds. Cooldown: 30 seconds.',
+        type: ['farm'],
+      }]
+  },
+  {
+    id: 66,
+    name: "Tidecaller's Mark",
+    type: 'support',
+    tier: 3,
+    cost: 2000,
+    folder: 'tidecallersmark',
+    effects: [
+      {
+        type: 'armor',
+        power: 200,
+      },
+      {
+        type: 'health',
+        power: 600
+      },
+    ],
+    passives: [{
+        name: "Devotion",
+        unique: true,
+        description: 'Gain a stack of Dedication Buff every 30 seconds. Stacks up to 2 times. If a unit dies within 800 units, consume a stack of Dedication Buff to grant the nearest ally 15 extra gold and 40 experience.',
+        type: ['farm'],
+      },
+      {
+        name: "Tidal Force",
+        unique: true,
+        description: 'You and nearby friendly heroes (within 600 units) receive 20 (+1 per level) HP and 10 (+1 per 2 levels) mana per second.',
+        type: ['buff'],
+      },
+      {
+        name: "Tidecaller",
+        unique: true,
+        description: ' Increase damage of nearby allies by 5% and damage reduction by 10%.',
+        type: ['buff'],
+      }]
+  },
+  {
+    id: 67,
+    name: "Purifying Bracers",
+    type: 'support',
+    tier: 3,
+    cost: 2000,
+    folder: 'purifyingbracers',
+    effects: [
+      {
+        type: 'hp',
+        power: 500,
+      },
+      {
+        type: 'cooldown speed',
+        power: .15
+      },
+    ],
+    passives: [{
+        name: "Devotion",
+        unique: true,
+        description: 'Gain a stack of Dedication Buff every 30 seconds. Stacks up to 2 times. If a unit dies within 800 units, consume a stack of Dedication Buff to grant the nearest ally 15 extra gold and 40 experience.',
+        type: ['farm'],
+      },
+      {
+        name: "Tidal Force",
+        unique: true,
+        description: 'You and nearby friendly heroes (within 600 units) receive 20 (+1 per level) HP and 10 (+1 per 2 levels) mana per second.',
+        type: ['buff'],
+      },
+      {
+        name: "Purification (active)",
+        unique: true,
+        description: 'Immediately remove any control effects from a nearby allied hero, and restore 160 + (level x 30) HP and increase their movement speed by 20% for 1 second. The affected hero is immune to slows for the next 2 seconds. 90 second cooldown.',
+        type: ['debuff', 'buff'],
+      }
+    ]
+  }
 ]
+
+// NEW SUPPORT ITEMS
 
 export const TALENTS = [
   {
@@ -1636,12 +1976,14 @@ export const TALENTS = [
   },
 ]
 
+// Categories of items to show
 export const ITEM_CATEGORIES = [
   'attack',
   'magic',
   'defense',
   'movement',
-  'jungling'
+  'jungling',
+  // 'support'
 ]
 
 //
