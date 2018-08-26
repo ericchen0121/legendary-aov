@@ -39,7 +39,7 @@ const initialState = {
   is_arcana_open: false,
   is_editing_page: false,
   current_build: {
-    name: `${find_hero_by_id(DEFAULT_HERO_ID).name} Build`,
+    get name() {return `${find_hero_by_id(this.hero_id).name} Build`},
     1: null,
     2: null,
     3: null,
@@ -123,7 +123,7 @@ const build_creator = (state = initialState, action) => {
         current_build: {
           ...state.current_build,
           hero_id: action.data,
-          name: action.data ? `${find_hero_by_id(action.data).name} Build` : 'Build'
+          name: `${find_hero_by_id(action.data).name} Build`,
         }
       }
     case NAME_BUILD:
@@ -139,6 +139,8 @@ const build_creator = (state = initialState, action) => {
         ...initialState,
         current_build: {
           ...initialState.current_build,
+          name: `${find_hero_by_id(state.current_build.hero_id).name} Build`,
+          hero_id: state.current_build.hero_id,
           arcana: []
         }
       }
