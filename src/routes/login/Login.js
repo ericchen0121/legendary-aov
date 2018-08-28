@@ -9,6 +9,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 import s from './Login.css';
@@ -30,6 +31,17 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  transparent: {
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    '&::before': {
+      backgroundColor: 'rgba(255,255,255,0)'
+    }
+  },
+  fully_transparent: {
+    '&::before': {
+      backgroundColor: 'rgba(255,255,255,0)'
+    }
+  },
   register: {
     width: 404,
     margin: '50px auto',
@@ -38,6 +50,12 @@ const styles = {
   },
   title: {
     textAlign: 'center'
+  },
+  bg: {
+    backgroundImage: "url('/aov/covers/yorn.jpg')",
+    backgroundRepeat: 'no-repeat',
+    height: '100%',
+    backgroundPosition: '43% 29%'
   }
 };
 
@@ -250,7 +268,7 @@ class Login extends React.Component {
                     />
                   </label>
                 </div>
-                <strong className={s.lineThrough}> AND </strong>
+                <strong className={cx(s.lineThrough,classes.fully_transparent)}> AND </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Email address:
@@ -282,7 +300,7 @@ class Login extends React.Component {
                   </button>
                 </div>
                 {error && <div>Username or Email invalid</div>}
-                <strong className={s.lineThrough}> </strong>
+                <strong className={cx(s.lineThrough, classes.fully_transparent)}> </strong>
                 <div className={s.switchFormText}>
                   Already Legendary? <span className={s.cta} onClick={switchForm}>Sign In</span>
                 </div>
@@ -321,7 +339,7 @@ class Login extends React.Component {
                     />
                   </label>
                 </div>
-                <strong className={s.lineThrough}> OR </strong>
+                <strong className={cx(s.lineThrough, classes.fully_transparent)}> OR </strong>
                 <div className={s.formGroup}>
                   <label className={s.label} htmlFor="usernameOrEmail">
                     Email address:
@@ -368,7 +386,7 @@ class Login extends React.Component {
     )
 
     return (
-      <div>
+      <div className={classes.bg}>
         <Paper className={classes.root}>
           <Tabs
             value={this.state.value}
@@ -381,7 +399,7 @@ class Login extends React.Component {
             <Tab label="Login" />
           </Tabs>
         </Paper>
-        <Paper className={classes.register}>
+        <Paper className={cx(classes.register, classes.transparent)}>
         { (this.state.value === 0) && register }
         { (this.state.value === 1) && login }
         </Paper>

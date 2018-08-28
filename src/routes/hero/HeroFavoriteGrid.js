@@ -58,7 +58,7 @@ class HeroFavoriteGrid extends React.Component {
     return (
       <Query
         query={USER_HEROES_BY_USER}
-        variables={{ user_id: 1 }} //NOTE: PLACEHOLDER
+        variables={{ user_id: user_login.is_logged_in ? user_login.id : 0 }} //NOTE: PLACEHOLDER
       >
         {({ loading, error, data }) => {
 

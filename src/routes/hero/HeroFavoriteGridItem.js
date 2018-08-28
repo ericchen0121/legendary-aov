@@ -23,7 +23,6 @@ import { bindActionCreators } from 'redux';
 
 
 let styles = {
-
 }
 
 class HeroFavoriteGridItem extends React.Component {
@@ -32,7 +31,12 @@ class HeroFavoriteGridItem extends React.Component {
   }
 
   handleItemClick = () => {
-    this.props.actions.selectLocalFavoritedHeroes(this.props.hero.id)
+    if (this.props.user_login.is_logged_in) {
+      this.props.actions.selectLocalFavoritedHeroes(this.props.hero.id)
+    }
+    else {
+      
+    }
   }
 
 
@@ -43,7 +47,7 @@ class HeroFavoriteGridItem extends React.Component {
     const handleItemClick = this.handleItemClick.bind(this);
 
     let new_user_hero_input = {
-      user_id: user_login.id || 1,
+      user_id: user_login.id || 0,
       hero_id: hero.id,
       type: 'favorite'
     }
