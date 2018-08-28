@@ -27,7 +27,11 @@ class DraftVideo extends React.Component {
   //  examples here: https://github.com/CookPete/react-player/blob/master/src/demo/App.js
   onEnded = () => {
     // this.restartVideo();
-    this.props.actions.queueNextVideo()
+    if (this.props.youtube_list.autoplay) {
+      this.props.actions.queueNextVideo()
+    } else {
+
+    }
   };
 
   restartVideo = () => {

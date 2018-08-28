@@ -36,6 +36,7 @@ import { AOV_GOLD, MOBILE_MAX_WINDOW_WIDTH } from '../../constants';
 import List from 'material-ui/List';
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
+import Switch from 'material-ui/Switch';
 
 import { Icon } from 'react-icons-kit';
 import { ic_sort_by_alpha } from 'react-icons-kit/md/ic_sort_by_alpha';
@@ -69,7 +70,38 @@ const styles = theme => ({
     color: 'white',
   },
   textFieldMobile: {
-    width: 100
+    width: 100,
+  },
+  toggle_switch: {
+    // width: 200
+  },
+  autoplay_text: {
+    color: 'gray',
+    fontSize: 12,
+    fontWeight: 'bold',
+    letterSpacing: '.07px'
+  },
+  autoplay_align: {
+    textAlign: 'right'
+  },
+  upnext_text: {
+    fontSize: 12,
+    fontWeight: 600,
+    marginLeft: 10,
+  },
+  center_align: {
+    alignItems: 'center'
+  },
+  filter_text: {
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 13,
+    color: 'gray',
+    letterSpacing: '.07px',
+    fontWeight: 'bold'
+  },
+  video_search_container: {
+    marginBottom: 20
   }
 });
 
@@ -79,6 +111,7 @@ class Draft extends React.Component {
       name: null,
       active: false,
     },
+    is_autoplaying: this.props.youtube_list.autoplay,
     hero_filter_toggle: false,
     hero_filter_alphabetical: true,
     hero_filter_list_view: false,
@@ -98,8 +131,13 @@ class Draft extends React.Component {
     this.setState({
       top_level_filter_selected: filter,
       lower_level_filter_selected: HERO_FILTERS[filter][0], // select the first lower level filter
-    });
-  };
+    })
+  }
+
+  handleChange = name => event => {
+    this.props.actions.toggleAutoplay()
+    this.setState({ [name]: event.target.checked });
+  }
 
   onLowerLevelFilterChange = (e, filter) => {
     this.setState({
@@ -246,7 +284,7 @@ class Draft extends React.Component {
 
   handleRouteParams = () => {
     const params = this.props.params;
-    
+
     // Get params from Route
     const { hero, video_search_term, channel_id } = params;
 
@@ -559,7 +597,26 @@ class Draft extends React.Component {
             zeroMinWidth
             className={cx({ [classes.dark_mode]: dark_mode_active })}
           >
-            {video_search}
+            <div className={classes.filter_text}>
+              SEARCH
+            </div>
+            <div className={classes.video_search_container}>
+              {video_search}
+            </div>
+            <div className={cx(classes.grid_container, classes.center_align)}>
+              <span className={cx(classes.root, classes.upnext_text)}>Up next</span>
+              <span className={cx(classes.root, classes.autoplay_align)}>
+                <span className={classes.autoplay_text}>AUTOPLAY</span>
+                <span>
+                  <Switch
+                    checked={this.state.is_autoplaying}
+                    onChange={this.handleChange('is_autoplaying')}
+                    value="is_autoplaying"
+                    className={classes.toggle_switch}
+                  />
+                </span>
+              </span>
+            </div>
             <DraftPlaylist {...this.props} />
           </Grid>
         </Grid>

@@ -6,6 +6,7 @@ const YT_MAX_RESULTS = 50
 
 import {
   SELECT_HERO,
+  TOGGLE_AUTOPLAY,
   FETCH_YOUTUBE_LIST,
   FETCH_YOUTUBE_LIST_START,
   FETCH_YOUTUBE_LIST_RESULTS,
@@ -16,6 +17,10 @@ import {
 
 export const selectHero = (data) => {
   return { type: SELECT_HERO, data }
+}
+
+export const toggleAutoplay = (data) => {
+  return { type: TOGGLE_AUTOPLAY, data }
 }
 
 export const fetchYoutubeList = (query) => {

@@ -1,5 +1,6 @@
 import {
   SELECT_HERO,
+  TOGGLE_AUTOPLAY,
   FETCH_YOUTUBE_LIST_RESULTS,
   FETCH_YOUTUBE_LIST_ERROR,
   SELECT_YOUTUBE_VIDEO,
@@ -10,7 +11,8 @@ const initialState = {
   data: [],
   selected_video: null,
   selected_hero: null,
-  current_video_index: 0
+  current_video_index: 0,
+  autoplay: true
 }
 
 let sort_recent = (list) => {
@@ -39,6 +41,14 @@ const youtube_list = (state = initialState, action) => {
         ...state,
         selected_hero: action.data
       }
+    case TOGGLE_AUTOPLAY: {
+      console.log('first', state.autoplay, '...and now', !state.autoplay)
+      return {
+        ...state,
+        autoplay: !state.autoplay
+      }
+    }
+
     case QUEUE_NEXT_VIDEO:
       if (state.data) {
         return {
