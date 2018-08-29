@@ -122,9 +122,8 @@ class Draft extends React.Component {
     video_search_term_default: DEFAULT_VIDEO_SEARCH_TERM,
     window_width: null,
     channel: null,
+    is_params_set: false
   };
-
-  componentWillMount() {}
 
   // HERO_FILTERS FUNCTIONS
   onTopLevelFilterChange = (e, filter) => {
@@ -284,6 +283,7 @@ class Draft extends React.Component {
 
   handleRouteParams = () => {
     const params = this.props.params;
+    this.setState({ is_params_set: true})
 
     // Get params from Route
     const { hero, video_search_term, channel_id } = params;
@@ -306,14 +306,18 @@ class Draft extends React.Component {
       if (channel_id) {
         const channel = AOV_CHANNELS.filter(c => c.channel_id == channel_id)[0];
         if (channel) {
-          this.setState({ channel });
-          this.handleVideoSearch(channel.channel_id);
+          this.setState({ channel })
+          this.handleVideoSearch(channel.channel_id)
         }
       }
     } else {
       this.handleVideoSearch('')
     }
   };
+
+  resetChannel = () => {
+    this.setState({ channel: null, is_params_set: true})
+  }
 
   handleRouteQuery = () => {
     const props = this.props;
@@ -332,8 +336,22 @@ class Draft extends React.Component {
     );
   }
 
+  componentDidUpdate() {
+    // UPDATE CHANNEL AND VIDEO LIST WHEN ROUTE PARAMS CHANGE (ie. Click on Channel from Video page or vice versa, and component is already mounted)
+    let channel_id = this.props.params.channel_id
+    let channel = AOV_CHANNELS.filter(c => c.channel_id == channel_id)[0]
+    if(!channel_id && this.state.channel) {
+      this.setState({ channel: null})
+      this.handleVideoSearch('')
+    }
+    else if(channel && (channel != this.state.channel)){
+      this.setState({channel})
+      this.handleVideoSearch(channel_id)
+    }
+  }
+
   render() {
-    const { classes, utilities } = this.props;
+    const { classes, utilities, params } = this.props;
 
     const {
       window_width,
@@ -345,6 +363,7 @@ class Draft extends React.Component {
       hero_filter_list_view,
       is_hero_filter_grid_view_expanded,
       channel,
+      is_params_set
     } = this.state;
 
     const { dark_mode_active } = utilities;
