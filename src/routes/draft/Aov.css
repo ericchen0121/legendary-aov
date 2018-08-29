@@ -84,6 +84,10 @@
   background-color: rgba(75,65,49,0.6)
 }
 
+.avatar_text_med {
+  font-size: 11px !important;
+  width: 85% !important;
+}
 .avatar_sub_text {
   position: absolute;
   top: 21%;

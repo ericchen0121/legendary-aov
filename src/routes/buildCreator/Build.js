@@ -4,6 +4,9 @@ import s from './Build.scss'
 import withStyles2 from 'isomorphic-style-loader/lib/withStyles';
 import { withStyles } from 'material-ui/styles';
 
+import { Icon } from 'react-icons-kit'
+import {bar_chart_1} from 'react-icons-kit/ikons/bar_chart_1'
+
 import Grid from 'material-ui/Grid';
 import GridList, { GridListTile } from 'material-ui/GridList';
 import Divider from 'material-ui/Divider';
@@ -86,6 +89,11 @@ const styles = theme => ({
     borderRadius: 2,
     padding: 3,
     border: '1px solid red'
+  },
+  icon: {
+    margin: '0 8px',
+    position: 'relative',
+    top: 3
   }
 })
 
@@ -141,7 +149,13 @@ class BuildViewer extends React.Component {
         <h2>
           {`All ${hero.name} Builds`}
           <span className={cx(classes.secondary_size, classes.gray)}>
-            <a className={classes.no_style} href={`/build/analytics/${find_hero_by_id(selected_hero_id).name.toLowerCase()}`}>View Build Analytics    <span className={classes.new_cta}>NEW!</span></a>
+            <a className={classes.no_style} href={`/build/analytics/${find_hero_by_id(selected_hero_id).name.toLowerCase()}`}>
+              View Build Analytics
+              <span className={classes.icon}>
+                <Icon icon={bar_chart_1} size={16} style={{color: '#00aaff', marginTop: 5}}/>
+              </span>
+              <span className={classes.new_cta}>NEW!</span>
+            </a>
           </span>
         </h2>
       </div>

@@ -89,7 +89,7 @@ class HeroFavoriteGridItem extends React.Component {
             src={`/aov/heroes/${folder}/hero.png`}
           />
           <div
-            className={cx(s.avatar_text)}
+            className={cx(s.avatar_text, s.avatar_text_med)}
           >
             {' '}
             <div className={s.sub_text}>{name.toUpperCase()}</div>

@@ -99,6 +99,11 @@ const styles = theme => ({
   },
   marginSpacing: {
     marginBottom: 10
+  },
+  title: {
+    marginLeft: 35,
+    fontFamily: "'Josefin Sans', sans-serif",
+    fontSize: 13
   }
 })
 
@@ -152,7 +157,7 @@ class BuildViewer extends React.Component {
           let type_item_counts = analysis.type_item_counts
 
           let title = (
-            <div className={s.title}>
+            <div className={classes.title}>
               <h2>
                 {`${hero_name} Build Analytics`}
                 <a href={`/build/hero/${hero_name}`} className={classes.no_style}><span className={cx(classes.secondary_size, classes.emphasis, classes.gray)}> of {analysis.count} Builds</span></a>
