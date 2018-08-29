@@ -73,14 +73,14 @@
 .avatar_text {
   position: absolute;
   top: 77%;
-  left: 53%;
+  left: 55%;
   transform: translate(-46%, -50%);
   font-size: 10px;
   font-style: italic;
   font-weight: 300;
   font-family: 'Josefin Sans', sans-serif;
   color: rgba(255,255,255,0.85);
-  width: 75%;
+  width: 78.5%;
   background-color: rgba(75,65,49,0.6)
 }
 
