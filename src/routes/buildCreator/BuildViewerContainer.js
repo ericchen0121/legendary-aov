@@ -65,8 +65,9 @@ const styles = theme => ({
     fontSize: 8,
     border: '1px solid red',
     borderRadius: 2,
-    padding: '4px 3px 1px 3px',
-    width: 27
+    padding: '2px 3px 1px 3px',
+    width: 27,
+    marginTop: 3
   },
   edit_link: {
     position: 'absolute',
@@ -95,6 +96,15 @@ const styles = theme => ({
   delete: {
     marginTop: 10,
     color: 'red'
+  },
+  build_name_container: {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    width: '48%',
+    overflow: 'hidden'
+  },
+  margin_bot_text: {
+    marginBottom: 4
   }
 })
 
@@ -179,10 +189,9 @@ class BuildViewerContainer extends React.Component {
                 size='xs'
                 border='gold'
               />
-              <span className={s.build_name_container}>
+              <span className={cx(s.build_name_container, classes.build_name_container)}>
                 <div>
                   <span>{ b.name } </span>
-                  { video_url && <span className={classes.video_label}>VIDEO</span>}
                 </div>
                 <div>
                   <span>{talent_html}</span>
@@ -190,7 +199,8 @@ class BuildViewerContainer extends React.Component {
               </span>
               <div className={cx(classes.info_label_container, s.item)}>
                 <span>{ b.user.username || b.user.id || ''}</span>
-                <div>Patch { b.version.version_number | '' }</div>
+                <div className={classes.margin_bot_text}>Patch { b.version.version_number | '' }</div>
+                { video_url && <span className={classes.video_label}>VIDEO</span>}
               </div>
             </div>
           </Grid>
