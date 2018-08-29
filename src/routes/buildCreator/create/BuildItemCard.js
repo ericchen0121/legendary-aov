@@ -79,7 +79,7 @@ class BuildItemCard extends React.Component {
           let divider = <Divider className={classes.divider}/>
           if (i === item.passives.length - 1) { divider = null }
           return  (
-            <div>
+            <div key={item.name + Math.random()*100}>
               <span className={s.item_passive_title}>{p.name}</span> <span className={s.passive_title}>{ p.unique ? '[ Unique Passive ]' : ''}</span>: <span className={s.item_passive_desc}>{p.description}</span>
               { divider }
             </div>

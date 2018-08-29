@@ -58,7 +58,8 @@ const styles = theme => ({
     marginBottom: 5
   },
   snackbar: {
-    backgroundColor: green
+    backgroundColor: green,
+    marginTop: 35
   },
   ep: {
     padding: 0
@@ -125,6 +126,10 @@ const styles = theme => ({
   add_arcana_button: {
     marginRight: 7
   },
+  no_link_decoration: {
+    textDecoration: 'none',
+    color: 'gold',
+  }
 })
 
 class BuildCreator extends React.Component {
@@ -242,7 +247,7 @@ class BuildCreator extends React.Component {
 
     let talents = TALENTS.filter(t=> t.active).map(t => {
       return (
-        <span className={s.talent_spacer}>
+        <span className={s.talent_spacer} key={t.id}>
           <BuildTalent
             key={t.id}
             talent={t}
@@ -364,7 +369,14 @@ class BuildCreator extends React.Component {
               )
             }
             else if (is_saved) {
-              alert_text = (<span><span>Saved</span><span className={classes.create_new} onClick={resetBuild}>Create New</span></span>)
+              alert_text = (
+                <span>
+                  <span>Saved</span>
+                  <span className={classes.create_new} onClick={resetBuild}>Create New</span>
+                  { user_login.is_logged_in && data && <span className={classes.create_new}><a className={classes.no_link_decoration} href={`/build/edit/${data.addBuild.id}`}>Continue Editing</a></span> }
+                </span>
+              )
+
               save_button = (
                 <div onClick={handleOpen}>
                   <Button

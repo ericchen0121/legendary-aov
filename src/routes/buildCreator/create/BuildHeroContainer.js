@@ -126,7 +126,7 @@ class BuildHeroContainer extends React.Component {
           {
             HEROES.map(h => {
               return (
-                <MenuItem value={h.id} className={classes.select_item} onClick={set_select_close}>
+                <MenuItem key={h.id} value={h.id} className={classes.select_item} onClick={set_select_close}>
                   <BuildHeroImage hero={find_hero_by_id(h.id)} dropdown={ is_select_open }/>
                   <span className={classes.name}>{h.name.toUpperCase()}</span>
                 </MenuItem>

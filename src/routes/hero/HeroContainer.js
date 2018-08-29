@@ -27,7 +27,7 @@ const styles = theme => ({
     color: 'gold'
   },
   snackbar: {
-    marginTop: 25,
+    marginTop: 35,
     width: 100
   }
 })

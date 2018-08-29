@@ -211,7 +211,7 @@ class BuildViewerContainer extends React.Component {
                   {item_list}
                   { is_editing && (
                     <span className={classes.edit_link}>
-                      <a className={classes.link_style} href={`/build/edit/${b.id.toLowerCase()}`} >EDIT</a>
+                      <a className={classes.link_style} href={`/build/edit/${b.id}`} >EDIT</a>
                       <div className={classes.link_style}>
                         <Mutation
                           mutation={DELETE_BUILD}

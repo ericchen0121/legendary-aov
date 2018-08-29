@@ -39,7 +39,7 @@ class BuildItemViewer extends React.Component {
     let filter_items_list = (list) => {
       return list.map(i => {
         return (
-          <Grid item xs={2}>
+          <Grid item xs={2} key={i.id}>
             <div
               onClick={() => actions.selectItem(i.id)}
               onMouseOver={() => actions.hoverItem(i.id)}

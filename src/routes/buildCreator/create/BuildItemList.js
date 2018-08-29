@@ -38,7 +38,7 @@ class BuildItemList extends React.Component {
     let list_items = ITEM_CATEGORIES.map(c => {
       let item_class = (c === build_creator.item_filter) ? classes.active : classes.inactive
       return (
-        <ListItem button onClick={() => actions.filterItemCategory(c)} className={item_class}>
+        <ListItem key={Math.random()*100} button onClick={() => actions.filterItemCategory(c)} className={item_class}>
           <ListItemText
             primary={c.toUpperCase()} />
         </ListItem>
