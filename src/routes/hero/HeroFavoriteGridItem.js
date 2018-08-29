@@ -34,9 +34,6 @@ class HeroFavoriteGridItem extends React.Component {
     if (this.props.user_login.is_logged_in) {
       this.props.actions.selectLocalFavoritedHeroes(this.props.hero.id)
     }
-    else {
-      
-    }
   }
 
 
@@ -88,7 +85,7 @@ class HeroFavoriteGridItem extends React.Component {
             />
           }
           <img
-            className={cx(s.avatar_small, s.avatar_grid, favorite_opacity)}
+            className={cx(s.avatar_small, s.avatar_grid, favorite_opacity, s.avatar_med)}
             src={`/aov/heroes/${folder}/hero.png`}
           />
           <div
