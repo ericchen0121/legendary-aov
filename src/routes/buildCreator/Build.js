@@ -141,7 +141,7 @@ class BuildViewer extends React.Component {
         <h2>
           {`All ${hero.name} Builds`}
           <span className={cx(classes.secondary_size, classes.gray)}>
-            <a className={classes.no_style} href={`/build/analytics/${find_hero_by_id(selected_hero_id).name}`}>View Build Analytics    <span className={classes.new_cta}>NEW!</span></a>
+            <a className={classes.no_style} href={`/build/analytics/${find_hero_by_id(selected_hero_id).name.toLowerCase()}`}>View Build Analytics    <span className={classes.new_cta}>NEW!</span></a>
           </span>
         </h2>
       </div>
