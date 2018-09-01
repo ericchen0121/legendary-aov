@@ -762,6 +762,28 @@ export const ITEMS = [
     }]
   },
   {
+    id: 29,
+    name: "Ancestral Glory",
+    type: 'defense',
+    tier: 3,
+    cost: 1950,
+    folder: 'ancestralglory',
+    active: false,
+    alternative_id: 68,
+    effects: [
+      {
+        type: 'max hp',
+        power: 1000,
+      },
+    ],
+    passives: [{
+      name: "Resurrect",
+      unique: true,
+      description: 'Revives wearer 4 seconds after death with 3000 HP. 150-second cooldown.',
+      type: ['revive']
+    }]
+  },
+  {
     id: 30,
     name: "Frost Cape",
     type: 'defense',
@@ -1356,6 +1378,34 @@ export const ITEMS = [
     ]
   },
   {
+    id: 50,
+    active: false,
+    alternative_id: 0,
+    name: "Asterion's Buckler",
+    type: 'defense',
+    tier: 2,
+    cost: 1600,
+    folder: 'asterionsbuckler',
+    effects: [
+      {
+        type: 'max hp',
+        power: 1000,
+      },
+      {
+        type: 'hp',
+        power: '+60 / 5 sec',
+      },
+    ],
+    passives: [
+      {
+        name: "War Cry",
+        unique: true,
+        description: "Increases damage dealt and damage reduction of nearby friendly units by 5% and 10%, respectively. [samurai gamers: Getting within 200 units of an ally will trigger War Cry for 2-3 seconds]",
+        type: ['buff']
+      },
+    ]
+  },
+  {
     id: 51,
     name: "Hermes Select",
     type: 'movement',
@@ -1869,7 +1919,7 @@ export const ITEMS = [
     type: 'attack',
     tier: 3,
     cost: 2400,
-    folder: 'purifyingbracers',
+    folder: 'bladeofeternity',
     effects: [
       {
         type: 'armor',
@@ -1892,11 +1942,11 @@ export const ITEMS = [
   },
   {
     id: 69,
-    name: "Virtues necklace",
+    name: "Virtues Necklace",
     type: 'magic',
     tier: 2,
     cost: 720,
-    folder: 'virtuesbracelet',
+    folder: 'virtuesnecklace',
     effects: [
       {
         type: 'ability power',

@@ -24,7 +24,7 @@ import BuildItemsEffects from './BuildItemsEffects'
 import BuildViewerContainer from './BuildViewerContainer'
 import BuildSingleSkeleton from './BuildSingleSkeleton'
 
-import { find_talent_by_id, find_item_by_id } from './Items'
+import { find_talent_by_id, find_item_by_id } from './Items_v16'
 import { find_hero_by_id, find_hero_by_name } from '../draft/AovHeroes'
 import { to_uppercase_first } from './utilities'
 

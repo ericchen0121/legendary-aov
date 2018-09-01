@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemText} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
-import { ITEMS, TALENTS, ITEM_CATEGORIES } from '../Items'
+import { ITEMS, TALENTS, ITEM_CATEGORIES } from '../Items_v16'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';

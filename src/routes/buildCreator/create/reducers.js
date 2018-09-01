@@ -19,7 +19,7 @@ import {
   SET_EDIT_BUILD
 } from '../../../constants';
 
-import { ITEM_CATEGORIES } from '../Items'
+import { ITEM_CATEGORIES } from '../Items_v16'
 import {find_hero_by_id} from '../../draft/AovHeroes'
 import {convert_build} from './build_utilities'
 
@@ -27,7 +27,7 @@ const DEFAULT_HERO_ID = 1
 const DEFAULT_TALENT_ID = 1
 const DEFAULT_GAME_MODE_ID = 1
 const DEFAULT_USER_ID = 1
-const DEFAULT_VERSION_ID = 3
+const DEFAULT_VERSION_ID = 4
 
 const initialState = {
   item_filter: ITEM_CATEGORIES[0],

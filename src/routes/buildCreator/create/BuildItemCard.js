@@ -9,7 +9,7 @@ import Card, { CardActions, CardContent} from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
-import { ITEMS } from '../Items'
+import { ITEMS } from '../Items_v16'
 import * as Actions from './actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

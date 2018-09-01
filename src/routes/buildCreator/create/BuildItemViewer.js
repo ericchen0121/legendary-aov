@@ -9,7 +9,7 @@ import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 
 import BuildItem from './BuildItem'
-import { ITEMS, TALENTS } from '../Items'
+import { ITEMS, TALENTS } from '../Items_v16'
 
 import * as Actions from './actions';
 import { connect } from 'react-redux';
