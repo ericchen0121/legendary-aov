@@ -46,6 +46,14 @@ let TEAM_FOLDERS = [
     name: 'Still Moving Under Gunfire',
     folder: 'smg'
   },
+  {
+    name: 'Team Queso',
+    folder: 'tq'
+  },
+  {
+    name: 'The Zelph Nation',
+    folder: 'tzn'
+  },
 ]
 
 export default TEAM_FOLDERS

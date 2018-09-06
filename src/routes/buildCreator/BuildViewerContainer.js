@@ -40,6 +40,9 @@ const styles = theme => ({
     paddingBottom: 16,
     marginTop: theme.spacing.unit * 2,
   }),
+  gray: {
+    backgroundColor: 'rgba(0,0,0,.004)'
+  },
   ep: {
     padding: 0,
     width: '100%'
@@ -205,7 +208,7 @@ class BuildViewerContainer extends React.Component {
             </div>
           </Grid>
           <Grid item xs={9}>
-            <ExpansionPanel className={classes.ep} onChange={(e, expanded) => set_expanded_state(expanded)}>
+            <ExpansionPanel className={cx(classes.ep, classes.gray)} onChange={(e, expanded) => set_expanded_state(expanded)}>
               <ExpansionPanelSummary className={classes.eps}>
                 <div className={s.wrapper}>
                   {item_list}

@@ -1,7 +1,7 @@
 import DataType from 'sequelize';
 import Model from '../../sequelize';
 
-let CURRENT_VERSION = 2
+let CURRENT_VERSION = 4
 let DEFAULT_GAME_MODE = 1
 let DEFAULT_USER_ID = 1
 

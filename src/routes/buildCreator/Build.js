@@ -176,6 +176,12 @@ class BuildViewer extends React.Component {
             return <div className={cx(classes.grid_container, classes.full_height)}>ERROR! Sorry!</div>
           }
 
+          let sorted_builds
+          if (data.buildsByHero && data.buildsByHero.length > 0) {
+            sorted_builds = [...data.buildsByHero]
+            sorted_builds.sort((a,b)=> (parseInt(b.version.version_number) - parseInt(a.version.version_number) )) // sort by latest version (using parseint since version comes as a string)
+          }
+
           return (
             <div>
               <Grid container zeroMinWidth>
@@ -193,7 +199,11 @@ class BuildViewer extends React.Component {
               <Grid container zeroMinWidth className={classes.grid_container}>
                 <Grid item xs={9}>
                   <div className={s.main_container}>
-                    { (data.buildsByHero && data.buildsByHero.length > 0) ? data.buildsByHero.map(b => <BuildViewerContainer build={b} /> ) : Array(7).fill().map((e,i)=>i+1).map(i => <BuildSingleSkeleton />) }
+                    {
+                      (data.buildsByHero && data.buildsByHero.length > 0) ?
+                      sorted_builds.map(b => <BuildViewerContainer build={b} /> ) :
+                      Array(7).fill().map((e,i)=>i+1).map(i => <BuildSingleSkeleton />)
+                    }
                   </div>
                 </Grid>
                 <Grid item xs={3}>
